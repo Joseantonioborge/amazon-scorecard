@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon Scorecard MVP</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #F5A623;
+    --gold2: #FFD166;
+    --green: #06D6A0;
+    --red: #EF476F;
+    --blue: #118AB2;
+    --dark: #0A0E1A;
+    --dark2: #111827;
+    --card: #161D2F;
+    --border: rgba(255,255,255,0.07);
+    --text: #E2E8F0;
+    --muted: #64748B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* BG noise + gradient */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,166,35,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 90% 80%, rgba(6,214,160,0.08) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; position: relative; z-index: 1; }
+
+  /* HEADER */
+  header { text-align: center; margin-bottom: 56px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(245,166,35,0.12);
+    border: 1px solid rgba(245,166,35,0.3);
+    border-radius: 50px;
+    padding: 6px 18px;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    animation: fadeDown 0.6s ease both;
+  }
+  .badge::before { content: '▲'; font-size: 8px; }
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 8vw, 80px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #fff 30%, var(--gold) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    animation: fadeDown 0.6s 0.1s ease both;
+  }
+  .subtitle {
+    margin-top: 14px; color: var(--muted); font-size: 15px;
+    animation: fadeDown 0.6s 0.2s ease both;
+  }
+
+  /* PODIUM TOP 3 */
+  .podium-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 3px; color: var(--muted);
+    margin-bottom: 24px; text-align: center;
+    animation: fadeUp 0.6s 0.3s ease both; opacity: 0;
+  }
+
+  .podium {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 56px;
+    align-items: end;
+  }
+
+  .podium-card {
+    border-radius: 16px;
+    padding: 28px 20px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+  }
+  .podium-card:hover { transform: translateY(-6px); }
+  .podium-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--grad-border);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .rank-1 {
+    background: linear-gradient(145deg, rgba(245,166,35,0.18), rgba(255,209,102,0.06));
+    --grad-border: linear-gradient(135deg, var(--gold), transparent);
+    border: 1px solid rgba(245,166,35,0.35);
+    transform: scale(1.04);
+    animation: podium1 0.8s 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  .rank-2 {
+    background: linear-gradient(145deg, rgba(6,214,160,0.15), rgba(6,214,160,0.04));
+    --grad-border: linear-gradient(135deg, var(--green), transparent);
+    border: 1px solid rgba(6,214,160,0.3);
+    animation: podium2 0.8s 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  .rank-3 {
+    background: linear-gradient(145deg, rgba(17,138,178,0.15), rgba(17,138,178,0.04));
+    --grad-border: linear-gradient(135deg, var(--blue), transparent);
+    border: 1px solid rgba(17,138,178,0.3);
+    animation: podium2 0.8s 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  .rank-medal {
+    font-size: 36px;
+    margin-bottom: 8px;
+    display: block;
+    filter: drop-shadow(0 0 12px currentColor);
+  }
+  .rank-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px; line-height: 1;
+    opacity: 0.12;
+    position: absolute; top: 10px; right: 16px;
+  }
+  .rank-1 .rank-number { color: var(--gold); }
+  .rank-2 .rank-number { color: var(--green); }
+  .rank-3 .rank-number { color: var(--blue); }
+
+  .product-id {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px; letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .rank-1 .product-id { color: var(--gold); }
+  .rank-2 .product-id { color: var(--green); }
+  .rank-3 .product-id { color: var(--blue); }
+
+  .product-niche {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.5px; color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .score-big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px; line-height: 1;
+    margin-bottom: 4px;
+  }
+  .rank-1 .score-big { color: var(--gold); }
+  .rank-2 .score-big { color: var(--green); }
+  .rank-3 .score-big { color: var(--blue); }
+
+  .score-label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); }
+
+  .mini-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 8px; margin-top: 16px;
+  }
+  .mini-stat {
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px; padding: 8px;
+    font-size: 11px;
+  }
+  .mini-stat .val { font-weight: 700; font-size: 14px; display: block; margin-bottom: 2px; }
+  .mini-stat .lbl { color: var(--muted); font-size: 10px; }
+
+  .mvp-tag {
+    display: inline-block;
+    margin-top: 12px;
+    background: rgba(6,214,160,0.2);
+    border: 1px solid rgba(6,214,160,0.4);
+    color: var(--green);
+    border-radius: 4px;
+    padding: 3px 10px;
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  }
+
+  /* PROGRESS BARS */
+  .bar-container { margin-top: 14px; text-align: left; }
+  .bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 11px; }
+  .bar-label { color: var(--muted); width: 50px; text-align: right; flex-shrink: 0; }
+  .bar-track { flex: 1; height: 4px; background: rgba(255,255,255,0.07); border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; transform-origin: left; transform: scaleX(0); transition: transform 1s ease; }
+  .bar-val { color: var(--text); font-weight: 600; width: 28px; flex-shrink: 0; }
+
+  /* ALL PRODUCTS TABLE */
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 3px; color: var(--muted);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .grid-all {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+    margin-bottom: 56px;
+  }
+
+  .prod-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    position: relative;
+    transition: transform 0.2s, border-color 0.2s;
+    opacity: 0;
+    animation: fadeUp 0.5s ease both;
+  }
+  .prod-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.14); }
+
+  .prod-card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+  .prod-asin { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; }
+  .score-pill {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    padding: 2px 10px;
+    border-radius: 20px;
+  }
+
+  .score-high { background: rgba(245,166,35,0.2); color: var(--gold); border: 1px solid rgba(245,166,35,0.3); }
+  .score-mid  { background: rgba(6,214,160,0.15); color: var(--green); border: 1px solid rgba(6,214,160,0.25); }
+  .score-low  { background: rgba(100,116,139,0.2); color: var(--muted); border: 1px solid rgba(100,116,139,0.2); }
+
+  .prod-meta { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+  .tag {
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    padding: 3px 8px; border-radius: 4px;
+  }
+  .tag-market { background: rgba(17,138,178,0.15); color: var(--blue); border: 1px solid rgba(17,138,178,0.2); }
+  .tag-niche { background: rgba(6,214,160,0.1); color: var(--green); border: 1px solid rgba(6,214,160,0.15); }
+  .tag-mvp-yes { background: rgba(6,214,160,0.2); color: var(--green); border: 1px solid rgba(6,214,160,0.35); }
+  .tag-mvp-no { background: rgba(239,71,111,0.1); color: var(--red); border: 1px solid rgba(239,71,111,0.2); }
+  .tag-mvp-duda { background: rgba(245,166,35,0.1); color: var(--gold); border: 1px solid rgba(245,166,35,0.2); }
+
+  .financials { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+  .fin-item { background: rgba(255,255,255,0.03); border-radius: 6px; padding: 8px; }
+  .fin-val { font-weight: 700; font-size: 13px; display: block; }
+  .fin-lbl { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+
+  /* RADIAL CHART */
+  .chart-section { margin-bottom: 56px; }
+  .radar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+  .radar-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 0.5s ease both;
+  }
+  .radar-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px; letter-spacing: 2px; margin-bottom: 16px;
+  }
+  svg.radar { overflow: visible; }
+
+  /* LEGEND */
+  .legend { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+  .leg-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
+  .leg-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  /* ANIMATIONS */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes podium1 {
+    from { opacity: 0; transform: scale(0.8) translateY(30px); }
+    to { opacity: 1; transform: scale(1.04) translateY(0); }
+  }
+  @keyframes podium2 {
+    from { opacity: 0; transform: scale(0.8) translateY(30px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(245,166,35,0.4); }
+    50% { box-shadow: 0 0 0 12px rgba(245,166,35,0); }
+  }
+
+  .rank-1 { animation: podium1 0.8s 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both, glow 3s 1.5s infinite; }
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(245,166,35,0.1); }
+    50% { box-shadow: 0 0 40px rgba(245,166,35,0.25), 0 0 80px rgba(245,166,35,0.1); }
+  }
+
+  .crown { animation: bounce 2s 2s ease infinite; display: inline-block; }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  footer { text-align: center; padding: 40px 0 20px; color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="badge">Amazon Seller Intelligence</div>
+    <h1>SCORECARD<br>MVP AMAZON</h1>
+    <p class="subtitle">Análisis de rentabilidad y priorización de productos · 2025</p>
+  </header>
+
+  <!-- PODIUM -->
+  <p class="podium-title">🏆 TOP 3 — PRODUCTOS PRIORITARIOS</p>
+  <div class="podium" id="podium"></div>
+
+  <!-- ALL PRODUCTS -->
+  <h2 class="section-title">TODOS LOS PRODUCTOS</h2>
+  <div class="grid-all" id="allProducts"></div>
+
+  <!-- COMPARISON CHART -->
+  <div class="chart-section">
+    <h2 class="section-title">ANÁLISIS MULTIDIMENSIONAL</h2>
+    <div class="radar-grid" id="radarGrid"></div>
+  </div>
+
+  <div class="legend">
+    <div class="leg-item"><div class="leg-dot" style="background:var(--gold)"></div> Score Alto (≥45)</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--green)"></div> Score Medio (30–44)</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--muted)"></div> Score Bajo (&lt;30)</div>
+  </div>
+
+  <footer>Datos extraídos del Scorecard MVP · Generado para análisis de Amazon FBA</footer>
+</div>
+
+<script>
+const products = [
+  { asin: 'B07WQLDKN2', market: 'USA', niche: 'DEPORTE', sub: 'TRAINING/FITNESS', price: '$19.97', cost: '$3.99', fba: '$3.60', margin: '42%', net: '$8.29', score: 51, mvp: 'SI', demand: 5, saturation: 5, scalability: 5, branding: 5, recurrence: 5, legal: 5, ppc: 4 },
+  { asin: 'B0FGZ23FK4', market: 'USA', niche: 'SALUD', sub: 'TRAINING/FITNESS', price: '$38.99', cost: '$7.80', fba: '$4.27', margin: '30%', net: '$11.79', score: 44, mvp: 'DUDA', demand: 5, saturation: 5, scalability: 5, branding: 5, recurrence: 4, legal: 5, ppc: 3 },
+  { asin: 'B09CTVQWK8', market: 'ESPAÑA', niche: '—', sub: '—', price: '€7.00', cost: '€1.50', fba: '—', margin: '11%', net: '€0.70', score: 43, mvp: 'NO', demand: 4, saturation: 0, scalability: 5, branding: 5, recurrence: 5, legal: 5, ppc: 4 },
+  { asin: 'B0FJFQMY6V', market: 'USA', niche: 'MASCOTAS', sub: 'TAPETES', price: '$20.99', cost: '$4.20', fba: '$5.04', margin: '35%', net: '$7.40', score: 49, mvp: 'SI', demand: 4, saturation: 5, scalability: 5, branding: 5, recurrence: 4, legal: 5, ppc: 3 },
+  { asin: 'B0FDXBBFYD', market: 'USA', niche: 'SALUD', sub: 'TRAINING/FITNESS', price: '$25.99', cost: '$5.20', fba: '$2.63', margin: '26%', net: '$6.85', score: 31, mvp: 'SI', demand: 5, saturation: 5, scalability: 5, branding: 5, recurrence: 4, legal: 0, ppc: 0 },
+  { asin: 'B0CS3PH8RX', market: 'ESPAÑA', niche: 'DEPORTE', sub: 'TRAINING/FITNESS', price: '€17.99', cost: '€3.60', fba: '—', margin: '35%', net: '€5.15', score: 22, mvp: 'SI', demand: 0, saturation: 4, scalability: 4, branding: 3, recurrence: 5, legal: 0, ppc: 0 },
+  { asin: 'B0CT8DV344', market: 'ESPAÑA', niche: 'DEPORTE', sub: 'TRAINING/FITNESS', price: '€33.99', cost: '€6.80', fba: '—', margin: '30%', net: '€8.50', score: 26, mvp: 'SI', demand: 1, saturation: 0, scalability: 0, branding: 5, recurrence: 2, legal: 5, ppc: 0 },
+  { asin: 'B0FP5BCCRL', market: 'USA', niche: 'DEPORTE', sub: 'TENIS/ESQUÍ', price: '$17.99', cost: '$6.00', fba: '—', margin: '31%', net: '$6.70', score: 8, mvp: 'SI', demand: 4, saturation: 0, scalability: 0, branding: 0, recurrence: 0, legal: 0, ppc: 4 },
+  { asin: 'B0FW5KJN66', market: 'ESPAÑA', niche: '—', sub: '—', price: '€16.99', cost: '€3.40', fba: '—', margin: '31%', net: '€4.35', score: 12, mvp: 'NO', demand: 0, saturation: 0, scalability: 0, branding: 5, recurrence: 3, legal: 4, ppc: 0 },
+  { asin: 'B0FGZ23FK4', market: 'ESPAÑA', niche: '—', sub: '—', price: '€34.99', cost: '€7.00', fba: '—', margin: '35%', net: '€10.00', score: 10, mvp: 'DUDA', demand: 0, saturation: 0, scalability: 0, branding: 0, recurrence: 3, legal: 0, ppc: 0 },
+];
+
+// Sort by score
+const sorted = [...products].sort((a,b) => b.score - a.score);
+const top3 = sorted.slice(0, 3);
+
+// Score color
+function scoreClass(s) {
+  if (s >= 45) return 'score-high';
+  if (s >= 30) return 'score-mid';
+  return 'score-low';
+}
+function scoreColor(s) {
+  if (s >= 45) return 'var(--gold)';
+  if (s >= 30) return 'var(--green)';
+  return 'var(--muted)';
+}
+function mvpClass(m) {
+  if (m === 'SI') return 'tag-mvp-yes';
+  if (m === 'NO') return 'tag-mvp-no';
+  return 'tag-mvp-duda';
+}
+
+// PODIUM
+const medals = ['🥇', '🥈', '🥉'];
+const rankClasses = ['rank-1', 'rank-2', 'rank-3'];
+const podiumEl = document.getElementById('podium');
+
+top3.forEach((p, i) => {
+  const card = document.createElement('div');
+  card.className = `podium-card ${rankClasses[i]}`;
+  const maxScore = 55;
+  const dims = [
+    { l: 'Demanda', v: p.demand },
+    { l: 'Margen', v: parseInt(p.margin) / 10 },
+    { l: 'Escala', v: p.scalability },
+    { l: 'Branding', v: p.branding },
+  ];
+  card.innerHTML = `
+    <span class="rank-number">${i+1}</span>
+    <span class="rank-medal ${i===0?'crown':''}">${medals[i]}</span>
+    <div class="product-id">${p.asin}</div>
+    <div class="product-niche">${p.niche !== '—' ? p.niche + ' · ' + p.sub : p.market}</div>
+    <div class="score-big">${p.score}</div>
+    <div class="score-label">Score Total</div>
+    <div class="bar-container">
+      ${dims.map(d => `
+        <div class="bar-row">
+          <span class="bar-label">${d.l}</span>
+          <div class="bar-track">
+            <div class="bar-fill" data-fill="${d.v/5}" style="background: ${i===0?'var(--gold)':i===1?'var(--green)':'var(--blue)'}"></div>
+          </div>
+          <span class="bar-val">${d.v || '—'}</span>
+        </div>
+      `).join('')}
+    </div>
+    <div class="mini-stats">
+      <div class="mini-stat"><span class="val">${p.price}</span><span class="lbl">Precio</span></div>
+      <div class="mini-stat"><span class="val">${p.margin}</span><span class="lbl">Margen</span></div>
+      <div class="mini-stat"><span class="val">${p.net}</span><span class="lbl">Neto/ud</span></div>
+      <div class="mini-stat"><span class="val">${p.market}</span><span class="lbl">Mercado</span></div>
+    </div>
+    <span class="mvp-tag ${mvpClass(p.mvp)}">${p.mvp === 'SI' ? '✓ MVP Confirmado' : p.mvp === 'DUDA' ? '? En estudio' : '✕ Descartado'}</span>
+  `;
+  podiumEl.appendChild(card);
+});
+
+// ALL PRODUCTS
+const allEl = document.getElementById('allProducts');
+sorted.forEach((p, idx) => {
+  const card = document.createElement('div');
+  card.className = 'prod-card';
+  card.style.animationDelay = (idx * 0.07) + 's';
+  card.innerHTML = `
+    <div class="prod-card-head">
+      <span class="prod-asin">${p.asin}</span>
+      <span class="score-pill ${scoreClass(p.score)}">${p.score}</span>
+    </div>
+    <div class="prod-meta">
+      <span class="tag tag-market">${p.market}</span>
+      ${p.niche !== '—' ? `<span class="tag tag-niche">${p.niche}</span>` : ''}
+      <span class="tag ${mvpClass(p.mvp)}">${p.mvp}</span>
+    </div>
+    <div class="financials">
+      <div class="fin-item"><span class="fin-val">${p.price}</span><span class="fin-lbl">Precio</span></div>
+      <div class="fin-item"><span class="fin-val">${p.margin}</span><span class="fin-lbl">Margen</span></div>
+      <div class="fin-item"><span class="fin-val">${p.net}</span><span class="fin-lbl">Neto/ud</span></div>
+    </div>
+  `;
+  allEl.appendChild(card);
+});
+
+// RADAR SVG
+const radarData = top3.map(p => ({
+  label: p.asin,
+  score: p.score,
+  values: [p.demand, p.saturation, p.scalability, p.branding, p.recurrence, p.ppc],
+  color: p.score >= 45 ? '#F5A623' : '#06D6A0',
+}));
+const axes = ['Demanda', 'Saturación', 'Escala', 'Branding', 'Recurrencia', 'PPC'];
+
+const radarGrid = document.getElementById('radarGrid');
+top3.forEach((p, i) => {
+  const color = i === 0 ? '#F5A623' : i === 1 ? '#06D6A0' : '#118AB2';
+  const vals = [p.demand, p.saturation, p.scalability, p.branding, p.recurrence, p.ppc];
+  const card = document.createElement('div');
+  card.className = 'radar-card';
+  card.style.animationDelay = (i * 0.1 + 0.4) + 's';
+
+  const size = 200;
+  const cx = size/2, cy = size/2;
+  const r = 80;
+  const n = axes.length;
+
+  // Build polygon
+  function getPoint(idx, val, radius) {
+    const angle = (Math.PI * 2 / n) * idx - Math.PI / 2;
+    const rv = radius * (val / 5);
+    return [cx + rv * Math.cos(angle), cy + rv * Math.sin(angle)];
+  }
+
+  let bgLines = '';
+  for (let ring = 1; ring <= 5; ring++) {
+    let pts = [];
+    for (let j = 0; j < n; j++) { const [x,y] = getPoint(j, ring, r); pts.push(`${x},${y}`); }
+    bgLines += `<polygon points="${pts.join(' ')}" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>`;
+  }
+  let spokes = '';
+  for (let j = 0; j < n; j++) {
+    const [x,y] = getPoint(j, 5, r);
+    spokes += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>`;
+  }
+  let poly = vals.map((v,j) => getPoint(j, v||0, r).join(',')).join(' ');
+  let labels = axes.map((ax, j) => {
+    const [x,y] = getPoint(j, 5.8, r);
+    return `<text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="middle" font-size="8" fill="#64748B" font-family="DM Sans">${ax}</text>`;
+  }).join('');
+  let dots = vals.map((v,j) => {
+    const [x,y] = getPoint(j, v||0, r);
+    return `<circle cx="${x}" cy="${y}" r="3" fill="${color}"/>`;
+  }).join('');
+
+  card.innerHTML = `
+    <h3 style="color:${color}">${p.asin} <span style="color:var(--muted);font-size:12px">· Score ${p.score}</span></h3>
+    <svg class="radar" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+      ${bgLines}${spokes}
+      <polygon points="${poly}" fill="${color}" fill-opacity="0.15" stroke="${color}" stroke-width="2"/>
+      ${dots}${labels}
+    </svg>
+    <p style="font-size:11px;color:var(--muted);margin-top:12px">${p.niche !== '—' ? p.niche + ' · ' + p.sub : 'Mercado ' + p.market} · ${p.margin} margen</p>
+  `;
+  radarGrid.appendChild(card);
+});
+
+// Animate bars on load
+setTimeout(() => {
+  document.querySelectorAll('.bar-fill').forEach(el => {
+    const fill = parseFloat(el.dataset.fill) || 0;
+    el.style.transform = `scaleX(${fill})`;
+  });
+}, 600);
+</script>
+</body>
+</html>
