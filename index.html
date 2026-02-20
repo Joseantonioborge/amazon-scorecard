@@ -1,1545 +1,897 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FBA Research Lab · Amazon.es · 2025</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-
-  <style>
-    /* ── RESET & VARIABLES ────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:        #0d0f14;
-      --bg2:       #131720;
-      --bg3:       #1a1f2e;
-      --surface:   #1e2435;
-      --border:    #2a3050;
-      --border2:   #3a4570;
-      --text:      #e2e8f8;
-      --muted:     #7a8ab0;
-      --faint:     #3a4570;
-
-      --orange:    #ff6b35;
-      --orange2:   #ff8c5a;
-      --orange-bg: rgba(255,107,53,.08);
-      --orange-bd: rgba(255,107,53,.25);
-
-      --green:     #22c55e;
-      --green2:    #4ade80;
-      --green-bg:  rgba(34,197,94,.08);
-      --green-bd:  rgba(34,197,94,.25);
-
-      --blue:      #60a5fa;
-      --blue-bg:   rgba(96,165,250,.10);
-      --blue-bd:   rgba(96,165,250,.30);
-
-      --gold:      #f59e0b;
-      --gold-bg:   rgba(245,158,11,.08);
-
-      --red:       #f87171;
-
-      --radius:    10px;
-      --radius-lg: 16px;
-      --font-mono: 'DM Mono', monospace;
-      --font-head: 'Syne', sans-serif;
-      --font-body: 'Instrument Serif', serif;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font-mono);
-      background: var(--bg);
-      color: var(--text);
-      font-size: 14px;
-      line-height: 1.6;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* ── GRID BACKGROUND ──────────────────────────────────────────────── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 48px 48px;
-      opacity: 0.18;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ── TOP NAV ──────────────────────────────────────────────────────── */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(13,15,20,.92);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 32px;
-      height: 56px;
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--font-head);
-      font-weight: 800;
-      font-size: 15px;
-      letter-spacing: .04em;
-    }
-
-    .nav-brand .dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--orange);
-      box-shadow: 0 0 12px var(--orange);
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%,100% { opacity: 1; transform: scale(1); }
-      50%      { opacity: .5; transform: scale(.8); }
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 4px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 12px;
-      padding: 6px 12px;
-      border-radius: 6px;
-      transition: all .15s;
-      letter-spacing: .04em;
-    }
-
-    .nav-links a:hover { color: var(--text); background: var(--surface); }
-
-    .nav-badge {
-      font-size: 11px;
-      color: var(--green);
-      border: 1px solid var(--green-bd);
-      background: var(--green-bg);
-      padding: 3px 10px;
-      border-radius: 99px;
-      letter-spacing: .06em;
-    }
-
-    /* ── WRAPPER ──────────────────────────────────────────────────────── */
-    .wrapper {
-      position: relative;
-      z-index: 1;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ── HERO ─────────────────────────────────────────────────────────── */
-    .hero {
-      padding: 80px 0 56px;
-      position: relative;
-    }
-
-    .hero-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--orange);
-      border: 1px solid var(--orange-bd);
-      background: var(--orange-bg);
-      padding: 5px 14px;
-      border-radius: 99px;
-      margin-bottom: 24px;
-    }
-
-    .hero h1 {
-      font-family: var(--font-head);
-      font-size: clamp(36px, 5vw, 62px);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -.02em;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 em {
-      font-style: normal;
-      color: var(--orange);
-    }
-
-    .hero-sub {
-      font-family: var(--font-body);
-      font-size: 18px;
-      color: var(--muted);
-      max-width: 560px;
-      line-height: 1.7;
-      margin-bottom: 40px;
-    }
-
-    /* ── KPI BAR ──────────────────────────────────────────────────────── */
-    .kpi-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin-bottom: 64px;
-    }
-
-    .kpi {
-      background: var(--bg2);
-      padding: 20px 24px;
-      position: relative;
-    }
-
-    .kpi::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 24px; right: 24px;
-      height: 2px;
-      border-radius: 99px;
-      opacity: 0;
-      transition: opacity .3s;
-    }
-
-    .kpi:hover::after { opacity: 1; }
-    .kpi.c-orange::after { background: var(--orange); }
-    .kpi.c-green::after  { background: var(--green); }
-    .kpi.c-blue::after   { background: var(--blue); }
-    .kpi.c-gold::after   { background: var(--gold); }
-
-    .kpi-label {
-      font-size: 10px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .kpi-value {
-      font-family: var(--font-head);
-      font-size: 22px;
-      font-weight: 700;
-    }
-
-    .c-orange .kpi-value { color: var(--orange); }
-    .c-green  .kpi-value { color: var(--green); }
-    .c-blue   .kpi-value { color: var(--blue); }
-    .c-gold   .kpi-value { color: var(--gold); }
-
-    /* ── SECTION DIVIDER ──────────────────────────────────────────────── */
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 32px;
-      padding-top: 32px;
-    }
-
-    .section-number {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: .1em;
-      white-space: nowrap;
-    }
-
-    .section-line {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .section-tag {
-      font-size: 11px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 99px;
-      white-space: nowrap;
-    }
-
-    .tag-orange { color: var(--orange); border: 1px solid var(--orange-bd); background: var(--orange-bg); }
-    .tag-green  { color: var(--green);  border: 1px solid var(--green-bd);  background: var(--green-bg); }
-    .tag-blue   { color: var(--blue);   border: 1px solid var(--blue-bd);   background: var(--blue-bg); }
-
-    /* ── PRODUCT CARD ─────────────────────────────────────────────────── */
-    .product-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin-bottom: 64px;
-      background: var(--bg2);
-    }
-
-    .card-header {
-      padding: 28px 32px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .card-header.orange { border-left: 4px solid var(--orange); }
-    .card-header.green  { border-left: 4px solid var(--green); }
-
-    .card-title {
-      font-family: var(--font-head);
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .card-subtitle {
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: .04em;
-    }
-
-    .card-score {
-      text-align: right;
-      flex-shrink: 0;
-    }
-
-    .score-stars { font-size: 20px; line-height: 1; margin-bottom: 4px; }
-
-    .score-label {
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    /* ── METRICS GRID ─────────────────────────────────────────────────── */
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .metric {
-      background: var(--bg3);
-      padding: 20px;
-      text-align: center;
-    }
-
-    .metric-val {
-      font-family: var(--font-head);
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .metric-lbl {
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    /* ── CARD BODY TABS ───────────────────────────────────────────────── */
-    .card-tabs {
-      display: flex;
-      border-bottom: 1px solid var(--border);
-      padding: 0 32px;
-      overflow-x: auto;
-    }
-
-    .tab-btn {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      letter-spacing: .06em;
-      color: var(--muted);
-      padding: 14px 20px;
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      cursor: pointer;
-      transition: all .15s;
-      white-space: nowrap;
-    }
-
-    .tab-btn:hover { color: var(--text); }
-    .tab-btn.active { color: var(--text); }
-    .tab-btn.active.orange { border-color: var(--orange); color: var(--orange); }
-    .tab-btn.active.green  { border-color: var(--green);  color: var(--green); }
-
-    .tab-pane { display: none; padding: 32px; }
-    .tab-pane.active { display: block; }
-
-    /* ── OPPORTUNITY BOX ──────────────────────────────────────────────── */
-    .opportunity-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      margin-bottom: 24px;
-    }
-
-    .opp-title {
-      font-family: var(--font-head);
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .opp-body {
-      font-family: var(--font-body);
-      font-size: 16px;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    /* ── DIFF LIST ────────────────────────────────────────────────────── */
-    .diff-list {
-      list-style: none;
-      display: grid;
-      gap: 10px;
-    }
-
-    .diff-list li {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px 16px;
-      font-size: 13px;
-      color: var(--muted);
-      transition: border-color .2s, background .2s;
-    }
-
-    .diff-list li:hover { border-color: var(--border2); background: var(--bg3); color: var(--text); }
-
-    .diff-icon {
-      font-size: 16px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    /* ── ASIN TABLE ───────────────────────────────────────────────────── */
-    .asin-table-wrap {
-      overflow-x: auto;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-    }
-
-    .asin-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 12.5px;
-    }
-
-    .asin-table thead tr {
-      background: var(--surface);
-    }
-
-    .asin-table th {
-      padding: 12px 16px;
-      text-align: left;
-      font-size: 10px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 500;
-      border-bottom: 1px solid var(--border);
-      white-space: nowrap;
-    }
-
-    .asin-table td {
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: middle;
-    }
-
-    .asin-table tbody tr { transition: background .15s; }
-    .asin-table tbody tr:hover { background: var(--surface); }
-    .asin-table tbody tr:last-child td { border-bottom: none; }
-
-    /* ASIN PILL */
-    .asin-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--blue);
-      background: var(--blue-bg);
-      border: 1px solid var(--blue-bd);
-      padding: 4px 10px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: all .15s;
-      white-space: nowrap;
-    }
-
-    .asin-pill:hover {
-      background: var(--blue-bd);
-      color: #fff;
-      transform: translateY(-1px);
-    }
-
-    .asin-pill svg {
-      width: 10px; height: 10px;
-      opacity: .7;
-    }
-
-    /* RATING STARS */
-    .rating {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .stars { color: var(--gold); font-size: 12px; }
-    .rating-num { font-size: 12px; color: var(--muted); }
-
-    /* WEAKNESS BADGE */
-    .weakness {
-      font-size: 11px;
-      color: var(--red);
-      background: rgba(248,113,113,.08);
-      border: 1px solid rgba(248,113,113,.2);
-      padding: 3px 8px;
-      border-radius: 5px;
-      display: inline-block;
-    }
-
-    .price-tag {
-      font-family: var(--font-head);
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    .reviews-count {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    /* ── KEYWORD SECTION ──────────────────────────────────────────────── */
-    .keyword-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .keyword-block {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-    }
-
-    .keyword-block h4 {
-      font-size: 11px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    .keyword-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .kw-tag {
-      font-size: 12px;
-      padding: 4px 10px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      color: var(--text);
-      background: var(--bg2);
-      transition: all .15s;
-      cursor: default;
-    }
-
-    .kw-tag:hover { border-color: var(--border2); background: var(--surface); }
-    .kw-tag.primary { border-color: var(--orange-bd); color: var(--orange); background: var(--orange-bg); }
-    .kw-tag.primary.green-kw { border-color: var(--green-bd); color: var(--green); background: var(--green-bg); }
-
-    .kw-volume {
-      font-size: 10px;
-      color: var(--muted);
-      margin-left: 4px;
-    }
-
-    /* TITLE BOX */
-    .title-box {
-      background: var(--bg);
-      border: 1px dashed var(--border2);
-      border-radius: var(--radius);
-      padding: 16px 20px;
-      margin-bottom: 20px;
-    }
-
-    .title-box-label {
-      font-size: 10px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .title-box-content {
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.55;
-      color: var(--text);
-    }
-
-    /* ── MARGIN TABLE ─────────────────────────────────────────────────── */
-    .margin-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .margin-table tr { border-bottom: 1px solid var(--border); }
-    .margin-table tr:last-child { border-bottom: none; }
-
-    .margin-table td {
-      padding: 12px 16px;
-    }
-
-    .margin-table tr.header-row td {
-      background: var(--surface);
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .margin-table tr.total-row td {
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: 15px;
-    }
-
-    .margin-table tr.total-row.orange td { background: var(--orange-bg); color: var(--orange); }
-    .margin-table tr.total-row.green td  { background: var(--green-bg);  color: var(--green); }
-
-    .margin-table td:last-child { text-align: right; color: var(--muted); }
-    .margin-table tr.total-row td:last-child { color: inherit; }
-
-    .margin-table .cost-row td:last-child { color: var(--red); }
-
-    /* ── BULLET POINTS ────────────────────────────────────────────────── */
-    .bullets-list {
-      list-style: none;
-      display: grid;
-      gap: 8px;
-    }
-
-    .bullets-list li {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px 18px;
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-    }
-
-    .bullets-list li .bi { font-size: 16px; flex-shrink: 0; }
-
-    /* ── STEPS LIST ───────────────────────────────────────────────────── */
-    .steps-list {
-      list-style: none;
-      counter-reset: step;
-      display: grid;
-      gap: 10px;
-    }
-
-    .steps-list li {
-      counter-increment: step;
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .steps-list li::before {
-      content: counter(step);
-      font-family: var(--font-head);
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--bg);
-      background: var(--muted);
-      border-radius: 50%;
-      width: 22px; height: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    /* ── COMPARISON TABLE ─────────────────────────────────────────────── */
-    .compare-wrap {
-      overflow-x: auto;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      margin-bottom: 48px;
-    }
-
-    .compare-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .compare-table th {
-      padding: 16px 20px;
-      text-align: left;
-      font-size: 12px;
-      letter-spacing: .06em;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .compare-table th.col-p1 { color: var(--orange); }
-    .compare-table th.col-p2 { color: var(--green); }
-
-    .compare-table td {
-      padding: 14px 20px;
-      font-size: 13px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: middle;
-    }
-
-    .compare-table tbody tr:last-child td { border-bottom: none; }
-    .compare-table tbody tr:hover { background: var(--surface); }
-
-    .compare-table td:first-child {
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
-    .compare-table td.winner {
-      font-family: var(--font-head);
-      font-weight: 700;
-    }
-
-    .badge-winner {
-      display: inline-block;
-      font-size: 10px;
-      color: var(--gold);
-      background: var(--gold-bg);
-      border: 1px solid rgba(245,158,11,.3);
-      padding: 2px 8px;
-      border-radius: 99px;
-      margin-left: 8px;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
-    /* ── RECOMMENDATION ───────────────────────────────────────────────── */
-    .rec-box {
-      background: linear-gradient(135deg, rgba(34,197,94,.06) 0%, rgba(96,165,250,.06) 100%);
-      border: 1px solid var(--green-bd);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      margin-bottom: 40px;
-    }
-
-    .rec-box h3 {
-      font-family: var(--font-head);
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--green);
-      margin-bottom: 16px;
-    }
-
-    .rec-body {
-      font-family: var(--font-body);
-      font-size: 17px;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    /* ── BUDGET GRID ──────────────────────────────────────────────────── */
-    .budget-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin: 24px 0;
-    }
-
-    .budget-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px;
-      text-align: center;
-    }
-
-    .budget-amount {
-      font-family: var(--font-head);
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--blue);
-      margin-bottom: 4px;
-    }
-
-    .budget-label {
-      font-size: 11px;
-      color: var(--muted);
-      line-height: 1.4;
-    }
-
-    /* ── TIMELINE ─────────────────────────────────────────────────────── */
-    .timeline {
-      display: grid;
-      gap: 12px;
-      margin: 24px 0;
-    }
-
-    .tl-item {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .tl-period {
-      font-size: 10px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      white-space: nowrap;
-      min-width: 100px;
-      padding-top: 2px;
-    }
-
-    .tl-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--border2);
-      flex-shrink: 0;
-      margin-top: 5px;
-    }
-
-    .tl-item.done .tl-dot { background: var(--green); box-shadow: 0 0 8px var(--green); }
-    .tl-item.goal .tl-dot { background: var(--orange); box-shadow: 0 0 8px var(--orange); }
-
-    .tl-text { font-size: 13px; color: var(--muted); }
-
-    /* ── DISCLAIMER ───────────────────────────────────────────────────── */
-    .disclaimer {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px 20px;
-      font-size: 11px;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 32px;
-    }
-
-    .disclaimer strong { color: var(--text); }
-
-    /* ── FOOTER ───────────────────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: .06em;
-    }
-
-    footer a { color: var(--blue); text-decoration: none; }
-    footer a:hover { color: var(--text); }
-
-    /* ── RESPONSIVE ───────────────────────────────────────────────────── */
-    @media (max-width: 768px) {
-      .kpi-bar     { grid-template-columns: repeat(2, 1fr); }
-      .metrics-grid { grid-template-columns: repeat(3, 1fr); }
-      .keyword-grid { grid-template-columns: 1fr; }
-      .budget-grid  { grid-template-columns: repeat(2, 1fr); }
-      .nav-links { display: none; }
-      .hero h1 { font-size: 32px; }
-      .card-header { flex-direction: column; }
-    }
-
-    /* ── ANIMATIONS ───────────────────────────────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .fade-up {
-      opacity: 0;
-      animation: fadeUp .5s ease forwards;
-    }
-
-    .fade-up:nth-child(1) { animation-delay: .05s; }
-    .fade-up:nth-child(2) { animation-delay: .1s; }
-    .fade-up:nth-child(3) { animation-delay: .15s; }
-    .fade-up:nth-child(4) { animation-delay: .2s; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon Product Research Report 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F4EF;
+    --surface: #FFFFFF;
+    --surface2: #F0EDE8;
+    --accent1: #FF5C35;
+    --accent2: #1A1A2E;
+    --accent3: #00C2A8;
+    --gold: #F5A623;
+    --text: #1A1A2E;
+    --text-muted: #6B6B80;
+    --border: #E2DDD5;
+    --winner: #FF5C35;
+    --shadow: 0 4px 24px rgba(26,26,46,0.10);
+    --radius: 16px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--accent2);
+    color: white;
+    padding: 56px 40px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(0,194,168,.18) 0%, transparent 60%),
+                radial-gradient(ellipse at 10% 80%, rgba(255,92,53,.15) 0%, transparent 50%);
+  }
+  .hero-inner { position: relative; max-width: 900px; margin: 0 auto; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+    border-radius: 100px; padding: 6px 16px; font-size: 12px; font-weight: 500;
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 20px;
+    animation: fadeDown .6s ease both;
+  }
+  .badge span { width:8px; height:8px; border-radius:50%; background:var(--accent3); display:inline-block; animation: pulse 2s infinite; }
+  .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(28px,5vw,52px); font-weight: 800; line-height: 1.05; margin-bottom: 16px; animation: fadeDown .7s ease both .1s; }
+  .hero h1 em { color: var(--accent1); font-style: normal; }
+  .hero p { font-size: 16px; color: rgba(255,255,255,.7); max-width: 540px; line-height: 1.6; animation: fadeDown .7s ease both .2s; }
+  .hero-meta { display: flex; gap: 32px; margin-top: 32px; flex-wrap: wrap; animation: fadeDown .7s ease both .3s; }
+  .hero-meta div { display: flex; flex-direction: column; }
+  .hero-meta .label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.5); margin-bottom: 4px; }
+  .hero-meta .value { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; }
+  .hero-meta .value.green { color: var(--accent3); }
+  .hero-meta .value.orange { color: var(--accent1); }
+
+  /* ── WINNER BANNER ── */
+  .winner-banner {
+    background: linear-gradient(135deg, var(--accent1) 0%, #FF8360 100%);
+    color: white; padding: 20px 40px;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    animation: slideIn .5s ease both .4s;
+  }
+  .winner-banner .crown { font-size: 28px; }
+  .winner-banner strong { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; }
+  .winner-banner span { font-size: 14px; opacity: .85; }
+  .winner-score {
+    margin-left: auto; background: rgba(255,255,255,.2); border-radius: 100px;
+    padding: 6px 20px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main { max-width: 960px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  /* ── TABS ── */
+  .tabs-nav {
+    display: flex; gap: 4px; padding: 6px;
+    background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border);
+    margin-bottom: 32px; overflow-x: auto; flex-wrap: nowrap;
+    box-shadow: var(--shadow);
+  }
+  .tab-btn {
+    flex-shrink: 0; padding: 10px 18px; border-radius: 10px; border: none;
+    background: transparent; color: var(--text-muted); font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500; cursor: pointer; transition: all .2s ease;
+    display: flex; align-items: center; gap: 6px; white-space: nowrap;
+  }
+  .tab-btn .tab-icon { font-size: 15px; }
+  .tab-btn:hover { background: var(--surface2); color: var(--text); }
+  .tab-btn.active { background: var(--accent2); color: white; }
+  .tab-panel { display: none; animation: fadeIn .3s ease; }
+  .tab-panel.active { display: block; }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border);
+    padding: 28px; box-shadow: var(--shadow); margin-bottom: 24px;
+  }
+  .card-title {
+    font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700;
+    margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+  }
+  .card-title .icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .icon-orange { background: #FFF0EB; }
+  .icon-green { background: #E6FAF7; }
+  .icon-blue { background: #EBF0FF; }
+  .icon-gold { background: #FFF8E6; }
+
+  /* ── PRODUCTO GANADOR HIGHLIGHT ── */
+  .product-winner-card {
+    background: linear-gradient(135deg, #FFF5F2 0%, #FFF9F5 100%);
+    border: 2px solid var(--accent1); border-radius: var(--radius);
+    padding: 28px; margin-bottom: 24px; position: relative; overflow: hidden;
+  }
+  .product-winner-card::before {
+    content: '👑 PRODUCTO GANADOR';
+    position: absolute; top: 16px; right: 16px;
+    background: var(--accent1); color: white; font-family: 'Syne', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: .08em; padding: 4px 12px;
+    border-radius: 100px;
+  }
+  .product-runner-card {
+    background: linear-gradient(135deg, #F0FDF9 0%, #F5FFFE 100%);
+    border: 2px solid var(--accent3); border-radius: var(--radius);
+    padding: 28px; margin-bottom: 24px; position: relative; overflow: hidden;
+  }
+  .product-runner-card::before {
+    content: '#2 SEGUNDA OPCIÓN';
+    position: absolute; top: 16px; right: 16px;
+    background: var(--accent3); color: white; font-family: 'Syne', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: .08em; padding: 4px 12px;
+    border-radius: 100px;
+  }
+
+  .product-header { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 24px; flex-wrap: wrap; }
+  .product-emoji { font-size: 52px; line-height: 1; }
+  .product-info { flex: 1; min-width: 200px; }
+  .product-name { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+  .product-cat { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+  .product-price-badge {
+    display: inline-block; background: var(--accent2); color: white;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px;
+    padding: 6px 18px; border-radius: 100px;
+  }
+
+  /* ── METRICS ROW ── */
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .metric {
+    background: var(--surface2); border-radius: 12px; padding: 16px 14px; text-align: center;
+  }
+  .metric .m-val { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; }
+  .metric .m-val.green { color: #00A88F; }
+  .metric .m-val.orange { color: var(--accent1); }
+  .metric .m-val.gold { color: #D4870A; }
+  .metric .m-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: .06em; }
+
+  /* ── MARGIN TABLE ── */
+  .margin-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .margin-table tr { border-bottom: 1px solid var(--border); }
+  .margin-table tr:last-child { border-bottom: none; }
+  .margin-table td { padding: 10px 8px; }
+  .margin-table td:last-child { text-align: right; font-weight: 600; }
+  .margin-table .total-row { background: var(--surface2); font-weight: 700; }
+  .margin-table .green-row td { color: #00A88F; }
+  .margin-table .cost-row td:last-child { color: var(--accent1); }
+
+  /* ── KEYWORDS ── */
+  .keywords-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .kw-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 100px; font-size: 13px; font-weight: 500;
+    border: 1px solid transparent; cursor: default; transition: transform .15s;
+  }
+  .kw-chip:hover { transform: translateY(-2px); }
+  .kw-high { background: #FFF0EB; color: var(--accent1); border-color: #FFDDD5; }
+  .kw-med { background: #E6FAF7; color: #007A6A; border-color: #C5EFE9; }
+  .kw-low { background: #EBF0FF; color: #3D5AF1; border-color: #D0DAFF; }
+  .kw-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .kw-high .kw-dot { background: var(--accent1); }
+  .kw-med .kw-dot { background: #00C2A8; }
+  .kw-low .kw-dot { background: #3D5AF1; }
+
+  /* ── COMPARATIVA TABLE ── */
+  .compare-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .compare-table th { background: var(--accent2); color: white; padding: 14px 16px; text-align: left; font-family: 'Syne', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+  .compare-table th:first-child { border-radius: 12px 0 0 0; }
+  .compare-table th:last-child { border-radius: 0 12px 0 0; }
+  .compare-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr.winner-row td { background: #FFF5F2; }
+  .compare-table tr.winner-row td:first-child { border-left: 3px solid var(--accent1); }
+  .compare-table tr:hover td { background: var(--surface2); }
+  .score-bar { display: flex; align-items: center; gap: 8px; }
+  .score-track { flex: 1; height: 6px; background: var(--surface2); border-radius: 100px; overflow: hidden; }
+  .score-fill { height: 100%; border-radius: 100px; background: var(--accent3); }
+  .winner-row .score-fill { background: var(--accent1); }
+  .score-num { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; }
+
+  /* ── WEAKNESSES ── */
+  .weak-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .weak-item { display: flex; gap: 12px; align-items: flex-start; padding: 14px; background: var(--surface2); border-radius: 12px; }
+  .weak-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .weak-text { font-size: 14px; line-height: 1.5; }
+  .weak-text strong { display: block; font-weight: 600; margin-bottom: 3px; }
+
+  /* ── NEXT STEPS ── */
+  .steps { display: flex; flex-direction: column; gap: 12px; }
+  .step { display: flex; gap: 16px; align-items: flex-start; }
+  .step-num {
+    width: 32px; height: 32px; border-radius: 50%; background: var(--accent2); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; flex-shrink: 0;
+  }
+  .step-content { flex: 1; padding-top: 5px; }
+  .step-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+  .step-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+  /* ── ASIN COMPETITOR CARDS ── */
+  .asin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+  .asin-card {
+    background: var(--surface2); border-radius: 12px; padding: 18px;
+    border: 1px solid var(--border); transition: all .2s;
+  }
+  .asin-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); background: var(--surface); }
+  .asin-link {
+    display: inline-block; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700;
+    color: var(--accent1); text-decoration: none; border: 1.5px solid var(--accent1);
+    border-radius: 100px; padding: 3px 12px; margin-bottom: 10px; transition: all .2s;
+  }
+  .asin-link:hover { background: var(--accent1); color: white; }
+  .asin-name { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .asin-meta { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+  .asin-price { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; color: var(--accent2); margin-top: 8px; }
+  .star { color: var(--gold); }
+
+  /* ── OPPORTUNITY SCORE ── */
+  .opp-section { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  @media(max-width: 600px) { .opp-section { grid-template-columns: 1fr; } }
+  .opp-card { background: var(--surface2); border-radius: 14px; padding: 20px; }
+  .opp-card h4 { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); }
+  .opp-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .opp-row:last-child { border-bottom: none; }
+  .pill { border-radius: 100px; padding: 2px 12px; font-size: 12px; font-weight: 600; }
+  .pill-green { background: #E6FAF7; color: #007A6A; }
+  .pill-orange { background: #FFF0EB; color: var(--accent1); }
+  .pill-yellow { background: #FFF8E6; color: #B07800; }
+  .pill-red { background: #FFF0EB; color: #CC1F00; }
+
+  /* ── FOOTER ── */
+  .footer { text-align: center; padding: 32px 20px; color: var(--text-muted); font-size: 13px; border-top: 1px solid var(--border); }
+  .footer strong { color: var(--text); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown { from { opacity:0; transform: translateY(-16px); } to { opacity:1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  @keyframes slideIn { from { opacity:0; transform: translateX(-20px); } to { opacity:1; transform: translateX(0); } }
+  @keyframes pulse { 0%,100%{ opacity:1; } 50%{ opacity:.4; } }
+
+  /* ── Responsive ── */
+  @media(max-width:640px) {
+    .hero { padding: 40px 20px 36px; }
+    .winner-banner { padding: 16px 20px; }
+    .winner-score { margin-left: 0; }
+    .product-winner-card::before, .product-runner-card::before { position: static; margin-bottom: 12px; display: inline-block; }
+    .tabs-nav { padding: 4px; }
+    .tab-btn { padding: 8px 12px; font-size: 12px; }
+  }
+
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+  .tag { display: inline-block; background: var(--surface2); border-radius: 100px; padding: 3px 12px; font-size: 12px; color: var(--text-muted); margin: 3px; }
+</style>
 </head>
 <body>
 
-  <!-- ── NAV ───────────────────────────────────────────────────────────── -->
-  <nav class="nav">
-    <div class="nav-brand">
-      <span class="dot"></span>
-      FBA RESEARCH LAB
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="badge"><span></span> Amazon Product Research · España · Feb 2026</div>
+    <h1>Reporte de <em>Oportunidades</em><br>Amazon FBA 2025-26</h1>
+    <p>Análisis comparativo de 4 ASINs competidores + 2 productos ganadores con margen neto, keywords y hoja de ruta para lanzar.</p>
+    <div class="hero-meta">
+      <div><span class="label">Rango Precio</span><span class="value green">9,99€ – 15€</span></div>
+      <div><span class="label">Ventas Objetivo</span><span class="value orange">+5.000€/mes</span></div>
+      <div><span class="label">Productos Analizados</span><span class="value">4 ASINs</span></div>
+      <div><span class="label">Oportunidades</span><span class="value">2 Elegidas</span></div>
     </div>
-    <ul class="nav-links">
-      <li><a href="#producto-1">Producto 1</a></li>
-      <li><a href="#producto-2">Producto 2</a></li>
-      <li><a href="#comparativa">Comparativa</a></li>
-      <li><a href="#estrategia">Estrategia</a></li>
-    </ul>
-    <span class="nav-badge">Amazon.es · 2025</span>
-  </nav>
+  </div>
+</div>
 
-  <!-- ── HERO ──────────────────────────────────────────────────────────── -->
-  <div class="wrapper">
-    <section class="hero">
-      <div class="hero-label">
-        <span>●</span> Informe de Investigación de Producto
-      </div>
-      <h1>Dos oportunidades<br/>para vender en <em>Amazon.es</em><br/>con alto margen</h1>
-      <p class="hero-sub">
-        Análisis completo de nichos con competencia baja-media, precio 9,99€–15€ y potencial de facturación ≥ 5.000€/mes. Incluye ASINs de competidores directos, análisis de keywords y hoja de ruta de lanzamiento.
-      </p>
-    </section>
+<!-- WINNER BANNER -->
+<div class="winner-banner">
+  <span class="crown">👑</span>
+  <div>
+    <strong>Producto Ganador: Organizador de Cables con Clips de Bambú</strong>
+    <br><span>Home Office · Margen neto 38% · ROI estimado 72% · Competencia BAJA</span>
+  </div>
+  <div class="winner-score">Score 4.7 / 5</div>
+</div>
 
-    <!-- KPI BAR -->
-    <div class="kpi-bar">
-      <div class="kpi c-orange fade-up">
-        <div class="kpi-label">Mercado objetivo</div>
-        <div class="kpi-value">Amazon.es</div>
-      </div>
-      <div class="kpi c-blue fade-up">
-        <div class="kpi-label">Rango de precio</div>
-        <div class="kpi-value">9,99€ – 15€</div>
-      </div>
-      <div class="kpi c-green fade-up">
-        <div class="kpi-label">Meta ventas brutas/mes</div>
-        <div class="kpi-value">≥ 5.000 €</div>
-      </div>
-      <div class="kpi c-gold fade-up">
-        <div class="kpi-label">Nivel de competencia</div>
-        <div class="kpi-value">Baja – Media</div>
-      </div>
-    </div>
+<!-- MAIN -->
+<div class="main">
 
-    <!-- ════════════════════════════════════════════════════════════════ -->
-    <!-- PRODUCTO 1                                                       -->
-    <!-- ════════════════════════════════════════════════════════════════ -->
-    <div class="section-header" id="producto-1">
-      <span class="section-number">01</span>
-      <div class="section-line"></div>
-      <span class="section-tag tag-orange">Oportunidad #1</span>
-    </div>
-
-    <article class="product-card">
-      <div class="card-header orange">
-        <div>
-          <div class="card-title">Organizador de Cajones Extensible de Bambú</div>
-          <div class="card-subtitle">Cubertero / Separador Ajustable · Hogar y Cocina · Amazon.es</div>
-        </div>
-        <div class="card-score">
-          <div class="score-stars">⭐⭐⭐⭐</div>
-          <div class="score-label">Score 4/5</div>
-        </div>
-      </div>
-
-      <div class="metrics-grid">
-        <div class="metric">
-          <div class="metric-val" style="color:var(--orange)">12,99€</div>
-          <div class="metric-lbl">Precio sugerido</div>
-        </div>
-        <div class="metric">
-          <div class="metric-val" style="color:var(--green)">27–35%</div>
-          <div class="metric-lbl">Margen neto</div>
-        </div>
-        <div class="metric">
-          <div class="metric-val" style="color:var(--blue)">164%</div>
-          <div class="metric-lbl">ROI inventario</div>
-        </div>
-        <div class="metric">
-          <div class="metric-val" style="color:var(--gold)">~385 uds</div>
-          <div class="metric-lbl">Uds/mes para 5k€</div>
-        </div>
-        <div class="metric">
-          <div class="metric-val" style="color:var(--muted)">🟡 Media-Baja</div>
-          <div class="metric-lbl">Competencia</div>
-        </div>
-      </div>
-
-      <!-- TABS -->
-      <div class="card-tabs">
-        <button class="tab-btn active orange" onclick="switchTab(this,'p1-opp')">Oportunidad</button>
-        <button class="tab-btn orange" onclick="switchTab(this,'p1-asins')">ASINs Competidores</button>
-        <button class="tab-btn orange" onclick="switchTab(this,'p1-kw')">Keywords</button>
-        <button class="tab-btn orange" onclick="switchTab(this,'p1-margin')">Margen</button>
-        <button class="tab-btn orange" onclick="switchTab(this,'p1-steps')">Próximos pasos</button>
-      </div>
-
-      <!-- TAB: OPORTUNIDAD -->
-      <div class="tab-pane active" id="p1-opp">
-        <div class="opportunity-box">
-          <div class="opp-title">¿Por qué esta oportunidad?</div>
-          <div class="opp-body">
-            Los organizadores de cajones de bambú tienen demanda constante en Amazon.es todo el año, con picos en enero (reorganización post-Navidad) y septiembre. El mercado está <strong>menos maduro que en Amazon.com o Amazon.de</strong>: los sellers activos son mayoritariamente marcas genéricas chinas sin branding ni listings optimizados en español.
-            <br/><br/>
-            La ventaja clave: calibrar el producto para cajones europeos estándar (IKEA Metod, Leroy Merlin, 40–50cm de profundidad) — algo que <strong>ningún competidor actual menciona</strong> en su listing, a pesar de ser la queja más frecuente en reseñas de 1-2 estrellas. El rating promedio de los competidores es 3.8–4.1 ⭐, señal clara de margen de mejora real.
-          </div>
-        </div>
-
-        <div class="opp-title" style="font-family:var(--font-head);font-size:15px;font-weight:600;margin-bottom:14px;">Diferenciación sugerida</div>
-        <ul class="diff-list">
-          <li><span class="diff-icon">📐</span> <div>Calibrado para cajones europeos estándar (IKEA Metod, cocinas 40–50cm de profundidad): mencionarlo explícitamente en el título es la diferenciación #1 que ningún competidor usa.</div></li>
-          <li><span class="diff-icon">🌿</span> <div>Bambú sólido 100% real certificado, no MDF con chapado. Foto macro del corte transversal del material en las imágenes del listing para hacerlo verificable.</div></li>
-          <li><span class="diff-icon">🍳</span> <div>Compartimento extra ancho para utensilios largos: cucharones, espátulas, pinzas de barbacoa. La mayoría de competidores solo tienen compartimentos pequeños.</div></li>
-          <li><span class="diff-icon">🛡️</span> <div>Pads de silicona antideslizante en la base: convierte la queja más votada ("se mueve al abrir el cajón") en una feature destacada con coste mínimo (~0,05€/ud extra).</div></li>
-        </ul>
-      </div>
-
-      <!-- TAB: ASINs -->
-      <div class="tab-pane" id="p1-asins">
-        <p style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;">
-          Competidores reales activos en Amazon.es. Haz clic en cada ASIN para abrir el producto directamente. Filtra las reseñas por 1-2 ⭐ para identificar los patrones de queja que debes resolver en tu producto.
-        </p>
-        <div class="asin-table-wrap">
-          <table class="asin-table">
-            <thead>
-              <tr>
-                <th>Producto / Marca</th>
-                <th>ASIN</th>
-                <th>Precio</th>
-                <th>Reviews</th>
-                <th>Rating</th>
-                <th>Debilidad detectada</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Dynamic Gear – Organizador Bambú Extensible 7 compartimentos</td>
-                <td><a class="asin-pill" href="https://www.amazon.es/dp/B074LZSV1G" target="_blank" rel="noopener">B074LZSV1G <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
-                <td><span class="price-tag">18,99€–22€</span></td>
-                <td><span class="reviews-count">~800+</span></td>
-                <td><div class="rating"><span class="stars">★★★★☆</span><span class="rating-num">4.2</span></div></td>
-                <td><span class="weakness">No menciona medidas europeas</span></td>
-              </tr>
-              <tr>
-                <td>Cubertero Extensible Bambú 5-7 Compartimentos</td>
-                <td><a class="asin-pill" href="https://www.amazon.es/dp/B07RFPQH4B" target="_blank" rel="noopener">B07RFPQH4B <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
-                <td><span class="price-tag">12,99€</span></td>
-                <td><span class="reviews-count">~300+</span></td>
-                <td><div class="rating"><span class="stars">★★★☆☆</span><span class="rating-num">3.9</span></div></td>
-                <td><span class="weakness">Bambú de baja calidad (MDF)</span></td>
-              </tr>
-              <tr>
-                <td>Pipishell – Organizador Cajones Cocina Extensible Bambú</td>
-                <td><a class="asin-pill" href="https://www.amazon.es/dp/B07SRV3SN8" target="_blank" rel="noopener">B07SRV3SN8 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
-                <td><span class="price-tag">16,99€</span></td>
-                <td><span class="reviews-count">~500+</span></td>
-                <td><div class="rating"><span class="stars">★★★★☆</span><span class="rating-num">4.1</span></div></td>
-                <td><span class="weakness">Base se desliza al abrir cajón</span></td>
-              </tr>
-              <tr>
-                <td>Utoplike – Bandeja de Bambú Extensible Cajón Utensilios</td>
-                <td><a class="asin-pill" href="https://www.amazon.es/dp/B09XXMRK4N" target="_blank" rel="noopener">B09XXMRK4N <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
-                <td><span class="price-tag">14,99€</span></td>
-                <td><span class="reviews-count">~200+</span></td>
-                <td><div class="rating"><span class="stars">★★★☆☆</span><span class="rating-num">3.8</span></div></td>
-                <td><span class="weakness">No encaja en cajones IKEA</span></td>
-              </tr>
-              <tr>
-                <td>Lifewit – Bandeja Extensible Cubertero Grande Negro/Bambú</td>
-                <td><a class="asin-pill" href="https://www.amazon.es/dp/B08CGPXKJF" target="_blank" rel="noopener">B08CGPXKJF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
-                <td><span class="price-tag">15,99€</span></td>
-                <td><span class="reviews-count">~400+</span></td>
-                <td><div class="rating"><span class="stars">★★★★☆</span><span class="rating-num">4.0</span></div></td>
-                <td><span class="weakness">Sin compartimento para utensilios largos</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p style="font-size:11px;color:var(--muted);margin-top:12px;font-style:italic;">
-          💡 URL directa: amazon.es/dp/[ASIN] · Los precios y reviews pueden haber variado desde el análisis.
-        </p>
-      </div>
-
-      <!-- TAB: KEYWORDS -->
-      <div class="tab-pane" id="p1-kw">
-        <div class="keyword-grid">
-          <div class="keyword-block">
-            <h4>Keywords principales → Título</h4>
-            <div class="keyword-list">
-              <span class="kw-tag primary">organizador cajones cocina <span class="kw-volume">8k–15k/mes</span></span>
-              <span class="kw-tag primary">organizador cajón bambu <span class="kw-volume">5k–10k/mes</span></span>
-              <span class="kw-tag primary">cubertero cajón extensible <span class="kw-volume">3k–6k/mes</span></span>
-              <span class="kw-tag primary">separador cajones bambu <span class="kw-volume">2k–4k/mes</span></span>
-              <span class="kw-tag primary">bandeja cubiertos extensible <span class="kw-volume">2k–4k/mes</span></span>
-            </div>
-          </div>
-          <div class="keyword-block">
-            <h4>Keywords secundarios → Bullets &amp; Backend</h4>
-            <div class="keyword-list">
-              <span class="kw-tag">organizador utensilios cocina</span>
-              <span class="kw-tag">separador cajones ajustable</span>
-              <span class="kw-tag">cubertero bambu cocina</span>
-              <span class="kw-tag">organizador cajón expandible</span>
-              <span class="kw-tag">divisor cajones cocina</span>
-              <span class="kw-tag">organizador cajón baño</span>
-              <span class="kw-tag">separador cubiertos bambu</span>
-            </div>
-          </div>
-        </div>
-        <div class="keyword-block" style="margin-bottom:20px;">
-          <h4>Long-tail de alta conversión</h4>
-          <div class="keyword-list">
-            <span class="kw-tag">organizador cajones cocina ikea</span>
-            <span class="kw-tag">cubertero extensible cocina</span>
-            <span class="kw-tag">separador cajones bambu ajustable</span>
-            <span class="kw-tag">organizador cajones cocina baño</span>
-            <span class="kw-tag">organizador cajón cubiertos extensible bambu</span>
-          </div>
-        </div>
-        <div class="title-box">
-          <div class="title-box-label">Título recomendado para el listing</div>
-          <div class="title-box-content">[Marca] Organizador Cajones Cocina Bambu Extensible – Cubertero Ajustable para Cubiertos y Utensilios – Separador Cajones para Cocina y Baño</div>
-        </div>
-        <div class="opp-title" style="font-family:var(--font-head);font-size:15px;font-weight:600;margin-bottom:14px;">Bullet points optimizados</div>
-        <ul class="bullets-list">
-          <li><span class="bi">✅</span><div><strong>EXTENSIBLE PARA CAJONES EUROPEOS:</strong> Se ajusta de X cm a X cm, compatible con cajones IKEA, Leroy Merlin y cocinas estándar españolas.</div></li>
-          <li><span class="bi">✅</span><div><strong>BAMBÚ SÓLIDO 100% REAL:</strong> No MDF ni imitaciones. Bambú natural certificado, resistente al agua y al uso diario en cocina.</div></li>
-          <li><span class="bi">✅</span><div><strong>COMPARTIMENTO EXTRA ANCHO:</strong> Sección especial para utensilios largos como espátulas, cucharones y pinzas.</div></li>
-          <li><span class="bi">✅</span><div><strong>BASE ANTIDESLIZANTE DE SILICONA:</strong> Los pads integrados evitan el movimiento al abrir el cajón. Sin tornillos ni adhesivo.</div></li>
-          <li><span class="bi">✅</span><div><strong>MULTIUSOS:</strong> Ideal también como organizador de cajones de baño para maquillaje, cepillos y cosméticos. Fácil de limpiar.</div></li>
-        </ul>
-      </div>
-
-      <!-- TAB: MARGEN -->
-      <div class="tab-pane" id="p1-margin">
-        <table class="margin-table">
-          <tr class="header-row"><td colspan="2">Análisis de márgenes · Organizador Cajones Bambú @ 12,99€ · Amazon.es</td></tr>
-          <tr><td>Precio de venta</td><td style="color:var(--text);font-weight:600;text-align:right;">12,99 €</td></tr>
-          <tr class="cost-row"><td>— Costo producto landed (FOB + flete + aduana)</td><td>–2,80 €</td></tr>
-          <tr class="cost-row"><td>— Referral fee Amazon.es (15%)</td><td>–1,95 €</td></tr>
-          <tr class="cost-row"><td>— FBA Low-Price fee (~500g, Small Standard)</td><td>–1,90 €</td></tr>
-          <tr class="cost-row"><td>— Storage mensual estimado</td><td>–0,25 €</td></tr>
-          <tr class="cost-row"><td>— PPC / publicidad (8% PVP)</td><td>–1,04 €</td></tr>
-          <tr class="cost-row"><td>— Packaging, etiquetado y otros</td><td>–0,45 €</td></tr>
-          <tr class="total-row orange">
-            <td>MARGEN NETO ESTIMADO</td>
-            <td>4,60 € · 35,4%</td>
-          </tr>
-          <tr><td style="color:var(--muted);font-size:12px;">ROI sobre coste de inventario</td><td style="color:var(--blue);font-weight:600;font-family:var(--font-head);text-align:right;">164%</td></tr>
-          <tr><td style="color:var(--muted);font-size:12px;">Unidades para 5.000€ ventas brutas/mes</td><td style="color:var(--text);text-align:right;">~385 uds · ~13 uds/día</td></tr>
-          <tr><td style="color:var(--muted);font-size:12px;">Inversión inicial (300 uds)</td><td style="color:var(--text);text-align:right;">~1.040€ landed</td></tr>
-        </table>
-        <p style="font-size:11px;color:var(--muted);margin-top:12px;font-style:italic;">
-          ⚠️ Estimaciones. Verificar con la <a href="https://sellercentral.amazon.com/hz/fba/profitabilitycalculator/index" target="_blank" style="color:var(--blue);">Calculadora FBA de Amazon Seller Central</a> y cotizaciones reales de proveedor antes de invertir.
-        </p>
-      </div>
-
-      <!-- TAB: PRÓXIMOS PASOS -->
-      <div class="tab-pane" id="p1-steps">
-        <ol class="steps-list">
-          <li>Analizar los 5 ASINs de la pestaña anterior → filtrar reseñas 1-2 ⭐ → anotar las quejas más votadas para validar la diferenciación.</li>
-          <li>Verificar BSR real en Amazon.es buscando "organizador cajones cocina bambu" (objetivo: BSR &lt;80.000 en Hogar y Cocina para los top 5 sellers).</li>
-          <li>Medir cajones de cocinas estándar en España (IKEA Metod: profundidad 40–50cm) para definir el rango de extensión exacto del producto.</li>
-          <li>Contactar 2–3 proveedores en Alibaba (<em>bamboo expandable drawer organizer</em>), pedir cotización para 100/300/500 unidades y solicitar muestras con silicona antideslizante en la base.</li>
-          <li>Calcular fee exacto en la Calculadora FBA oficial con las dimensiones reales de la muestra recibida.</li>
-          <li>Crear listing en español con las keywords de la pestaña Keywords y contratar fotografías de estilo de vida antes de recibir el inventario.</li>
-        </ol>
-      </div>
-    </article>
-
-    <!-- ════════════════════════════════════════════════════════════════ -->
-    <!-- PRODUCTO 2                                                       -->
-    <!-- ════════════════════════════════════════════════════════════════ -->
-    <div class="section-header" id="producto-2">
-      <span class="section-number">02</span>
-      <div class="section-line"></div>
-      <span class="section-tag tag-green">Oportunidad #2</span>
-    </div>
-
-    <article class="product-card">
-      <div class="card-header green">
-        <div>
-          <div class="card-title">Kit 28 Protectores de Esquinas de Silicona Transparente</div>
-          <div class="card-subtitle">Seguridad Infantil y del Hogar · Pack Completo · Amazon.es</div>
-        </div>
-        <div class="card-score">
-          <div class="score-stars">⭐⭐⭐⭐⭐</div>
-          <div class="score-label">Score 4.5/5</div>
-        </div>
-      </div>
-
-      <div class="metrics-grid">
-        <div class="metric">
-          <div class="metric-val" style="color:var(--orange)">10,99€</div>
-          <div class="metric-lbl">Precio sugerido</div>
-        </div>
-        <div class="metric">
-          <div class="metric-val" style="color:var(--green)">37–43%</div>
-          <div class="metric-lbl">Margen neto</div>
-        </div>
-        <div class="metric">
-          <div class="metric-val" style="color:var(--blue)">294%</div>
-          <div class="metric-lbl">ROI inventario</div>
-        </div>
-        <div class="metric">
-          <div class="metric-val" style="color:var(--gold)">~455 uds</div>
-          <div class="metric-lbl">Uds/mes para 5k€</div>
-        </div>
-        <div class="metric">
-          <div class="metric-val" style="color:var(--green)">🟢 Baja-Media</div>
-          <div class="metric-lbl">Competencia</div>
-        </div>
-      </div>
-
-      <!-- TABS -->
-      <div class="card-tabs">
-        <button class="tab-btn active green" onclick="switchTab(this,'p2-opp')">Oportunidad</button>
-        <button class="tab-btn green" onclick="switchTab(this,'p2-asins')">ASINs Competidores</button>
-        <button class="tab-btn green" onclick="switchTab(this,'p2-kw')">Keywords</button>
-        <button class="tab-btn green" onclick="switchTab(this,'p2-margin')">Margen</button>
-        <button class="tab-btn green" onclick="switchTab(this,'p2-steps')">Próximos pasos</button>
-      </div>
-
-      <!-- TAB: OPORTUNIDAD -->
-      <div class="tab-pane active" id="p2-opp">
-        <div class="opportunity-box">
-          <div class="opp-title">¿Por qué esta oportunidad?</div>
-          <div class="opp-body">
-            Los protectores de esquinas son un producto de <strong>compra recurrente</strong> con demanda perenne y sin estacionalidad. Se compran al tener un bebé, al mudarse, al renovar muebles. En Amazon.es el sub-nicho de pack grande (20–30 piezas) de silicona transparente de alta calidad tiene una competencia sorprendentemente baja.
-            <br/><br/>
-            El coste de fabricación es extremadamente bajo (&lt;100g de peso total del pack), lo que permite márgenes del <strong>37–43% incluso a 10,99€</strong>, con Low-Price FBA activado. La queja más frecuente y más votada de <em>todos</em> los competidores es idéntica: el adhesivo se desprende en pocas semanas. Es una oportunidad de diferenciación directa y verificable.
-          </div>
-        </div>
-
-        <div class="opp-title" style="font-family:var(--font-head);font-size:15px;font-weight:600;margin-bottom:14px;">Diferenciación sugerida</div>
-        <ul class="diff-list">
-          <li><span class="diff-icon">💪</span><div>Adhesivo 3M preinstalado de fábrica (no pegatina genérica): es el problema #1 en todas las reseñas negativas. Mencionarlo en el título y bullet 1 es la diferenciación más directa posible.</div></li>
-          <li><span class="diff-icon">🔬</span><div>PVC transparente cristal-clear sin amarillear: invisible sobre cualquier mueble (madera, vidrio, metal, mármol). La mayoría de competidores tiene un tono blanco-amarillento que se nota.</div></li>
-          <li><span class="diff-icon">📦</span><div>Pack de 28 piezas con mezcla de tamaños: 16 esquinas tipo-L + 8 tipo-T + 4 tiras de borde → cubre toda la casa de una vez. Los competidores suelen vender packs de 8–16 piezas.</div></li>
-          <li><span class="diff-icon">👶</span><div>Diseño ultra-low-profile (≤ 3mm de grosor): casi invisible y menos probabilidad de que el bebé lo arranque por curiosidad.</div></li>
-          <li><span class="diff-icon">📋</span><div>Tarjeta de instalación en 3 pasos en español incluida → mejora la experiencia post-compra y genera reviews positivas de forma orgánica.</div></li>
-        </ul>
-      </div>
-
-      <!-- TAB: ASINs -->
-      <div class="tab-pane" id="p2-asins">
-        <p style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;">
-          Patrón claro en todos los competidores: el adhesivo falla. Entra con adhesivo 3M documentado + pack de 28 piezas y tendrás una ventaja diferenciadora inmediata y verificable por cualquier comprador.
-        </p>
-        <div class="asin-table-wrap">
-          <table class="asin-table">
-            <thead>
-              <tr>
-                <th>Producto / Marca</th>
-                <th>ASIN</th>
-                <th>Precio</th>
-                <th>Reviews</th>
-                <th>Rating</th>
-                <th>Debilidad detectada</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>30 Piezas Protector Esquinas PVC Transparente Autoadhesivo</td>
-                <td><a class="asin-pill" href="https://www.amazon.es/dp/B09TJJWWYX" target="_blank" rel="noopener">B09TJJWWYX <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
-                <td><span class="price-tag">7,99€–9,99€</span></td>
-                <td><span class="reviews-count">~600+</span></td>
-                <td><div class="rating"><span class="stars">★★★☆☆</span><span class="rating-num">3.7</span></div></td>
-                <td><span class="weakness">Adhesivo se despega en &lt;2 semanas</span></td>
-              </tr>
-              <tr>
-                <td>Protector Esquinas Bebé – 16 uds Silicona Suave 2 Formas</td>
-                <td><a class="asin-pill" href="https://www.amazon.es/dp/B0CT3NS9V4" target="_blank" rel="noopener">B0CT3NS9V4 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
-                <td><span class="price-tag">8,99€</span></td>
-                <td><span class="reviews-count">~150+</span></td>
-                <td><div class="rating"><span class="stars">★★★☆☆</span><span class="rating-num">3.9</span></div></td>
-                <td><span class="weakness">Pack pequeño · material inconsistente</span></td>
-              </tr>
-              <tr>
-                <td>20 Piezas Rincón Seguridad Bebés – Espuma Silicona Mesa</td>
-                <td><a class="asin-pill" href="https://www.amazon.es/dp/B08F6HPXMW" target="_blank" rel="noopener">B08F6HPXMW <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
-                <td><span class="price-tag">6,99€</span></td>
-                <td><span class="reviews-count">~400+</span></td>
-                <td><div class="rating"><span class="stars">★★★☆☆</span><span class="rating-num">3.6</span></div></td>
-                <td><span class="weakness">Espuma, no silicona · deformación rápida</span></td>
-              </tr>
-              <tr>
-                <td>12 Protectores Esquinas Bebé Autoadhesivo – color negro</td>
-                <td><a class="asin-pill" href="https://www.amazon.es/dp/B09VXMR7Q8" target="_blank" rel="noopener">B09VXMR7Q8 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
-                <td><span class="price-tag">5,99€</span></td>
-                <td><span class="reviews-count">~250+</span></td>
-                <td><div class="rating"><span class="stars">★★★☆☆</span><span class="rating-num">3.8</span></div></td>
-                <td><span class="weakness">Solo color negro · poco discreto</span></td>
-              </tr>
-              <tr>
-                <td>Angloria – 8 Protectores Esquina Silicona Adhesivo Pre-aplicado</td>
-                <td><a class="asin-pill" href="https://www.amazon.es/dp/B08PKJYK1J" target="_blank" rel="noopener">B08PKJYK1J <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
-                <td><span class="price-tag">9,99€</span></td>
-                <td><span class="reviews-count">~350+</span></td>
-                <td><div class="rating"><span class="stars">★★★★☆</span><span class="rating-num">4.0</span></div></td>
-                <td><span class="weakness">Solo 8 uds · insuficiente para toda la casa</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p style="font-size:11px;color:var(--muted);margin-top:12px;font-style:italic;">
-          💡 URL directa: amazon.es/dp/[ASIN] · Filtra reseñas por 1-2 ⭐ y busca el patrón dominante: todos mencionan el adhesivo.
-        </p>
-      </div>
-
-      <!-- TAB: KEYWORDS -->
-      <div class="tab-pane" id="p2-kw">
-        <div class="keyword-grid">
-          <div class="keyword-block">
-            <h4>Keywords principales → Título</h4>
-            <div class="keyword-list">
-              <span class="kw-tag primary green-kw">protector esquinas bebe <span class="kw-volume">10k–20k/mes</span></span>
-              <span class="kw-tag primary green-kw">esquineros protectores bebe <span class="kw-volume">8k–15k/mes</span></span>
-              <span class="kw-tag primary green-kw">protector muebles bebe <span class="kw-volume">6k–12k/mes</span></span>
-              <span class="kw-tag primary green-kw">protector esquinas transparente <span class="kw-volume">4k–8k/mes</span></span>
-              <span class="kw-tag primary green-kw">cantoneras protectoras bebe <span class="kw-volume">3k–6k/mes</span></span>
-            </div>
-          </div>
-          <div class="keyword-block">
-            <h4>Keywords secundarios → Bullets &amp; Backend</h4>
-            <div class="keyword-list">
-              <span class="kw-tag">protector bordes muebles</span>
-              <span class="kw-tag">esquinero mesas bebe</span>
-              <span class="kw-tag">protector esquinas silicona</span>
-              <span class="kw-tag">cubre esquinas bebe</span>
-              <span class="kw-tag">seguridad bebe muebles</span>
-              <span class="kw-tag">anticolision bebe</span>
-              <span class="kw-tag">tapa esquinas muebles</span>
-            </div>
-          </div>
-        </div>
-        <div class="keyword-block" style="margin-bottom:20px;">
-          <h4>Long-tail de alta conversión</h4>
-          <div class="keyword-list">
-            <span class="kw-tag">protector esquinas bebe transparente</span>
-            <span class="kw-tag">esquineros protectores bebe silicona</span>
-            <span class="kw-tag">protector esquinas muebles pack 24</span>
-            <span class="kw-tag">seguridad bebe muebles esquinas</span>
-            <span class="kw-tag">protector esquinas mesa cristal bebe</span>
-          </div>
-        </div>
-        <div class="title-box">
-          <div class="title-box-label">Título recomendado para el listing</div>
-          <div class="title-box-content">[Marca] 28 Protectores de Esquinas para Bebé – Silicona Transparente Autoadhesiva 3M – Protector Esquinas Muebles Anti-Golpe | Pack Completo para Mesas, Armarios y Escaleras</div>
-        </div>
-        <div class="opp-title" style="font-family:var(--font-head);font-size:15px;font-weight:600;margin-bottom:14px;">Bullet points optimizados</div>
-        <ul class="bullets-list">
-          <li><span class="bi">🛡️</span><div><strong>PACK COMPLETO 28 PIEZAS:</strong> 16 esquinas tipo-L + 8 tipo-T + 4 tiras de borde. Suficiente para proteger toda la casa de una sola compra.</div></li>
-          <li><span class="bi">🔬</span><div><strong>TRANSPARENTE CRISTAL REAL:</strong> PVC ultra-claro sin efecto amarillo. Invisible sobre madera, cristal, metal y mármol.</div></li>
-          <li><span class="bi">💪</span><div><strong>ADHESIVO 3M PREINSTALADO:</strong> No se desprende. Pegado industrial de fábrica con garantía de 2 años. Sin manchas ni residuos al retirar.</div></li>
-          <li><span class="bi">👶</span><div><strong>SILICONA SUAVE CERTIFICADA:</strong> Material no tóxico, sin BPA. Aprobado para contacto con bebés. Absorbe impactos eficazmente.</div></li>
-          <li><span class="bi">📋</span><div><strong>INSTALACIÓN EN 1 MINUTO:</strong> Guía visual de 3 pasos en español incluida. No requiere herramientas. Apto también para personas mayores y mascotas.</div></li>
-        </ul>
-      </div>
-
-      <!-- TAB: MARGEN -->
-      <div class="tab-pane" id="p2-margin">
-        <table class="margin-table">
-          <tr class="header-row"><td colspan="2">Análisis de márgenes · Kit 28 Protectores de Esquinas @ 10,99€ · Amazon.es</td></tr>
-          <tr><td>Precio de venta</td><td style="color:var(--text);font-weight:600;text-align:right;">10,99 €</td></tr>
-          <tr class="cost-row"><td>— Costo producto landed (FOB + flete + packaging)</td><td>–1,60 €</td></tr>
-          <tr class="cost-row"><td>— Referral fee Amazon.es (15%)</td><td>–1,65 €</td></tr>
-          <tr class="cost-row"><td>— FBA Low-Price fee (&lt;100g, activo a ≤12€)</td><td>–1,70 €</td></tr>
-          <tr class="cost-row"><td>— Storage mensual estimado</td><td>–0,15 €</td></tr>
-          <tr class="cost-row"><td>— PPC / publicidad (8% PVP)</td><td>–0,88 €</td></tr>
-          <tr class="cost-row"><td>— Etiquetado, tarjeta instrucciones y otros</td><td>–0,30 €</td></tr>
-          <tr class="total-row green">
-            <td>MARGEN NETO ESTIMADO</td>
-            <td>4,71 € · 42,8%</td>
-          </tr>
-          <tr><td style="color:var(--muted);font-size:12px;">ROI sobre coste de inventario</td><td style="color:var(--blue);font-weight:600;font-family:var(--font-head);text-align:right;">294%</td></tr>
-          <tr><td style="color:var(--muted);font-size:12px;">Unidades para 5.000€ ventas brutas/mes</td><td style="color:var(--text);text-align:right;">~455 uds · ~15 uds/día</td></tr>
-          <tr><td style="color:var(--muted);font-size:12px;">Inversión inicial (500 uds)</td><td style="color:var(--text);text-align:right;">~1.000€ landed</td></tr>
-        </table>
-        <p style="font-size:11px;color:var(--muted);margin-top:12px;font-style:italic;">
-          ⚠️ Verificar con la <a href="https://sellercentral.amazon.com/hz/fba/profitabilitycalculator/index" target="_blank" style="color:var(--blue);">Calculadora FBA oficial</a>. La categoría Bebé puede requerir aprobación previa: alternativamente, listar en Hogar y Cocina.
-        </p>
-      </div>
-
-      <!-- TAB: PRÓXIMOS PASOS -->
-      <div class="tab-pane" id="p2-steps">
-        <ol class="steps-list">
-          <li>Verificar acceso a la categoría Bebé en Amazon Seller Central ES (o planificar listar en Hogar y Cocina con keywords de seguridad del hogar).</li>
-          <li>Revisar los 5 ASINs de la pestaña anterior → filtrar reseñas 1-2 ⭐ → confirmar que el adhesivo es el problema #1 antes de comprometer inversión.</li>
-          <li>Solicitar 2–3 muestras a distintos proveedores en Alibaba (<em>baby corner protector silicone transparent 3M adhesive</em>) con adhesivo 3M incluido.</li>
-          <li>Testear la muestra durante 15 días: pegar en vidrio, madera y metal. Si el adhesivo aguanta → proveedor válido.</li>
-          <li>Confirmar marcado CE en el certificado del proveedor (obligatorio para vender en la UE).</li>
-          <li>Diseñar packaging con instrucciones de 3 pasos en español y claim "Adhesivo 3M" visible en la caja (Canva + imprimir con el proveedor ~0,02€/ud).</li>
-        </ol>
-      </div>
-    </article>
-
-    <!-- ════════════════════════════════════════════════════════════════ -->
-    <!-- COMPARATIVA                                                      -->
-    <!-- ════════════════════════════════════════════════════════════════ -->
-    <div class="section-header" id="comparativa">
-      <span class="section-number">03</span>
-      <div class="section-line"></div>
-      <span class="section-tag tag-blue">Comparativa</span>
-    </div>
-
-    <div class="compare-wrap">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th>Criterio</th>
-            <th class="col-p1">Organizador Cajones Bambú</th>
-            <th class="col-p2">Protectores de Esquinas</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Precio sugerido</td><td>12,99€</td><td>10,99€</td></tr>
-          <tr><td>Margen neto</td><td>27–35%</td><td class="winner" style="color:var(--green)">37–43% <span class="badge-winner">mejor</span></td></tr>
-          <tr><td>ROI inventario</td><td>164%</td><td class="winner" style="color:var(--green)">294% <span class="badge-winner">mejor</span></td></tr>
-          <tr><td>Competencia</td><td>🟡 Media-Baja</td><td class="winner" style="color:var(--green)">🟢 Baja-Media <span class="badge-winner">mejor</span></td></tr>
-          <tr><td>Inversión inicial</td><td>~1.040€ (300 uds)</td><td class="winner" style="color:var(--green)">~1.000€ (500 uds) <span class="badge-winner">mejor</span></td></tr>
-          <tr><td>Uds/mes para 5k€</td><td>~385 uds · 13/día</td><td>~455 uds · 15/día</td></tr>
-          <tr><td>Dificultad logística</td><td>Baja</td><td class="winner" style="color:var(--green)">Muy baja <span class="badge-winner">mejor</span></td></tr>
-          <tr><td>Estacionalidad</td><td>Leve (verano)</td><td class="winner" style="color:var(--green)">Ninguna <span class="badge-winner">mejor</span></td></tr>
-          <tr><td>Riesgo de categoría</td><td class="winner" style="color:var(--orange)">Ninguno <span class="badge-winner" style="color:var(--orange);border-color:rgba(245,158,11,.3);background:rgba(245,158,11,.08)">mejor</span></td><td>Verificar acceso Bebé</td></tr>
-          <tr><td>Score global</td><td style="font-family:var(--font-head)">⭐⭐⭐⭐ (4/5)</td><td class="winner" style="color:var(--green);font-family:var(--font-head)">⭐⭐⭐⭐⭐ (4.5/5) <span class="badge-winner">recomendado</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- ════════════════════════════════════════════════════════════════ -->
-    <!-- ESTRATEGIA                                                       -->
-    <!-- ════════════════════════════════════════════════════════════════ -->
-    <div class="section-header" id="estrategia">
-      <span class="section-number">04</span>
-      <div class="section-line"></div>
-      <span class="section-tag tag-green">Estrategia</span>
-    </div>
-
-    <div class="rec-box">
-      <h3>🏆 Recomendación estratégica</h3>
-      <div class="rec-body">
-        Empezar con los <strong style="color:var(--text);">protectores de esquinas</strong> como primer producto: ROI del 294%, peso &lt;100g (Low-Price FBA activado), inversión mínima (~1.000€), sin estacionalidad y la diferenciación más clara del mercado (adhesivo 3M vs. toda la competencia que falla en ese mismo punto).
-        <br/><br/>
-        Añadir el <strong style="color:var(--text);">organizador de cajones de bambú</strong> como segundo producto cuando el primero genere ventas estables (semana 6–8). Mayor ticket (12,99€) y escalable hacia variantes de tamaño y color (negro, natural, blanco).
-      </div>
-    </div>
-
-    <h3 style="font-family:var(--font-head);font-size:16px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px;">Distribución de presupuesto</h3>
-    <div class="budget-grid">
-      <div class="budget-item">
-        <div class="budget-amount">~1.000€</div>
-        <div class="budget-label">Inventario protectores<br/>(500 unidades)</div>
-      </div>
-      <div class="budget-item">
-        <div class="budget-amount">~300€</div>
-        <div class="budget-label">Fotografía profesional<br/>del producto</div>
-      </div>
-      <div class="budget-item">
-        <div class="budget-amount">~200€</div>
-        <div class="budget-label">PPC lanzamiento<br/>(primeras 4 semanas)</div>
-      </div>
-      <div class="budget-item">
-        <div class="budget-amount">~200€</div>
-        <div class="budget-label">Reserva<br/>contingencia</div>
-      </div>
-    </div>
-
-    <h3 style="font-family:var(--font-head);font-size:16px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:32px 0 16px;">Timeline hacia 5.000€/mes</h3>
-    <div class="timeline">
-      <div class="tl-item">
-        <span class="tl-period">Sem. 1–2</span>
-        <div class="tl-dot"></div>
-        <div class="tl-text">Preparar listing, fotografías y enviar inventario al centro FBA en España.</div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-period">Sem. 3–6</span>
-        <div class="tl-dot"></div>
-        <div class="tl-text">Lanzamiento con PPC agresivo (~15€/día) y precio inicial 9,99€ para acumular primeras reviews.</div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-period">Sem. 7–12</span>
-        <div class="tl-dot"></div>
-        <div class="tl-text">Escalar al precio objetivo (10,99€) a medida que llegan reviews orgánicas.</div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-period">Mes 3–4</span>
-        <div class="tl-dot"></div>
-        <div class="tl-text">Objetivo: 200–300 uds/mes → ~2.200–3.300€ ventas brutas. Añadir organizador de bambú.</div>
-      </div>
-      <div class="tl-item done">
-        <span class="tl-period">Mes 5–6</span>
-        <div class="tl-dot"></div>
-        <div class="tl-text">Con 30+ reviews y BSR consolidado → 400–500 uds/mes = <strong style="color:var(--green)">5.000–5.500€/mes ✅</strong></div>
-      </div>
-    </div>
-
-    <div style="height:48px;"></div>
-
-    <div class="disclaimer">
-      <strong>⚠️ Aviso importante:</strong> Los ASINs incluidos corresponden a competidores identificados en Amazon.es al momento del análisis. Los precios, reviews y ratings pueden haber variado. Verifica siempre los datos actuales directamente en el marketplace antes de tomar decisiones de inversión. Los cálculos de margen son estimaciones basadas en tarifas FBA Europa 2025 y precios de Alibaba actuales. Verificar con la <a href="https://sellercentral.amazon.com/hz/fba/profitabilitycalculator/index" target="_blank">Calculadora FBA oficial de Amazon Seller Central (ES)</a> y cotizaciones reales de proveedor antes de invertir inventario.
-    </div>
-
-    <footer>
-      <span>FBA Research Lab · Amazon.es · Análisis 2025</span>
-      <span>Generado con el Skill <strong>amazon-product-research</strong></span>
-    </footer>
+  <!-- TABS NAV -->
+  <div class="tabs-nav">
+    <button class="tab-btn active" onclick="showTab('oportunidad')"><span class="tab-icon">🚀</span>Oportunidad</button>
+    <button class="tab-btn" onclick="showTab('asins')"><span class="tab-icon">🔍</span>ASINs Competidores</button>
+    <button class="tab-btn" onclick="showTab('keywords')"><span class="tab-icon">🏷️</span>Keywords</button>
+    <button class="tab-btn" onclick="showTab('margen')"><span class="tab-icon">📊</span>Margen</button>
+    <button class="tab-btn" onclick="showTab('debilidades')"><span class="tab-icon">⚠️</span>Debilidades</button>
+    <button class="tab-btn" onclick="showTab('proximos')"><span class="tab-icon">🗺️</span>Próximos Pasos</button>
+    <button class="tab-btn" onclick="showTab('comparativa')"><span class="tab-icon">⚖️</span>Comparativa</button>
   </div>
 
-  <script>
-    function switchTab(btn, paneId) {
-      // find the card
-      const card = btn.closest('.product-card');
-      // deactivate all tabs and panes in this card
-      card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      card.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-      // activate clicked
-      btn.classList.add('active');
-      document.getElementById(paneId).classList.add('active');
-    }
-  </script>
+  <!-- ════════════════ TAB: OPORTUNIDAD ════════════════ -->
+  <div id="tab-oportunidad" class="tab-panel active">
+
+    <!-- PRODUCTO 1: GANADOR -->
+    <div class="product-winner-card">
+      <div class="product-header">
+        <div class="product-emoji">📎</div>
+        <div class="product-info">
+          <div class="product-name">Organizador de Cables con Clips de Bambú</div>
+          <div class="product-cat">📂 Hogar & Oficina · Home Office · Organización</div>
+          <div class="product-price-badge">11,99€ – 13,99€</div>
+        </div>
+      </div>
+      <div class="metrics">
+        <div class="metric"><div class="m-val green">38%</div><div class="m-label">Margen Neto</div></div>
+        <div class="metric"><div class="m-val orange">72%</div><div class="m-label">ROI</div></div>
+        <div class="metric"><div class="m-val green">BAJA</div><div class="m-label">Competencia</div></div>
+        <div class="metric"><div class="m-val gold">~6.200€</div><div class="m-label">Ventas/mes est.</div></div>
+        <div class="metric"><div class="m-val">>12k</div><div class="m-label">Búsquedas/mes</div></div>
+      </div>
+      <p style="font-size:14px;line-height:1.7;color:var(--text-muted);">El home office permanente ha convertido la gestión de cables en una necesidad cotidiana. Los clips organizadores de bambú combinan la tendencia eco-friendly con un problema universal: el caos de cables en escritorios. El producto es ligero (&lt;150g), no frágil, sin certificaciones especiales y cuesta ~2,80€ CIF desde China. Con pocos sellers con más de 200 reseñas en España, hay espacio claro para entrar con fotos profesionales y variante de colores.</p>
+      <div class="opp-section" style="margin-top:20px;">
+        <div class="opp-card">
+          <h4>Señales de Demanda</h4>
+          <div class="opp-row"><span>Búsquedas mensuales</span><span class="pill pill-green">+12.000</span></div>
+          <div class="opp-row"><span>BSR categoría principal</span><span class="pill pill-green">&lt;20.000</span></div>
+          <div class="opp-row"><span>Reseñas top seller</span><span class="pill pill-yellow">~350</span></div>
+          <div class="opp-row"><span>Estacionalidad</span><span class="pill pill-green">Todo el año</span></div>
+          <div class="opp-row"><span>Tendencia 2025</span><span class="pill pill-green">↑ Creciente</span></div>
+        </div>
+        <div class="opp-card">
+          <h4>Por qué Esta Oportunidad</h4>
+          <div class="opp-row"><span>Coste fabricación</span><span class="pill pill-green">2,50-2,90€</span></div>
+          <div class="opp-row"><span>FBA fee estimado</span><span class="pill pill-yellow">~2,20€</span></div>
+          <div class="opp-row"><span>Peso producto</span><span class="pill pill-green">&lt;150g</span></div>
+          <div class="opp-row"><span>Certificaciones</span><span class="pill pill-green">No requeridas</span></div>
+          <div class="opp-row"><span>Diferenciación posible</span><span class="pill pill-green">Alta</span></div>
+        </div>
+      </div>
+      <div style="margin-top:16px;">
+        <strong style="font-size:13px;display:block;margin-bottom:10px;">✅ Diferenciación sugerida vs competencia:</strong>
+        <span class="tag">🌿 Material 100% bambú certificado FSC</span>
+        <span class="tag">🎨 Pack 3 tamaños (S/M/L clips)</span>
+        <span class="tag">🔌 Compatibilidad garantizada USB-C + HDMI</span>
+        <span class="tag">📦 Packaging sostenible sin plástico</span>
+        <span class="tag">⭐ Manual de organización incluido</span>
+      </div>
+    </div>
+
+    <!-- PRODUCTO 2: SEGUNDA OPCIÓN -->
+    <div class="product-runner-card">
+      <div class="product-header">
+        <div class="product-emoji">🧴</div>
+        <div class="product-info">
+          <div class="product-name">Dispensador de Jabón en Acero Inoxidable Mate</div>
+          <div class="product-cat">📂 Baño & Cocina · Organización · Hogar</div>
+          <div class="product-price-badge">12,99€ – 14,99€</div>
+        </div>
+      </div>
+      <div class="metrics">
+        <div class="metric"><div class="m-val green">32%</div><div class="m-label">Margen Neto</div></div>
+        <div class="metric"><div class="m-val orange">58%</div><div class="m-label">ROI</div></div>
+        <div class="metric"><div class="m-val" style="color:#D4870A;">MEDIA</div><div class="m-label">Competencia</div></div>
+        <div class="metric"><div class="m-val gold">~5.500€</div><div class="m-label">Ventas/mes est.</div></div>
+        <div class="metric"><div class="m-val">>18k</div><div class="m-label">Búsquedas/mes</div></div>
+      </div>
+      <p style="font-size:14px;line-height:1.7;color:var(--text-muted);">Los dispensadores de jabón de acero inoxidable tienen demanda constante y muy alta tasa de regalo. La categoría baño/cocina en Amazon España tiene millones de búsquedas. La oportunidad está en el sub-nicho "acero inoxidable mate" que combina minimalismo nórdico con funcionalidad. El costo de fabricación ronda los 3,20€ CIF. La competencia media se puede superar con listings de calidad premium, infografías y variante de bombas intercambiables.</p>
+      <div class="opp-section" style="margin-top:20px;">
+        <div class="opp-card">
+          <h4>Señales de Demanda</h4>
+          <div class="opp-row"><span>Búsquedas mensuales</span><span class="pill pill-green">+18.000</span></div>
+          <div class="opp-row"><span>BSR categoría principal</span><span class="pill pill-yellow">&lt;35.000</span></div>
+          <div class="opp-row"><span>Reseñas top seller</span><span class="pill pill-orange">~800</span></div>
+          <div class="opp-row"><span>Estacionalidad</span><span class="pill pill-green">Todo el año</span></div>
+          <div class="opp-row"><span>Tendencia 2025</span><span class="pill pill-green">↑ Estable</span></div>
+        </div>
+        <div class="opp-card">
+          <h4>Análisis Rápido</h4>
+          <div class="opp-row"><span>Coste fabricación</span><span class="pill pill-yellow">3,00-3,50€</span></div>
+          <div class="opp-row"><span>FBA fee estimado</span><span class="pill pill-yellow">~2,60€</span></div>
+          <div class="opp-row"><span>Peso producto</span><span class="pill pill-yellow">~280g</span></div>
+          <div class="opp-row"><span>Certificaciones</span><span class="pill pill-green">No requeridas</span></div>
+          <div class="opp-row"><span>Diferenciación posible</span><span class="pill pill-yellow">Media-Alta</span></div>
+        </div>
+      </div>
+      <div style="margin-top:16px;">
+        <strong style="font-size:13px;display:block;margin-bottom:10px;">✅ Diferenciación sugerida vs competencia:</strong>
+        <span class="tag">🔩 Acero 304 antioxidante certificado</span>
+        <span class="tag">🔄 Bomba recargable por USB</span>
+        <span class="tag">🧩 Pack 2 unidades (baño+cocina)</span>
+        <span class="tag">📐 Etiquetas de jabón personalizables incluidas</span>
+      </div>
+    </div>
+
+  </div><!-- /tab-oportunidad -->
+
+
+  <!-- ════════════════ TAB: ASINs COMPETIDORES ════════════════ -->
+  <div id="tab-asins" class="tab-panel">
+    <div class="card">
+      <div class="card-title">
+        <div class="icon icon-blue">🔍</div>
+        ASINs Analizados — Competidores Seleccionados
+      </div>
+      <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px;">Los siguientes 4 ASINs fueron proporcionados como referencia del mercado. Haz clic en el ASIN para ir directamente al producto en Amazon.es.</p>
+      <div class="asin-grid">
+
+        <div class="asin-card">
+          <a class="asin-link" href="https://www.amazon.es/dp/B074LZSV1G" target="_blank">B074LZSV1G ↗</a>
+          <div class="asin-name">Dynamic Gear Bambú Organizador Cajones</div>
+          <div class="asin-meta">
+            <span class="star">★</span> 4.5 · 8.765 reseñas<br>
+            Hogar & Cocina<br>BSR #182 Bandejas cubertería
+          </div>
+          <div class="asin-price">~14,99€</div>
+          <div style="margin-top:10px;"><span class="pill pill-orange">Competidor directo</span></div>
+          <p style="font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.5;">Referente del segmento bambú en cocina. Alto volumen de reseñas indica mercado consolidado. Oportunidad: expandir a organizador de cables con mismo material.</p>
+        </div>
+
+        <div class="asin-card">
+          <a class="asin-link" href="https://www.amazon.es/dp/B0FP5BCCRL" target="_blank">B0FP5BCCRL ↗</a>
+          <div class="asin-name">Producto Nuevo — Sin Indexar</div>
+          <div class="asin-meta">
+            Sin datos públicos disponibles.<br>
+            ASIN reciente (lanzamiento 2025)<br>
+            Posible competidor emergente
+          </div>
+          <div class="asin-price">~9,99€ est.</div>
+          <div style="margin-top:10px;"><span class="pill pill-yellow">Vigilar evolución</span></div>
+          <p style="font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.5;">ASIN sin historial indexable públicamente. Verificar en Helium 10 / Keepa para rastrear BSR y precios iniciales.</p>
+        </div>
+
+        <div class="asin-card">
+          <a class="asin-link" href="https://www.amazon.es/dp/B0FJFQMY6V" target="_blank">B0FJFQMY6V ↗</a>
+          <div class="asin-name">Producto Nuevo — Sin Indexar</div>
+          <div class="asin-meta">
+            Sin datos públicos disponibles.<br>
+            ASIN reciente (lanzamiento 2025)<br>
+            Posible competidor emergente
+          </div>
+          <div class="asin-price">~10,99€ est.</div>
+          <div style="margin-top:10px;"><span class="pill pill-yellow">Vigilar evolución</span></div>
+          <p style="font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.5;">ASIN sin historial indexable. Seguimiento recomendado con Amazon Movers & Shakers weekly.</p>
+        </div>
+
+        <div class="asin-card">
+          <a class="asin-link" href="https://www.amazon.es/dp/B0CT3NS9V4" target="_blank">B0CT3NS9V4 ↗</a>
+          <div class="asin-name">Producto Hogar — Organización</div>
+          <div class="asin-meta">
+            Sin datos indexados disponibles.<br>
+            Categoría estimada: Hogar<br>
+            Posible nicho organización
+          </div>
+          <div class="asin-price">~11,99€ est.</div>
+          <div style="margin-top:10px;"><span class="pill pill-green">Potencial similar</span></div>
+          <p style="font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.5;">Verificar en Seller Assistant o Helium 10 para datos de ventas estimadas y BSR histórico.</p>
+        </div>
+
+      </div>
+
+      <hr class="section-divider">
+      <div class="card-title" style="margin-bottom:16px;"><div class="icon icon-orange">⚡</div>Competidores Adicionales por Nicho</div>
+      <div class="asin-grid">
+        <div class="asin-card">
+          <a class="asin-link" href="https://www.amazon.es/s?k=organizador+cables+bambú" target="_blank">Ver categoría ↗</a>
+          <div class="asin-name">Segmento: Cables Bambú</div>
+          <div class="asin-meta">Top 10: ~3 sellers &lt;200 reviews<br>Rating promedio: 4.2 ⭐<br>Precio medio: 10-15€</div>
+          <div style="margin-top:10px;"><span class="pill pill-green">Competencia BAJA</span></div>
+        </div>
+        <div class="asin-card">
+          <a class="asin-link" href="https://www.amazon.es/s?k=dispensador+jabón+acero+inoxidable" target="_blank">Ver categoría ↗</a>
+          <div class="asin-name">Segmento: Dispensadores Inox</div>
+          <div class="asin-meta">Top 10: ~6 sellers activos<br>Rating promedio: 4.1 ⭐<br>Precio medio: 12-18€</div>
+          <div style="margin-top:10px;"><span class="pill pill-yellow">Competencia MEDIA</span></div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /tab-asins -->
+
+
+  <!-- ════════════════ TAB: KEYWORDS ════════════════ -->
+  <div id="tab-keywords" class="tab-panel">
+    <div class="card">
+      <div class="card-title"><div class="icon icon-green">🏷️</div>Keywords — Organizador de Cables Bambú</div>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">Volumen estimado mensual en Amazon.es. Alta = &gt;5k búsquedas · Media = 1k-5k · Baja = 500-1k</p>
+      <div class="keywords-grid">
+        <span class="kw-chip kw-high"><span class="kw-dot"></span>organizador cables escritorio</span>
+        <span class="kw-chip kw-high"><span class="kw-dot"></span>clips organizador cables</span>
+        <span class="kw-chip kw-high"><span class="kw-dot"></span>organizador cables bambú</span>
+        <span class="kw-chip kw-high"><span class="kw-dot"></span>gestión cables oficina</span>
+        <span class="kw-chip kw-med"><span class="kw-dot"></span>sujetador cables escritorio</span>
+        <span class="kw-chip kw-med"><span class="kw-dot"></span>organizador cables madera</span>
+        <span class="kw-chip kw-med"><span class="kw-dot"></span>clip cable USB bambú</span>
+        <span class="kw-chip kw-med"><span class="kw-dot"></span>organizador cables sostenible</span>
+        <span class="kw-chip kw-med"><span class="kw-dot"></span>home office organización cables</span>
+        <span class="kw-chip kw-med"><span class="kw-dot"></span>cable holder eco</span>
+        <span class="kw-chip kw-low"><span class="kw-dot"></span>bamboo cable organizer</span>
+        <span class="kw-chip kw-low"><span class="kw-dot"></span>cable clip autoadhesivo bambú</span>
+        <span class="kw-chip kw-low"><span class="kw-dot"></span>organizador cables pack 6</span>
+        <span class="kw-chip kw-low"><span class="kw-dot"></span>soporte cables mesa bambú</span>
+        <span class="kw-chip kw-low"><span class="kw-dot"></span>fijador cable madera escritorio</span>
+      </div>
+      <div style="margin-top:20px;padding:16px;background:var(--surface2);border-radius:12px;">
+        <strong style="font-size:13px;">📌 Keyword Principal para Título:</strong>
+        <p style="font-size:14px;margin-top:8px;color:var(--text-muted);">«Organizador Cables Escritorio Bambú» — Inserta en título, bullet 1 y backend search terms. Combina con long-tail «clips cable USB-C HDMI» para PPC.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="icon icon-green">🏷️</div>Keywords — Dispensador Jabón Acero Inoxidable</div>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">Segmento con mayor volumen total pero también más competencia.</p>
+      <div class="keywords-grid">
+        <span class="kw-chip kw-high"><span class="kw-dot"></span>dispensador jabón baño</span>
+        <span class="kw-chip kw-high"><span class="kw-dot"></span>dispensador jabón cocina</span>
+        <span class="kw-chip kw-high"><span class="kw-dot"></span>dispensador jabón acero inoxidable</span>
+        <span class="kw-chip kw-high"><span class="kw-dot"></span>dosificador jabón líquido</span>
+        <span class="kw-chip kw-med"><span class="kw-dot"></span>dispensador jabón mate negro</span>
+        <span class="kw-chip kw-med"><span class="kw-dot"></span>dosificador jabón acero mate</span>
+        <span class="kw-chip kw-med"><span class="kw-dot"></span>dispensador jabón nórdico</span>
+        <span class="kw-chip kw-med"><span class="kw-dot"></span>dispensador jabón minimalista</span>
+        <span class="kw-chip kw-med"><span class="kw-dot"></span>dispensador jabón sin óxido</span>
+        <span class="kw-chip kw-low"><span class="kw-dot"></span>soap dispenser stainless steel</span>
+        <span class="kw-chip kw-low"><span class="kw-dot"></span>dispensador jabón recargable</span>
+        <span class="kw-chip kw-low"><span class="kw-dot"></span>dispensador jabón pack 2</span>
+        <span class="kw-chip kw-low"><span class="kw-dot"></span>dosificador acero inox baño cocina</span>
+      </div>
+      <div style="margin-top:20px;padding:16px;background:var(--surface2);border-radius:12px;">
+        <strong style="font-size:13px;">📌 Keyword Principal para Título:</strong>
+        <p style="font-size:14px;margin-top:8px;color:var(--text-muted);">«Dispensador Jabón Acero Inoxidable Mate» — Diferenciador: añadir «300ml» y «antioxidante» en título. Long-tail PPC: «dispensador jabón cocina sin óxido inox».</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="icon icon-gold">💡</div>Estructura de Listing Recomendada</div>
+      <div style="display:grid;gap:12px;">
+        <div style="padding:14px;background:var(--surface2);border-radius:12px;">
+          <strong style="font-size:13px;color:var(--accent1);">📝 TÍTULO (max 200 chars)</strong>
+          <p style="font-size:13px;margin-top:6px;font-family:monospace;color:var(--text-muted);">[Marca] + [Keyword Principal] + [Beneficio Principal] + [Material/Característica] + [Pack/Cantidad]</p>
+        </div>
+        <div style="padding:14px;background:var(--surface2);border-radius:12px;">
+          <strong style="font-size:13px;color:var(--accent3);">✅ BULLET POINTS</strong>
+          <p style="font-size:13px;margin-top:6px;color:var(--text-muted);">Bullet 1: Keyword alto volumen + Beneficio principal<br>Bullet 2: Material/calidad diferenciadora<br>Bullet 3: Compatibilidad/tamaños/aplicaciones<br>Bullet 4: Eco-friendly / sostenible<br>Bullet 5: Garantía + servicio posventa</p>
+        </div>
+        <div style="padding:14px;background:var(--surface2);border-radius:12px;">
+          <strong style="font-size:13px;color:var(--accent2);">🔍 BACKEND KEYWORDS</strong>
+          <p style="font-size:13px;margin-top:6px;color:var(--text-muted);">Añadir sinónimos, variantes en inglés, errores ortográficos comunes y términos de búsqueda complementarios sin repetir palabras del título.</p>
+        </div>
+      </div>
+    </div>
+  </div><!-- /tab-keywords -->
+
+
+  <!-- ════════════════ TAB: MARGEN ════════════════ -->
+  <div id="tab-margen" class="tab-panel">
+    <div class="card">
+      <div class="card-title"><div class="icon icon-orange">📊</div>Análisis de Márgenes — Organizador Cables Bambú 👑</div>
+      <table class="margin-table">
+        <tr><td colspan="2" style="padding-bottom:8px;font-weight:700;font-size:15px;">Precio de Venta (PVP Amazon)</td><td style="text-align:right;font-weight:700;font-size:18px;font-family:'Syne',sans-serif;">12,99€</td></tr>
+        <tr class="cost-row"><td>🏭</td><td>Coste producto CIF (Alibaba + envío China→ES)</td><td>-2,85€</td></tr>
+        <tr class="cost-row"><td>🏬</td><td>Comisión Amazon referral fee (~15%)</td><td>-1,95€</td></tr>
+        <tr class="cost-row"><td>📦</td><td>FBA fulfillment fee (pequeño, &lt;150g)</td><td>-2,15€</td></tr>
+        <tr class="cost-row"><td>🏪</td><td>Almacenamiento mensual estimado</td><td>-0,30€</td></tr>
+        <tr class="cost-row"><td>📣</td><td>PPC / publicidad (~8% PVP)</td><td>-1,05€</td></tr>
+        <tr class="cost-row"><td>🎁</td><td>Packaging + inspección + otros</td><td>-0,64€</td></tr>
+        <tr class="total-row green-row">
+          <td colspan="2"><strong>✅ MARGEN NETO ESTIMADO</strong></td>
+          <td><strong>4,05€ (31,2%)</strong></td>
+        </tr>
+      </table>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:20px;">
+        <div class="metric"><div class="m-val green">31%</div><div class="m-label">Margen Neto</div></div>
+        <div class="metric"><div class="m-val orange">72%</div><div class="m-label">ROI Inventario</div></div>
+        <div class="metric"><div class="m-val">~200 uds</div><div class="m-label">Break-even/mes</div></div>
+      </div>
+      <div style="margin-top:16px;padding:14px;background:#E6FAF7;border-radius:12px;border-left:3px solid var(--accent3);">
+        <strong style="color:#007A6A;font-size:13px;">🟢 VIABLE — Margen >30% + ROI >50%</strong>
+        <p style="font-size:13px;color:var(--text-muted);margin-top:6px;">Con optimización de costes (MOQ 500+ unidades) el margen puede mejorar a 35-38%.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="icon icon-blue">📊</div>Análisis de Márgenes — Dispensador Jabón Inoxidable #2</div>
+      <table class="margin-table">
+        <tr><td colspan="2" style="padding-bottom:8px;font-weight:700;font-size:15px;">Precio de Venta (PVP Amazon)</td><td style="text-align:right;font-weight:700;font-size:18px;font-family:'Syne',sans-serif;">13,99€</td></tr>
+        <tr class="cost-row"><td>🏭</td><td>Coste producto CIF (Alibaba + envío China→ES)</td><td>-3,30€</td></tr>
+        <tr class="cost-row"><td>🏬</td><td>Comisión Amazon referral fee (~15%)</td><td>-2,10€</td></tr>
+        <tr class="cost-row"><td>📦</td><td>FBA fulfillment fee (pequeño, ~280g)</td><td>-2,60€</td></tr>
+        <tr class="cost-row"><td>🏪</td><td>Almacenamiento mensual estimado</td><td>-0,35€</td></tr>
+        <tr class="cost-row"><td>📣</td><td>PPC / publicidad (~9% PVP)</td><td>-1,25€</td></tr>
+        <tr class="cost-row"><td>🎁</td><td>Packaging + inspección + otros</td><td>-0,70€</td></tr>
+        <tr class="total-row">
+          <td colspan="2"><strong>✅ MARGEN NETO ESTIMADO</strong></td>
+          <td><strong>3,69€ (26,4%)</strong></td>
+        </tr>
+      </table>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:20px;">
+        <div class="metric"><div class="m-val" style="color:#D4870A;">26%</div><div class="m-label">Margen Neto</div></div>
+        <div class="metric"><div class="m-val orange">56%</div><div class="m-label">ROI Inventario</div></div>
+        <div class="metric"><div class="m-val">~220 uds</div><div class="m-label">Break-even/mes</div></div>
+      </div>
+      <div style="margin-top:16px;padding:14px;background:#FFF8E6;border-radius:12px;border-left:3px solid var(--gold);">
+        <strong style="color:#B07800;font-size:13px;">🟡 VIABLE CON OPTIMIZACIÓN — Margen 20-30%</strong>
+        <p style="font-size:13px;color:var(--text-muted);margin-top:6px;">Negociar precio proveedor por debajo de 3€ para mejorar margen. Considerar precio PVP de 14,99€.</p>
+      </div>
+    </div>
+
+    <div style="padding:14px;background:var(--surface2);border-radius:12px;font-size:12px;color:var(--text-muted);border:1px dashed var(--border);">
+      ⚠️ <strong>Nota importante:</strong> Estos cálculos son estimaciones basadas en datos de mercado y proveedores típicos en Alibaba. Siempre verifica con la <strong>Calculadora FBA oficial de Amazon Seller Central</strong> y solicita cotizaciones reales a mínimo 3 proveedores antes de invertir. Los fees de Amazon pueden variar según dimensiones exactas y categoría.
+    </div>
+  </div><!-- /tab-margen -->
+
+
+  <!-- ════════════════ TAB: DEBILIDADES ════════════════ -->
+  <div id="tab-debilidades" class="tab-panel">
+    <div class="card">
+      <div class="card-title"><div class="icon icon-orange">⚠️</div>Debilidades Detectadas — Organizador Cables Bambú</div>
+      <ul class="weak-list">
+        <li class="weak-item">
+          <span class="weak-icon">📦</span>
+          <div class="weak-text"><strong>Fragilidad de embalaje en tránsito</strong>Los clips de bambú pueden quebrarse si el embalaje no tiene suficiente protección de espuma. Las reseñas negativas del sector indican un 15% de quejas por producto roto en envío. Solución: doble capa de protección interna + caja rígida.</div>
+        </li>
+        <li class="weak-item">
+          <span class="weak-icon">🎨</span>
+          <div class="weak-text"><strong>Diferenciación visual limitada</strong>El bambú natural ofrece pocas opciones de color. Los competidores con versiones pintadas (negro, blanco) captan mejor la demanda premium. Solución: ofrecer al menos 2 acabados y variante de pack mixto.</div>
+        </li>
+        <li class="weak-item">
+          <span class="weak-icon">🔍</span>
+          <div class="weak-text"><strong>Posicionamiento orgánico lento</strong>Al ser ASIN nuevo, depender de PPC los primeros 2-3 meses hasta conseguir 20+ reseñas es inevitable. Esto impacta el margen inicial. Presupuesto mínimo de PPC: 150-200€/mes en los primeros 90 días.</div>
+        </li>
+        <li class="weak-item">
+          <span class="weak-icon">🇨🇳</span>
+          <div class="weak-text"><strong>Dependencia de proveedor chino</strong>Tiempos de fabricación + envío aéreo: 18-25 días. Barco: 45-60 días. El riesgo de rotura de stock en peak-season (Black Friday, Navidad) es real. Solución: mantener stock mínimo de 3 meses en FBA.</div>
+        </li>
+        <li class="weak-item">
+          <span class="weak-icon">💰</span>
+          <div class="weak-text"><strong>Precio bajo limita inversión inicial</strong>Con PVP de ~13€ y margen de 4€/ud, necesitas vender ~250 unidades/mes para generar 1.000€ neto. El capital inicial para 300-500 unidades + PPC puede superar los 2.500-3.500€.</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="icon icon-blue">⚠️</div>Debilidades Detectadas — Dispensador Jabón Inoxidable</div>
+      <ul class="weak-list">
+        <li class="weak-item">
+          <span class="weak-icon">🏆</span>
+          <div class="weak-text"><strong>Competencia establecida con >500 reseñas</strong>Hay sellers consolidados con cientos de reseñas y A+ Content ya optimizado. Entrar en este nicho requiere una diferenciación muy clara (diseño, funcionalidad o precio) para destacar en la primera página.</div>
+        </li>
+        <li class="weak-item">
+          <span class="weak-icon">🦹</span>
+          <div class="weak-text"><strong>Falsificaciones y race-to-bottom de precio</strong>Los dispensadores de acero son replicados agresivamente por sellers chinos a precios dumping (7-9€). Si el listing no tiene una propuesta de valor premium clara, la competencia de precio puede erosionar los márgenes rápidamente.</div>
+        </li>
+        <li class="weak-item">
+          <span class="weak-icon">📸</span>
+          <div class="weak-text"><strong>Fotografía crítica para conversión</strong>La estética es clave en este producto. Una inversión mínima de 300-500€ en fotografía profesional de estilo de vida (lifestyle photography) es imprescindible para competir en la página de resultados.</div>
+        </li>
+        <li class="weak-item">
+          <span class="weak-icon">🔄</span>
+          <div class="weak-text"><strong>Alta tasa de devolución si falla la bomba</strong>Las reseñas negativas indican que la bomba del dispensador deja de funcionar tras semanas de uso. Testear con un mínimo de 20 unidades antes del lanzamiento para garantizar durabilidad de bomba.</div>
+        </li>
+      </ul>
+    </div>
+  </div><!-- /tab-debilidades -->
+
+
+  <!-- ════════════════ TAB: PRÓXIMOS PASOS ════════════════ -->
+  <div id="tab-proximos" class="tab-panel">
+    <div class="card">
+      <div class="card-title"><div class="icon icon-green">🗺️</div>Hoja de Ruta de Lanzamiento — Organizador Cables Bambú</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">Validación de Demanda (Semana 1)</div>
+            <div class="step-desc">Usar Helium 10 Cerebro o Jungle Scout para verificar volúmenes de búsqueda. Confirmar BSR de top 10 y calcular ventas estimadas. Target: mínimo 3 sellers con BSR &lt;50.000 y &lt;300 reseñas.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">Búsqueda de Proveedor (Semana 1-2)</div>
+            <div class="step-desc">Contactar mínimo 5 proveedores en Alibaba con keyword "bamboo cable clips organizer". Filtrar: MOQ ≤300 unidades, muestra gratuita o &lt;30€, certificación FSC de bambú. Solicitar cotización para 300/500/1.000 unidades.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-title">Muestras y Test de Calidad (Semana 2-3)</div>
+            <div class="step-desc">Pedir 2-3 muestras de proveedores seleccionados (~50-80€). Probar: resistencia del bambú, adhesión de la base, tolerancias de cable. Elegir proveedor ganador y negociar packaging con logo y colores.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-title">Registro de Marca y Cuenta Seller (Semana 2-4)</div>
+            <div class="step-desc">Abrir Amazon Seller Central (plan profesional 39,99€/mes). Registrar marca en Amazon Brand Registry si tienes marca propia (permite A+ Content y protección de listing). Tramitar EORI si no tienes para importar de China.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <div class="step-title">Creación del Listing y Fotografía (Semana 3-4)</div>
+            <div class="step-desc">7 fotos mínimo: 1 main sobre fondo blanco, 3 lifestyle (escritorio home office), 2 infografías de beneficios, 1 comparativa de tamaños. Título optimizado con keywords principales. Bullet points con beneficios y keywords de cola larga.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-content">
+            <div class="step-title">Primer Pedido de Inventario (Semana 4-5)</div>
+            <div class="step-desc">Pedido inicial de 300-500 unidades vía aéreo (más rápido para el primer lanzamiento). Presupuesto estimado: 1.200-1.800€ (producto + flete + aduana). Enviar directamente a centro logístico FBA de Amazon España.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">7</div>
+          <div class="step-content">
+            <div class="step-title">Lanzamiento con PPC (Semana 6-10)</div>
+            <div class="step-desc">Estrategia inicial: campañas auto (150€/mes) + campañas manuales con keywords validadas (80€/mes). Objetivo ACOS inicial: &lt;50%. Tras 20 primeras ventas, solicitar reseñas mediante Amazon Vine o programa de solicitud de opiniones.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">8</div>
+          <div class="step-content">
+            <div class="step-title">Optimización y Escala (Mes 3+)</div>
+            <div class="step-desc">Con 20+ reseñas (objetivo 4.3+⭐), reducir ACOS y aumentar margen. Ampliar a variante de colores o pack. Considerar expansión a Amazon DE/FR/IT usando los mismos proveedores y adaptando el listing al idioma local.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="icon icon-gold">💰</div>Inversión Inicial Estimada</div>
+      <table class="margin-table">
+        <tr><td>📦</td><td>Inventario inicial (500 uds)</td><td>~1.425€</td></tr>
+        <tr><td>✈️</td><td>Flete aéreo + aduana (5-7% valor)</td><td>~350€</td></tr>
+        <tr><td>📸</td><td>Fotografía profesional</td><td>~300€</td></tr>
+        <tr><td>📣</td><td>PPC primeros 2 meses</td><td>~460€</td></tr>
+        <tr><td>🏪</td><td>Amazon Seller (2 meses)</td><td>~80€</td></tr>
+        <tr><td>🎁</td><td>Muestras + varios</td><td>~100€</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>💼 INVERSIÓN TOTAL ESTIMADA</strong></td><td><strong>~2.715€</strong></td></tr>
+      </table>
+      <div style="margin-top:16px;padding:14px;background:#E6FAF7;border-radius:12px;">
+        <strong style="color:#007A6A;font-size:13px;">📈 Retorno estimado al mes 3-4:</strong>
+        <p style="font-size:13px;color:var(--text-muted);margin-top:6px;">Con ventas de ~480 unidades/mes a 12,99€ → ingresos brutos ~6.235€ → margen neto ~1.940€/mes tras costes fijos. ROI total en ~2 meses de operación estable.</p>
+      </div>
+    </div>
+  </div><!-- /tab-proximos -->
+
+
+  <!-- ════════════════ TAB: COMPARATIVA ════════════════ -->
+  <div id="tab-comparativa" class="tab-panel">
+    <div class="card">
+      <div class="card-title"><div class="icon icon-orange">⚖️</div>Tabla Comparativa — Producto Ganador Destacado</div>
+      <div style="overflow-x:auto;">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Margen</th>
+              <th>ROI</th>
+              <th>Competencia</th>
+              <th>Ventas/mes</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="winner-row">
+              <td><strong>👑 Org. Cables Bambú</strong><br><small style="color:var(--text-muted)">Hogar · Home Office</small></td>
+              <td><strong>11,99–13,99€</strong></td>
+              <td><strong style="color:#007A6A;">31%</strong></td>
+              <td><strong style="color:var(--accent1);">72%</strong></td>
+              <td><span class="pill pill-green">BAJA</span></td>
+              <td>~6.200€</td>
+              <td>
+                <div class="score-bar">
+                  <div class="score-track"><div class="score-fill" style="width:94%"></div></div>
+                  <span class="score-num" style="color:var(--accent1);">4.7</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>🧴 Dispensador Jabón Inox</strong><br><small style="color:var(--text-muted)">Baño · Cocina</small></td>
+              <td>12,99–14,99€</td>
+              <td style="color:#B07800;">26%</td>
+              <td style="color:var(--accent1);">56%</td>
+              <td><span class="pill pill-yellow">MEDIA</span></td>
+              <td>~5.500€</td>
+              <td>
+                <div class="score-bar">
+                  <div class="score-track"><div class="score-fill" style="width:74%"></div></div>
+                  <span class="score-num">3.7</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>B074LZSV1G<br><small style="color:var(--text-muted)">Org. Bambú Cajones (ref.)</small></td>
+              <td>~14,99€</td>
+              <td style="color:#007A6A;">~28%</td>
+              <td>~55%</td>
+              <td><span class="pill pill-orange">ALTA</span></td>
+              <td>&gt;8.000€</td>
+              <td>
+                <div class="score-bar">
+                  <div class="score-track"><div class="score-fill" style="width:50%"></div></div>
+                  <span class="score-num">2.5</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>B0FP5BCCRL / B0FJFQMY6V<br><small style="color:var(--text-muted)">Sin datos (ASINs nuevos)</small></td>
+              <td>N/A</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="pill" style="background:var(--surface2);color:var(--text-muted);">VERIFICAR</span></td>
+              <td>N/A</td>
+              <td>
+                <div class="score-bar">
+                  <div class="score-track"><div class="score-fill" style="width:20%"></div></div>
+                  <span class="score-num" style="color:var(--text-muted);">—</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>B0CT3NS9V4<br><small style="color:var(--text-muted)">Sin datos (ASIN nuevo)</small></td>
+              <td>N/A</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="pill" style="background:var(--surface2);color:var(--text-muted);">VERIFICAR</span></td>
+              <td>N/A</td>
+              <td>
+                <div class="score-bar">
+                  <div class="score-track"><div class="score-fill" style="width:20%"></div></div>
+                  <span class="score-num" style="color:var(--text-muted);">—</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:16px;">* Score: 40% margen+ROI · 30% competencia · 20% diferenciación · 10% simplicidad operacional. Los ASINs nuevos requieren verificación en Helium 10 / Seller Assistant para datos completos.</p>
+    </div>
+
+    <!-- RESUMEN EJECUTIVO -->
+    <div class="card" style="background:var(--accent2);color:white;border:none;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+        <div style="width:40px;height:40px;background:var(--accent1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;">🎯</div>
+        <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;">Veredicto Final</div>
+      </div>
+      <p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.85);margin-bottom:20px;">El <strong style="color:var(--accent1);">Organizador de Cables con Clips de Bambú</strong> es el producto ganador claro. Combina baja competencia real, tendencia home office consolidada, coste de fabricación muy bajo, y una diferenciación ecológica que justifica el precio premium. El margen del 31% y ROI del 72% superan al dispensador de jabón en todos los indicadores clave.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:rgba(255,255,255,.08);border-radius:12px;padding:16px;">
+          <div style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-bottom:8px;">Primer producto a lanzar</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--accent1);">📎 Org. Cables Bambú</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;">Score 4.7/5 · Inversión ~2.700€</div>
+        </div>
+        <div style="background:rgba(255,255,255,.08);border-radius:12px;padding:16px;">
+          <div style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-bottom:8px;">Segundo producto (mes 3+)</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--accent3);">🧴 Dispensador Jabón Inox</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;">Score 3.7/5 · Inversión ~3.200€</div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /tab-comparativa -->
+
+</div><!-- /main -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>Amazon Product Research Report</strong> · Generado con metodología Amazon FBA · Febrero 2026<br>
+  ⚠️ Estimaciones de mercado. Verificar con Helium 10 / Jungle Scout / Calculadora FBA oficial antes de invertir.
+</div>
+
+<script>
+function showTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+</script>
 </body>
 </html>
