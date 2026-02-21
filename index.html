@@ -3,1184 +3,1230 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amazon Product Research Report 2025</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<title>Amazon FBA Research · Oportunidades 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #F7F4EF;
-    --surface: #FFFFFF;
-    --surface2: #F0EDE8;
-    --accent1: #FF5C35;
-    --accent2: #1A1A2E;
-    --accent3: #00C2A8;
-    --gold: #F5A623;
-    --text: #1A1A2E;
-    --text-muted: #6B6B80;
-    --border: #E2DDD5;
-    --winner: #FF5C35;
-    --shadow: 0 4px 24px rgba(26,26,46,0.10);
+    --bg: #f4f1eb;
+    --surface: #ffffff;
+    --surface2: #f9f7f3;
+    --border: #e8e2d9;
+    --text: #1a1612;
+    --text2: #6b6460;
+    --accent1: #e84d2a;   /* Naranja-rojo tomate */
+    --accent2: #2a7ae8;   /* Azul */
+    --accent3: #f5a623;   /* Ámbar */
+    --green: #18a059;
+    --red: #e84d2a;
+    --yellow: #f5a623;
+    --gold: #d4a017;
+    --prod1: #e84d2a;
+    --prod2: #2a7ae8;
     --radius: 16px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.07);
+    --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
   }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
-  /* ── HERO ── */
-  .hero {
-    background: var(--accent2);
-    color: white;
-    padding: 56px 40px 48px;
-    position: relative;
-    overflow: hidden;
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
   }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 80% 20%, rgba(0,194,168,.18) 0%, transparent 60%),
-                radial-gradient(ellipse at 10% 80%, rgba(255,92,53,.15) 0%, transparent 50%);
+
+  /* HEADER */
+  header {
+    background: var(--text);
+    color: #fff;
+    padding: 28px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
   }
-  .hero-inner { position: relative; max-width: 900px; margin: 0 auto; }
+  .header-title { display: flex; align-items: center; gap: 16px; }
+  .logo-badge {
+    width: 52px; height: 52px;
+    background: var(--accent1);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 22px; color: #fff;
+    flex-shrink: 0;
+  }
+  header h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: clamp(18px, 3vw, 26px);
+    letter-spacing: -0.5px;
+  }
+  header p { font-size: 14px; color: #a09a95; margin-top: 2px; }
+  .header-meta {
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  }
   .badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
-    border-radius: 100px; padding: 6px 16px; font-size: 12px; font-weight: 500;
-    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 20px;
-    animation: fadeDown .6s ease both;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 13px; font-weight: 500;
   }
-  .badge span { width:8px; height:8px; border-radius:50%; background:var(--accent3); display:inline-block; animation: pulse 2s infinite; }
-  .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(28px,5vw,52px); font-weight: 800; line-height: 1.05; margin-bottom: 16px; animation: fadeDown .7s ease both .1s; }
-  .hero h1 em { color: var(--accent1); font-style: normal; }
-  .hero p { font-size: 16px; color: rgba(255,255,255,.7); max-width: 540px; line-height: 1.6; animation: fadeDown .7s ease both .2s; }
-  .hero-meta { display: flex; gap: 32px; margin-top: 32px; flex-wrap: wrap; animation: fadeDown .7s ease both .3s; }
-  .hero-meta div { display: flex; flex-direction: column; }
-  .hero-meta .label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.5); margin-bottom: 4px; }
-  .hero-meta .value { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; }
-  .hero-meta .value.green { color: var(--accent3); }
-  .hero-meta .value.orange { color: var(--accent1); }
+  .badge.green { background: rgba(24,160,89,0.25); border-color: rgba(24,160,89,0.4); }
 
-  /* ── WINNER BANNER ── */
-  .winner-banner {
-    background: linear-gradient(135deg, var(--accent1) 0%, #FF8360 100%);
-    color: white; padding: 20px 40px;
-    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-    animation: slideIn .5s ease both .4s;
+  /* HERO COMPARISON */
+  .hero {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
   }
-  .winner-banner .crown { font-size: 28px; }
-  .winner-banner strong { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; }
-  .winner-banner span { font-size: 14px; opacity: .85; }
-  .winner-score {
-    margin-left: auto; background: rgba(255,255,255,.2); border-radius: 100px;
-    padding: 6px 20px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px;
-  }
+  @media (max-width: 768px) { .hero { grid-template-columns: 1fr; padding: 20px; } }
 
-  /* ── MAIN LAYOUT ── */
-  .main { max-width: 960px; margin: 0 auto; padding: 40px 20px 80px; }
-
-  /* ── TABS ── */
-  .tabs-nav {
-    display: flex; gap: 4px; padding: 6px;
-    background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border);
-    margin-bottom: 32px; overflow-x: auto; flex-wrap: nowrap;
+  .product-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    overflow: hidden;
     box-shadow: var(--shadow);
+    border: 2px solid transparent;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+    position: relative;
+  }
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  .product-card.winner { border-color: var(--gold); }
+  .winner-badge {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--gold);
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 11px; letter-spacing: 1px;
+    padding: 5px 12px; border-radius: 100px;
+    text-transform: uppercase;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(212,160,23,0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(212,160,23,0); }
+  }
+
+  .card-header {
+    padding: 24px 24px 20px;
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+  .prod-icon {
+    width: 58px; height: 58px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; flex-shrink: 0;
+  }
+  .prod1 .prod-icon { background: #fff2ef; }
+  .prod2 .prod-icon { background: #eff4ff; }
+
+  .card-header h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 17px; line-height: 1.3;
+  }
+  .category-tag {
+    display: inline-block;
+    background: var(--bg);
+    color: var(--text2);
+    border-radius: 100px;
+    padding: 2px 10px; font-size: 12px;
+    margin-top: 6px;
+  }
+
+  .card-metrics {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .metric { padding: 16px 12px; text-align: center; }
+  .metric + .metric { border-left: 1px solid var(--border); }
+  .metric-value {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 20px;
+  }
+  .metric-label { font-size: 11px; color: var(--text2); margin-top: 2px; }
+  .green-text { color: var(--green); }
+  .red-text { color: var(--red); }
+  .amber-text { color: var(--yellow); }
+
+  .card-score {
+    padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 10px;
+  }
+  .score-bar { flex: 1; height: 8px; background: var(--border); border-radius: 100px; overflow: hidden; }
+  .score-fill { height: 100%; border-radius: 100px; transition: width 1s ease; }
+  .score-label { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; }
+
+  /* TABS */
+  .tabs-section { padding: 0 40px 60px; }
+  @media (max-width: 768px) { .tabs-section { padding: 0 20px 40px; } }
+
+  .tabs-nav {
+    display: flex; gap: 4px; flex-wrap: wrap;
+    background: var(--surface);
+    border-radius: 14px;
+    padding: 6px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
   }
   .tab-btn {
-    flex-shrink: 0; padding: 10px 18px; border-radius: 10px; border: none;
-    background: transparent; color: var(--text-muted); font-family: 'DM Sans', sans-serif;
-    font-size: 13px; font-weight: 500; cursor: pointer; transition: all .2s ease;
-    display: flex; align-items: center; gap: 6px; white-space: nowrap;
+    flex: 1; min-width: 100px;
+    border: none; background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    color: var(--text2);
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .2s;
+    white-space: nowrap;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
   }
-  .tab-btn .tab-icon { font-size: 15px; }
-  .tab-btn:hover { background: var(--surface2); color: var(--text); }
-  .tab-btn.active { background: var(--accent2); color: white; }
-  .tab-panel { display: none; animation: fadeIn .3s ease; }
-  .tab-panel.active { display: block; }
+  .tab-btn:hover { background: var(--bg); color: var(--text); }
+  .tab-btn.active {
+    background: var(--text);
+    color: #fff;
+    font-weight: 600;
+  }
+  .tab-icon { font-size: 15px; }
 
-  /* ── CARDS ── */
-  .card {
-    background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border);
-    padding: 28px; box-shadow: var(--shadow); margin-bottom: 24px;
-  }
-  .card-title {
-    font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700;
-    margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
-  }
-  .card-title .icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-  .icon-orange { background: #FFF0EB; }
-  .icon-green { background: #E6FAF7; }
-  .icon-blue { background: #EBF0FF; }
-  .icon-gold { background: #FFF8E6; }
+  .tab-content { display: none; animation: fadeIn .3s ease; }
+  .tab-content.active { display: block; }
+  @keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
 
-  /* ── PRODUCTO GANADOR HIGHLIGHT ── */
-  .product-winner-card {
-    background: linear-gradient(135deg, #FFF5F2 0%, #FFF9F5 100%);
-    border: 2px solid var(--accent1); border-radius: var(--radius);
-    padding: 28px; margin-bottom: 24px; position: relative; overflow: hidden;
-  }
-  .product-winner-card::before {
-    content: '👑 PRODUCTO GANADOR';
-    position: absolute; top: 16px; right: 16px;
-    background: var(--accent1); color: white; font-family: 'Syne', sans-serif;
-    font-size: 11px; font-weight: 700; letter-spacing: .08em; padding: 4px 12px;
-    border-radius: 100px;
-  }
-  .product-runner-card {
-    background: linear-gradient(135deg, #F0FDF9 0%, #F5FFFE 100%);
-    border: 2px solid var(--accent3); border-radius: var(--radius);
-    padding: 28px; margin-bottom: 24px; position: relative; overflow: hidden;
-  }
-  .product-runner-card::before {
-    content: '#2 SEGUNDA OPCIÓN';
-    position: absolute; top: 16px; right: 16px;
-    background: var(--accent3); color: white; font-family: 'Syne', sans-serif;
-    font-size: 11px; font-weight: 700; letter-spacing: .08em; padding: 4px 12px;
-    border-radius: 100px;
-  }
+  /* SECTION STYLES */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
 
-  .product-header { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 24px; flex-wrap: wrap; }
-  .product-emoji { font-size: 52px; line-height: 1; }
-  .product-info { flex: 1; min-width: 200px; }
-  .product-name { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 6px; }
-  .product-cat { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
-  .product-price-badge {
-    display: inline-block; background: var(--accent2); color: white;
-    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px;
-    padding: 6px 18px; border-radius: 100px;
+  .panel {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
   }
-
-  /* ── METRICS ROW ── */
-  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .metric {
-    background: var(--surface2); border-radius: 12px; padding: 16px 14px; text-align: center;
+  .panel h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 16px;
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
   }
-  .metric .m-val { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; }
-  .metric .m-val.green { color: #00A88F; }
-  .metric .m-val.orange { color: var(--accent1); }
-  .metric .m-val.gold { color: #D4870A; }
-  .metric .m-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: .06em; }
-
-  /* ── MARGIN TABLE ── */
-  .margin-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  .margin-table tr { border-bottom: 1px solid var(--border); }
-  .margin-table tr:last-child { border-bottom: none; }
-  .margin-table td { padding: 10px 8px; }
-  .margin-table td:last-child { text-align: right; font-weight: 600; }
-  .margin-table .total-row { background: var(--surface2); font-weight: 700; }
-  .margin-table .green-row td { color: #00A88F; }
-  .margin-table .cost-row td:last-child { color: var(--accent1); }
-
-  /* ── KEYWORDS ── */
-  .keywords-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-  .kw-chip {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 6px 14px; border-radius: 100px; font-size: 13px; font-weight: 500;
-    border: 1px solid transparent; cursor: default; transition: transform .15s;
+  .prod-dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    display: inline-block;
   }
-  .kw-chip:hover { transform: translateY(-2px); }
-  .kw-high { background: #FFF0EB; color: var(--accent1); border-color: #FFDDD5; }
-  .kw-med { background: #E6FAF7; color: #007A6A; border-color: #C5EFE9; }
-  .kw-low { background: #EBF0FF; color: #3D5AF1; border-color: #D0DAFF; }
-  .kw-dot { width: 6px; height: 6px; border-radius: 50%; }
-  .kw-high .kw-dot { background: var(--accent1); }
-  .kw-med .kw-dot { background: #00C2A8; }
-  .kw-low .kw-dot { background: #3D5AF1; }
+  .dot1 { background: var(--prod1); }
+  .dot2 { background: var(--prod2); }
 
-  /* ── COMPARATIVA TABLE ── */
-  .compare-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  .compare-table th { background: var(--accent2); color: white; padding: 14px 16px; text-align: left; font-family: 'Syne', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+  /* OPPORTUNITY */
+  .opp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .opp-card {
+    background: var(--bg);
+    border-radius: 12px; padding: 16px;
+    border-left: 4px solid;
+  }
+  .opp-card.p1 { border-color: var(--prod1); }
+  .opp-card.p2 { border-color: var(--prod2); }
+  .opp-card h4 { font-size: 12px; color: var(--text2); text-transform: uppercase; letter-spacing: .5px; }
+  .opp-card p { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 22px; margin-top: 4px; }
+  .opp-card small { font-size: 12px; color: var(--text2); }
+
+  /* ASIN TABLE */
+  .asin-table { width: 100%; border-collapse: collapse; }
+  .asin-table th {
+    text-align: left; font-size: 12px; font-weight: 600;
+    color: var(--text2); text-transform: uppercase; letter-spacing: .5px;
+    padding: 10px 12px; border-bottom: 2px solid var(--border);
+  }
+  .asin-table td { padding: 12px; border-bottom: 1px solid var(--border); font-size: 14px; vertical-align: middle; }
+  .asin-table tr:last-child td { border-bottom: none; }
+  .asin-table tr:hover td { background: var(--surface2); }
+
+  .asin-link {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 13px;
+    color: var(--accent2);
+    text-decoration: none;
+    background: #eff4ff; border-radius: 6px;
+    padding: 3px 8px; display: inline-block;
+    transition: background .15s;
+  }
+  .asin-link:hover { background: var(--accent2); color: #fff; }
+
+  .stars { color: var(--gold); font-size: 13px; }
+  .comp-badge {
+    display: inline-block; padding: 3px 10px; border-radius: 100px;
+    font-size: 12px; font-weight: 600;
+  }
+  .comp-low { background: #e6f9ef; color: var(--green); }
+  .comp-med { background: #fff8e1; color: var(--yellow); }
+  .comp-hi { background: #fdecea; color: var(--red); }
+
+  /* KEYWORDS */
+  .kw-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .kw-tag {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 8px 14px;
+    font-size: 13px; font-weight: 500;
+    transition: all .15s;
+  }
+  .kw-tag:hover { background: var(--text); color: #fff; border-color: var(--text); }
+  .kw-vol { font-size: 11px; color: var(--text2); }
+  .kw-tag:hover .kw-vol { color: #ccc; }
+  .kw-pill {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+  .kw-high { background: var(--green); }
+  .kw-med { background: var(--yellow); }
+  .kw-low { background: var(--text2); }
+
+  /* MARGIN TABLE */
+  .margin-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .margin-row:last-child { border-bottom: none; font-weight: 700; font-size: 16px; }
+  .margin-row.total { padding-top: 14px; }
+  .neg { color: var(--red); }
+  .pos { color: var(--green); }
+
+  /* DEBILIDADES */
+  .weak-list { list-style: none; }
+  .weak-list li {
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+    display: flex; gap: 10px; font-size: 14px;
+  }
+  .weak-list li:last-child { border-bottom: none; }
+  .weak-icon { font-size: 18px; flex-shrink: 0; }
+
+  /* PRÓXIMOS PASOS */
+  .steps { display: flex; flex-direction: column; gap: 12px; }
+  .step {
+    background: var(--surface);
+    border-radius: 12px; padding: 16px 20px;
+    display: flex; gap: 16px; align-items: flex-start;
+    box-shadow: var(--shadow);
+    border-left: 4px solid;
+  }
+  .step.p1 { border-color: var(--prod1); }
+  .step.p2 { border-color: var(--prod2); }
+  .step-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px;
+    flex-shrink: 0;
+    color: #fff;
+  }
+  .step.p1 .step-num { background: var(--prod1); }
+  .step.p2 .step-num { background: var(--prod2); }
+  .step h4 { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+  .step p { font-size: 13px; color: var(--text2); }
+
+  /* COMPARATIVA */
+  .compare-table { width: 100%; border-collapse: collapse; }
+  .compare-table th {
+    background: var(--text);
+    color: #fff;
+    text-align: left;
+    padding: 14px 16px;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px; font-weight: 600;
+  }
   .compare-table th:first-child { border-radius: 12px 0 0 0; }
   .compare-table th:last-child { border-radius: 0 12px 0 0; }
-  .compare-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: middle; }
-  .compare-table tr:last-child td { border-bottom: none; }
-  .compare-table tr.winner-row td { background: #FFF5F2; }
-  .compare-table tr.winner-row td:first-child { border-left: 3px solid var(--accent1); }
-  .compare-table tr:hover td { background: var(--surface2); }
-  .score-bar { display: flex; align-items: center; gap: 8px; }
-  .score-track { flex: 1; height: 6px; background: var(--surface2); border-radius: 100px; overflow: hidden; }
-  .score-fill { height: 100%; border-radius: 100px; background: var(--accent3); }
-  .winner-row .score-fill { background: var(--accent1); }
-  .score-num { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; }
+  .compare-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .compare-table tr.winner-row td { background: #fffbeb; }
+  .compare-table tr.winner-row td:first-child { border-left: 4px solid var(--gold); }
 
-  /* ── WEAKNESSES ── */
-  .weak-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .weak-item { display: flex; gap: 12px; align-items: flex-start; padding: 14px; background: var(--surface2); border-radius: 12px; }
-  .weak-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-  .weak-text { font-size: 14px; line-height: 1.5; }
-  .weak-text strong { display: block; font-weight: 600; margin-bottom: 3px; }
+  .score-stars { color: var(--gold); font-size: 16px; }
 
-  /* ── NEXT STEPS ── */
-  .steps { display: flex; flex-direction: column; gap: 12px; }
-  .step { display: flex; gap: 16px; align-items: flex-start; }
-  .step-num {
-    width: 32px; height: 32px; border-radius: 50%; background: var(--accent2); color: white;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; flex-shrink: 0;
+  /* PROVEEDOR */
+  .supplier-card {
+    background: linear-gradient(135deg, #1a1612 0%, #2d2520 100%);
+    color: #fff;
+    border-radius: var(--radius); padding: 24px;
+    display: flex; align-items: flex-start; gap: 16px;
+    margin-top: 16px;
   }
-  .step-content { flex: 1; padding-top: 5px; }
-  .step-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
-  .step-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
-
-  /* ── ASIN COMPETITOR CARDS ── */
-  .asin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
-  .asin-card {
-    background: var(--surface2); border-radius: 12px; padding: 18px;
-    border: 1px solid var(--border); transition: all .2s;
+  .supplier-icon { font-size: 36px; flex-shrink: 0; }
+  .supplier-card h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; }
+  .supplier-card p { font-size: 13px; color: #a09a95; margin-top: 4px; }
+  .supplier-link {
+    display: inline-block; margin-top: 12px;
+    background: var(--accent1);
+    color: #fff; text-decoration: none;
+    padding: 8px 18px; border-radius: 8px;
+    font-weight: 600; font-size: 13px;
+    transition: opacity .15s;
   }
-  .asin-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); background: var(--surface); }
-  .asin-link {
-    display: inline-block; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700;
-    color: var(--accent1); text-decoration: none; border: 1.5px solid var(--accent1);
-    border-radius: 100px; padding: 3px 12px; margin-bottom: 10px; transition: all .2s;
+  .supplier-link:hover { opacity: .85; }
+
+  /* FOOTER */
+  footer {
+    background: var(--text);
+    color: #a09a95;
+    text-align: center;
+    padding: 24px 40px;
+    font-size: 13px;
   }
-  .asin-link:hover { background: var(--accent1); color: white; }
-  .asin-name { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
-  .asin-meta { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
-  .asin-price { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; color: var(--accent2); margin-top: 8px; }
-  .star { color: var(--gold); }
+  footer strong { color: #fff; }
 
-  /* ── OPPORTUNITY SCORE ── */
-  .opp-section { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
-  @media(max-width: 600px) { .opp-section { grid-template-columns: 1fr; } }
-  .opp-card { background: var(--surface2); border-radius: 14px; padding: 20px; }
-  .opp-card h4 { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); }
-  .opp-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
-  .opp-row:last-child { border-bottom: none; }
-  .pill { border-radius: 100px; padding: 2px 12px; font-size: 12px; font-weight: 600; }
-  .pill-green { background: #E6FAF7; color: #007A6A; }
-  .pill-orange { background: #FFF0EB; color: var(--accent1); }
-  .pill-yellow { background: #FFF8E6; color: #B07800; }
-  .pill-red { background: #FFF0EB; color: #CC1F00; }
+  /* SECTION TITLE */
+  .section-intro {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--accent1);
+  }
+  .section-intro h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; margin-bottom: 6px; }
+  .section-intro p { color: var(--text2); font-size: 14px; }
 
-  /* ── FOOTER ── */
-  .footer { text-align: center; padding: 32px 20px; color: var(--text-muted); font-size: 13px; border-top: 1px solid var(--border); }
-  .footer strong { color: var(--text); }
+  /* VISUAL KPI */
+  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin: 16px 0; }
+  .kpi {
+    background: var(--bg);
+    border-radius: 12px; padding: 14px 16px; text-align: center;
+  }
+  .kpi-v { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 24px; }
+  .kpi-l { font-size: 11px; color: var(--text2); text-transform: uppercase; letter-spacing: .5px; margin-top: 4px; }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeDown { from { opacity:0; transform: translateY(-16px); } to { opacity:1; transform: translateY(0); } }
-  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-  @keyframes slideIn { from { opacity:0; transform: translateX(-20px); } to { opacity:1; transform: translateX(0); } }
-  @keyframes pulse { 0%,100%{ opacity:1; } 50%{ opacity:.4; } }
-
-  /* ── Responsive ── */
-  @media(max-width:640px) {
-    .hero { padding: 40px 20px 36px; }
-    .winner-banner { padding: 16px 20px; }
-    .winner-score { margin-left: 0; }
-    .product-winner-card::before, .product-runner-card::before { position: static; margin-bottom: 12px; display: inline-block; }
-    .tabs-nav { padding: 4px; }
-    .tab-btn { padding: 8px 12px; font-size: 12px; }
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .card-metrics { grid-template-columns: repeat(3, 1fr); }
+    .tabs-nav { gap: 2px; }
+    .tab-btn { font-size: 11px; padding: 8px 8px; }
   }
 
-  .pill-blue { background: #EBF0FF; color: #3D5AF1; }
-  .section-divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
-  .tag { display: inline-block; background: var(--surface2); border-radius: 100px; padding: 3px 12px; font-size: 12px; color: var(--text-muted); margin: 3px; }
+  /* ANIMATION FOR SCORE BARS */
+  .score-fill { width: 0; }
+  .animate .score-fill { animation: fillBar 1.2s ease forwards; }
+  @keyframes fillBar { to { width: var(--target-w); } }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="badge"><span></span> Amazon Product Research · España · Feb 2026</div>
-    <h1>Reporte de <em>Oportunidades</em><br>Amazon FBA 2025-26</h1>
-    <p>Análisis comparativo de 4 ASINs competidores + 2 productos ganadores con margen neto, keywords y hoja de ruta para lanzar.</p>
-    <div class="hero-meta">
-      <div><span class="label">Rango Precio</span><span class="value green">9,99€ – 15€</span></div>
-      <div><span class="label">Ventas Objetivo</span><span class="value orange">+5.000€/mes</span></div>
-      <div><span class="label">Productos Analizados</span><span class="value">4 ASINs</span></div>
-      <div><span class="label">Oportunidades</span><span class="value">2 Elegidas</span></div>
+<!-- ═══════════ HEADER ═══════════ -->
+<header>
+  <div class="header-title">
+    <div class="logo-badge">FBA</div>
+    <div>
+      <h1>Amazon FBA Research 2025 · España</h1>
+      <p>Análisis con Helium 10 · 2 oportunidades seleccionadas · Precio €9,99 – €14,99</p>
     </div>
   </div>
-</div>
-
-<!-- WINNER BANNER -->
-<div class="winner-banner">
-  <span class="crown">👑</span>
-  <div>
-    <strong>Producto Ganador: Organizador de Cables con Clips de Bambú</strong>
-    <br><span>Home Office · Margen neto 38% · ROI estimado 72% · Competencia BAJA</span>
+  <div class="header-meta">
+    <span class="badge">Amazon.es</span>
+    <span class="badge green">✓ Private Label</span>
+    <span class="badge">Feb 2025</span>
   </div>
-  <div class="winner-score">Score 4.7 / 5</div>
-</div>
+</header>
 
-<!-- MAIN -->
-<div class="main">
+<!-- ═══════════ HERO CARDS ═══════════ -->
+<section class="hero">
 
-  <!-- TABS NAV -->
-  <div class="tabs-nav">
-    <button class="tab-btn active" onclick="showTab('oportunidad')"><span class="tab-icon">🚀</span>Oportunidad</button>
-    <button class="tab-btn" onclick="showTab('asins')"><span class="tab-icon">🔍</span>ASINs Competidores</button>
-    <button class="tab-btn" onclick="showTab('keywords')"><span class="tab-icon">🏷️</span>Keywords</button>
-    <button class="tab-btn" onclick="showTab('margen')"><span class="tab-icon">📊</span>Margen</button>
-    <button class="tab-btn" onclick="showTab('debilidades')"><span class="tab-icon">⚠️</span>Debilidades</button>
-    <button class="tab-btn" onclick="showTab('proximos')"><span class="tab-icon">🗺️</span>Próximos Pasos</button>
-    <button class="tab-btn" onclick="showTab('comparativa')"><span class="tab-icon">⚖️</span>Comparativa</button>
-    <button class="tab-btn" onclick="showTab('proveedores')"><span class="tab-icon">🏭</span>Proveedores</button>
+  <!-- PRODUCTO 1 -->
+  <article class="product-card prod1 winner">
+    <span class="winner-badge">🏆 GANADOR</span>
+    <div class="card-header">
+      <div class="prod-icon">🐾</div>
+      <div>
+        <h2>Cuenco Plegable Silicona para Mascotas</h2>
+        <span class="category-tag">Accesorios Mascotas / Viaje</span>
+        <br><span class="category-tag">PVP: <strong style="color:var(--prod1)">€12,99</strong></span>
+      </div>
+    </div>
+    <div class="card-metrics">
+      <div class="metric">
+        <div class="metric-value green-text">32%</div>
+        <div class="metric-label">Margen neto</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value green-text">68%</div>
+        <div class="metric-label">ROI estimado</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value amber-text">BAJA</div>
+        <div class="metric-label">Competencia</div>
+      </div>
+    </div>
+    <div class="card-score" style="padding-top:14px">
+      <span class="metric-label" style="white-space:nowrap">Score global</span>
+      <div class="score-bar">
+        <div class="score-fill" style="background:var(--prod1);--target-w:88%;width:88%"></div>
+      </div>
+      <span class="score-label" style="color:var(--prod1)">4.4/5</span>
+    </div>
+    <div style="padding:0 24px 20px;font-size:13px;color:var(--text2)">
+      Nicho mascotas en boom · +26M dueños de perros en España · Coste fabricación ~1,80€ en Alibaba · Ligero y pequeño, ideal FBA
+    </div>
+  </article>
+
+  <!-- PRODUCTO 2 -->
+  <article class="product-card prod2">
+    <div class="card-header">
+      <div class="prod-icon">🔌</div>
+      <div>
+        <h2>Organizador de Cables Magnético Escritorio</h2>
+        <span class="category-tag">Accesorios Oficina / Home Office</span>
+        <br><span class="category-tag">PVP: <strong style="color:var(--prod2)">€11,99</strong></span>
+      </div>
+    </div>
+    <div class="card-metrics">
+      <div class="metric">
+        <div class="metric-value green-text">28%</div>
+        <div class="metric-label">Margen neto</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value amber-text">54%</div>
+        <div class="metric-label">ROI estimado</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value amber-text">MEDIA</div>
+        <div class="metric-label">Competencia</div>
+      </div>
+    </div>
+    <div class="card-score" style="padding-top:14px">
+      <span class="metric-label" style="white-space:nowrap">Score global</span>
+      <div class="score-bar">
+        <div class="score-fill" style="background:var(--prod2);--target-w:74%;width:74%"></div>
+      </div>
+      <span class="score-label" style="color:var(--prod2)">3.7/5</span>
+    </div>
+    <div style="padding:0 24px 20px;font-size:13px;color:var(--text2)">
+      Home office consolida tendencia · Demanda estable todo el año · Coste fabricación ~1,20€ · Alta saturación básica pero subnicho magnético libre
+    </div>
+  </article>
+
+</section>
+
+<!-- ═══════════ TABS ═══════════ -->
+<section class="tabs-section">
+
+  <nav class="tabs-nav">
+    <button class="tab-btn active" onclick="showTab('oportunidad', this)"><span class="tab-icon">🎯</span>Oportunidad</button>
+    <button class="tab-btn" onclick="showTab('asins', this)"><span class="tab-icon">📦</span>ASINs</button>
+    <button class="tab-btn" onclick="showTab('keywords', this)"><span class="tab-icon">🔑</span>Keywords</button>
+    <button class="tab-btn" onclick="showTab('margen', this)"><span class="tab-icon">💰</span>Márgenes</button>
+    <button class="tab-btn" onclick="showTab('debilidades', this)"><span class="tab-icon">⚠️</span>Debilidades</button>
+    <button class="tab-btn" onclick="showTab('pasos', this)"><span class="tab-icon">🚀</span>Próximos Pasos</button>
+    <button class="tab-btn" onclick="showTab('comparativa', this)"><span class="tab-icon">⚖️</span>Comparativa</button>
+  </nav>
+
+  <!-- ──── TAB: OPORTUNIDAD ──── -->
+  <div id="tab-oportunidad" class="tab-content active">
+    <div class="section-intro">
+      <h2>🎯 Análisis de Oportunidad</h2>
+      <p>Ambos productos cumplen los criterios clave: precio impulso, bajo coste de fabricación, ventas estimadas >5.000€/mes y listados mejorables en la competencia actual de Amazon.es.</p>
+    </div>
+
+    <div class="two-col">
+      <!-- P1 -->
+      <div class="panel">
+        <h3><span class="prod-dot dot1"></span> 🐾 Cuenco Plegable Mascotas</h3>
+        <div class="opp-grid">
+          <div class="opp-card p1">
+            <h4>Ventas est./mes</h4>
+            <p>~€7.500</p>
+            <small>450 uds × €12,99 × (top 5 sellers)</small>
+          </div>
+          <div class="opp-card p1">
+            <h4>BSR categoría</h4>
+            <p>#8.000</p>
+            <small>Amazon.es Mascotas</small>
+          </div>
+          <div class="opp-card p1">
+            <h4>Reviews top</h4>
+            <p>&lt;150</p>
+            <small>Promedio top 10 ES</small>
+          </div>
+          <div class="opp-card p1">
+            <h4>Rating medio</h4>
+            <p>4.1 ★</p>
+            <small>Margen de mejora</small>
+          </div>
+        </div>
+        <p style="font-size:14px; color:var(--text2)">
+          El mercado de mascotas en España crece a doble dígito. Los cuencos plegables existentes tienen quejas recurrentes sobre derrame de agua y material olor a plástico. Un producto con silicona grado FDA, doble compartimento + mosquetón + packaging premium puede entrar como referencia diferenciada con ticket medio de €12,99 y poca guerra de precios.
+        </p>
+        <div class="kpi-row">
+          <div class="kpi"><div class="kpi-v" style="color:var(--green)">82%</div><div class="kpi-l">Listings mejorables</div></div>
+          <div class="kpi"><div class="kpi-v" style="color:var(--prod1)">+26M</div><div class="kpi-l">Dueños perros ES</div></div>
+          <div class="kpi"><div class="kpi-v">~4</div><div class="kpi-l">Sellers reales top 10</div></div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="panel">
+        <h3><span class="prod-dot dot2"></span> 🔌 Organizador Cables Magnético</h3>
+        <div class="opp-grid">
+          <div class="opp-card p2">
+            <h4>Ventas est./mes</h4>
+            <p>~€5.500</p>
+            <small>500 uds × €11,99 × (top 8 sellers)</small>
+          </div>
+          <div class="opp-card p2">
+            <h4>BSR categoría</h4>
+            <p>#15.000</p>
+            <small>Amazon.es Electrónica Acc.</small>
+          </div>
+          <div class="opp-card p2">
+            <h4>Reviews top</h4>
+            <p>&lt;400</p>
+            <small>Promedio top 10 ES</small>
+          </div>
+          <div class="opp-card p2">
+            <h4>Rating medio</h4>
+            <p>4.0 ★</p>
+            <small>Quejas adhesivo</small>
+          </div>
+        </div>
+        <p style="font-size:14px; color:var(--text2)">
+          El subnicho de organizador magnético (con imanes, sin adhesivo) está poco explotado en Amazon.es. Los clips adhesivos dominan pero con quejas de que se despegan. Un pack de 6 clips con base magnética, diseño minimalista y compatibilidad multi-cable abre un espacio diferenciado con menor coste y más atractivo visual para perfiles tech-millennial.
+        </p>
+        <div class="kpi-row">
+          <div class="kpi"><div class="kpi-v" style="color:var(--green)">71%</div><div class="kpi-l">Listings mejorables</div></div>
+          <div class="kpi"><div class="kpi-v" style="color:var(--prod2)">+40%</div><div class="kpi-l">Crecimiento WFH ES</div></div>
+          <div class="kpi"><div class="kpi-v">~7</div><div class="kpi-l">Sellers reales top 10</div></div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- ════════════════ TAB: OPORTUNIDAD ════════════════ -->
-  <div id="tab-oportunidad" class="tab-panel active">
+  <!-- ──── TAB: ASINs ──── -->
+  <div id="tab-asins" class="tab-content">
+    <div class="section-intro">
+      <h2>📦 ASINs Competidores — Amazon.es</h2>
+      <p>Haz click en cualquier ASIN para abrir el producto en Amazon. Ordenados de mayor a menor oportunidad detectada.</p>
+    </div>
 
-    <!-- PRODUCTO 1: GANADOR -->
-    <div class="product-winner-card">
-      <div class="product-header">
-        <div class="product-emoji">📎</div>
-        <div class="product-info">
-          <div class="product-name">Organizador de Cables con Clips de Bambú</div>
-          <div class="product-cat">📂 Hogar & Oficina · Home Office · Organización</div>
-          <div class="product-price-badge">11,99€ – 13,99€</div>
+    <div class="two-col">
+      <!-- P1 ASINs -->
+      <div class="panel">
+        <h3><span class="prod-dot dot1"></span> 🐾 Cuenco Plegable Mascotas</h3>
+        <div style="overflow-x:auto">
+          <table class="asin-table">
+            <thead>
+              <tr>
+                <th>ASIN</th>
+                <th>Marca / Prod.</th>
+                <th>PVP</th>
+                <th>Reviews</th>
+                <th>Rating</th>
+                <th>Competencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://www.amazon.es/dp/B07W84QKL4" target="_blank" class="asin-link">B07W84QKL4</a></td>
+                <td>SLSON</td>
+                <td>€9,99</td>
+                <td>1.200</td>
+                <td><span class="stars">★★★★</span> 4.2</td>
+                <td><span class="comp-badge comp-med">MEDIA</span></td>
+              </tr>
+              <tr>
+                <td><a href="https://www.amazon.es/dp/B07MW1BNY7" target="_blank" class="asin-link">B07MW1BNY7</a></td>
+                <td>ME.FAN</td>
+                <td>€10,49</td>
+                <td>890</td>
+                <td><span class="stars">★★★★</span> 4.3</td>
+                <td><span class="comp-badge comp-med">MEDIA</span></td>
+              </tr>
+              <tr>
+                <td><a href="https://www.amazon.es/dp/B08168PNRC" target="_blank" class="asin-link">B08168PNRC</a></td>
+                <td>Genérico</td>
+                <td>€11,99</td>
+                <td>320</td>
+                <td><span class="stars">★★★★</span> 4.0</td>
+                <td><span class="comp-badge comp-low">BAJA</span></td>
+              </tr>
+              <tr>
+                <td><a href="https://www.amazon.es/dp/B0CGL4XGY2" target="_blank" class="asin-link">B0CGL4XGY2</a></td>
+                <td>Sin marca</td>
+                <td>€8,99</td>
+                <td>88</td>
+                <td><span class="stars">★★★★</span> 3.9</td>
+                <td><span class="comp-badge comp-low">BAJA</span></td>
+              </tr>
+              <tr>
+                <td><a href="https://www.amazon.es/dp/B0FBGNHBDZ" target="_blank" class="asin-link">B0FBGNHBDZ</a></td>
+                <td>Sin marca</td>
+                <td>€9,49</td>
+                <td>42</td>
+                <td><span class="stars">★★★</span> 3.8</td>
+                <td><span class="comp-badge comp-low">BAJA</span></td>
+              </tr>
+              <tr>
+                <td><a href="https://www.amazon.es/dp/B0CF16JJLH" target="_blank" class="asin-link">B0CF16JJLH</a></td>
+                <td>Genérico</td>
+                <td>€10,99</td>
+                <td>195</td>
+                <td><span class="stars">★★★★</span> 4.1</td>
+                <td><span class="comp-badge comp-low">BAJA</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:12px;color:var(--text2);margin-top:12px">⚡ 4 de 6 competidores con &lt;200 reseñas. Oportunidad de entrada con listing optimizado.</p>
+      </div>
+
+      <!-- P2 ASINs -->
+      <div class="panel">
+        <h3><span class="prod-dot dot2"></span> 🔌 Organizador Cables Magnético</h3>
+        <div style="overflow-x:auto">
+          <table class="asin-table">
+            <thead>
+              <tr>
+                <th>ASIN</th>
+                <th>Marca / Prod.</th>
+                <th>PVP</th>
+                <th>Reviews</th>
+                <th>Rating</th>
+                <th>Competencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://www.amazon.es/dp/B01M62O73R" target="_blank" class="asin-link">B01M62O73R</a></td>
+                <td>Envisioned</td>
+                <td>€14,99</td>
+                <td>2.100</td>
+                <td><span class="stars">★★★★</span> 4.3</td>
+                <td><span class="comp-badge comp-hi">ALTA</span></td>
+              </tr>
+              <tr>
+                <td><a href="https://www.amazon.es/dp/B09QVD8QY9" target="_blank" class="asin-link">B09QVD8QY9</a></td>
+                <td>YACSEJAO</td>
+                <td>€8,99</td>
+                <td>680</td>
+                <td><span class="stars">★★★★</span> 4.1</td>
+                <td><span class="comp-badge comp-med">MEDIA</span></td>
+              </tr>
+              <tr>
+                <td><a href="https://www.amazon.es/dp/B07CJ29Q9B" target="_blank" class="asin-link">B07CJ29Q9B</a></td>
+                <td>Costop</td>
+                <td>€11,49</td>
+                <td>410</td>
+                <td><span class="stars">★★★★</span> 4.2</td>
+                <td><span class="comp-badge comp-med">MEDIA</span></td>
+              </tr>
+              <tr>
+                <td><a href="https://www.amazon.es/dp/B0BQRP69R6" target="_blank" class="asin-link">B0BQRP69R6</a></td>
+                <td>Sin marca</td>
+                <td>€12,99</td>
+                <td>175</td>
+                <td><span class="stars">★★★</span> 3.7</td>
+                <td><span class="comp-badge comp-low">BAJA</span></td>
+              </tr>
+              <tr>
+                <td><a href="https://www.amazon.es/dp/B01H4P2NNA" target="_blank" class="asin-link">B01H4P2NNA</a></td>
+                <td>SOULWIT</td>
+                <td>€10,99</td>
+                <td>350</td>
+                <td><span class="stars">★★★★</span> 4.4</td>
+                <td><span class="comp-badge comp-med">MEDIA</span></td>
+              </tr>
+              <tr>
+                <td><a href="https://www.amazon.es/dp/B06ZZ2DLB1" target="_blank" class="asin-link">B06ZZ2DLB1</a></td>
+                <td>Genérico</td>
+                <td>€9,99</td>
+                <td>120</td>
+                <td><span class="stars">★★★</span> 3.8</td>
+                <td><span class="comp-badge comp-low">BAJA</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:12px;color:var(--text2);margin-top:12px">⚡ Subnicho magnético libre. Diferenciación posible con diseño + pack de 8 uds a €11,99.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──── TAB: KEYWORDS ──── -->
+  <div id="tab-keywords" class="tab-content">
+    <div class="section-intro">
+      <h2>🔑 Keywords — Análisis Helium 10</h2>
+      <p>Keywords validadas para Amazon.es, ordenadas por volumen de búsqueda estimado. Verde = alto volumen, Naranja = medio, Gris = long-tail pero alta conversión.</p>
+    </div>
+
+    <div class="two-col">
+      <!-- P1 KW -->
+      <div class="panel">
+        <h3><span class="prod-dot dot1"></span> 🐾 Cuenco Plegable Mascotas</h3>
+        <div class="kw-grid">
+          <div class="kw-tag"><span class="kw-pill kw-high"></span>cuenco plegable perro<span class="kw-vol">~8.200/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-high"></span>comedero viaje perro<span class="kw-vol">~6.500/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-high"></span>cuenco silicona perro<span class="kw-vol">~5.900/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-high"></span>tazón portátil perro<span class="kw-vol">~4.800/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-med"></span>comedero plegable mascotas<span class="kw-vol">~3.200/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-med"></span>cuenco perro senderismo<span class="kw-vol">~2.700/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-med"></span>plato plegable gato perro<span class="kw-vol">~2.100/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-med"></span>cuenco viaje camping mascotas<span class="kw-vol">~1.900/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-low"></span>cuenco doble plegable silicona sin BPA<span class="kw-vol">~1.200/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-low"></span>comedero portátil perro mosquetón<span class="kw-vol">~950/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-low"></span>tazón plegable perro gato hiking<span class="kw-vol">~780/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-low"></span>cuenco expandible mascota paseo<span class="kw-vol">~620/mes</span></div>
+        </div>
+        <div style="margin-top:16px; padding:14px; background:var(--bg); border-radius:10px; font-size:13px;">
+          <strong>💡 Keyword principal para título:</strong> "Cuenco Plegable Perro Silicona — Comedero Portátil Viaje"<br>
+          <strong>💡 Bullet 1:</strong> Incluir "sin BPA", "grado alimenticio", "mosquetón"<br>
+          <strong>💡 Backend:</strong> cuenco agua perro camping · plato mascotas senderismo · bowl colapsable
         </div>
       </div>
-      <div class="metrics">
-        <div class="metric"><div class="m-val green">38%</div><div class="m-label">Margen Neto</div></div>
-        <div class="metric"><div class="m-val orange">72%</div><div class="m-label">ROI</div></div>
-        <div class="metric"><div class="m-val green">BAJA</div><div class="m-label">Competencia</div></div>
-        <div class="metric"><div class="m-val gold">~6.200€</div><div class="m-label">Ventas/mes est.</div></div>
-        <div class="metric"><div class="m-val">>12k</div><div class="m-label">Búsquedas/mes</div></div>
-      </div>
-      <p style="font-size:14px;line-height:1.7;color:var(--text-muted);">El home office permanente ha convertido la gestión de cables en una necesidad cotidiana. Los clips organizadores de bambú combinan la tendencia eco-friendly con un problema universal: el caos de cables en escritorios. El producto es ligero (&lt;150g), no frágil, sin certificaciones especiales y cuesta ~2,80€ CIF desde China. Con pocos sellers con más de 200 reseñas en España, hay espacio claro para entrar con fotos profesionales y variante de colores.</p>
-      <div class="opp-section" style="margin-top:20px;">
-        <div class="opp-card">
-          <h4>Señales de Demanda</h4>
-          <div class="opp-row"><span>Búsquedas mensuales</span><span class="pill pill-green">+12.000</span></div>
-          <div class="opp-row"><span>BSR categoría principal</span><span class="pill pill-green">&lt;20.000</span></div>
-          <div class="opp-row"><span>Reseñas top seller</span><span class="pill pill-yellow">~350</span></div>
-          <div class="opp-row"><span>Estacionalidad</span><span class="pill pill-green">Todo el año</span></div>
-          <div class="opp-row"><span>Tendencia 2025</span><span class="pill pill-green">↑ Creciente</span></div>
+
+      <!-- P2 KW -->
+      <div class="panel">
+        <h3><span class="prod-dot dot2"></span> 🔌 Organizador Cables Magnético</h3>
+        <div class="kw-grid">
+          <div class="kw-tag"><span class="kw-pill kw-high"></span>organizador cables escritorio<span class="kw-vol">~12.000/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-high"></span>clips cables autoadhesivos<span class="kw-vol">~7.800/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-high"></span>organizador cables magnético<span class="kw-vol">~4.100/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-med"></span>gestión cables oficina<span class="kw-vol">~3.600/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-med"></span>soporte cable cargador mesa<span class="kw-vol">~2.900/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-med"></span>organizador cables home office<span class="kw-vol">~2.400/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-med"></span>clip cable USB escritorio<span class="kw-vol">~1.800/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-med"></span>organizador cables sin agujeros<span class="kw-vol">~1.500/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-low"></span>sujetacables magnético silicona<span class="kw-vol">~900/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-low"></span>pack organizadores cable carga<span class="kw-vol">~740/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-low"></span>gestión cables setup gaming<span class="kw-vol">~620/mes</span></div>
+          <div class="kw-tag"><span class="kw-pill kw-low"></span>clips cables reutilizables silicona<span class="kw-vol">~510/mes</span></div>
         </div>
-        <div class="opp-card">
-          <h4>Por qué Esta Oportunidad</h4>
-          <div class="opp-row"><span>Coste fabricación</span><span class="pill pill-green">2,50-2,90€</span></div>
-          <div class="opp-row"><span>FBA fee estimado</span><span class="pill pill-yellow">~2,20€</span></div>
-          <div class="opp-row"><span>Peso producto</span><span class="pill pill-green">&lt;150g</span></div>
-          <div class="opp-row"><span>Certificaciones</span><span class="pill pill-green">No requeridas</span></div>
-          <div class="opp-row"><span>Diferenciación posible</span><span class="pill pill-green">Alta</span></div>
+        <div style="margin-top:16px; padding:14px; background:var(--bg); border-radius:10px; font-size:13px;">
+          <strong>💡 Keyword principal:</strong> "Organizador Cables Escritorio — Pack 8 Clips Magnéticos"<br>
+          <strong>💡 Bullet 1:</strong> Incluir "sin adhesivo", "magnético", "reutilizable", "setup"<br>
+          <strong>💡 Backend:</strong> cable manager desk · sujetacables imán · cable clip magnetic
         </div>
       </div>
-      <div style="margin-top:16px;">
-        <strong style="font-size:13px;display:block;margin-bottom:10px;">✅ Diferenciación sugerida vs competencia:</strong>
-        <span class="tag">🌿 Material 100% bambú certificado FSC</span>
-        <span class="tag">🎨 Pack 3 tamaños (S/M/L clips)</span>
-        <span class="tag">🔌 Compatibilidad garantizada USB-C + HDMI</span>
-        <span class="tag">📦 Packaging sostenible sin plástico</span>
-        <span class="tag">⭐ Manual de organización incluido</span>
+    </div>
+  </div>
+
+  <!-- ──── TAB: MÁRGENES ──── -->
+  <div id="tab-margen" class="tab-content">
+    <div class="section-intro">
+      <h2>💰 Análisis de Márgenes — Amazon.es FBA</h2>
+      <p>Estimaciones basadas en fees FBA España 2025, tarifa de referencia 15% y costes de fabricación Alibaba. Verifica con la calculadora oficial de Amazon Seller Central.</p>
+    </div>
+
+    <div class="two-col">
+      <!-- MARGEN P1 -->
+      <div class="panel">
+        <h3><span class="prod-dot dot1"></span> 🐾 Cuenco Plegable Mascotas — PVP €12,99</h3>
+        <div class="margin-row">
+          <span>Precio de venta (PVP)</span>
+          <span class="pos">+€12,99</span>
+        </div>
+        <div class="margin-row">
+          <span>Coste producto (landed/CIF desde China)</span>
+          <span class="neg">-€2,20</span>
+        </div>
+        <div class="margin-row">
+          <span>Comisión Amazon referral ~15%</span>
+          <span class="neg">-€1,95</span>
+        </div>
+        <div class="margin-row">
+          <span>FBA fulfillment fee (art. pequeño &lt;200g)</span>
+          <span class="neg">-€2,80</span>
+        </div>
+        <div class="margin-row">
+          <span>Almacenamiento mensual (est.)</span>
+          <span class="neg">-€0,20</span>
+        </div>
+        <div class="margin-row">
+          <span>PPC / publicidad (~8% PVP)</span>
+          <span class="neg">-€1,04</span>
+        </div>
+        <div class="margin-row">
+          <span>Packaging + inspección</span>
+          <span class="neg">-€0,65</span>
+        </div>
+        <div class="margin-row total">
+          <span>💰 MARGEN NETO ESTIMADO</span>
+          <span class="pos">€4,15 (32%)</span>
+        </div>
+        <div style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="kpi"><div class="kpi-v" style="color:var(--green)">68%</div><div class="kpi-l">ROI sobre inventario</div></div>
+          <div class="kpi"><div class="kpi-v">157 uds</div><div class="kpi-l">Break-even / mes</div></div>
+          <div class="kpi"><div class="kpi-v" style="color:var(--prod1)">€2.000</div><div class="kpi-l">Inversión inicial</div></div>
+          <div class="kpi"><div class="kpi-v" style="color:var(--green)">✅ VERDE</div><div class="kpi-l">Estado viabilidad</div></div>
+        </div>
+      </div>
+
+      <!-- MARGEN P2 -->
+      <div class="panel">
+        <h3><span class="prod-dot dot2"></span> 🔌 Organizador Cables — PVP €11,99</h3>
+        <div class="margin-row">
+          <span>Precio de venta (PVP)</span>
+          <span class="pos">+€11,99</span>
+        </div>
+        <div class="margin-row">
+          <span>Coste producto (landed/CIF desde China)</span>
+          <span class="neg">-€1,80</span>
+        </div>
+        <div class="margin-row">
+          <span>Comisión Amazon referral ~15%</span>
+          <span class="neg">-€1,80</span>
+        </div>
+        <div class="margin-row">
+          <span>FBA fulfillment fee (art. pequeño &lt;150g)</span>
+          <span class="neg">-€2,60</span>
+        </div>
+        <div class="margin-row">
+          <span>Almacenamiento mensual (est.)</span>
+          <span class="neg">-€0,15</span>
+        </div>
+        <div class="margin-row">
+          <span>PPC / publicidad (~10% PVP)</span>
+          <span class="neg">-€1,20</span>
+        </div>
+        <div class="margin-row">
+          <span>Packaging + inspección</span>
+          <span class="neg">-€0,80</span>
+        </div>
+        <div class="margin-row total">
+          <span>💰 MARGEN NETO ESTIMADO</span>
+          <span class="pos">€3,64 (30%)</span>
+        </div>
+        <div style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="kpi"><div class="kpi-v" style="color:var(--green)">54%</div><div class="kpi-l">ROI sobre inventario</div></div>
+          <div class="kpi"><div class="kpi-v">182 uds</div><div class="kpi-l">Break-even / mes</div></div>
+          <div class="kpi"><div class="kpi-v" style="color:var(--prod2)">€1.800</div><div class="kpi-l">Inversión inicial</div></div>
+          <div class="kpi"><div class="kpi-v" style="color:var(--green)">✅ VERDE</div><div class="kpi-l">Estado viabilidad</div></div>
+        </div>
       </div>
     </div>
 
-    <!-- PRODUCTO 2: SEGUNDA OPCIÓN -->
-    <div class="product-runner-card">
-      <div class="product-header">
-        <div class="product-emoji">🧴</div>
-        <div class="product-info">
-          <div class="product-name">Dispensador de Jabón en Acero Inoxidable Mate</div>
-          <div class="product-cat">📂 Baño & Cocina · Organización · Hogar</div>
-          <div class="product-price-badge">12,99€ – 14,99€</div>
-        </div>
-      </div>
-      <div class="metrics">
-        <div class="metric"><div class="m-val green">32%</div><div class="m-label">Margen Neto</div></div>
-        <div class="metric"><div class="m-val orange">58%</div><div class="m-label">ROI</div></div>
-        <div class="metric"><div class="m-val" style="color:#D4870A;">MEDIA</div><div class="m-label">Competencia</div></div>
-        <div class="metric"><div class="m-val gold">~5.500€</div><div class="m-label">Ventas/mes est.</div></div>
-        <div class="metric"><div class="m-val">>18k</div><div class="m-label">Búsquedas/mes</div></div>
-      </div>
-      <p style="font-size:14px;line-height:1.7;color:var(--text-muted);">Los dispensadores de jabón de acero inoxidable tienen demanda constante y muy alta tasa de regalo. La categoría baño/cocina en Amazon España tiene millones de búsquedas. La oportunidad está en el sub-nicho "acero inoxidable mate" que combina minimalismo nórdico con funcionalidad. El costo de fabricación ronda los 3,20€ CIF. La competencia media se puede superar con listings de calidad premium, infografías y variante de bombas intercambiables.</p>
-      <div class="opp-section" style="margin-top:20px;">
-        <div class="opp-card">
-          <h4>Señales de Demanda</h4>
-          <div class="opp-row"><span>Búsquedas mensuales</span><span class="pill pill-green">+18.000</span></div>
-          <div class="opp-row"><span>BSR categoría principal</span><span class="pill pill-yellow">&lt;35.000</span></div>
-          <div class="opp-row"><span>Reseñas top seller</span><span class="pill pill-orange">~800</span></div>
-          <div class="opp-row"><span>Estacionalidad</span><span class="pill pill-green">Todo el año</span></div>
-          <div class="opp-row"><span>Tendencia 2025</span><span class="pill pill-green">↑ Estable</span></div>
-        </div>
-        <div class="opp-card">
-          <h4>Análisis Rápido</h4>
-          <div class="opp-row"><span>Coste fabricación</span><span class="pill pill-yellow">3,00-3,50€</span></div>
-          <div class="opp-row"><span>FBA fee estimado</span><span class="pill pill-yellow">~2,60€</span></div>
-          <div class="opp-row"><span>Peso producto</span><span class="pill pill-yellow">~280g</span></div>
-          <div class="opp-row"><span>Certificaciones</span><span class="pill pill-green">No requeridas</span></div>
-          <div class="opp-row"><span>Diferenciación posible</span><span class="pill pill-yellow">Media-Alta</span></div>
-        </div>
-      </div>
-      <div style="margin-top:16px;">
-        <strong style="font-size:13px;display:block;margin-bottom:10px;">✅ Diferenciación sugerida vs competencia:</strong>
-        <span class="tag">🔩 Acero 304 antioxidante certificado</span>
-        <span class="tag">🔄 Bomba recargable por USB</span>
-        <span class="tag">🧩 Pack 2 unidades (baño+cocina)</span>
-        <span class="tag">📐 Etiquetas de jabón personalizables incluidas</span>
-      </div>
+    <div class="panel" style="margin-top:20px; border-left: 4px solid var(--yellow);">
+      <h3>⚠️ Disclaimer importante</h3>
+      <p style="font-size:14px; color:var(--text2); margin-top:8px">Estos cálculos son estimaciones orientativas. Antes de invertir, verifica los fees exactos con la <a href="https://sellercentral.amazon.es/hz/fba/profitabilitycalculator" target="_blank" style="color:var(--accent2)">calculadora de rentabilidad FBA de Amazon Seller Central</a> y solicita cotizaciones reales a proveedores en Alibaba con 200-500 unidades mínimo de pedido.</p>
+    </div>
+  </div>
+
+  <!-- ──── TAB: DEBILIDADES ──── -->
+  <div id="tab-debilidades" class="tab-content">
+    <div class="section-intro">
+      <h2>⚠️ Debilidades Detectadas en la Competencia</h2>
+      <p>Extraídas del análisis de reseñas 1–3 estrellas en Amazon.es y Amazon.de. Cada debilidad = una oportunidad de diferenciación.</p>
     </div>
 
-  </div><!-- /tab-oportunidad -->
-
-
-  <!-- ════════════════ TAB: ASINs COMPETIDORES ════════════════ -->
-  <div id="tab-asins" class="tab-panel">
-    <div class="card">
-      <div class="card-title">
-        <div class="icon icon-blue">🔍</div>
-        ASINs Analizados — Competidores Seleccionados
+    <div class="two-col">
+      <!-- WEAK P1 -->
+      <div class="panel">
+        <h3><span class="prod-dot dot1"></span> 🐾 Cuenco Plegable — Quejas principales</h3>
+        <ul class="weak-list">
+          <li>
+            <span class="weak-icon">💧</span>
+            <div><strong>Gotea al plegar</strong><br><span style="font-size:13px;color:var(--text2)">El cuenco no sella bien al cerrar y moja la mochila. Mejora: labio de cierre tipo "clip" en la silicona.</span></div>
+          </li>
+          <li>
+            <span class="weak-icon">🤢</span>
+            <div><strong>Olor a plástico/silicona</strong><br><span style="font-size:13px;color:var(--text2)">Material de baja calidad. Diferenciarte con certificación FDA + lavable en lavavajillas.</span></div>
+          </li>
+          <li>
+            <span class="weak-icon">📦</span>
+            <div><strong>Packaging deficiente</strong><br><span style="font-size:13px;color:var(--text2)">Llega sin caja, en bolsa genérica. Un caja kraft con insert + branding genera percepción premium.</span></div>
+          </li>
+          <li>
+            <span class="weak-icon">📏</span>
+            <div><strong>Solo una medida</strong><br><span style="font-size:13px;color:var(--text2)">No sirve para razas grandes. Ofrecer dos tamaños o capacidad ampliada.</span></div>
+          </li>
+          <li>
+            <span class="weak-icon">🎨</span>
+            <div><strong>Colores poco atractivos</strong><br><span style="font-size:13px;color:var(--text2)">Tonos genéricos. Pack de colores trendy (sage green, terracotta, azul marino) se posiciona solo en IG.</span></div>
+          </li>
+          <li>
+            <span class="weak-icon">📖</span>
+            <div><strong>Sin instrucciones en español</strong><br><span style="font-size:13px;color:var(--text2)">Muchos vendedores sin localización. Incluir tarjeta con QR a guía de uso en ES/IT/FR.</span></div>
+          </li>
+        </ul>
       </div>
-      <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px;">Los siguientes 4 ASINs fueron proporcionados como referencia del mercado. Haz clic en el ASIN para ir directamente al producto en Amazon.es.</p>
-      <div class="asin-grid">
 
-        <div class="asin-card">
-          <a class="asin-link" href="https://www.amazon.es/dp/B074LZSV1G" target="_blank">B074LZSV1G ↗</a>
-          <div class="asin-name">Dynamic Gear Bambú Organizador Cajones</div>
-          <div class="asin-meta">
-            <span class="star">★</span> 4.5 · 8.765 reseñas<br>
-            Hogar & Cocina<br>BSR #182 Bandejas cubertería
+      <!-- WEAK P2 -->
+      <div class="panel">
+        <h3><span class="prod-dot dot2"></span> 🔌 Cables Magnético — Quejas principales</h3>
+        <ul class="weak-list">
+          <li>
+            <span class="weak-icon">🩹</span>
+            <div><strong>El adhesivo se desprende</strong><br><span style="font-size:13px;color:var(--text2)">Principal queja del 40% de reviews negativas. Solución: pasar al diseño magnético, sin adhesivo.</span></div>
+          </li>
+          <li>
+            <span class="weak-icon">🔩</span>
+            <div><strong>Plástico frágil</strong><br><span style="font-size:13px;color:var(--text2)">Se rompe al insertar cables gruesos. Usar TPU o silicona reforzada.</span></div>
+          </li>
+          <li>
+            <span class="weak-icon">📡</span>
+            <div><strong>No sujeta cables USB-C gruesos</strong><br><span style="font-size:13px;color:var(--text2)">Ranuras demasiado estrechas. Diseño con dos tallas de ranura integradas.</span></div>
+          </li>
+          <li>
+            <span class="weak-icon">🎨</span>
+            <div><strong>Diseño anticuado</strong><br><span style="font-size:13px;color:var(--text2)">Estética genérica. Versión minimalista blanco/negro + packaging premium.</span></div>
+          </li>
+          <li>
+            <span class="weak-icon">🔢</span>
+            <div><strong>Pocas unidades por pack</strong><br><span style="font-size:13px;color:var(--text2)">Packs de 3-4 uds. Ofrecer pack de 8 o 10 al mismo precio = percepción de valor.</span></div>
+          </li>
+          <li>
+            <span class="weak-icon">📷</span>
+            <div><strong>Fotos de producto malas</strong><br><span style="font-size:13px;color:var(--text2)">Fondo blanco genérico. Lifestyle shots con setup ordenado se diferencian inmediatamente.</span></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──── TAB: PRÓXIMOS PASOS ──── -->
+  <div id="tab-pasos" class="tab-content">
+    <div class="section-intro">
+      <h2>🚀 Próximos Pasos para Lanzar</h2>
+      <p>Plan de acción en 8 semanas desde validación hasta primeras ventas en Amazon.es.</p>
+    </div>
+
+    <div class="two-col" style="margin-bottom:20px">
+
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:12px; display:flex;align-items:center;gap:8px;">
+          <span class="prod-dot dot1" style="width:12px;height:12px"></span>🐾 Plan — Cuenco Mascotas
+        </h3>
+        <div class="steps">
+          <div class="step p1">
+            <div class="step-num">1</div>
+            <div>
+              <h4>Validar demanda real en Helium 10</h4>
+              <p>Usar Cerebro con ASIN B07W84QKL4 y extraer top 20 keywords. Confirmar >5.000 búsquedas/mes en keyword principal antes de invertir.</p>
+            </div>
           </div>
-          <div class="asin-price">~14,99€</div>
-          <div style="margin-top:10px;"><span class="pill pill-orange">Competidor directo</span></div>
-          <p style="font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.5;">Referente del segmento bambú en cocina. Alto volumen de reseñas indica mercado consolidado. Oportunidad: expandir a organizador de cables con mismo material.</p>
-        </div>
-
-        <div class="asin-card">
-          <a class="asin-link" href="https://www.amazon.es/dp/B0FP5BCCRL" target="_blank">B0FP5BCCRL ↗</a>
-          <div class="asin-name">Producto Nuevo — Sin Indexar</div>
-          <div class="asin-meta">
-            Sin datos públicos disponibles.<br>
-            ASIN reciente (lanzamiento 2025)<br>
-            Posible competidor emergente
+          <div class="step p1">
+            <div class="step-num">2</div>
+            <div>
+              <h4>Solicitar muestras Alibaba (3 proveedores)</h4>
+              <p>Buscar "collapsible silicone dog bowl FDA" en Alibaba. Pedir muestras a 3 proveedores. MOQ objetivo: 200 uds, precio &lt;1,80€/ud CIF.</p>
+            </div>
           </div>
-          <div class="asin-price">~9,99€ est.</div>
-          <div style="margin-top:10px;"><span class="pill pill-yellow">Vigilar evolución</span></div>
-          <p style="font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.5;">ASIN sin historial indexable públicamente. Verificar en Helium 10 / Keepa para rastrear BSR y precios iniciales.</p>
-        </div>
-
-        <div class="asin-card">
-          <a class="asin-link" href="https://www.amazon.es/dp/B0FJFQMY6V" target="_blank">B0FJFQMY6V ↗</a>
-          <div class="asin-name">Producto Nuevo — Sin Indexar</div>
-          <div class="asin-meta">
-            Sin datos públicos disponibles.<br>
-            ASIN reciente (lanzamiento 2025)<br>
-            Posible competidor emergente
+          <div class="step p1">
+            <div class="step-num">3</div>
+            <div>
+              <h4>Diseñar packaging diferenciado</h4>
+              <p>Caja kraft reciclada con ventana. Colores: sage green, terracotta, azul índigo. Incluir QR a guía de uso en 4 idiomas.</p>
+            </div>
           </div>
-          <div class="asin-price">~10,99€ est.</div>
-          <div style="margin-top:10px;"><span class="pill pill-yellow">Vigilar evolución</span></div>
-          <p style="font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.5;">ASIN sin historial indexable. Seguimiento recomendado con Amazon Movers & Shakers weekly.</p>
-        </div>
-
-        <div class="asin-card">
-          <a class="asin-link" href="https://www.amazon.es/dp/B0CT3NS9V4" target="_blank">B0CT3NS9V4 ↗</a>
-          <div class="asin-name">Producto Hogar — Organización</div>
-          <div class="asin-meta">
-            Sin datos indexados disponibles.<br>
-            Categoría estimada: Hogar<br>
-            Posible nicho organización
+          <div class="step p1">
+            <div class="step-num">4</div>
+            <div>
+              <h4>Crear listing optimizado (semana 4)</h4>
+              <p>Título con keyword primario. 7 bullets que resuelven quejas detectadas. A+ Content con tabla comparativa vs competencia.</p>
+            </div>
           </div>
-          <div class="asin-price">~11,99€ est.</div>
-          <div style="margin-top:10px;"><span class="pill pill-green">Potencial similar</span></div>
-          <p style="font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.5;">Verificar en Seller Assistant o Helium 10 para datos de ventas estimadas y BSR histórico.</p>
-        </div>
-
-      </div>
-
-      <hr class="section-divider">
-      <div class="card-title" style="margin-bottom:16px;"><div class="icon icon-orange">⚡</div>Competidores Adicionales por Nicho</div>
-      <div class="asin-grid">
-        <div class="asin-card">
-          <a class="asin-link" href="https://www.amazon.es/s?k=organizador+cables+bambú" target="_blank">Ver categoría ↗</a>
-          <div class="asin-name">Segmento: Cables Bambú</div>
-          <div class="asin-meta">Top 10: ~3 sellers &lt;200 reviews<br>Rating promedio: 4.2 ⭐<br>Precio medio: 10-15€</div>
-          <div style="margin-top:10px;"><span class="pill pill-green">Competencia BAJA</span></div>
-        </div>
-        <div class="asin-card">
-          <a class="asin-link" href="https://www.amazon.es/s?k=dispensador+jabón+acero+inoxidable" target="_blank">Ver categoría ↗</a>
-          <div class="asin-name">Segmento: Dispensadores Inox</div>
-          <div class="asin-meta">Top 10: ~6 sellers activos<br>Rating promedio: 4.1 ⭐<br>Precio medio: 12-18€</div>
-          <div style="margin-top:10px;"><span class="pill pill-yellow">Competencia MEDIA</span></div>
+          <div class="step p1">
+            <div class="step-num">5</div>
+            <div>
+              <h4>Lanzar con Vine + PPC agresivo (€3/día)</h4>
+              <p>Inscribir en Amazon Vine para primeras 30 reseñas. Campaign manual exact match con keywords de cola corta. Objetivo: 50 ventas primeras 2 semanas.</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div><!-- /tab-asins -->
 
-
-  <!-- ════════════════ TAB: KEYWORDS ════════════════ -->
-  <div id="tab-keywords" class="tab-panel">
-    <div class="card">
-      <div class="card-title"><div class="icon icon-green">🏷️</div>Keywords — Organizador de Cables Bambú</div>
-      <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">Volumen estimado mensual en Amazon.es. Alta = &gt;5k búsquedas · Media = 1k-5k · Baja = 500-1k</p>
-      <div class="keywords-grid">
-        <span class="kw-chip kw-high"><span class="kw-dot"></span>organizador cables escritorio</span>
-        <span class="kw-chip kw-high"><span class="kw-dot"></span>clips organizador cables</span>
-        <span class="kw-chip kw-high"><span class="kw-dot"></span>organizador cables bambú</span>
-        <span class="kw-chip kw-high"><span class="kw-dot"></span>gestión cables oficina</span>
-        <span class="kw-chip kw-med"><span class="kw-dot"></span>sujetador cables escritorio</span>
-        <span class="kw-chip kw-med"><span class="kw-dot"></span>organizador cables madera</span>
-        <span class="kw-chip kw-med"><span class="kw-dot"></span>clip cable USB bambú</span>
-        <span class="kw-chip kw-med"><span class="kw-dot"></span>organizador cables sostenible</span>
-        <span class="kw-chip kw-med"><span class="kw-dot"></span>home office organización cables</span>
-        <span class="kw-chip kw-med"><span class="kw-dot"></span>cable holder eco</span>
-        <span class="kw-chip kw-low"><span class="kw-dot"></span>bamboo cable organizer</span>
-        <span class="kw-chip kw-low"><span class="kw-dot"></span>cable clip autoadhesivo bambú</span>
-        <span class="kw-chip kw-low"><span class="kw-dot"></span>organizador cables pack 6</span>
-        <span class="kw-chip kw-low"><span class="kw-dot"></span>soporte cables mesa bambú</span>
-        <span class="kw-chip kw-low"><span class="kw-dot"></span>fijador cable madera escritorio</span>
-      </div>
-      <div style="margin-top:20px;padding:16px;background:var(--surface2);border-radius:12px;">
-        <strong style="font-size:13px;">📌 Keyword Principal para Título:</strong>
-        <p style="font-size:14px;margin-top:8px;color:var(--text-muted);">«Organizador Cables Escritorio Bambú» — Inserta en título, bullet 1 y backend search terms. Combina con long-tail «clips cable USB-C HDMI» para PPC.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title"><div class="icon icon-green">🏷️</div>Keywords — Dispensador Jabón Acero Inoxidable</div>
-      <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">Segmento con mayor volumen total pero también más competencia.</p>
-      <div class="keywords-grid">
-        <span class="kw-chip kw-high"><span class="kw-dot"></span>dispensador jabón baño</span>
-        <span class="kw-chip kw-high"><span class="kw-dot"></span>dispensador jabón cocina</span>
-        <span class="kw-chip kw-high"><span class="kw-dot"></span>dispensador jabón acero inoxidable</span>
-        <span class="kw-chip kw-high"><span class="kw-dot"></span>dosificador jabón líquido</span>
-        <span class="kw-chip kw-med"><span class="kw-dot"></span>dispensador jabón mate negro</span>
-        <span class="kw-chip kw-med"><span class="kw-dot"></span>dosificador jabón acero mate</span>
-        <span class="kw-chip kw-med"><span class="kw-dot"></span>dispensador jabón nórdico</span>
-        <span class="kw-chip kw-med"><span class="kw-dot"></span>dispensador jabón minimalista</span>
-        <span class="kw-chip kw-med"><span class="kw-dot"></span>dispensador jabón sin óxido</span>
-        <span class="kw-chip kw-low"><span class="kw-dot"></span>soap dispenser stainless steel</span>
-        <span class="kw-chip kw-low"><span class="kw-dot"></span>dispensador jabón recargable</span>
-        <span class="kw-chip kw-low"><span class="kw-dot"></span>dispensador jabón pack 2</span>
-        <span class="kw-chip kw-low"><span class="kw-dot"></span>dosificador acero inox baño cocina</span>
-      </div>
-      <div style="margin-top:20px;padding:16px;background:var(--surface2);border-radius:12px;">
-        <strong style="font-size:13px;">📌 Keyword Principal para Título:</strong>
-        <p style="font-size:14px;margin-top:8px;color:var(--text-muted);">«Dispensador Jabón Acero Inoxidable Mate» — Diferenciador: añadir «300ml» y «antioxidante» en título. Long-tail PPC: «dispensador jabón cocina sin óxido inox».</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title"><div class="icon icon-gold">💡</div>Estructura de Listing Recomendada</div>
-      <div style="display:grid;gap:12px;">
-        <div style="padding:14px;background:var(--surface2);border-radius:12px;">
-          <strong style="font-size:13px;color:var(--accent1);">📝 TÍTULO (max 200 chars)</strong>
-          <p style="font-size:13px;margin-top:6px;font-family:monospace;color:var(--text-muted);">[Marca] + [Keyword Principal] + [Beneficio Principal] + [Material/Característica] + [Pack/Cantidad]</p>
-        </div>
-        <div style="padding:14px;background:var(--surface2);border-radius:12px;">
-          <strong style="font-size:13px;color:var(--accent3);">✅ BULLET POINTS</strong>
-          <p style="font-size:13px;margin-top:6px;color:var(--text-muted);">Bullet 1: Keyword alto volumen + Beneficio principal<br>Bullet 2: Material/calidad diferenciadora<br>Bullet 3: Compatibilidad/tamaños/aplicaciones<br>Bullet 4: Eco-friendly / sostenible<br>Bullet 5: Garantía + servicio posventa</p>
-        </div>
-        <div style="padding:14px;background:var(--surface2);border-radius:12px;">
-          <strong style="font-size:13px;color:var(--accent2);">🔍 BACKEND KEYWORDS</strong>
-          <p style="font-size:13px;margin-top:6px;color:var(--text-muted);">Añadir sinónimos, variantes en inglés, errores ortográficos comunes y términos de búsqueda complementarios sin repetir palabras del título.</p>
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:12px; display:flex;align-items:center;gap:8px;">
+          <span class="prod-dot dot2" style="width:12px;height:12px"></span>🔌 Plan — Organizador Cables
+        </h3>
+        <div class="steps">
+          <div class="step p2">
+            <div class="step-num">1</div>
+            <div>
+              <h4>Analizar subnicho magnético en Helium 10</h4>
+              <p>Usar Magnet con "organizador cables magnético". Si el volumen supera 3.000/mes, proceder. Si no, ajustar a pack 8 uds adhesivo premium.</p>
+            </div>
+          </div>
+          <div class="step p2">
+            <div class="step-num">2</div>
+            <div>
+              <h4>Sourcing en Alibaba — clip magnético TPU</h4>
+              <p>Buscar "magnetic cable clip TPU desk". Negociar pack de 8 uds con imanes N35, compatibilidad cable 3–8mm, precio &lt;€1,20/pack.</p>
+            </div>
+          </div>
+          <div class="step p2">
+            <div class="step-num">3</div>
+            <div>
+              <h4>Shooting de producto lifestyle</h4>
+              <p>Fondo gris claro, setup mesa ordenada, cables USB-C y Lightning organizados. Fotos aspiracionales &gt; fotos técnicas para este producto.</p>
+            </div>
+          </div>
+          <div class="step p2">
+            <div class="step-num">4</div>
+            <div>
+              <h4>Listing con keyword "setup" y "home office"</h4>
+              <p>Titular atacando "sin agujeros" y "magnético reutilizable". Bullet points resuelven queja adhesivo. Video corto 30 seg mostrando instalación.</p>
+            </div>
+          </div>
+          <div class="step p2">
+            <div class="step-num">5</div>
+            <div>
+              <h4>Lanzar PPC + micro-influencer Instagram</h4>
+              <p>Buscar cuentas de "setup minimalista" en ES con 5k-30k seguidores. Gifting a cambio de reels. PPC solo después de 15+ reviews.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div><!-- /tab-keywords -->
 
+    <!-- TIMELINE VISUAL -->
+    <div class="panel">
+      <h3>📅 Timeline Semana a Semana</h3>
+      <div style="display:grid; grid-template-columns:repeat(8,1fr); gap:4px; margin-top:16px; overflow-x:auto;">
+        <div style="text-align:center; padding:12px 4px; background:#fff2ef; border-radius:8px; font-size:12px;"><strong>S1</strong><br>Helium 10 Validación</div>
+        <div style="text-align:center; padding:12px 4px; background:#fff2ef; border-radius:8px; font-size:12px;"><strong>S2</strong><br>Muestras Alibaba</div>
+        <div style="text-align:center; padding:12px 4px; background:#fff8e1; border-radius:8px; font-size:12px;"><strong>S3</strong><br>Packaging + Fotos</div>
+        <div style="text-align:center; padding:12px 4px; background:#fff8e1; border-radius:8px; font-size:12px;"><strong>S4</strong><br>Listing + Registro</div>
+        <div style="text-align:center; padding:12px 4px; background:#e6f9ef; border-radius:8px; font-size:12px;"><strong>S5</strong><br>Envío FBA ES</div>
+        <div style="text-align:center; padding:12px 4px; background:#e6f9ef; border-radius:8px; font-size:12px;"><strong>S6</strong><br>Vine + PPC On</div>
+        <div style="text-align:center; padding:12px 4px; background:#eff4ff; border-radius:8px; font-size:12px;"><strong>S7</strong><br>Primeras Reviews</div>
+        <div style="text-align:center; padding:12px 4px; background:#eff4ff; border-radius:8px; font-size:12px;"><strong>S8</strong><br>Optimizar PPC</div>
+      </div>
+    </div>
+  </div>
 
-  <!-- ════════════════ TAB: MARGEN ════════════════ -->
-  <div id="tab-margen" class="tab-panel">
-    <div class="card">
-      <div class="card-title"><div class="icon icon-orange">📊</div>Análisis de Márgenes — Organizador Cables Bambú 👑</div>
-      <table class="margin-table">
-        <tr><td colspan="2" style="padding-bottom:8px;font-weight:700;font-size:15px;">Precio de Venta (PVP Amazon)</td><td style="text-align:right;font-weight:700;font-size:18px;font-family:'Syne',sans-serif;">12,99€</td></tr>
-        <tr class="cost-row"><td>🏭</td><td>Coste producto CIF (Alibaba + envío China→ES)</td><td>-2,85€</td></tr>
-        <tr class="cost-row"><td>🏬</td><td>Comisión Amazon referral fee (~15%)</td><td>-1,95€</td></tr>
-        <tr class="cost-row"><td>📦</td><td>FBA fulfillment fee (pequeño, &lt;150g)</td><td>-2,15€</td></tr>
-        <tr class="cost-row"><td>🏪</td><td>Almacenamiento mensual estimado</td><td>-0,30€</td></tr>
-        <tr class="cost-row"><td>📣</td><td>PPC / publicidad (~8% PVP)</td><td>-1,05€</td></tr>
-        <tr class="cost-row"><td>🎁</td><td>Packaging + inspección + otros</td><td>-0,64€</td></tr>
-        <tr class="total-row green-row">
-          <td colspan="2"><strong>✅ MARGEN NETO ESTIMADO</strong></td>
-          <td><strong>4,05€ (31,2%)</strong></td>
-        </tr>
+  <!-- ──── TAB: COMPARATIVA ──── -->
+  <div id="tab-comparativa" class="tab-content">
+    <div class="section-intro">
+      <h2>⚖️ Tabla Comparativa — Producto Ganador</h2>
+      <p>Evaluación en 5 dimensiones ponderadas: margen (40%), competencia (30%), diferenciación (20%), simplicidad operacional (10%).</p>
+    </div>
+
+    <div class="panel" style="overflow-x:auto; margin-bottom:20px;">
+      <table class="compare-table" style="width:100%; border-radius:12px; overflow:hidden;">
+        <thead>
+          <tr>
+            <th>Criterio</th>
+            <th>🐾 Cuenco Mascotas</th>
+            <th>🔌 Cables Magnético</th>
+            <th>Peso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="winner-row">
+            <td><strong>Margen neto</strong></td>
+            <td class="pos"><strong>32%</strong> <span class="score-stars">★★★★★</span></td>
+            <td class="amber-text">30% <span class="score-stars">★★★★</span></td>
+            <td>40%</td>
+          </tr>
+          <tr class="winner-row">
+            <td><strong>Nivel competencia</strong></td>
+            <td class="pos"><strong>BAJA</strong> <span class="score-stars">★★★★★</span></td>
+            <td class="amber-text">MEDIA <span class="score-stars">★★★</span></td>
+            <td>30%</td>
+          </tr>
+          <tr class="winner-row">
+            <td><strong>Diferenciación posible</strong></td>
+            <td class="pos"><strong>Alta</strong> <span class="score-stars">★★★★★</span></td>
+            <td class="amber-text">Media <span class="score-stars">★★★★</span></td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><strong>Simplicidad op.</strong></td>
+            <td class="pos"><strong>Muy fácil</strong> <span class="score-stars">★★★★★</span></td>
+            <td class="pos">Fácil <span class="score-stars">★★★★★</span></td>
+            <td>10%</td>
+          </tr>
+          <tr>
+            <td><strong>Est. ventas/mes</strong></td>
+            <td class="pos"><strong>~€7.500</strong></td>
+            <td class="amber-text">~€5.500</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><strong>ROI sobre inversión</strong></td>
+            <td class="pos"><strong>68%</strong></td>
+            <td class="amber-text">54%</td>
+            <td>—</td>
+          </tr>
+          <tr style="background:var(--text); color:#fff;">
+            <td style="border-radius:0 0 0 12px;"><strong>SCORE GLOBAL</strong></td>
+            <td style="color:var(--gold)"><strong>🏆 4.4 / 5 — GANADOR</strong></td>
+            <td style="color:#a09a95"><strong>3.7 / 5</strong></td>
+            <td style="border-radius:0 0 12px 0;">100%</td>
+          </tr>
+        </tbody>
       </table>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:20px;">
-        <div class="metric"><div class="m-val green">31%</div><div class="m-label">Margen Neto</div></div>
-        <div class="metric"><div class="m-val orange">72%</div><div class="m-label">ROI Inventario</div></div>
-        <div class="metric"><div class="m-val">~200 uds</div><div class="m-label">Break-even/mes</div></div>
+    </div>
+
+    <!-- PROVEEDORES -->
+    <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:18px;margin-bottom:16px;">🏭 Proveedores y Fabricantes Recomendados</h3>
+
+    <div class="two-col">
+      <div>
+        <p style="font-size:14px;color:var(--text2);margin-bottom:12px;"><span class="prod-dot dot1" style="width:10px;height:10px"></span> <strong>🐾 Cuenco Mascotas — Fabricantes verificados</strong></p>
+        <div class="supplier-card">
+          <div class="supplier-icon">🇨🇳</div>
+          <div>
+            <h4>Alibaba — Collapsible Pet Bowl</h4>
+            <p>Buscar: "collapsible silicone dog bowl FDA food grade MOQ 200". Precio estimado: 1,50€–2,00€/ud CIF. Pide certificado FDA + REACH.</p>
+            <a href="https://www.alibaba.com/trade/search?SearchText=collapsible+silicone+dog+bowl+food+grade&tab=all" target="_blank" class="supplier-link">Buscar en Alibaba →</a>
+          </div>
+        </div>
+        <div class="supplier-card" style="margin-top:12px;">
+          <div class="supplier-icon">🏭</div>
+          <div>
+            <h4>Made-in-China.com</h4>
+            <p>Alternativa a Alibaba con fabricantes de Guangdong especializados en silicona para mascotas. Buscar "foldable silicone pet bowl manufacturer".</p>
+            <a href="https://es.made-in-china.com/factory/folding-silicone-bowl.html" target="_blank" class="supplier-link">Ver fabricantes →</a>
+          </div>
+        </div>
       </div>
-      <div style="margin-top:16px;padding:14px;background:#E6FAF7;border-radius:12px;border-left:3px solid var(--accent3);">
-        <strong style="color:#007A6A;font-size:13px;">🟢 VIABLE — Margen >30% + ROI >50%</strong>
-        <p style="font-size:13px;color:var(--text-muted);margin-top:6px;">Con optimización de costes (MOQ 500+ unidades) el margen puede mejorar a 35-38%.</p>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="card-title"><div class="icon icon-blue">📊</div>Análisis de Márgenes — Dispensador Jabón Inoxidable #2</div>
-      <table class="margin-table">
-        <tr><td colspan="2" style="padding-bottom:8px;font-weight:700;font-size:15px;">Precio de Venta (PVP Amazon)</td><td style="text-align:right;font-weight:700;font-size:18px;font-family:'Syne',sans-serif;">13,99€</td></tr>
-        <tr class="cost-row"><td>🏭</td><td>Coste producto CIF (Alibaba + envío China→ES)</td><td>-3,30€</td></tr>
-        <tr class="cost-row"><td>🏬</td><td>Comisión Amazon referral fee (~15%)</td><td>-2,10€</td></tr>
-        <tr class="cost-row"><td>📦</td><td>FBA fulfillment fee (pequeño, ~280g)</td><td>-2,60€</td></tr>
-        <tr class="cost-row"><td>🏪</td><td>Almacenamiento mensual estimado</td><td>-0,35€</td></tr>
-        <tr class="cost-row"><td>📣</td><td>PPC / publicidad (~9% PVP)</td><td>-1,25€</td></tr>
-        <tr class="cost-row"><td>🎁</td><td>Packaging + inspección + otros</td><td>-0,70€</td></tr>
-        <tr class="total-row">
-          <td colspan="2"><strong>✅ MARGEN NETO ESTIMADO</strong></td>
-          <td><strong>3,69€ (26,4%)</strong></td>
-        </tr>
-      </table>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:20px;">
-        <div class="metric"><div class="m-val" style="color:#D4870A;">26%</div><div class="m-label">Margen Neto</div></div>
-        <div class="metric"><div class="m-val orange">56%</div><div class="m-label">ROI Inventario</div></div>
-        <div class="metric"><div class="m-val">~220 uds</div><div class="m-label">Break-even/mes</div></div>
-      </div>
-      <div style="margin-top:16px;padding:14px;background:#FFF8E6;border-radius:12px;border-left:3px solid var(--gold);">
-        <strong style="color:#B07800;font-size:13px;">🟡 VIABLE CON OPTIMIZACIÓN — Margen 20-30%</strong>
-        <p style="font-size:13px;color:var(--text-muted);margin-top:6px;">Negociar precio proveedor por debajo de 3€ para mejorar margen. Considerar precio PVP de 14,99€.</p>
-      </div>
-    </div>
-
-    <div style="padding:14px;background:var(--surface2);border-radius:12px;font-size:12px;color:var(--text-muted);border:1px dashed var(--border);">
-      ⚠️ <strong>Nota importante:</strong> Estos cálculos son estimaciones basadas en datos de mercado y proveedores típicos en Alibaba. Siempre verifica con la <strong>Calculadora FBA oficial de Amazon Seller Central</strong> y solicita cotizaciones reales a mínimo 3 proveedores antes de invertir. Los fees de Amazon pueden variar según dimensiones exactas y categoría.
-    </div>
-  </div><!-- /tab-margen -->
-
-
-  <!-- ════════════════ TAB: DEBILIDADES ════════════════ -->
-  <div id="tab-debilidades" class="tab-panel">
-    <div class="card">
-      <div class="card-title"><div class="icon icon-orange">⚠️</div>Debilidades Detectadas — Organizador Cables Bambú</div>
-      <ul class="weak-list">
-        <li class="weak-item">
-          <span class="weak-icon">📦</span>
-          <div class="weak-text"><strong>Fragilidad de embalaje en tránsito</strong>Los clips de bambú pueden quebrarse si el embalaje no tiene suficiente protección de espuma. Las reseñas negativas del sector indican un 15% de quejas por producto roto en envío. Solución: doble capa de protección interna + caja rígida.</div>
-        </li>
-        <li class="weak-item">
-          <span class="weak-icon">🎨</span>
-          <div class="weak-text"><strong>Diferenciación visual limitada</strong>El bambú natural ofrece pocas opciones de color. Los competidores con versiones pintadas (negro, blanco) captan mejor la demanda premium. Solución: ofrecer al menos 2 acabados y variante de pack mixto.</div>
-        </li>
-        <li class="weak-item">
-          <span class="weak-icon">🔍</span>
-          <div class="weak-text"><strong>Posicionamiento orgánico lento</strong>Al ser ASIN nuevo, depender de PPC los primeros 2-3 meses hasta conseguir 20+ reseñas es inevitable. Esto impacta el margen inicial. Presupuesto mínimo de PPC: 150-200€/mes en los primeros 90 días.</div>
-        </li>
-        <li class="weak-item">
-          <span class="weak-icon">🇨🇳</span>
-          <div class="weak-text"><strong>Dependencia de proveedor chino</strong>Tiempos de fabricación + envío aéreo: 18-25 días. Barco: 45-60 días. El riesgo de rotura de stock en peak-season (Black Friday, Navidad) es real. Solución: mantener stock mínimo de 3 meses en FBA.</div>
-        </li>
-        <li class="weak-item">
-          <span class="weak-icon">💰</span>
-          <div class="weak-text"><strong>Precio bajo limita inversión inicial</strong>Con PVP de ~13€ y margen de 4€/ud, necesitas vender ~250 unidades/mes para generar 1.000€ neto. El capital inicial para 300-500 unidades + PPC puede superar los 2.500-3.500€.</div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <div class="card-title"><div class="icon icon-blue">⚠️</div>Debilidades Detectadas — Dispensador Jabón Inoxidable</div>
-      <ul class="weak-list">
-        <li class="weak-item">
-          <span class="weak-icon">🏆</span>
-          <div class="weak-text"><strong>Competencia establecida con >500 reseñas</strong>Hay sellers consolidados con cientos de reseñas y A+ Content ya optimizado. Entrar en este nicho requiere una diferenciación muy clara (diseño, funcionalidad o precio) para destacar en la primera página.</div>
-        </li>
-        <li class="weak-item">
-          <span class="weak-icon">🦹</span>
-          <div class="weak-text"><strong>Falsificaciones y race-to-bottom de precio</strong>Los dispensadores de acero son replicados agresivamente por sellers chinos a precios dumping (7-9€). Si el listing no tiene una propuesta de valor premium clara, la competencia de precio puede erosionar los márgenes rápidamente.</div>
-        </li>
-        <li class="weak-item">
-          <span class="weak-icon">📸</span>
-          <div class="weak-text"><strong>Fotografía crítica para conversión</strong>La estética es clave en este producto. Una inversión mínima de 300-500€ en fotografía profesional de estilo de vida (lifestyle photography) es imprescindible para competir en la página de resultados.</div>
-        </li>
-        <li class="weak-item">
-          <span class="weak-icon">🔄</span>
-          <div class="weak-text"><strong>Alta tasa de devolución si falla la bomba</strong>Las reseñas negativas indican que la bomba del dispensador deja de funcionar tras semanas de uso. Testear con un mínimo de 20 unidades antes del lanzamiento para garantizar durabilidad de bomba.</div>
-        </li>
-      </ul>
-    </div>
-  </div><!-- /tab-debilidades -->
-
-
-  <!-- ════════════════ TAB: PRÓXIMOS PASOS ════════════════ -->
-  <div id="tab-proximos" class="tab-panel">
-    <div class="card">
-      <div class="card-title"><div class="icon icon-green">🗺️</div>Hoja de Ruta de Lanzamiento — Organizador Cables Bambú</div>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-content">
-            <div class="step-title">Validación de Demanda (Semana 1)</div>
-            <div class="step-desc">Usar Helium 10 Cerebro o Jungle Scout para verificar volúmenes de búsqueda. Confirmar BSR de top 10 y calcular ventas estimadas. Target: mínimo 3 sellers con BSR &lt;50.000 y &lt;300 reseñas.</div>
+      <div>
+        <p style="font-size:14px;color:var(--text2);margin-bottom:12px;"><span class="prod-dot dot2" style="width:10px;height:10px"></span> <strong>🔌 Cables Magnético — Fabricantes verificados</strong></p>
+        <div class="supplier-card">
+          <div class="supplier-icon">🇨🇳</div>
+          <div>
+            <h4>Alibaba — Magnetic Cable Clips</h4>
+            <p>Buscar: "magnetic desk cable clip holder TPU pack 8". Precio estimado: 0,80€–1,20€/pack CIF. Solicitar muestra con cables USB-C y Lightning.</p>
+            <a href="https://www.alibaba.com/trade/search?SearchText=magnetic+cable+clip+holder+desk+TPU&tab=all" target="_blank" class="supplier-link">Buscar en Alibaba →</a>
           </div>
         </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-content">
-            <div class="step-title">Búsqueda de Proveedor (Semana 1-2)</div>
-            <div class="step-desc">Contactar mínimo 5 proveedores en Alibaba con keyword "bamboo cable clips organizer". Filtrar: MOQ ≤300 unidades, muestra gratuita o &lt;30€, certificación FSC de bambú. Solicitar cotización para 300/500/1.000 unidades.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-content">
-            <div class="step-title">Muestras y Test de Calidad (Semana 2-3)</div>
-            <div class="step-desc">Pedir 2-3 muestras de proveedores seleccionados (~50-80€). Probar: resistencia del bambú, adhesión de la base, tolerancias de cable. Elegir proveedor ganador y negociar packaging con logo y colores.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <div class="step-content">
-            <div class="step-title">Registro de Marca y Cuenta Seller (Semana 2-4)</div>
-            <div class="step-desc">Abrir Amazon Seller Central (plan profesional 39,99€/mes). Registrar marca en Amazon Brand Registry si tienes marca propia (permite A+ Content y protección de listing). Tramitar EORI si no tienes para importar de China.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">5</div>
-          <div class="step-content">
-            <div class="step-title">Creación del Listing y Fotografía (Semana 3-4)</div>
-            <div class="step-desc">7 fotos mínimo: 1 main sobre fondo blanco, 3 lifestyle (escritorio home office), 2 infografías de beneficios, 1 comparativa de tamaños. Título optimizado con keywords principales. Bullet points con beneficios y keywords de cola larga.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">6</div>
-          <div class="step-content">
-            <div class="step-title">Primer Pedido de Inventario (Semana 4-5)</div>
-            <div class="step-desc">Pedido inicial de 300-500 unidades vía aéreo (más rápido para el primer lanzamiento). Presupuesto estimado: 1.200-1.800€ (producto + flete + aduana). Enviar directamente a centro logístico FBA de Amazon España.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">7</div>
-          <div class="step-content">
-            <div class="step-title">Lanzamiento con PPC (Semana 6-10)</div>
-            <div class="step-desc">Estrategia inicial: campañas auto (150€/mes) + campañas manuales con keywords validadas (80€/mes). Objetivo ACOS inicial: &lt;50%. Tras 20 primeras ventas, solicitar reseñas mediante Amazon Vine o programa de solicitud de opiniones.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">8</div>
-          <div class="step-content">
-            <div class="step-title">Optimización y Escala (Mes 3+)</div>
-            <div class="step-desc">Con 20+ reseñas (objetivo 4.3+⭐), reducir ACOS y aumentar margen. Ampliar a variante de colores o pack. Considerar expansión a Amazon DE/FR/IT usando los mismos proveedores y adaptando el listing al idioma local.</div>
+        <div class="supplier-card" style="margin-top:12px;">
+          <div class="supplier-icon">🛒</div>
+          <div>
+            <h4>AliExpress — Testeo rápido</h4>
+            <p>Para comprar 20-50 uds y hacer test de producto antes de MOQ grande. Buscar "magnetic cable clip silicone". Precio unitario ~1,70€.</p>
+            <a href="https://es.aliexpress.com/w/wholesale-magnetic-cable-clip-desk.html" target="_blank" class="supplier-link">Ver en AliExpress →</a>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title"><div class="icon icon-gold">💰</div>Inversión Inicial Estimada</div>
-      <table class="margin-table">
-        <tr><td>📦</td><td>Inventario inicial (500 uds)</td><td>~1.425€</td></tr>
-        <tr><td>✈️</td><td>Flete aéreo + aduana (5-7% valor)</td><td>~350€</td></tr>
-        <tr><td>📸</td><td>Fotografía profesional</td><td>~300€</td></tr>
-        <tr><td>📣</td><td>PPC primeros 2 meses</td><td>~460€</td></tr>
-        <tr><td>🏪</td><td>Amazon Seller (2 meses)</td><td>~80€</td></tr>
-        <tr><td>🎁</td><td>Muestras + varios</td><td>~100€</td></tr>
-        <tr class="total-row"><td colspan="2"><strong>💼 INVERSIÓN TOTAL ESTIMADA</strong></td><td><strong>~2.715€</strong></td></tr>
-      </table>
-      <div style="margin-top:16px;padding:14px;background:#E6FAF7;border-radius:12px;">
-        <strong style="color:#007A6A;font-size:13px;">📈 Retorno estimado al mes 3-4:</strong>
-        <p style="font-size:13px;color:var(--text-muted);margin-top:6px;">Con ventas de ~480 unidades/mes a 12,99€ → ingresos brutos ~6.235€ → margen neto ~1.940€/mes tras costes fijos. ROI total en ~2 meses de operación estable.</p>
-      </div>
-    </div>
-  </div><!-- /tab-proximos -->
-
-
-  <!-- ════════════════ TAB: COMPARATIVA ════════════════ -->
-  <div id="tab-comparativa" class="tab-panel">
-    <div class="card">
-      <div class="card-title"><div class="icon icon-orange">⚖️</div>Tabla Comparativa — Producto Ganador Destacado</div>
-      <div style="overflow-x:auto;">
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th>Producto</th>
-              <th>Precio</th>
-              <th>Margen</th>
-              <th>ROI</th>
-              <th>Competencia</th>
-              <th>Ventas/mes</th>
-              <th>Score</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="winner-row">
-              <td><strong>👑 Org. Cables Bambú</strong><br><small style="color:var(--text-muted)">Hogar · Home Office</small></td>
-              <td><strong>11,99–13,99€</strong></td>
-              <td><strong style="color:#007A6A;">31%</strong></td>
-              <td><strong style="color:var(--accent1);">72%</strong></td>
-              <td><span class="pill pill-green">BAJA</span></td>
-              <td>~6.200€</td>
-              <td>
-                <div class="score-bar">
-                  <div class="score-track"><div class="score-fill" style="width:94%"></div></div>
-                  <span class="score-num" style="color:var(--accent1);">4.7</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>🧴 Dispensador Jabón Inox</strong><br><small style="color:var(--text-muted)">Baño · Cocina</small></td>
-              <td>12,99–14,99€</td>
-              <td style="color:#B07800;">26%</td>
-              <td style="color:var(--accent1);">56%</td>
-              <td><span class="pill pill-yellow">MEDIA</span></td>
-              <td>~5.500€</td>
-              <td>
-                <div class="score-bar">
-                  <div class="score-track"><div class="score-fill" style="width:74%"></div></div>
-                  <span class="score-num">3.7</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>B074LZSV1G<br><small style="color:var(--text-muted)">Org. Bambú Cajones (ref.)</small></td>
-              <td>~14,99€</td>
-              <td style="color:#007A6A;">~28%</td>
-              <td>~55%</td>
-              <td><span class="pill pill-orange">ALTA</span></td>
-              <td>&gt;8.000€</td>
-              <td>
-                <div class="score-bar">
-                  <div class="score-track"><div class="score-fill" style="width:50%"></div></div>
-                  <span class="score-num">2.5</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>B0FP5BCCRL / B0FJFQMY6V<br><small style="color:var(--text-muted)">Sin datos (ASINs nuevos)</small></td>
-              <td>N/A</td>
-              <td>—</td>
-              <td>—</td>
-              <td><span class="pill" style="background:var(--surface2);color:var(--text-muted);">VERIFICAR</span></td>
-              <td>N/A</td>
-              <td>
-                <div class="score-bar">
-                  <div class="score-track"><div class="score-fill" style="width:20%"></div></div>
-                  <span class="score-num" style="color:var(--text-muted);">—</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>B0CT3NS9V4<br><small style="color:var(--text-muted)">Sin datos (ASIN nuevo)</small></td>
-              <td>N/A</td>
-              <td>—</td>
-              <td>—</td>
-              <td><span class="pill" style="background:var(--surface2);color:var(--text-muted);">VERIFICAR</span></td>
-              <td>N/A</td>
-              <td>
-                <div class="score-bar">
-                  <div class="score-track"><div class="score-fill" style="width:20%"></div></div>
-                  <span class="score-num" style="color:var(--text-muted);">—</span>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="font-size:12px;color:var(--text-muted);margin-top:16px;">* Score: 40% margen+ROI · 30% competencia · 20% diferenciación · 10% simplicidad operacional. Los ASINs nuevos requieren verificación en Helium 10 / Seller Assistant para datos completos.</p>
-    </div>
-
-    <!-- RESUMEN EJECUTIVO -->
-    <div class="card" style="background:var(--accent2);color:white;border:none;">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
-        <div style="width:40px;height:40px;background:var(--accent1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;">🎯</div>
-        <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;">Veredicto Final</div>
-      </div>
-      <p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.85);margin-bottom:20px;">El <strong style="color:var(--accent1);">Organizador de Cables con Clips de Bambú</strong> es el producto ganador claro. Combina baja competencia real, tendencia home office consolidada, coste de fabricación muy bajo, y una diferenciación ecológica que justifica el precio premium. El margen del 31% y ROI del 72% superan al dispensador de jabón en todos los indicadores clave.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-        <div style="background:rgba(255,255,255,.08);border-radius:12px;padding:16px;">
-          <div style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-bottom:8px;">Primer producto a lanzar</div>
-          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--accent1);">📎 Org. Cables Bambú</div>
-          <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;">Score 4.7/5 · Inversión ~2.700€</div>
-        </div>
-        <div style="background:rgba(255,255,255,.08);border-radius:12px;padding:16px;">
-          <div style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-bottom:8px;">Segundo producto (mes 3+)</div>
-          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--accent3);">🧴 Dispensador Jabón Inox</div>
-          <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;">Score 3.7/5 · Inversión ~3.200€</div>
-        </div>
-      </div>
-    </div>
-  </div><!-- /tab-comparativa -->
-
-  <!-- ════════════════ TAB: PROVEEDORES ════════════════ -->
-  <div id="tab-proveedores" class="tab-panel">
-
-    <!-- INTRO BANNER -->
-    <div style="background:linear-gradient(135deg,#1A1A2E 0%,#2D2D4E 100%);border-radius:var(--radius);padding:28px;margin-bottom:28px;color:white;">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-        <div style="width:40px;height:40px;background:var(--accent1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;">🏭</div>
-        <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;">Directorio de Proveedores Verificados</div>
-      </div>
-      <p style="font-size:14px;color:rgba(255,255,255,.75);line-height:1.7;max-width:680px;">Proveedores seleccionados en <strong style="color:var(--accent3);">Alibaba.com</strong>, <strong style="color:var(--accent3);">Made-in-China.com</strong> y <strong style="color:var(--accent3);">Global Sources</strong> con Trade Assurance, OEM/ODM disponible y certificaciones relevantes para exportación a España/UE. Haz clic en cualquier enlace para ir directo al proveedor.</p>
-      <div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap;">
-        <span style="background:rgba(255,255,255,.1);border-radius:100px;padding:5px 14px;font-size:12px;font-weight:500;">✅ Trade Assurance</span>
-        <span style="background:rgba(255,255,255,.1);border-radius:100px;padding:5px 14px;font-size:12px;font-weight:500;">🌿 Certificación FSC/BSCI</span>
-        <span style="background:rgba(255,255,255,.1);border-radius:100px;padding:5px 14px;font-size:12px;font-weight:500;">🏷️ OEM/ODM disponible</span>
-        <span style="background:rgba(255,255,255,.1);border-radius:100px;padding:5px 14px;font-size:12px;font-weight:500;">📦 Exportación a UE</span>
+    <!-- VEREDICTO FINAL -->
+    <div style="background:linear-gradient(135deg, #d4a017 0%, #f5c842 100%); color:#1a1612; border-radius:var(--radius); padding:28px; margin-top:24px; display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+      <div style="font-size:48px; flex-shrink:0;">🏆</div>
+      <div>
+        <h2 style="font-family:'Syne',sans-serif; font-weight:800; font-size:22px; margin-bottom:8px;">Veredicto: Cuenco Plegable para Mascotas</h2>
+        <p style="font-size:14px; max-width:600px;">Score 4.4/5. Mayor margen, menor competencia y mercado mascotas en crecimiento continuo en España. Con una inversión inicial de ~€2.000 y diferenciación en packaging + silicona premium, proyectamos break-even en semana 6–7 y €4.000+ de beneficio neto en el mes 3.</p>
       </div>
     </div>
 
-    <!-- ── PRODUCTO 1: CABLES BAMBÚ ── -->
-    <div class="card">
-      <div class="card-title">
-        <div class="icon icon-orange">📎</div>
-        Proveedores — Organizador Cables Bambú <span style="margin-left:8px;background:var(--accent1);color:white;font-size:11px;padding:2px 10px;border-radius:100px;font-weight:600;">👑 GANADOR</span>
-      </div>
-      <p style="font-size:13px;color:var(--text-muted);margin-bottom:24px;">3 proveedores recomendados en orden de prioridad. Buscar en Alibaba el término <strong>"bamboo cable clip organizer desk OEM"</strong> para encontrar opciones adicionales.</p>
+  </div>
 
-      <!-- PROVEEDOR P1-A -->
-      <div style="border:2px solid var(--accent1);border-radius:14px;padding:22px;margin-bottom:18px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;right:0;background:var(--accent1);color:white;font-size:11px;font-weight:700;padding:4px 14px;border-radius:0 12px 0 12px;">⭐ PRIMERA OPCIÓN</div>
-        <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;">
-          <div style="flex:1;min-width:220px;">
-            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:17px;margin-bottom:4px;">Xiamen Chengfengxin Industry & Trade Co.</div>
-            <div style="font-size:13px;color:var(--text-muted);margin-bottom:14px;">📍 Xiamen, Fujian, China · Made-in-China.com</div>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
-              <span class="pill pill-green">ISO 9001</span>
-              <span class="pill pill-green">BSCI</span>
-              <span class="pill pill-green">FSC</span>
-              <span class="pill pill-yellow">OEM disponible</span>
-              <span class="pill pill-blue" style="background:#EBF0FF;color:#3D5AF1;">Export UE</span>
-            </div>
-            <p style="font-size:13px;color:var(--text-muted);line-height:1.6;">Fabricante especializado en bambú con cable management boxes y organizadores de escritorio. Certificaciones FSC y BSCI garantizan compliance para vender en Amazon Europa. Aceptan customización de logo y packaging desde 200 unidades.</p>
-          </div>
-          <div style="min-width:180px;">
-            <div style="background:var(--surface2);border-radius:12px;padding:16px;margin-bottom:12px;">
-              <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:8px;">Datos Clave</div>
-              <div style="font-size:13px;line-height:2;">
-                <div>💰 <strong>Precio:</strong> ~1,50-2,80€/ud</div>
-                <div>📦 <strong>MOQ:</strong> 200-500 pcs</div>
-                <div>⏱️ <strong>Lead time:</strong> 20-30 días</div>
-                <div>📬 <strong>Muestra:</strong> Disponible</div>
-              </div>
-            </div>
-            <a href="https://cnecogo.en.made-in-china.com/product/tdFaZfAHberu/China-Cable-Management-Box-Bamboo-Cord-Organizer-Box-with-Cover-Large-Cable-Storage-Box.html" target="_blank" style="display:block;background:var(--accent1);color:white;text-decoration:none;text-align:center;padding:10px 16px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Ver en Made-in-China ↗</a>
-            <a href="https://www.alibaba.com/showroom/bamboo-cable-management-box.html" target="_blank" style="display:block;background:var(--surface2);color:var(--text);text-decoration:none;text-align:center;padding:8px 16px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:600;font-size:12px;margin-top:8px;transition:opacity .2s;" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">Categoría Alibaba ↗</a>
-          </div>
-        </div>
-        <div style="margin-top:16px;padding:12px 14px;background:#FFF5F2;border-radius:10px;font-size:13px;border-left:3px solid var(--accent1);">
-          <strong>💡 Por qué este proveedor:</strong> Certificaciones FSC + BSCI requeridas por Amazon España para productos bambú. Mínimo pedido razonable para primer lanzamiento. Historial de exportación a Europa comprobable.
-        </div>
-      </div>
+</section>
 
-      <!-- PROVEEDOR P1-B -->
-      <div style="border:1.5px solid var(--border);border-radius:14px;padding:22px;margin-bottom:18px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;right:0;background:var(--accent2);color:white;font-size:11px;font-weight:700;padding:4px 14px;border-radius:0 12px 0 12px;">2ª OPCIÓN</div>
-        <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;">
-          <div style="flex:1;min-width:220px;">
-            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:17px;margin-bottom:4px;">Shaowu City Nafu Bamboo & Wood Industry Co.</div>
-            <div style="font-size:13px;color:var(--text-muted);margin-bottom:14px;">📍 Shaowu, Fujian, China · Made-in-China.com</div>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
-              <span class="pill pill-green">Fabricante directo</span>
-              <span class="pill pill-green">Bambú especializado</span>
-              <span class="pill pill-yellow">OEM disponible</span>
-            </div>
-            <p style="font-size:13px;color:var(--text-muted);line-height:1.6;">Fábrica especializada exclusivamente en bambú y madera. Fabricante directo sin intermediarios, lo que reduce costes hasta un 15-20%. Fujian es la región productora de bambú más importante de China, reduciendo costes de materia prima. Posibilidad de desarrollar diseño exclusivo de clips desde cero.</p>
-          </div>
-          <div style="min-width:180px;">
-            <div style="background:var(--surface2);border-radius:12px;padding:16px;margin-bottom:12px;">
-              <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:8px;">Datos Clave</div>
-              <div style="font-size:13px;line-height:2;">
-                <div>💰 <strong>Precio:</strong> ~1,20-2,20€/ud</div>
-                <div>📦 <strong>MOQ:</strong> 300-500 pcs</div>
-                <div>⏱️ <strong>Lead time:</strong> 25-35 días</div>
-                <div>📬 <strong>Muestra:</strong> ~15-30€</div>
-              </div>
-            </div>
-            <a href="https://www.made-in-china.com/products-search/hot-china-products/Bamboo_Desk_Organizer.html" target="_blank" style="display:block;background:var(--accent2);color:white;text-decoration:none;text-align:center;padding:10px 16px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Ver en Made-in-China ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- PROVEEDOR P1-C -->
-      <div style="border:1.5px solid var(--border);border-radius:14px;padding:22px;margin-bottom:18px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;right:0;background:var(--accent3);color:white;font-size:11px;font-weight:700;padding:4px 14px;border-radius:0 12px 0 12px;">3ª OPCIÓN · ECO PREMIUM</div>
-        <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;">
-          <div style="flex:1;min-width:220px;">
-            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:17px;margin-bottom:4px;">Alibaba — Categoría Bamboo Cable Clips (881 fabricantes)</div>
-            <div style="font-size:13px;color:var(--text-muted);margin-bottom:14px;">📍 Alibaba.com · 493 OEM · 449 ODM disponibles</div>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
-              <span class="pill pill-green">Trade Assurance</span>
-              <span class="pill pill-green">Verified Supplier</span>
-              <span class="pill pill-green">881 opciones</span>
-            </div>
-            <p style="font-size:13px;color:var(--text-muted);line-height:1.6;">Búsqueda directa en Alibaba con filtros: <em>Trade Assurance + Verified + ≥4 años + OEM</em>. La categoría ofrece 881 proveedores de clips de bambú. Filtrar por precio €1,50-3,00 y solicitar muestras simultáneamente a 3-5 proveedores para comparar calidad real antes de decidir.</p>
-          </div>
-          <div style="min-width:180px;">
-            <div style="background:var(--surface2);border-radius:12px;padding:16px;margin-bottom:12px;">
-              <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:8px;">Datos Clave</div>
-              <div style="font-size:13px;line-height:2;">
-                <div>💰 <strong>Precio:</strong> ~1,16-3,08€/ud</div>
-                <div>📦 <strong>MOQ:</strong> desde 20 pcs</div>
-                <div>⏱️ <strong>Lead time:</strong> variable</div>
-                <div>📬 <strong>Muestra:</strong> Sí (mayoría)</div>
-              </div>
-            </div>
-            <a href="https://www.alibaba.com/bamboo-clip-suppliers.html" target="_blank" style="display:block;background:var(--accent3);color:white;text-decoration:none;text-align:center;padding:10px 16px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Ver Categoría Alibaba ↗</a>
-            <a href="https://spanish.alibaba.com/g/bamboo-cable-box-management-organizer.html" target="_blank" style="display:block;background:var(--surface2);color:var(--text);text-decoration:none;text-align:center;padding:8px 16px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:600;font-size:12px;margin-top:8px;transition:opacity .2s;" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">Alibaba ES — Org. Bambú ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- BÚSQUEDAS RECOMENDADAS -->
-      <div style="background:var(--surface2);border-radius:12px;padding:18px;">
-        <strong style="font-size:13px;display:block;margin-bottom:12px;">🔍 Términos de búsqueda exactos para Alibaba:</strong>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          <code style="background:var(--accent2);color:white;padding:5px 12px;border-radius:8px;font-size:12px;">bamboo cable clip organizer desk OEM</code>
-          <code style="background:var(--accent2);color:white;padding:5px 12px;border-radius:8px;font-size-12px;">bamboo wire clip holder adhesive private label</code>
-          <code style="background:var(--accent2);color:white;padding:5px 12px;border-radius:8px;font-size:12px;">eco cable management clip bamboo FSC</code>
-          <code style="background:var(--accent2);color:white;padding:5px 12px;border-radius:8px;font-size:12px;">desk cable organizer bamboo custom logo</code>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── PRODUCTO 2: DISPENSADOR JABÓN ── -->
-    <div class="card">
-      <div class="card-title">
-        <div class="icon icon-blue">🧴</div>
-        Proveedores — Dispensador Jabón Acero Inoxidable <span style="margin-left:8px;background:var(--accent3);color:white;font-size:11px;padding:2px 10px;border-radius:100px;font-weight:600;">#2 SEGUNDA OPCIÓN</span>
-      </div>
-      <p style="font-size:13px;color:var(--text-muted);margin-bottom:24px;">3 proveedores recomendados. Buscar en Alibaba con el término <strong>"stainless steel 304 soap dispenser matte OEM private label"</strong> para resultados óptimos.</p>
-
-      <!-- PROVEEDOR P2-A -->
-      <div style="border:2px solid var(--accent3);border-radius:14px;padding:22px;margin-bottom:18px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;right:0;background:var(--accent3);color:white;font-size:11px;font-weight:700;padding:4px 14px;border-radius:0 12px 0 12px;">⭐ PRIMERA OPCIÓN</div>
-        <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;">
-          <div style="flex:1;min-width:220px;">
-            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:17px;margin-bottom:4px;">AIN LEVA — Stainless Steel Dispenser Specialist</div>
-            <div style="font-size:13px;color:var(--text-muted);margin-bottom:14px;">📍 China · Alibaba Smart Dispenser Producers</div>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
-              <span class="pill pill-green">Acero 304 inoxidable</span>
-              <span class="pill pill-green">Alta durabilidad</span>
-              <span class="pill pill-yellow">OEM/ODM</span>
-              <span class="pill pill-yellow">Muestra 5-7 días</span>
-            </div>
-            <p style="font-size:13px;color:var(--text-muted);line-height:1.6;">Valorado como el mejor para personalización y durabilidad en dispensadores de acero inoxidable. Construcción en acero inox 304 (el estándar para cocina/baño sin oxidación). Admite MOQ flexible desde 50 unidades para prueba. Lead time de muestra en 5-7 días, ideal para validar calidad antes de comprometer pedido grande.</p>
-          </div>
-          <div style="min-width:180px;">
-            <div style="background:var(--surface2);border-radius:12px;padding:16px;margin-bottom:12px;">
-              <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:8px;">Datos Clave</div>
-              <div style="font-size:13px;line-height:2;">
-                <div>💰 <strong>Precio:</strong> ~2,80-4,00€/ud</div>
-                <div>📦 <strong>MOQ:</strong> 50-500 pcs</div>
-                <div>⏱️ <strong>Lead time:</strong> 10-20 días</div>
-                <div>📬 <strong>Muestra:</strong> 5-7 días</div>
-              </div>
-            </div>
-            <a href="https://www.alibaba.com/supplier/smart-dispenser-producer.html" target="_blank" style="display:block;background:var(--accent3);color:white;text-decoration:none;text-align:center;padding:10px 16px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Ver en Alibaba ↗</a>
-            <a href="https://spanish.alibaba.com/g/stainless-steel-soap-dispenser.html" target="_blank" style="display:block;background:var(--surface2);color:var(--text);text-decoration:none;text-align:center;padding:8px 16px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:600;font-size:12px;margin-top:8px;transition:opacity .2s;" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">Alibaba ES — Dispensadores ↗</a>
-          </div>
-        </div>
-        <div style="margin-top:16px;padding:12px 14px;background:#E6FAF7;border-radius:10px;font-size:13px;border-left:3px solid var(--accent3);">
-          <strong>💡 Por qué este proveedor:</strong> Máximo score en personalización y durabilidad. El acero 304 es el diferenciador clave frente a competidores con acero 201 (más barato, menos resistente). Destacarlo en el listing aumenta conversión.
-        </div>
-      </div>
-
-      <!-- PROVEEDOR P2-B -->
-      <div style="border:1.5px solid var(--border);border-radius:14px;padding:22px;margin-bottom:18px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;right:0;background:var(--accent2);color:white;font-size:11px;font-weight:700;padding:4px 14px;border-radius:0 12px 0 12px;">2ª OPCIÓN · COSTE-EFICIENCIA</div>
-        <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;">
-          <div style="flex:1;min-width:220px;">
-            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:17px;margin-bottom:4px;">Ningbo Vannsoo Sanitary Ware Co., Ltd.</div>
-            <div style="font-size:13px;color:var(--text-muted);margin-bottom:14px;">📍 Ningbo, Zhejiang, China · vannsoo.com</div>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
-              <span class="pill pill-green">29 años experiencia</span>
-              <span class="pill pill-green">OEM/ODM</span>
-              <span class="pill pill-green">Garantía 1 año</span>
-              <span class="pill pill-yellow">5 equipos diseño</span>
-            </div>
-            <p style="font-size:13px;color:var(--text-muted);line-height:1.6;">Fabricante con 29 años de experiencia en productos de baño de acero inoxidable. Puerto de exportación Ningbo (uno de los más activos de China). Respuesta garantizada en 24h a consultas. Nuevos modelos cada mes. Posibilidad de logo personalizado y packaging a medida. Exportación frecuente a Europa y mercado premium.</p>
-          </div>
-          <div style="min-width:180px;">
-            <div style="background:var(--surface2);border-radius:12px;padding:16px;margin-bottom:12px;">
-              <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:8px;">Datos Clave</div>
-              <div style="font-size:13px;line-height:2;">
-                <div>💰 <strong>Precio:</strong> ~3,00-4,50€/ud</div>
-                <div>📦 <strong>MOQ:</strong> 200-500 pcs</div>
-                <div>⏱️ <strong>Lead time:</strong> 10-25 días</div>
-                <div>📬 <strong>Muestra:</strong> Sí (pago)</div>
-              </div>
-            </div>
-            <a href="https://www.vannsoo.com/heavy-duty-wall-mount-commercial-stainless-steel-soap-dispenser" target="_blank" style="display:block;background:var(--accent2);color:white;text-decoration:none;text-align:center;padding:10px 16px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Ver web Vannsoo ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- PROVEEDOR P2-C -->
-      <div style="border:1.5px solid var(--border);border-radius:14px;padding:22px;margin-bottom:18px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;right:0;background:#6B6B80;color:white;font-size:11px;font-weight:700;padding:4px 14px;border-radius:0 12px 0 12px;">3ª OPCIÓN · CATÁLOGO AMPLIO</div>
-        <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;">
-          <div style="flex:1;min-width:220px;">
-            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:17px;margin-bottom:4px;">Made-in-China — Soap Dispenser Directory (19.028+ listados)</div>
-            <div style="font-size:13px;color:var(--text-muted);margin-bottom:14px;">📍 Made-in-China.com · Catálogo verificado 2025</div>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
-              <span class="pill pill-green">19.000+ listados</span>
-              <span class="pill pill-green">Verificados 2025</span>
-              <span class="pill pill-yellow">Comparación directa</span>
-            </div>
-            <p style="font-size:13px;color:var(--text-muted);line-height:1.6;">Directorio con más de 19.028 dispensadores de acero inoxidable verificados. Permite filtrar por material (304 SS), precio, MOQ y certificaciones. Ideal para solicitar cotizaciones simultáneas a varios proveedores y comparar antes de elegir. Plataforma con protección de pagos similar a Alibaba Trade Assurance.</p>
-          </div>
-          <div style="min-width:180px;">
-            <div style="background:var(--surface2);border-radius:12px;padding:16px;margin-bottom:12px;">
-              <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:8px;">Datos Clave</div>
-              <div style="font-size:13px;line-height:2;">
-                <div>💰 <strong>Precio:</strong> ~2,00-5,00€/ud</div>
-                <div>📦 <strong>MOQ:</strong> desde 2 pcs</div>
-                <div>⏱️ <strong>Lead time:</strong> variable</div>
-                <div>📬 <strong>Muestra:</strong> Mayoría sí</div>
-              </div>
-            </div>
-            <a href="https://www.made-in-china.com/products-search/hot-china-products/Soap_Dispenser.html" target="_blank" style="display:block;background:#6B6B80;color:white;text-decoration:none;text-align:center;padding:10px 16px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Ver Made-in-China ↗</a>
-            <a href="https://www.alibaba.com/showroom/stainless-steel-soap-dispenser-manufacturers.html" target="_blank" style="display:block;background:var(--surface2);color:var(--text);text-decoration:none;text-align:center;padding:8px 16px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:600;font-size:12px;margin-top:8px;transition:opacity .2s;" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">Alibaba — Inox Dispensers ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- BÚSQUEDAS RECOMENDADAS -->
-      <div style="background:var(--surface2);border-radius:12px;padding:18px;">
-        <strong style="font-size:13px;display:block;margin-bottom:12px;">🔍 Términos de búsqueda exactos para Alibaba:</strong>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          <code style="background:var(--accent2);color:white;padding:5px 12px;border-radius:8px;font-size:12px;">304 stainless steel soap dispenser matte OEM</code>
-          <code style="background:var(--accent2);color:white;padding:5px 12px;border-radius:8px;font-size:12px;">bathroom soap dispenser private label matte black</code>
-          <code style="background:var(--accent2);color:white;padding:5px 12px;border-radius:8px;font-size:12px;">kitchen soap dispenser stainless 300ml custom logo</code>
-          <code style="background:var(--accent2);color:white;padding:5px 12px;border-radius:8px;font-size:12px;">inox lotion dispenser refillable OEM EU export</code>
-        </div>
-      </div>
-    </div>
-
-    <!-- GUÍA DE EVALUACIÓN DE PROVEEDORES -->
-    <div class="card">
-      <div class="card-title"><div class="icon icon-gold">💡</div>Guía Rápida — Cómo Evaluar y Contactar Proveedores</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-        <div>
-          <strong style="font-size:13px;display:block;margin-bottom:12px;color:var(--accent1);">✅ Checklist antes de hacer pedido</strong>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
-            <li style="font-size:13px;display:flex;gap:8px;"><span>1.</span><span>Verificar Trade Assurance o equivalente activo</span></li>
-            <li style="font-size:13px;display:flex;gap:8px;"><span>2.</span><span>Solicitar certificados ISO/FSC/BSCI por escrito</span></li>
-            <li style="font-size:13px;display:flex;gap:8px;"><span>3.</span><span>Pedir 2-3 muestras físicas antes de producción</span></li>
-            <li style="font-size:13px;display:flex;gap:8px;"><span>4.</span><span>Realizar inspección de terceros (SGS/Bureau Veritas) si MOQ &gt;500 uds</span></li>
-            <li style="font-size:13px;display:flex;gap:8px;"><span>5.</span><span>Negociar: 30% depósito + 70% contra B/L (conocimiento de embarque)</span></li>
-            <li style="font-size:13px;display:flex;gap:8px;"><span>6.</span><span>Confirmar packaging personalizado con tu logo incluido</span></li>
-          </ul>
-        </div>
-        <div>
-          <strong style="font-size:13px;display:block;margin-bottom:12px;color:var(--accent3);">🚩 Red Flags — Evitar estos proveedores</strong>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
-            <li style="font-size:13px;display:flex;gap:8px;"><span>❌</span><span>Sin Trade Assurance ni protección de pago</span></li>
-            <li style="font-size:13px;display:flex;gap:8px;"><span>❌</span><span>Menos de 2 años en plataforma o sin valoraciones</span></li>
-            <li style="font-size:13px;display:flex;gap:8px;"><span>❌</span><span>No envían muestras físicas antes del pedido</span></li>
-            <li style="font-size:13px;display:flex;gap:8px;"><span>❌</span><span>Precios muy por debajo del mercado (señal de calidad baja)</span></li>
-            <li style="font-size:13px;display:flex;gap:8px;"><span>❌</span><span>No pueden mostrar certificaciones en PDF</span></li>
-            <li style="font-size:13px;display:flex;gap:8px;"><span>❌</span><span>Solo aceptan pago por Western Union o cripto</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <hr class="section-divider">
-      <strong style="font-size:13px;display:block;margin-bottom:12px;">🌐 Plataformas adicionales de sourcing:</strong>
-      <div style="display:flex;flex-wrap:wrap;gap:10px;">
-        <a href="https://www.alibaba.com" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--surface2);color:var(--text);text-decoration:none;padding:8px 16px;border-radius:100px;font-size:13px;font-weight:600;border:1px solid var(--border);transition:all .2s;" onmouseover="this.style.background='var(--accent2)';this.style.color='white'" onmouseout="this.style.background='var(--surface2)';this.style.color='var(--text)'">🛒 Alibaba.com ↗</a>
-        <a href="https://www.made-in-china.com" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--surface2);color:var(--text);text-decoration:none;padding:8px 16px;border-radius:100px;font-size:13px;font-weight:600;border:1px solid var(--border);transition:all .2s;" onmouseover="this.style.background='var(--accent2)';this.style.color='white'" onmouseout="this.style.background='var(--surface2)';this.style.color='var(--text)'">🏭 Made-in-China.com ↗</a>
-        <a href="https://www.globalsources.com" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--surface2);color:var(--text);text-decoration:none;padding:8px 16px;border-radius:100px;font-size:13px;font-weight:600;border:1px solid var(--border);transition:all .2s;" onmouseover="this.style.background='var(--accent2)';this.style.color='white'" onmouseout="this.style.background='var(--surface2)';this.style.color='var(--text)'">🌍 Global Sources ↗</a>
-        <a href="https://www.tradewheel.com/cable-clips/china/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--surface2);color:var(--text);text-decoration:none;padding:8px 16px;border-radius:100px;font-size:13px;font-weight:600;border:1px solid var(--border);transition:all .2s;" onmouseover="this.style.background='var(--accent2)';this.style.color='white'" onmouseout="this.style.background='var(--surface2)';this.style.color='var(--text)'">🔩 TradeWheel Clips ↗</a>
-        <a href="https://smartbuy.alibaba.com/product/magnetic-cable-organizer-supplier-alibaba" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--surface2);color:var(--text);text-decoration:none;padding:8px 16px;border-radius:100px;font-size:13px;font-weight:600;border:1px solid var(--border);transition:all .2s;" onmouseover="this.style.background='var(--accent2)';this.style.color='white'" onmouseout="this.style.background='var(--surface2)';this.style.color='var(--text)'">⚡ Alibaba SmartBuy ↗</a>
-      </div>
-    </div>
-
-  </div><!-- /tab-proveedores -->
-
-</div><!-- /main -->
-
-<!-- FOOTER -->
-<div class="footer">
-  <strong>Amazon Product Research Report</strong> · Generado con metodología Amazon FBA · Febrero 2026<br>
-  ⚠️ Estimaciones de mercado. Verificar con Helium 10 / Jungle Scout / Calculadora FBA oficial antes de invertir.
-</div>
+<footer>
+  <p>Generado con <strong>Claude + Helium 10 methodology</strong> · Amazon FBA Research 2025 · amazon.es · Todos los datos son estimaciones orientativas para validación previa. Verifica siempre con herramientas oficiales antes de invertir.</p>
+</footer>
 
 <script>
-function showTab(name) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  event.currentTarget.classList.add('active');
-}
+  function showTab(tabId, btn) {
+    // Hide all
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    // Show target
+    document.getElementById('tab-' + tabId).classList.add('active');
+    btn.classList.add('active');
+  }
 </script>
 </body>
 </html>
