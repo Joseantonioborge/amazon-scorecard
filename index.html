@@ -2,11 +2,91 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: #0f0f0f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    h1 {
+      color: #ffffff;
+      font-size: 1rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 60px;
+      opacity: 0.4;
+    }
+
+    .proyectos {
+      display: flex;
+      gap: 80px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .proyecto a {
+      display: block;
+      padding: 40px 50px;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .proyecto a:hover {
+      background: #222222;
+      border-color: #555;
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .proyecto img {
+      height: 60px;
+      width: auto;
+      display: block;
+      filter: brightness(1);
+      transition: filter 0.3s ease;
+    }
+
+    .proyecto a:hover img {
+      filter: brightness(1.2);
+    }
+  </style>
 </head>
 <body>
-  <h1>Mis proyectos</h1>
-  <a href="./FEBRERO/index.html">FEBRERO</a>
-  <a href="./MARZO/index.html">MARZO</a>
+
+  <h1>Selecciona un Analisis</h1>
+
+  <div class="proyectos">
+
+    <div class="proyecto">
+      <a href="./FEBRERO/index.html">
+        <img src="./FEBRERO.png" alt="FEBRERO">
+      </a>
+    </div>
+
+    <div class="proyecto">
+      <a href="./MARZO/index.html">
+        <img src="./MARZO.png" alt="MARZO">
+      </a>
+    </div>
+
+  </div>
+
 </body>
 </html>
