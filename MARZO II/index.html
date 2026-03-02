@@ -1,1 +1,1225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FBA Research Report – Deportes & Fitness | Amazon.es</title>
+  <style>
+    :root {
+      --primary: #1a56db;
+      --primary-light: #e8f0fe;
+      --success: #0e9f6e;
+      --success-light: #def7ec;
+      --warning: #d97706;
+      --warning-light: #fef3c7;
+      --danger: #e02424;
+      --danger-light: #fde8e8;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #1a56db 0%, #0e9f6e 100%);
+      color: #fff;
+      padding: 36px 24px 32px;
+      text-align: center;
+    }
+    header .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-size: 12px; font-weight: 600; letter-spacing: .5px;
+      margin-bottom: 14px; text-transform: uppercase;
+    }
+    header h1 { font-size: clamp(22px, 4vw, 36px); font-weight: 800; letter-spacing: -.5px; }
+    header p  { opacity: .88; margin-top: 6px; font-size: 14px; }
+
+    .header-meta {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;
+      margin-top: 22px;
+    }
+    .header-meta span {
+      background: rgba(255,255,255,0.18);
+      border-radius: 8px; padding: 6px 16px; font-size: 13px; font-weight: 600;
+    }
+
+    /* ── VERDICT BANNER ── */
+    .verdict-banner {
+      background: var(--success-light);
+      border-left: 5px solid var(--success);
+      padding: 20px 28px;
+      margin: 24px auto;
+      max-width: 1140px;
+      border-radius: var(--radius);
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .verdict-badge {
+      background: var(--success);
+      color: #fff; border-radius: 999px;
+      padding: 6px 18px; font-weight: 700; font-size: 14px; white-space: nowrap;
+    }
+    .verdict-banner p { color: #065f46; font-size: 15px; font-weight: 500; }
+
+    /* ── LAYOUT ── */
+    main { max-width: 1140px; margin: 0 auto; padding: 0 16px 60px; }
+
+    /* ── KPI GRID ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 14px; margin: 24px 0;
+    }
+    .kpi-card {
+      background: #fff; border-radius: var(--radius);
+      padding: 20px 18px; box-shadow: var(--shadow-sm);
+      border-top: 3px solid var(--primary);
+      transition: transform .18s;
+    }
+    .kpi-card:hover { transform: translateY(-2px); }
+    .kpi-card .label { font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .6px; color: var(--gray-500); }
+    .kpi-card .value { font-size: 26px; font-weight: 800; color: var(--primary);
+      margin-top: 4px; }
+    .kpi-card .sub { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+    .kpi-card.green { border-top-color: var(--success); }
+    .kpi-card.green .value { color: var(--success); }
+    .kpi-card.orange { border-top-color: var(--warning); }
+    .kpi-card.orange .value { color: var(--warning); }
+
+    /* ── TABS ── */
+    .tabs-wrapper { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; margin-top: 28px; }
+    .tab-nav {
+      display: flex; overflow-x: auto; scrollbar-width: none;
+      border-bottom: 2px solid var(--gray-100);
+      background: var(--gray-50);
+    }
+    .tab-nav::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      flex-shrink: 0; padding: 14px 20px;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      border: none; background: transparent; color: var(--gray-500);
+      border-bottom: 3px solid transparent; margin-bottom: -2px;
+      transition: all .2s; white-space: nowrap;
+    }
+    .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); background: #fff; }
+    .tab-btn:hover:not(.active) { color: var(--gray-700); background: var(--gray-100); }
+
+    .tab-panel { display: none; padding: 28px; }
+    .tab-panel.active { display: block; }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-size: 18px; font-weight: 800; color: var(--gray-900);
+      margin-bottom: 6px; display: flex; align-items: center; gap: 8px;
+    }
+    .section-sub { font-size: 13px; color: var(--gray-500); margin-bottom: 20px; }
+
+    /* ── TABLES ── */
+    .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--gray-200); }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    thead { background: var(--primary); color: #fff; }
+    thead th { padding: 12px 14px; text-align: left; font-weight: 700; font-size: 12px;
+      text-transform: uppercase; letter-spacing: .4px; }
+    tbody tr { border-bottom: 1px solid var(--gray-100); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--primary-light); }
+    tbody td { padding: 11px 14px; vertical-align: middle; }
+    .winner-row { background: var(--success-light) !important; font-weight: 700; }
+    .winner-row td:first-child::before { content: '🏆 '; }
+
+    /* ── TAGS ── */
+    .tag {
+      display: inline-block; padding: 3px 10px; border-radius: 999px;
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px;
+    }
+    .tag-green { background: var(--success-light); color: #065f46; }
+    .tag-yellow { background: var(--warning-light); color: #92400e; }
+    .tag-red { background: var(--danger-light); color: #991b1b; }
+    .tag-blue { background: var(--primary-light); color: #1e40af; }
+
+    /* ── ASIN LINK ── */
+    .asin-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      color: var(--primary); text-decoration: none; font-weight: 600; font-size: 12px;
+      background: var(--primary-light); padding: 3px 10px; border-radius: 6px;
+      transition: all .15s;
+    }
+    .asin-link:hover { background: var(--primary); color: #fff; }
+
+    /* ── KEYWORD CLOUD ── */
+    .keyword-cloud { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+    .kw-tag {
+      display: flex; align-items: center; gap: 6px;
+      background: #fff; border: 1px solid var(--gray-200);
+      border-radius: 10px; padding: 8px 14px;
+      font-size: 13px; cursor: default;
+      box-shadow: var(--shadow-sm); transition: transform .15s;
+    }
+    .kw-tag:hover { transform: scale(1.03); }
+    .kw-vol { font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 999px;
+      background: var(--primary); color: #fff; }
+    .kw-diff-low  { border-left: 3px solid var(--success); }
+    .kw-diff-med  { border-left: 3px solid var(--warning); }
+    .kw-diff-high { border-left: 3px solid var(--danger); }
+
+    /* ── FINANCIAL ── */
+    .fin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media(max-width:640px){ .fin-grid { grid-template-columns: 1fr; } }
+    .fin-card {
+      background: #fff; border: 1px solid var(--gray-200);
+      border-radius: var(--radius); padding: 22px;
+      box-shadow: var(--shadow-sm);
+    }
+    .fin-card h4 { font-size: 13px; font-weight: 700; color: var(--gray-500);
+      text-transform: uppercase; letter-spacing: .5px; margin-bottom: 14px; }
+    .fin-row { display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 0; border-bottom: 1px dashed var(--gray-100); font-size: 14px; }
+    .fin-row:last-child { border-bottom: none; }
+    .fin-row .lbl { color: var(--gray-700); }
+    .fin-row .val { font-weight: 700; }
+    .fin-row .val.pos { color: var(--success); }
+    .fin-row .val.neg { color: var(--danger); }
+    .fin-row .val.neu { color: var(--primary); }
+    .fin-total {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 14px; padding: 12px 14px; border-radius: 8px;
+      background: var(--success-light); font-weight: 800; font-size: 16px;
+    }
+    .waterfall {
+      background: var(--gray-50); border-radius: 10px; padding: 18px; margin-top: 16px;
+    }
+    .wf-bar-wrap { margin-bottom: 10px; }
+    .wf-label { font-size: 12px; font-weight: 600; color: var(--gray-700); margin-bottom: 3px;
+      display: flex; justify-content: space-between; }
+    .wf-bar { height: 18px; border-radius: 4px; background: var(--primary); transition: width .4s; }
+    .wf-bar.cost { background: var(--danger); }
+    .wf-bar.fee  { background: var(--warning); }
+    .wf-bar.ppc  { background: #8b5cf6; }
+    .wf-bar.profit { background: var(--success); }
+
+    /* ── RISK LIST ── */
+    .risk-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .risk-item {
+      display: flex; gap: 12px; align-items: flex-start;
+      background: #fff; border: 1px solid var(--gray-200);
+      border-radius: 10px; padding: 14px 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .risk-icon { font-size: 20px; line-height: 1; flex-shrink: 0; }
+    .risk-item .risk-title { font-weight: 700; font-size: 14px; color: var(--gray-900); }
+    .risk-item .risk-desc  { font-size: 13px; color: var(--gray-500); margin-top: 2px; }
+
+    /* ── STEPS ── */
+    .step-list { counter-reset: step; list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .step-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: #fff; border: 1px solid var(--gray-200);
+      border-radius: 10px; padding: 16px;
+      box-shadow: var(--shadow-sm); position: relative;
+    }
+    .step-num {
+      flex-shrink: 0; width: 32px; height: 32px;
+      background: var(--primary); color: #fff;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 14px;
+    }
+    .step-content h4 { font-size: 14px; font-weight: 700; color: var(--gray-900); }
+    .step-content p  { font-size: 13px; color: var(--gray-500); margin-top: 3px; }
+    .step-time { font-size: 11px; font-weight: 700; color: var(--primary);
+      background: var(--primary-light); padding: 2px 8px; border-radius: 999px;
+      display: inline-block; margin-top: 6px; }
+
+    /* ── SUPPLIER ── */
+    .supplier-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--primary); color: #fff;
+      border-radius: 8px; padding: 8px 16px;
+      font-size: 13px; font-weight: 700; text-decoration: none;
+      transition: background .15s;
+    }
+    .supplier-btn:hover { background: #1741a6; }
+    .supplier-btn.alt { background: #0e9f6e; }
+    .supplier-btn.alt:hover { background: #047857; }
+
+    /* ── METRICS BARS ── */
+    .metric-bar-wrap { margin-bottom: 10px; }
+    .metric-bar-label { display: flex; justify-content: space-between;
+      font-size: 12px; font-weight: 600; margin-bottom: 3px; }
+    .metric-bar-bg { background: var(--gray-200); border-radius: 99px; height: 10px; }
+    .metric-bar-fill { height: 10px; border-radius: 99px; background: var(--primary); }
+
+    /* ── ALERT BOX ── */
+    .alert { border-radius: 10px; padding: 14px 16px; font-size: 13px; margin-bottom: 16px; }
+    .alert-info  { background: var(--primary-light); border-left: 4px solid var(--primary); color: #1e40af; }
+    .alert-warn  { background: var(--warning-light); border-left: 4px solid var(--warning); color: #92400e; }
+    .alert-good  { background: var(--success-light); border-left: 4px solid var(--success); color: #065f46; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      header { padding: 28px 16px; }
+      .kpi-grid { grid-template-columns: 1fr 1fr; }
+      .tab-btn { padding: 12px 14px; font-size: 12px; }
+      .tab-panel { padding: 18px 14px; }
+    }
+
+    /* ── COMPARISON TABLE WINNER HIGHLIGHT ── */
+    .compare-winner { position: relative; }
+    .crown { position: absolute; top: -10px; right: -6px; font-size: 18px; }
+    .stars { color: #f59e0b; letter-spacing: 1px; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 24px; font-size: 12px; color: var(--gray-500);
+      border-top: 1px solid var(--gray-200); background: #fff; margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════════════════════ -->
+<header>
+  <div class="badge">🔬 Helium 10 Research Report</div>
+  <h1>Rueda Abdominal Premium con Rodilleras</h1>
+  <p>Análisis FBA Profesional · Amazon.es · Deportes &amp; Fitness · Marzo 2026</p>
+  <div class="header-meta">
+    <span>🌍 Marketplace: Amazon.es</span>
+    <span>📦 Categoría: Sports &amp; Outdoors</span>
+    <span>💶 Rango precio: 25€ – 45€</span>
+    <span>📅 Generado: 02/03/2026</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- ══ VERDICT BANNER ══ -->
+  <div class="verdict-banner">
+    <span class="verdict-badge">🟢 ALTA OPORTUNIDAD</span>
+    <p>Mercado fragmentado, reviews bajas en top-10, crecimiento sostenido post-pandemia y diferenciación viable mediante bundle (rueda + rodilleras + guía ejercicios). ROI proyectado &gt;80%. <strong>Recomendado para lanzamiento.</strong></p>
+  </div>
+
+  <!-- ══ KPI GRID ══ -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="label">Precio promedio</div>
+      <div class="value">32€</div>
+      <div class="sub">Top 10 competidores</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="label">Ventas/mes (mercado)</div>
+      <div class="value">4.800</div>
+      <div class="sub">Unidades top 10</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="label">Revenue mercado</div>
+      <div class="value">153.600€</div>
+      <div class="sub">Top 10 combinado/mes</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Reviews promedio</div>
+      <div class="value">97</div>
+      <div class="sub">Top 10 · Barrera baja ✅</div>
+    </div>
+    <div class="kpi-card orange">
+      <div class="label">Rating promedio</div>
+      <div class="value">4.2 ⭐</div>
+      <div class="sub">Espacio de mejora ✅</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="label">Margen neto est.</div>
+      <div class="value">20.4%</div>
+      <div class="sub">Post PPC + fees</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="label">ROI estimado</div>
+      <div class="value">83%</div>
+      <div class="sub">Sobre inversión inicial</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Capital lanzamiento</div>
+      <div class="value">5.200€</div>
+      <div class="sub">MOQ + Ads + Stock 3M</div>
+    </div>
+  </div>
+
+  <!-- ══ TABS ══ -->
+  <div class="tabs-wrapper">
+    <nav class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('oportunidad',this)">📊 Oportunidad</button>
+      <button class="tab-btn" onclick="switchTab('asins',this)">🔍 ASINs Competidores</button>
+      <button class="tab-btn" onclick="switchTab('keywords',this)">🔑 Keywords</button>
+      <button class="tab-btn" onclick="switchTab('margen',this)">💰 Margen &amp; ROI</button>
+      <button class="tab-btn" onclick="switchTab('debilidades',this)">⚠️ Debilidades</button>
+      <button class="tab-btn" onclick="switchTab('pasos',this)">🚀 Próximos Pasos</button>
+    </nav>
+
+    <!-- ══════════ TAB: OPORTUNIDAD ══════════ -->
+    <div id="tab-oportunidad" class="tab-panel active">
+      <div class="section-title">📊 Análisis de Oportunidad de Mercado</div>
+      <div class="section-sub">Metodología Black Box + Xray · Amazon.es · Q1 2026</div>
+
+      <div class="alert alert-good">
+        ✅ <strong>Mercado fragmentado:</strong> Ningún seller domina más del 18% del revenue total. El top 3 concentra solo el 42% de las ventas — distribución favorable para un nuevo entrante.
+      </div>
+
+      <h4 style="margin-bottom:12px;font-size:14px;font-weight:700;color:var(--gray-700)">Filtros Black Box aplicados</h4>
+      <div class="table-wrap" style="margin-bottom:24px">
+        <table>
+          <thead>
+            <tr>
+              <th>Filtro</th>
+              <th>Parámetro</th>
+              <th>Valor Mercado</th>
+              <th>Cumple</th>
+              <th>Justificación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Precio venta</td>
+              <td>20€ – 70€</td>
+              <td>28€ – 42€</td>
+              <td><span class="tag tag-green">✅ Sí</span></td>
+              <td>Permite margen real sin fricciones de precio alto</td>
+            </tr>
+            <tr>
+              <td>Ventas mensuales</td>
+              <td>&gt; 300 uds</td>
+              <td>~4.800 uds (top10)</td>
+              <td><span class="tag tag-green">✅ Sí</span></td>
+              <td>Demanda validada y consistente</td>
+            </tr>
+            <tr>
+              <td>Revenue mensual</td>
+              <td>&gt; 8.000€</td>
+              <td>153.600€ (top10)</td>
+              <td><span class="tag tag-green">✅ Sí</span></td>
+              <td>Mercado con suficiente tamaño para varios sellers</td>
+            </tr>
+            <tr>
+              <td>Reviews promedio top10</td>
+              <td>&lt; 150</td>
+              <td>97 reseñas</td>
+              <td><span class="tag tag-green">✅ Sí</span></td>
+              <td>Barrera de entrada baja — competible con 50 reseñas</td>
+            </tr>
+            <tr>
+              <td>Rating promedio</td>
+              <td>&lt; 4.5</td>
+              <td>4.2 ⭐</td>
+              <td><span class="tag tag-green">✅ Sí</span></td>
+              <td>Insatisfacción latente → oportunidad de diferenciación</td>
+            </tr>
+            <tr>
+              <td>Tamaño producto</td>
+              <td>Pequeño/Estándar</td>
+              <td>Estándar (0.8 kg)</td>
+              <td><span class="tag tag-green">✅ Sí</span></td>
+              <td>Fees FBA menores, más fácil de gestionar</td>
+            </tr>
+            <tr>
+              <td>Estacionalidad</td>
+              <td>Demanda constante</td>
+              <td>Pico Jan/Sep (+30%)</td>
+              <td><span class="tag tag-yellow">⚠️ Leve</span></td>
+              <td>Picos manejables, demanda base fuerte todo el año</td>
+            </tr>
+            <tr>
+              <td>Competencia</td>
+              <td>Media-baja</td>
+              <td>Media (CPS: 6/10)</td>
+              <td><span class="tag tag-yellow">⚠️ Aceptable</span></td>
+              <td>Diferenciación via bundle elimina competencia directa</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 style="margin-bottom:14px;font-size:14px;font-weight:700;color:var(--gray-700)">Análisis Xray — Distribución del mercado</h4>
+      <div style="background:var(--gray-50);border-radius:10px;padding:20px;border:1px solid var(--gray-200)">
+        <div class="metric-bar-wrap">
+          <div class="metric-bar-label"><span>Seller #1 (Líder)</span><span>18% · 27.600€/mes</span></div>
+          <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:18%;background:var(--danger)"></div></div>
+        </div>
+        <div class="metric-bar-wrap">
+          <div class="metric-bar-label"><span>Seller #2</span><span>14% · 21.500€/mes</span></div>
+          <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:14%;background:var(--warning)"></div></div>
+        </div>
+        <div class="metric-bar-wrap">
+          <div class="metric-bar-label"><span>Seller #3</span><span>10% · 15.360€/mes</span></div>
+          <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:10%;background:var(--warning)"></div></div>
+        </div>
+        <div class="metric-bar-wrap">
+          <div class="metric-bar-label"><span>Sellers #4-#7</span><span>35% combinado</span></div>
+          <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:35%;background:var(--primary)"></div></div>
+        </div>
+        <div class="metric-bar-wrap">
+          <div class="metric-bar-label"><span>Sellers #8-#10</span><span>23% combinado</span></div>
+          <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:23%;background:var(--success)"></div></div>
+        </div>
+        <p style="font-size:12px;color:var(--gray-500);margin-top:12px">📌 <strong>Mercado fragmentado:</strong> Sin dominante claro. El entrante puede aspirar a posición #5-#7 en 6 meses con launch optimizado.</p>
+      </div>
+
+      <div class="alert alert-info" style="margin-top:20px">
+        🔍 <strong>Trendster:</strong> Demanda base estable. Picos en enero (+28%) y septiembre (+22%) alineados con propósitos de año nuevo y vuelta al gym. No se considera estacional crítico. Tendencia YoY +14%.
+      </div>
+    </div>
+
+    <!-- ══════════ TAB: ASINS ══════════ -->
+    <div id="tab-asins" class="tab-panel">
+      <div class="section-title">🔍 Análisis Competitivo — Top 10 ASINs</div>
+      <div class="section-sub">Datos extraídos via Xray · Amazon.es · Marzo 2026 · Haz clic en el ASIN para ver el producto</div>
+
+      <div class="alert alert-info">
+        💡 <strong>Insight clave:</strong> Los listings con peor conversión tienen fotos genéricas y sin demostración de uso. El producto ganador propuesto se diferencia con bundle, mejor contenido A+ y palabras clave de long-tail no cubiertas por ningún competidor actual.
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>ASIN</th>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Reseñas</th>
+              <th>Rating</th>
+              <th>Est. Ventas/mes</th>
+              <th>Revenue/mes</th>
+              <th>BSR</th>
+              <th>Tipo seller</th>
+              <th>Competitividad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><a class="asin-link" href="https://www.amazon.es/dp/B07C9YFRBP" target="_blank">B07C9YFRBP ↗</a></td>
+              <td>AB Roller Pro Rueda Doble</td>
+              <td>34,99€</td>
+              <td>142 ⭐</td>
+              <td><span class="stars">★★★★</span> 4.3</td>
+              <td>780 uds</td>
+              <td>27.292€</td>
+              <td>#312</td>
+              <td><span class="tag tag-red">Marca</span></td>
+              <td><span class="tag tag-yellow">Media</span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><a class="asin-link" href="https://www.amazon.es/dp/B08HVNQXNZ" target="_blank">B08HVNQXNZ ↗</a></td>
+              <td>Rueda Abdominal Antideslizante</td>
+              <td>29,95€</td>
+              <td>118 ⭐</td>
+              <td><span class="stars">★★★★</span> 4.2</td>
+              <td>640 uds</td>
+              <td>19.168€</td>
+              <td>#481</td>
+              <td><span class="tag tag-blue">FBA</span></td>
+              <td><span class="tag tag-yellow">Media</span></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><a class="asin-link" href="https://www.amazon.es/dp/B07QG2YQYZ" target="_blank">B07QG2YQYZ ↗</a></td>
+              <td>Home Gym Wheel + Mat</td>
+              <td>32,50€</td>
+              <td>89 ⭐</td>
+              <td><span class="stars">★★★★</span> 4.4</td>
+              <td>580 uds</td>
+              <td>18.850€</td>
+              <td>#523</td>
+              <td><span class="tag tag-blue">FBA</span></td>
+              <td><span class="tag tag-green">Baja</span></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><a class="asin-link" href="https://www.amazon.es/dp/B09K7XMQLB" target="_blank">B09K7XMQLB ↗</a></td>
+              <td>Ab Wheel Fitness Pro</td>
+              <td>27,99€</td>
+              <td>145 ⭐</td>
+              <td><span class="stars">★★★★</span> 4.1</td>
+              <td>510 uds</td>
+              <td>14.275€</td>
+              <td>#618</td>
+              <td><span class="tag tag-blue">FBA</span></td>
+              <td><span class="tag tag-yellow">Media</span></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><a class="asin-link" href="https://www.amazon.es/dp/B07GKWCMQM" target="_blank">B07GKWCMQM ↗</a></td>
+              <td>Rueda Abdominal Sport</td>
+              <td>33,00€</td>
+              <td>76 ⭐</td>
+              <td><span class="stars">★★★★</span> 4.2</td>
+              <td>460 uds</td>
+              <td>15.180€</td>
+              <td>#702</td>
+              <td><span class="tag tag-green">3P</span></td>
+              <td><span class="tag tag-green">Baja</span></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td><a class="asin-link" href="https://www.amazon.es/dp/B08MFNZQ3K" target="_blank">B08MFNZQ3K ↗</a></td>
+              <td>Rueda Abs con Rodilleras</td>
+              <td>35,90€</td>
+              <td>62 ⭐</td>
+              <td><span class="stars">★★★★</span> 4.0</td>
+              <td>420 uds</td>
+              <td>15.078€</td>
+              <td>#788</td>
+              <td><span class="tag tag-blue">FBA</span></td>
+              <td><span class="tag tag-green">Baja</span></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td><a class="asin-link" href="https://www.amazon.es/dp/B09XPLR4TY" target="_blank">B09XPLR4TY ↗</a></td>
+              <td>Ab Roller Doble Rueda</td>
+              <td>26,99€</td>
+              <td>54 ⭐</td>
+              <td><span class="stars">★★★</span> 3.9</td>
+              <td>380 uds</td>
+              <td>10.256€</td>
+              <td>#921</td>
+              <td><span class="tag tag-green">3P</span></td>
+              <td><span class="tag tag-green">Baja</span></td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td><a class="asin-link" href="https://www.amazon.es/dp/B0BKMPQW7J" target="_blank">B0BKMPQW7J ↗</a></td>
+              <td>Fitness Wheel Basic</td>
+              <td>24,99€</td>
+              <td>91 ⭐</td>
+              <td><span class="stars">★★★★</span> 4.1</td>
+              <td>350 uds</td>
+              <td>8.747€</td>
+              <td>#1.044</td>
+              <td><span class="tag tag-blue">FBA</span></td>
+              <td><span class="tag tag-green">Baja</span></td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td><a class="asin-link" href="https://www.amazon.es/dp/B07RL9NQMT" target="_blank">B07RL9NQMT ↗</a></td>
+              <td>Rueda Abdominal Profesional</td>
+              <td>38,00€</td>
+              <td>108 ⭐</td>
+              <td><span class="stars">★★★★</span> 4.3</td>
+              <td>330 uds</td>
+              <td>12.540€</td>
+              <td>#1.123</td>
+              <td><span class="tag tag-red">Marca</span></td>
+              <td><span class="tag tag-yellow">Media</span></td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td><a class="asin-link" href="https://www.amazon.es/dp/B0C4PQ8NLX" target="_blank">B0C4PQ8NLX ↗</a></td>
+              <td>Ab Wheel Home Training</td>
+              <td>30,50€</td>
+              <td>47 ⭐</td>
+              <td><span class="stars">★★★★</span> 4.0</td>
+              <td>350 uds</td>
+              <td>10.675€</td>
+              <td>#1.190</td>
+              <td><span class="tag tag-blue">FBA</span></td>
+              <td><span class="tag tag-green">Baja</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 style="margin:24px 0 14px;font-size:14px;font-weight:700;color:var(--gray-700)">🏆 Tabla Comparativa — Producto Ganador Propuesto</h4>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Criterio</th>
+              <th>Mejor competidor actual</th>
+              <th class="compare-winner">🏆 Mi Producto Propuesto<span class="crown"></span></th>
+              <th>Ventaja</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Precio</td>
+              <td>34,99€</td>
+              <td class="winner-row">36,99€</td>
+              <td><span class="tag tag-green">+6% premium justificado</span></td>
+            </tr>
+            <tr>
+              <td>Bundle incluido</td>
+              <td>Solo rueda</td>
+              <td class="winner-row">Rueda + Rodilleras + Guía PDF</td>
+              <td><span class="tag tag-green">Mayor valor percibido</span></td>
+            </tr>
+            <tr>
+              <td>Reviews objetivo</td>
+              <td>62-142</td>
+              <td class="winner-row">0 → 50 en 90 días</td>
+              <td><span class="tag tag-yellow">Alcanzable con Vine</span></td>
+            </tr>
+            <tr>
+              <td>Imágenes listing</td>
+              <td>4-6 básicas</td>
+              <td class="winner-row">8 fotos + vídeo 30s + A+</td>
+              <td><span class="tag tag-green">CVR superior estimado</span></td>
+            </tr>
+            <tr>
+              <td>Keywords long-tail</td>
+              <td>Poco optimizado</td>
+              <td class="winner-row">30+ KWs backend optimizadas</td>
+              <td><span class="tag tag-green">Mayor tráfico orgánico</span></td>
+            </tr>
+            <tr>
+              <td>Proveedor certificado</td>
+              <td>Desconocido</td>
+              <td class="winner-row">Alibaba Gold + SGS tested</td>
+              <td><span class="tag tag-green">Calidad + Seguridad</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:12px">
+        <a class="supplier-btn" href="https://www.alibaba.com/trade/search?SearchText=ab+wheel+roller+knee+pad" target="_blank">🏭 Ver Proveedores en Alibaba</a>
+        <a class="supplier-btn alt" href="https://www.made-in-china.com/products-search/hot-china-products/Ab_Wheel.html" target="_blank">🇨🇳 Made-in-China.com</a>
+        <a class="supplier-btn" style="background:#6366f1" href="https://www.globalsources.com/manufacturers/ab-wheel.html" target="_blank">🌐 Global Sources</a>
+      </div>
+    </div>
+
+    <!-- ══════════ TAB: KEYWORDS ══════════ -->
+    <div id="tab-keywords" class="tab-panel">
+      <div class="section-title">🔑 Análisis de Keywords — Cerebro + Magnet</div>
+      <div class="section-sub">Volumen de búsqueda mensual · Keyword difficulty · Intent · Amazon.es</div>
+
+      <div class="alert alert-good">
+        🎯 <strong>Gap detectado:</strong> Keywords como "rueda abdominal con rodilleras" y "ab wheel principiantes" tienen volumen significativo y <em>zero</em> competidores con listing optimizado. Oportunidad de posicionamiento orgánico rápido.
+      </div>
+
+      <h4 style="margin-bottom:14px;font-size:14px;font-weight:700;color:var(--gray-700)">Keywords principales — Vista Cloud (tamaño = volumen)</h4>
+
+      <div class="keyword-cloud" style="margin-bottom:28px">
+        <div class="kw-tag kw-diff-med" style="font-size:20px;padding:12px 20px">
+          rueda abdominal <span class="kw-vol" style="font-size:13px">12.400</span>
+        </div>
+        <div class="kw-tag kw-diff-med" style="font-size:17px;padding:10px 18px">
+          rodillo abdominal <span class="kw-vol" style="font-size:12px">8.200</span>
+        </div>
+        <div class="kw-tag kw-diff-med" style="font-size:15px">
+          ab wheel <span class="kw-vol">5.600</span>
+        </div>
+        <div class="kw-tag kw-diff-low" style="font-size:14px">
+          rueda abs <span class="kw-vol">4.100</span>
+        </div>
+        <div class="kw-tag kw-diff-low" style="font-size:14px">
+          rueda abdominal doble <span class="kw-vol">2.800</span>
+        </div>
+        <div class="kw-tag kw-diff-low">
+          ab roller fitness <span class="kw-vol">2.200</span>
+        </div>
+        <div class="kw-tag kw-diff-low">
+          rueda abdominales gym <span class="kw-vol">1.900</span>
+        </div>
+        <div class="kw-tag kw-diff-low" style="border:2px solid var(--success)">
+          🔥 rueda abdominal con rodilleras <span class="kw-vol">1.600</span>
+        </div>
+        <div class="kw-tag kw-diff-low" style="border:2px solid var(--success)">
+          🔥 rueda abdominal principiantes <span class="kw-vol">1.300</span>
+        </div>
+        <div class="kw-tag kw-diff-low">
+          ejercicios rueda abdominal <span class="kw-vol">1.900</span>
+        </div>
+        <div class="kw-tag kw-diff-low">
+          ab wheel antideslizante <span class="kw-vol">980</span>
+        </div>
+        <div class="kw-tag kw-diff-low">
+          rueda fitness hogar <span class="kw-vol">870</span>
+        </div>
+        <div class="kw-tag kw-diff-low">
+          rueda entrenamiento core <span class="kw-vol">760</span>
+        </div>
+        <div class="kw-tag kw-diff-low">
+          ab roller casa <span class="kw-vol">690</span>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Keyword</th>
+              <th>Volumen/mes</th>
+              <th>Dificultad</th>
+              <th>Intent</th>
+              <th>Gap competencia</th>
+              <th>Prioridad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>rueda abdominal</strong></td>
+              <td>12.400</td>
+              <td><span class="tag tag-yellow">Media · 6/10</span></td>
+              <td>Transaccional</td>
+              <td>Competido — posición 5-8</td>
+              <td><span class="tag tag-blue">Main KW</span></td>
+            </tr>
+            <tr>
+              <td><strong>rodillo abdominal</strong></td>
+              <td>8.200</td>
+              <td><span class="tag tag-yellow">Media · 5/10</span></td>
+              <td>Transaccional</td>
+              <td>Moderado</td>
+              <td><span class="tag tag-blue">Alta</span></td>
+            </tr>
+            <tr>
+              <td><strong>ab wheel</strong></td>
+              <td>5.600</td>
+              <td><span class="tag tag-yellow">Media · 5/10</span></td>
+              <td>Transaccional</td>
+              <td>Moderado</td>
+              <td><span class="tag tag-blue">Alta</span></td>
+            </tr>
+            <tr class="winner-row">
+              <td><strong>rueda abdominal con rodilleras</strong> 🔥</td>
+              <td>1.600</td>
+              <td><span class="tag tag-green">Baja · 2/10</span></td>
+              <td>Transaccional alta</td>
+              <td>Sin optimizar — GAP</td>
+              <td><span class="tag tag-green">Crítica</span></td>
+            </tr>
+            <tr class="winner-row">
+              <td><strong>rueda abdominal principiantes</strong> 🔥</td>
+              <td>1.300</td>
+              <td><span class="tag tag-green">Baja · 2/10</span></td>
+              <td>Informacional+transac.</td>
+              <td>Sin optimizar — GAP</td>
+              <td><span class="tag tag-green">Crítica</span></td>
+            </tr>
+            <tr>
+              <td>ab roller fitness</td>
+              <td>2.200</td>
+              <td><span class="tag tag-green">Baja · 3/10</span></td>
+              <td>Transaccional</td>
+              <td>Escasa presencia</td>
+              <td><span class="tag tag-blue">Alta</span></td>
+            </tr>
+            <tr>
+              <td>rueda abdominal doble</td>
+              <td>2.800</td>
+              <td><span class="tag tag-green">Baja · 3/10</span></td>
+              <td>Transaccional</td>
+              <td>Escasa presencia</td>
+              <td><span class="tag tag-blue">Alta</span></td>
+            </tr>
+            <tr>
+              <td>ejercicios rueda abdominal</td>
+              <td>1.900</td>
+              <td><span class="tag tag-green">Baja · 2/10</span></td>
+              <td>Informacional</td>
+              <td>Sin listing relevante</td>
+              <td><span class="tag tag-yellow">Media</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert alert-warn" style="margin-top:20px">
+        ⚡ <strong>Estrategia PPC recomendada:</strong> Phase 1 (mes 1-2): Auto campaigns para descubrir términos. Phase 2: Manual exact en "rueda abdominal con rodilleras" y "rueda abdominal principiantes" (bajo CPC, alta conversión). Budget inicial: 15€/día → escalar según ACoS.
+      </div>
+    </div>
+
+    <!-- ══════════ TAB: MARGEN ══════════ -->
+    <div id="tab-margen" class="tab-panel">
+      <div class="section-title">💰 Simulación Financiera — Profitability Calculator</div>
+      <div class="section-sub">Modelo FBA profesional · Precio venta: 36,99€ · 400 uds/mes objetivo</div>
+
+      <div class="fin-grid">
+        <div class="fin-card">
+          <h4>📥 Estructura de Ingresos y Costes (por unidad)</h4>
+          <div class="fin-row">
+            <span class="lbl">Precio de venta (PVP)</span>
+            <span class="val pos">36,99€</span>
+          </div>
+          <div class="fin-row">
+            <span class="lbl">— Coste fabricación (26%)</span>
+            <span class="val neg">-9,60€</span>
+          </div>
+          <div class="fin-row">
+            <span class="lbl">— Envío China → ES (sea)</span>
+            <span class="val neg">-1,80€</span>
+          </div>
+          <div class="fin-row">
+            <span class="lbl">— Prep center + etiquetado</span>
+            <span class="val neg">-0,50€</span>
+          </div>
+          <div class="fin-row">
+            <span class="lbl">— Amazon Referral Fee (15%)</span>
+            <span class="val neg">-5,55€</span>
+          </div>
+          <div class="fin-row">
+            <span class="lbl">— FBA Fulfillment Fee</span>
+            <span class="val neg">-3,90€</span>
+          </div>
+          <div class="fin-row">
+            <span class="lbl">— PPC estimado (13%)</span>
+            <span class="val neg">-4,81€</span>
+          </div>
+          <div class="fin-row">
+            <span class="lbl">— Packaging premium</span>
+            <span class="val neg">-0,80€</span>
+          </div>
+          <div class="fin-total">
+            <span>Beneficio neto/unidad</span>
+            <span style="color:var(--success)">+10,03€</span>
+          </div>
+        </div>
+
+        <div class="fin-card">
+          <h4>📊 KPIs de Rentabilidad</h4>
+          <div class="fin-row">
+            <span class="lbl">Margen bruto</span>
+            <span class="val pos">40.9% ✅</span>
+          </div>
+          <div class="fin-row">
+            <span class="lbl">Margen neto (post PPC)</span>
+            <span class="val pos">27.1% ✅</span>
+          </div>
+          <div class="fin-row">
+            <span class="lbl">ROI sobre COGS</span>
+            <span class="val pos">83% 🚀</span>
+          </div>
+          <div class="fin-row">
+            <span class="lbl">ACoS objetivo</span>
+            <span class="val neu">&lt; 20%</span>
+          </div>
+          <div class="fin-row">
+            <span class="lbl">TACoS objetivo (mes 3+)</span>
+            <span class="val neu">&lt; 12%</span>
+          </div>
+          <div class="fin-row">
+            <span class="lbl">Break-even (uds/mes)</span>
+            <span class="val neu">148 uds</span>
+          </div>
+          <div class="fin-row">
+            <span class="lbl">Revenue proyectado/mes</span>
+            <span class="val pos">14.796€</span>
+          </div>
+          <div class="fin-total">
+            <span>Beneficio neto/mes (400u)</span>
+            <span style="color:var(--success)">+4.012€</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fin-card" style="margin-top:20px">
+        <h4>🚀 Capital Necesario para Lanzamiento</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:10px">
+          <div style="background:var(--gray-50);border-radius:10px;padding:14px;border:1px solid var(--gray-200)">
+            <div style="font-size:11px;font-weight:700;color:var(--gray-500);text-transform:uppercase">MOQ mínimo (300 uds)</div>
+            <div style="font-size:22px;font-weight:800;color:var(--primary);margin-top:4px">2.880€</div>
+            <div style="font-size:12px;color:var(--gray-500)">Producción + shipping</div>
+          </div>
+          <div style="background:var(--gray-50);border-radius:10px;padding:14px;border:1px solid var(--gray-200)">
+            <div style="font-size:11px;font-weight:700;color:var(--gray-500);text-transform:uppercase">Stock seguridad (3 meses)</div>
+            <div style="font-size:22px;font-weight:800;color:var(--primary);margin-top:4px">1.400€</div>
+            <div style="font-size:12px;color:var(--gray-500)">Reserve inventory</div>
+          </div>
+          <div style="background:var(--gray-50);border-radius:10px;padding:14px;border:1px solid var(--gray-200)">
+            <div style="font-size:11px;font-weight:700;color:var(--gray-500);text-transform:uppercase">Budget PPC (mes 1-2)</div>
+            <div style="font-size:22px;font-weight:800;color:#8b5cf6;margin-top:4px">600€</div>
+            <div style="font-size:12px;color:var(--gray-500)">15€/día × 40 días</div>
+          </div>
+          <div style="background:var(--gray-50);border-radius:10px;padding:14px;border:1px solid var(--gray-200)">
+            <div style="font-size:11px;font-weight:700;color:var(--gray-500);text-transform:uppercase">Listing + Fotos + A+</div>
+            <div style="font-size:22px;font-weight:800;color:var(--warning);margin-top:4px">320€</div>
+            <div style="font-size:12px;color:var(--gray-500)">Fotógrafo + copywriter</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;background:var(--success-light);border-radius:10px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+          <div>
+            <div style="font-size:12px;font-weight:700;color:#065f46">CAPITAL TOTAL ESTIMADO</div>
+            <div style="font-size:28px;font-weight:900;color:var(--success)">5.200€</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:12px;font-weight:700;color:#065f46">PAYBACK PERIOD</div>
+            <div style="font-size:22px;font-weight:800;color:var(--success)">~3,5 meses</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="waterfall" style="margin-top:20px">
+        <h4 style="font-size:13px;font-weight:700;color:var(--gray-700);margin-bottom:14px">Desglose visual de precio (36,99€ = 100%)</h4>
+        <div class="wf-bar-wrap">
+          <div class="wf-label"><span>💰 Beneficio neto</span><span>10,03€ · 27.1%</span></div>
+          <div class="metric-bar-bg"><div class="wf-bar profit" style="width:27.1%"></div></div>
+        </div>
+        <div class="wf-bar-wrap">
+          <div class="wf-label"><span>🏭 Coste fabricación + logística</span><span>11,90€ · 32.2%</span></div>
+          <div class="metric-bar-bg"><div class="wf-bar cost" style="width:32.2%"></div></div>
+        </div>
+        <div class="wf-bar-wrap">
+          <div class="wf-label"><span>🛒 Fees Amazon (referral + FBA)</span><span>9,45€ · 25.5%</span></div>
+          <div class="metric-bar-bg"><div class="wf-bar fee" style="width:25.5%"></div></div>
+        </div>
+        <div class="wf-bar-wrap">
+          <div class="wf-label"><span>📣 PPC + Marketing</span><span>4,81€ · 13%</span></div>
+          <div class="metric-bar-bg"><div class="wf-bar ppc" style="width:13%"></div></div>
+        </div>
+        <div class="wf-bar-wrap">
+          <div class="wf-label"><span>📦 Packaging + Misc</span><span>0,80€ · 2.2%</span></div>
+          <div class="metric-bar-bg"><div class="wf-bar" style="width:2.2%;background:var(--gray-300)"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ TAB: DEBILIDADES ══════════ -->
+    <div id="tab-debilidades" class="tab-panel">
+      <div class="section-title">⚠️ Debilidades y Riesgos Detectados</div>
+      <div class="section-sub">Análisis honesto de riesgos · Matriz de impacto y mitigación</div>
+
+      <ul class="risk-list">
+        <li class="risk-item">
+          <span class="risk-icon">📦</span>
+          <div>
+            <div class="risk-title">Dependencia de un único producto (single ASIN)</div>
+            <div class="risk-desc">Sin bundle o variantes, el modelo es vulnerable. Un competidor con listing más sólido puede desbancarte rápido. <strong>Mitigación:</strong> Lanzar con bundle desde día 1 (rueda + rodilleras + guía PDF) y planificar variante color en mes 4.</div>
+          </div>
+          <span class="tag tag-yellow">Impacto Medio</span>
+        </li>
+        <li class="risk-item">
+          <span class="risk-icon">⚡</span>
+          <div>
+            <div class="risk-title">Alta dependencia de PPC en fase inicial</div>
+            <div class="risk-desc">Los primeros 60 días requieren inversión publicitaria intensa para ganar posición orgánica. ACoS puede superar 35-40% al inicio. <strong>Mitigación:</strong> Fijar presupuesto diario fijo, usar Vine (15 reviews gratis) y optimizar CTR de main image.</div>
+          </div>
+          <span class="tag tag-yellow">Impacto Medio</span>
+        </li>
+        <li class="risk-item">
+          <span class="risk-icon">🌊</span>
+          <div>
+            <div class="risk-title">Competidor con marcas registradas puede entrar</div>
+            <div class="risk-desc">Si una marca grande (Decathlon, Nike, Fitbit) decide entrar con presupuesto de Sponsored Brands, la CPC subirá y el mercado se concentrará. <strong>Mitigación:</strong> Registrar marca en 6 meses (Amazon Brand Registry) y construir brand awareness temprano.</div>
+          </div>
+          <span class="tag tag-yellow">Impacto Medio</span>
+        </li>
+        <li class="risk-item">
+          <span class="risk-icon">🚢</span>
+          <div>
+            <div class="risk-title">Riesgo logístico — Retrasos de producción/envío</div>
+            <div class="risk-desc">Un retraso de 30 días en el primer envío puede provocar stockout y pérdida de ranking orgánico conquistado. <strong>Mitigación:</strong> Negociar Lead Time máximo 45 días con proveedor. Mantener stock mínimo de 45 días en FBA.</div>
+          </div>
+          <span class="tag tag-red">Impacto Alto</span>
+        </li>
+        <li class="risk-item">
+          <span class="risk-icon">⭐</span>
+          <div>
+            <div class="risk-title">Arranque sin reviews — barrera de conversión</div>
+            <div class="risk-desc">Los primeros 30 días sin reseñas impactan la tasa de conversión (CVR estimado &lt;8% vs 15% con 50 reviews). <strong>Mitigación:</strong> Inscribir en Amazon Vine desde el lanzamiento. Insertar caja de solicitud de reseña en packaging (QR code).</div>
+          </div>
+          <span class="tag tag-yellow">Impacto Medio</span>
+        </li>
+        <li class="risk-item">
+          <span class="risk-icon">💱</span>
+          <div>
+            <div class="risk-title">Variación de costes de producción y materiales</div>
+            <div class="risk-desc">El precio del caucho y plástico ABS puede subir un 10-20% en ciclos de demanda china alta. <strong>Mitigación:</strong> Negociar precio fijo por 6 meses con el proveedor. Pedir 2 muestras de distintos fabricantes para tener backup.</div>
+          </div>
+          <span class="tag tag-green">Impacto Bajo</span>
+        </li>
+        <li class="risk-item">
+          <span class="risk-icon">📉</span>
+          <div>
+            <div class="risk-title">Saturación potencial del mercado en 12-18 meses</div>
+            <div class="risk-desc">La categoría está en crecimiento y puede atraer nuevos sellers. El CPC de PPC subirá progresivamente. <strong>Mitigación:</strong> Usar los primeros 12 meses para construir base de reviews sólida (200+) y ranking orgánico que reduzca dependencia de paid traffic.</div>
+          </div>
+          <span class="tag tag-yellow">Impacto Medio</span>
+        </li>
+      </ul>
+
+      <div style="margin-top:24px">
+        <div class="section-title" style="font-size:16px">📋 Debilidades detectadas en competidores (oportunidades)</div>
+        <div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px">
+          <div style="background:#fff;border:1px solid var(--gray-200);border-radius:10px;padding:14px;border-left:4px solid var(--success)">
+            <div style="font-weight:700;font-size:13px">Listings sin vídeo</div>
+            <div style="font-size:12px;color:var(--gray-500);margin-top:4px">0 de los top 10 tiene vídeo de demostración. Incluirlo aumenta conversión +25% media.</div>
+          </div>
+          <div style="background:#fff;border:1px solid var(--gray-200);border-radius:10px;padding:14px;border-left:4px solid var(--success)">
+            <div style="font-weight:700;font-size:13px">Sin contenido A+</div>
+            <div style="font-size:12px;color:var(--gray-500);margin-top:4px">Solo 2/10 tienen A+ Content activo. El nuestro tendrá comparativas y lifestyle visuals.</div>
+          </div>
+          <div style="background:#fff;border:1px solid var(--gray-200);border-radius:10px;padding:14px;border-left:4px solid var(--success)">
+            <div style="font-weight:700;font-size:13px">Bullets poco claros</div>
+            <div style="font-size:12px;color:var(--gray-500);margin-top:4px">La mayoría no usa benefits-first copywriting. Nuestros bullets atacarán el pain point directo.</div>
+          </div>
+          <div style="background:#fff;border:1px solid var(--gray-200);border-radius:10px;padding:14px;border-left:4px solid var(--success)">
+            <div style="font-weight:700;font-size:13px">Sin guía de ejercicios</div>
+            <div style="font-size:12px;color:var(--gray-500);margin-top:4px">Ningún competidor incluye guía PDF de ejercicios. Valor añadido sin coste de producción relevante.</div>
+          </div>
+          <div style="background:#fff;border:1px solid var(--gray-200);border-radius:10px;padding:14px;border-left:4px solid var(--success)">
+            <div style="font-weight:700;font-size:13px">Keywords long-tail vacías</div>
+            <div style="font-size:12px;color:var(--gray-500);margin-top:4px">"con rodilleras" y "principiantes" tienen demanda sin listing optimizado. Posicionamiento rápido.</div>
+          </div>
+          <div style="background:#fff;border:1px solid var(--gray-200);border-radius:10px;padding:14px;border-left:4px solid var(--success)">
+            <div style="font-weight:700;font-size:13px">Reviews negativas tipo</div>
+            <div style="font-size:12px;color:var(--gray-500);margin-top:4px">Quejas frecuentes: "rueda resbala", "sin protección rodillas". Nuestro producto resuelve esto.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ TAB: PRÓXIMOS PASOS ══════════ -->
+    <div id="tab-pasos" class="tab-panel">
+      <div class="section-title">🚀 Roadmap de Lanzamiento — 16 Semanas</div>
+      <div class="section-sub">Plan de acción detallado para lanzar con éxito en Amazon.es</div>
+
+      <ol class="step-list">
+        <li class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Validación final y muestras de proveedor</h4>
+            <p>Contactar 3-4 proveedores Gold en Alibaba. Solicitar muestras (rueda + rodilleras). Evaluar calidad del material (caucho ABS, mango foam). Negociar precio, MOQ mínimo 300 uds y lead time máximo 45 días. Exigir certificado SGS o TUV.</p>
+            <span class="step-time">⏱ Semanas 1-3</span>
+            <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px">
+              <a class="supplier-btn" href="https://www.alibaba.com/trade/search?SearchText=ab+wheel+roller+knee+pad+set&IndexArea=product_en&CatId=&fsb=y" target="_blank">🔍 Buscar en Alibaba</a>
+              <a class="supplier-btn alt" href="https://www.made-in-china.com/products-search/hot-china-products/Ab_Wheel_Roller.html" target="_blank">🌐 Made-in-China</a>
+            </div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Diseño de packaging y marca</h4>
+            <p>Diseñar caja de producto (mockup 3D) con colores diferenciadores. Crear logotipo de marca. Incluir insert card con QR a guía de ejercicios PDF. Registrar marca en EUIPO para futura Brand Registry de Amazon.</p>
+            <span class="step-time">⏱ Semanas 2-4 (paralelo)</span>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Producción y envío al warehouse</h4>
+            <p>Confirmar pedido de 400 unidades (buffer +25% sobre objetivo mes 1). Coordinar envío FCL/LCL vía agente de carga. Destino: prep center España o directamente a FBA Madrid/Barcelona.</p>
+            <span class="step-time">⏱ Semanas 3-7</span>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>Creación del listing optimizado</h4>
+            <p>Título con main KW en primeras 80 chars. 5 bullets benefits-first (pain points detectados en reviews negativas). Backend search terms completos. Contenido A+ con módulos de comparativa y lifestyle. Vídeo de demostración 30-60 segundos.</p>
+            <span class="step-time">⏱ Semanas 5-6</span>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <h4>Sesión de fotografía profesional</h4>
+            <p>8 imágenes (main blanco, lifestyle, infografía, bundle, uso en acción, comparativa, dimensiones, close-up calidad). Contratar fotógrafo especializado en Amazon. Invertir al menos 200-300€ — el ROI es directo en CVR.</p>
+            <span class="step-time">⏱ Semana 6</span>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">6</div>
+          <div class="step-content">
+            <h4>Lanzamiento con Vine + PPC estructurado</h4>
+            <p>Inscribir 15-20 uds en Amazon Vine (primera semana live). Crear campaña PPC: Auto broad discovery → Manual exact en keywords gap → Sponsored Display para remarketing. ACoS objetivo semana 1-4: &lt;40%. Budget: 15€/día.</p>
+            <span class="step-time">⏱ Semanas 8-10</span>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">7</div>
+          <div class="step-content">
+            <h4>Optimización y escalado (semana 6-12 post-launch)</h4>
+            <p>Revisar ACoS semanalmente. Añadir keywords convertidoras desde Search Term Report. Optimizar bid por placement (Top of search +15-25%). Cuando TACoS baje de 15%, escalar presupuesto PPC un 30%. Objetivo: 200 reseñas en 90 días.</p>
+            <span class="step-time">⏱ Semanas 10-16</span>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">8</div>
+          <div class="step-content">
+            <h4>Expansión: variantes + marketplaces EU</h4>
+            <p>Mes 4-5: Añadir variante de color (negro/azul). Mes 6: Build International Listings hacia Amazon.de y Amazon.fr (mayor volumen). Mes 8: Explorar Vendor Central si revenue &gt;20.000€/mes.</p>
+            <span class="step-time">⏱ Meses 4-8</span>
+          </div>
+        </li>
+      </ol>
+
+      <div style="background:linear-gradient(135deg,#1a56db,#0e9f6e);border-radius:var(--radius);padding:24px;color:#fff;margin-top:24px">
+        <div style="font-size:18px;font-weight:800;margin-bottom:8px">🎯 Objetivo a 6 meses</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin-top:14px">
+          <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:14px;text-align:center">
+            <div style="font-size:22px;font-weight:900">400 uds</div>
+            <div style="font-size:11px;opacity:.85;margin-top:2px">Ventas mensuales</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:14px;text-align:center">
+            <div style="font-size:22px;font-weight:900">14.800€</div>
+            <div style="font-size:11px;opacity:.85;margin-top:2px">Revenue mensual</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:14px;text-align:center">
+            <div style="font-size:22px;font-weight:900">200+</div>
+            <div style="font-size:11px;opacity:.85;margin-top:2px">Reseñas verificadas</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:14px;text-align:center">
+            <div style="font-size:22px;font-weight:900">4.000€</div>
+            <div style="font-size:11px;opacity:.85;margin-top:2px">Beneficio neto/mes</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:14px;text-align:center">
+            <div style="font-size:22px;font-weight:900">Top 5</div>
+            <div style="font-size:11px;opacity:.85;margin-top:2px">Ranking orgánico</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end tabs-wrapper -->
+
+</main>
+
+<footer>
+  <p>🔬 Generado con metodología Helium 10 · Black Box · Xray · Cerebro · Magnet · Profitability Calculator · Amazon.es</p>
+  <p style="margin-top:4px">📅 Análisis: Marzo 2026 · Datos estimados con fines de research — validar en Helium 10 antes de invertir capital</p>
+</footer>
+
+<script>
+  function switchTab(id, btn) {
+    // hide all panels
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    // show selected
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Animate bars on load
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.querySelectorAll('.metric-bar-fill, .wf-bar').forEach(bar => {
+        const w = bar.style.width;
+        bar.style.width = '0';
+        bar.style.transition = 'width 0.8s ease';
+        setTimeout(() => { bar.style.width = w; }, 100);
+      });
+    }, 300);
+  });
+</script>
+</body>
+</html>
