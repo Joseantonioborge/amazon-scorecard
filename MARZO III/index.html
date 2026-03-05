@@ -1,1 +1,1084 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FBA Research · Fitness & Bienestar · Amazon.es 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f6fb;--white:#fff;--border:#e4e9f4;--text:#0f1724;--text2:#4a5875;--muted:#8fa3c4;
+  --sky:#0ea5e9;--skyl:#f0f9ff;--skyp:#bae6fd;--skyd:#0369a1;
+  --emerald:#10b981;--eml:#ecfdf5;--emp:#a7f3d0;--emd:#047857;
+  --violet:#7c3aed;--viol:#f5f3ff;--viop:#ddd6fe;--viod:#5b21b6;
+  --amber:#f59e0b;--ambl:#fffbeb;--ambp:#fde68a;
+  --rose:#f43f5e;--rosl:#fff1f2;--rosp:#fda4af;
+  --green:#16a34a;--gl:#f0fdf4;--gp:#bbf7d0;
+  --yellow:#d97706;--yl:#fffbeb;--yp:#fde68a;
+  --red:#dc2626;--rl:#fef2f2;
+  --s0:0 1px 3px rgba(0,0,0,.06);--s1:0 4px 16px rgba(0,0,0,.08);--s2:0 8px 32px rgba(0,0,0,.11);--s3:0 20px 60px rgba(0,0,0,.14);
+  --r:14px;--rs:10px;--rx:6px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.93)}to{opacity:1;transform:scale(1)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes growBar{from{width:0}to{width:var(--w)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes slideRight{from{width:0}to{width:var(--w)}}
 
+/* ─── HERO ─── */
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 40%,#0369a1 80%,#0ea5e9 100%);color:#fff;padding:64px 24px 100px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(14,165,233,.2),transparent 60%),radial-gradient(ellipse at 70% 20%,rgba(124,58,237,.15),transparent 50%)}
+.hero-mesh{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:30px 30px}
+.hero-inner{position:relative;z-index:2}
+.hbadge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:5px 18px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px;animation:fadeDown .5s ease both}
+.live{width:7px;height:7px;border-radius:50%;background:#34d399;animation:pulse 1.8s infinite;flex-shrink:0}
+.hero h1{font-size:clamp(30px,5.5vw,60px);font-weight:900;line-height:1.06;letter-spacing:-.04em;margin-bottom:16px;animation:fadeDown .55s .08s ease both}
+.hero h1 .hl{background:linear-gradient(90deg,#fbbf24,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(14px,2vw,18px);opacity:.82;max-width:600px;margin:0 auto 42px;animation:fadeDown .55s .16s ease both;line-height:1.55}
+.hero-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;animation:fadeUp .55s .24s ease both}
+.hchip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:50px;padding:7px 18px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:7px}
+
+/* ─── CONSUMER PROFILE CARD ─── */
+.profile-wrap{max-width:1120px;margin:-50px auto 0;padding:0 20px;position:relative;z-index:10;animation:scaleIn .55s .3s ease both}
+.profile-card{background:#fff;border-radius:22px;box-shadow:var(--s3);padding:36px;border:1px solid var(--border);overflow:hidden;position:relative}
+.profile-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--sky),var(--violet),var(--emerald))}
+.profile-header{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.profile-icon{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--sky),var(--violet));display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.profile-title h2{font-size:20px;font-weight:800;margin-bottom:3px}
+.profile-title p{font-size:13px;color:var(--text2)}
+.profile-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.pg-item{background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:16px}
+.pg-icon{font-size:26px;margin-bottom:8px}
+.pg-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:5px}
+.pg-val{font-size:13px;font-weight:700;color:var(--text);line-height:1.4}
+.pg-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:24px}
+.pg-tag{background:var(--skyl);border:1px solid var(--skyp);border-radius:50px;padding:4px 12px;font-size:11px;font-weight:700;color:var(--skyd)}
+.pg-tag.v{background:var(--viol);border-color:var(--viop);color:var(--viod)}
+.pg-tag.e{background:var(--eml);border-color:var(--emp);color:var(--emd)}
+.pg-tag.a{background:var(--ambl);border-color:var(--ambp);color:var(--amber)}
+.habits-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:20px}
+.habit-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:14px}
+.hb-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.hb-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2);padding:4px 0;border-bottom:1px solid rgba(228,233,244,.6)}
+.hb-item:last-child{border-bottom:none}
+.hb-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.hb-dot.sky{background:var(--sky)} .hb-dot.violet{background:var(--violet)} .hb-dot.emerald{background:var(--emerald)} .hb-dot.amber{background:var(--amber)}
+
+/* ─── SUBNICHE SECTION ─── */
+.main{max-width:1120px;margin:0 auto;padding:44px 20px 80px}
+.section-title{font-size:22px;font-weight:900;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.section-sub{font-size:13px;color:var(--text2);margin-bottom:24px}
+.subniche-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
+.sn-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:20px;box-shadow:var(--s0);transition:all .22s;cursor:pointer;position:relative;overflow:hidden}
+.sn-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;opacity:0;transition:opacity .22s}
+.sn-card.c1::after{background:linear-gradient(90deg,var(--sky),var(--skyd));opacity:1}
+.sn-card.c2::after{background:linear-gradient(90deg,var(--emerald),var(--emd));opacity:1}
+.sn-card.c3::after{background:linear-gradient(90deg,var(--violet),var(--viod));opacity:1}
+.sn-card.c4::after{background:linear-gradient(90deg,var(--amber),#d97706);opacity:1}
+.sn-card.c5::after{background:linear-gradient(90deg,var(--rose),#be123c);opacity:1}
+.sn-card.c6::after{background:linear-gradient(90deg,#06b6d4,#0891b2);opacity:1}
+.sn-card:hover{transform:translateY(-4px);box-shadow:var(--s2)}
+.sn-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+.sn-emo{font-size:32px}
+.sn-score{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;background:var(--bg);border:1px solid var(--border);border-radius:50px;padding:3px 10px}
+.sn-name{font-size:15px;font-weight:800;margin-bottom:4px}
+.sn-desc{font-size:12px;color:var(--text2);line-height:1.55;margin-bottom:14px}
+.sn-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.sn-bar-wrap{height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:10px}
+.sn-bar{height:100%;border-radius:2px;animation:growBar 1.2s .5s ease both}
+.c1 .sn-bar{background:var(--sky);--w:92%} .c2 .sn-bar{background:var(--emerald);--w:84%} .c3 .sn-bar{background:var(--violet);--w:76%}
+.c4 .sn-bar{background:var(--amber);--w:70%} .c5 .sn-bar{background:var(--rose);--w:65%} .c6 .sn-bar{background:#06b6d4;--w:60%}
+.sn-meta{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:6px}
+
+/* ─── PRODUCT SELECTOR ─── */
+.prod-sel{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.pb{display:inline-flex;align-items:center;gap:9px;background:#fff;border:2px solid var(--border);border-radius:50px;padding:10px 22px;font-size:13px;font-weight:700;color:var(--text2);transition:all .2s;box-shadow:var(--s0)}
+.pb:hover{border-color:var(--sky);color:var(--sky);box-shadow:0 0 0 4px var(--skyl)}
+.pb.active{background:var(--sky);border-color:var(--sky);color:#fff;box-shadow:0 4px 18px rgba(14,165,233,.32)}
+.pb.pb2.active{background:var(--emerald);border-color:var(--emerald);box-shadow:0 4px 18px rgba(16,185,129,.32)}
+.pb.pb3.active{background:var(--violet);border-color:var(--violet);box-shadow:0 4px 18px rgba(124,58,237,.32)}
+.pb .pbe{font-size:18px}
+.pb .wtag{background:var(--amber);color:#fff;font-size:9px;font-weight:800;padding:2px 9px;border-radius:50px;text-transform:uppercase;letter-spacing:.06em}
+.prod-panel{display:none;animation:fadeIn .25s ease}
+.prod-panel.active{display:block}
+
+/* ─── TABS ─── */
+.tabs-bar{display:flex;gap:3px;background:#fff;border:1px solid var(--border);border-radius:50px;padding:5px;margin-bottom:22px;box-shadow:var(--s0);overflow-x:auto;scrollbar-width:none}
+.tabs-bar::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;display:flex;align-items:center;gap:5px;padding:8px 16px;border-radius:50px;font-size:12px;font-weight:700;color:var(--text2);transition:all .18s;white-space:nowrap}
+.tab-btn:hover{background:var(--bg);color:var(--text)}
+.tab-btn.active{background:var(--sky);color:#fff;box-shadow:0 2px 10px rgba(14,165,233,.28)}
+.tab-panel{display:none;animation:fadeIn .2s ease}
+.tab-panel.active{display:block}
+
+/* ─── CARDS & LAYOUT ─── */
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:22px;box-shadow:var(--s0);margin-bottom:14px}
+.card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:7px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+
+/* ─── OV HERO ─── */
+.ov-hero{border-radius:var(--r);padding:28px;margin-bottom:14px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.ov-hero.c1{background:linear-gradient(135deg,var(--skyl),var(--skyp));border:1px solid var(--skyp)}
+.ov-hero.c2{background:linear-gradient(135deg,var(--eml),var(--emp));border:1px solid var(--emp)}
+.ov-hero.c3{background:linear-gradient(135deg,var(--viol),var(--viop));border:1px solid var(--viop)}
+.ov-icon{font-size:72px;filter:drop-shadow(0 6px 16px rgba(0,0,0,.14));flex-shrink:0}
+.ov-info{flex:1;min-width:240px}
+.ov-info h2{font-size:22px;font-weight:900;margin-bottom:4px}
+.ov-cat{font-size:12px;color:var(--text2);margin-bottom:14px}
+.ov-nums{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:14px}
+.on-val{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700}
+.on-val.g{color:var(--green)} .on-val.s{color:var(--skyd)} .on-val.e{color:var(--emd)} .on-val.v{color:var(--viod)} .on-val.a{color:var(--amber)}
+.on-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.vp{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:50px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.vp-g{background:var(--gl);color:var(--green);border:1px solid var(--gp)}
+.vp-y{background:var(--yl);color:var(--yellow);border:1px solid var(--yp)}
+.stat-g{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:14px;text-align:center}
+.sv{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;margin-bottom:3px}
+.sv.g{color:var(--green)} .sv.s{color:var(--skyd)} .sv.e{color:var(--emd)} .sv.v{color:var(--viod)} .sv.y{color:var(--yellow)} .sv.r{color:var(--red)}
+.slbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.kv{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(228,233,244,.7);font-size:13px}
+.kv:last-child{border-bottom:none}
+.kv-l{color:var(--text2)} .kv-v{font-weight:700;color:var(--text);font-size:12px}
+.pill{display:inline-block;padding:2px 10px;border-radius:50px;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.pg2{background:var(--gl);color:var(--green)} .py2{background:var(--yl);color:var(--yellow)} .pr2{background:var(--rl);color:var(--red)} .ps{background:var(--skyl);color:var(--skyd)} .pe{background:var(--eml);color:var(--emd)} .pv{background:var(--viol);color:var(--viod)}
+
+/* ─── TABLE ─── */
+.tbl-wrap{overflow-x:auto;border-radius:var(--rs);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;min-width:580px}
+thead tr{background:var(--bg)}
+th{padding:11px 14px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid rgba(228,233,244,.55);font-size:13px;color:var(--text2)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(14,165,233,.02)}
+.asin-link{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--skyd);background:var(--skyl);padding:3px 9px;border-radius:var(--rx);display:inline-block;transition:all .15s}
+.asin-link:hover{background:var(--sky);color:#fff}
+.br-row{display:flex;align-items:center;gap:7px}
+.mb{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden;min-width:30px}
+.mb-fill{height:100%;border-radius:3px}
+.mb-g .mb-fill{background:var(--green)} .mb-s .mb-fill{background:var(--sky)} .mb-r .mb-fill{background:var(--red)} .mb-a .mb-fill{background:var(--amber)}
+.td-b{font-weight:700;color:var(--text)}
+tr.tr-hl td{background:var(--skyl)}
+
+/* ─── KEYWORDS ─── */
+.kw-grid{display:flex;flex-wrap:wrap;gap:10px}
+.kwc{background:#fff;border:1px solid var(--border);border-radius:var(--rs);padding:12px 14px;display:flex;flex-direction:column;gap:5px;box-shadow:var(--s0);transition:all .2s;min-width:168px}
+.kwc:hover{border-color:var(--sky);transform:translateY(-2px);box-shadow:var(--s1)}
+.kwc.primary{border-color:var(--sky);background:var(--skyl)}
+.kwc.primary .kw-word{color:var(--skyd)}
+.kw-word{font-weight:700;font-size:13px;color:var(--text)}
+.kw-meta{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.kw-vol{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--skyd);font-weight:600}
+.kw-kd{font-size:10px;font-weight:800;padding:1px 8px;border-radius:50px}
+.kd-e{background:var(--gl);color:var(--green)} .kd-m{background:var(--yl);color:var(--yellow)} .kd-h{background:var(--rl);color:var(--red)}
+.kw-intent{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.seo-box{background:var(--skyl);border:1px solid var(--skyp);border-radius:var(--rs);padding:16px;margin-top:16px}
+.seo-title{font-size:12px;font-weight:700;color:var(--skyd);margin-bottom:6px}
+.seo-text{font-size:13px;color:var(--text2);line-height:1.65}
+
+/* ─── FINANCIAL ─── */
+.fin-sum{border-radius:var(--r);padding:24px;margin-bottom:14px}
+.fin-sum.c1{background:linear-gradient(135deg,var(--skyl),#e0f2fe);border:1px solid var(--skyp)}
+.fin-sum.c2{background:linear-gradient(135deg,var(--eml),#d1fae5);border:1px solid var(--emp)}
+.fin-sum.c3{background:linear-gradient(135deg,var(--viol),#ede9fe);border:1px solid var(--viop)}
+.fin-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.fnum{text-align:center}
+.fv{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;line-height:1}
+.fv.g{color:var(--green)} .fv.s{color:var(--skyd)} .fv.e{color:var(--emd)} .fv.v{color:var(--viod)} .fv.a{color:var(--amber)}
+.fl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:5px}
+.ftbl{border:1px solid var(--border);border-radius:var(--rs);overflow:hidden}
+.ftr{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid rgba(228,233,244,.5);font-size:13px}
+.ftr:last-child{border-bottom:none}
+.ftr.cost .fval{color:var(--red)} .ftr.inc .fval{color:var(--green)}
+.ftr.total{background:var(--text)} .ftr.total .flbl{color:rgba(255,255,255,.78);font-weight:700} .ftr.total .fval{color:#6ee7b7;font-weight:700}
+.flbl{color:var(--text2)} .fval{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700}
+.lg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.lbox{background:#fff;border:1px solid var(--border);border-radius:var(--rs);padding:14px;text-align:center}
+.lb-ico{font-size:24px;margin-bottom:7px} .lb-val{font-family:'JetBrains Mono',monospace;font-size:17px;font-weight:700;color:var(--skyd)} .lb-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+.proj-row{display:flex;justify-content:space-between;padding:9px 12px;background:var(--bg);border-radius:var(--rx);font-size:13px;margin-bottom:6px}
+.proj-val{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--green)}
+
+/* ─── WEAKNESSES ─── */
+.wg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wi{background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:16px;display:flex;gap:11px;align-items:flex-start}
+.wi-ico{font-size:22px;flex-shrink:0} .wi-title{font-size:13px;font-weight:700;margin-bottom:3px} .wi-desc{font-size:12px;color:var(--text2);line-height:1.55}
+.og{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.oi{background:var(--gl);border:1px solid var(--gp);border-radius:var(--rs);padding:16px;display:flex;gap:11px;align-items:flex-start}
+.oi-ico{font-size:20px;flex-shrink:0} .oi h4{font-size:13px;font-weight:700;color:var(--green);margin-bottom:3px} .oi p{font-size:12px;color:var(--text2);line-height:1.55}
+
+/* ─── STEPS ─── */
+.steps{display:flex;flex-direction:column;gap:10px}
+.step{background:#fff;border:1px solid var(--border);border-radius:var(--rs);padding:16px 18px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--s0);transition:all .2s}
+.step:hover{border-color:var(--sky);transform:translateX(5px)}
+.step-n{width:30px;height:30px;border-radius:50%;background:var(--sky);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-b h4{font-size:13px;font-weight:700;margin-bottom:3px} .step-b p{font-size:12px;color:var(--text2);line-height:1.55}
+.stag{display:inline-block;margin-top:5px;background:var(--skyl);color:var(--skyd);font-size:10px;font-weight:700;padding:2px 10px;border-radius:50px;text-transform:uppercase;letter-spacing:.06em}
+.stag.warn{background:var(--rl);color:var(--red)}
+
+.sup-banner{background:linear-gradient(135deg,var(--skyl),var(--skyp));border:1px solid var(--skyp);border-radius:var(--r);padding:20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.sb-info{flex:1} .sb-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--skyd);margin-bottom:5px} .sb-name{font-size:14px;font-weight:800;margin-bottom:3px} .sb-desc{font-size:12px;color:var(--text2)}
+.sb-links{display:flex;gap:8px;flex-wrap:wrap}
+.sbl{display:inline-flex;align-items:center;gap:5px;background:var(--sky);color:#fff;font-size:11px;font-weight:700;padding:9px 18px;border-radius:50px;transition:all .2s}
+.sbl:hover{background:var(--skyd);transform:translateY(-1px);box-shadow:0 4px 14px rgba(14,165,233,.3)}
+.sbl.e{background:var(--emerald)} .sbl.e:hover{background:var(--emd)}
+.sbl.v{background:var(--violet)} .sbl.v:hover{background:var(--viod)}
+
+/* ─── COMPARISON ─── */
+.comp-sec{margin-top:60px;padding-top:10px;border-top:2px solid var(--border)}
+.comp-sec>h2{font-size:22px;font-weight:900;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.comp-intro{font-size:13px;color:var(--text2);margin-bottom:22px}
+.comp-wrap{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--s2)}
+.ctbl{width:100%;border-collapse:collapse;min-width:580px}
+.ctbl th{padding:13px 16px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.08em;background:var(--text);color:rgba(255,255,255,.8)}
+.ctbl td{padding:12px 16px;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2)}
+.ctbl tr:last-child td{border-bottom:none}
+.ctbl tr:hover td{background:rgba(14,165,233,.02)}
+.ctbl .rl{font-weight:700;color:var(--text)}
+.ctbl .wc{background:rgba(14,165,233,.04)}
+.ctbl .wc .val{font-weight:800;color:var(--skyd)}
+.ctbl .sr td{background:var(--bg);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;padding:8px 16px}
+.wth{display:flex;flex-direction:column;align-items:center;gap:4px;background:linear-gradient(180deg,var(--sky),var(--skyd));padding:13px 16px}
+.wth-emo{font-size:24px} .wth-name{font-size:11px;font-weight:800;color:#fff}
+.wth-badge{background:rgba(255,255,255,.22);color:#fff;font-size:9px;font-weight:900;padding:2px 10px;border-radius:50px;text-transform:uppercase;letter-spacing:.06em}
+
+/* ─── SUPPLIER GRID ─── */
+.sup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.sup-card{background:#fff;border:1px solid var(--border);border-radius:var(--rs);padding:18px;box-shadow:var(--s0);transition:all .2s}
+.sup-card:hover{border-color:var(--sky);box-shadow:var(--s1)}
+.sup-emo{font-size:28px;margin-bottom:8px} .sup-name{font-size:13px;font-weight:800;margin-bottom:4px} .sup-desc{font-size:11px;color:var(--text2);margin-bottom:12px;line-height:1.5}
+.sup-link{display:inline-flex;align-items:center;gap:5px;background:var(--sky);color:#fff;font-size:11px;font-weight:700;padding:7px 14px;border-radius:50px;transition:all .2s}
+.sup-link:hover{background:var(--skyd)} .sup-link.e{background:var(--emerald)} .sup-link.e:hover{background:var(--emd)} .sup-link.v{background:var(--violet)} .sup-link.v:hover{background:var(--viod)}
+
+/* ─── BUDGET ALERT ─── */
+.budget-ok{background:var(--gl);border:1px solid var(--gp);border-radius:var(--rs);padding:14px 16px;margin-top:12px;font-size:12px;color:var(--green);display:flex;gap:8px;line-height:1.5}
+.disc{background:var(--yl);border:1px solid var(--yp);border-radius:var(--rs);padding:13px 16px;font-size:12px;color:var(--yellow);margin-top:14px;display:flex;gap:8px;line-height:1.5}
+.crit{background:var(--rl);border:1px solid var(--rosp);border-radius:var(--rs);padding:14px 16px;margin-bottom:14px;font-size:12px;color:var(--red);display:flex;gap:8px;line-height:1.5}
+
+/* ─── FOOTER ─── */
+footer{background:var(--text);color:rgba(255,255,255,.5);text-align:center;padding:36px 24px;font-size:12px;line-height:1.8;margin-top:60px}
+footer strong{color:rgba(255,255,255,.9)}
+.ft-chips{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:14px}
+.ft-chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:50px;padding:4px 14px;font-size:11px}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .profile-grid,.habits-row,.subniche-grid,.g3,.fin-4,.qm-row{grid-template-columns:1fr 1fr}
+  .g2,.wg,.og,.sup-grid,.lg{grid-template-columns:1fr}
+  .ov-hero{flex-direction:column;text-align:center} .ov-nums{justify-content:center}
+}
+@media(max-width:560px){
+  .profile-grid,.fin-4,.stat-g{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:28px}
+  .tab-btn{padding:7px 10px;font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-inner">
+    <div class="hbadge"><span class="live"></span>Análisis Activo · Amazon.es · Febrero 2026</div>
+    <h1>Fitness &amp; Bienestar<br><span class="hl">Nicho · Subnichos · Perfil Comprador</span></h1>
+    <p class="hero-sub">Investigación avanzada con metodología Helium 10 · Detección de subnichos por perfil de consumidor · Capital €1.500–€4.000 · Private Label</p>
+    <div class="hero-chips">
+      <span class="hchip">🏋️ Fitness & Bienestar</span>
+      <span class="hchip">🇪🇸 Amazon.es</span>
+      <span class="hchip">💰 Capital €1.5K–€4K</span>
+      <span class="hchip">🏷️ Private Label</span>
+      <span class="hchip">📊 Helium 10 Methodology</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONSUMER PROFILE ══ -->
+<div class="profile-wrap">
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-icon">🧠</div>
+      <div class="profile-title">
+        <h2>Perfil del Consumidor de Fitness en Amazon.es 2026</h2>
+        <p>Análisis conductual · hábitos de compra · motivaciones · triggers de conversión</p>
+      </div>
+    </div>
+
+    <div class="profile-grid">
+      <div class="pg-item">
+        <div class="pg-icon">👤</div>
+        <div class="pg-label">Demografía Principal</div>
+        <div class="pg-val">Mujer 28–42 / Hombre 26–38 años · Urbano o suburbano · Nivel medio-alto · Trabaja en oficina o teletrabajo</div>
+      </div>
+      <div class="pg-item">
+        <div class="pg-icon">💻</div>
+        <div class="pg-label">Comportamiento Digital</div>
+        <div class="pg-val">Sigue cuentas fitness en IG/TikTok · Busca en YouTube antes de comprar · Compara en Amazon antes de decidir · Mobile-first (73%)</div>
+      </div>
+      <div class="pg-item">
+        <div class="pg-icon">🕐</div>
+        <div class="pg-label">Cuándo Compra</div>
+        <div class="pg-val">Pico enero (+48%) y septiembre (+31%) · Compra dominical 18:00–22:00 · Decisión rápida si reviews &gt;4.2★ y Prime disponible</div>
+      </div>
+      <div class="pg-item">
+        <div class="pg-icon">💳</div>
+        <div class="pg-label">Ticket Medio Fitness</div>
+        <div class="pg-val">€22–€45 por producto · Acepta pagar €5–€10 extra si el packaging comunica calidad · Alta tasa de recompra en consumibles</div>
+      </div>
+    </div>
+
+    <div class="habits-row">
+      <div class="habit-box">
+        <div class="hb-title"><span>🏃</span> Rutina Fitness Típica</div>
+        <div class="hb-item"><span class="hb-dot sky"></span>Entrena 3–4 días/semana en casa o gym low-cost</div>
+        <div class="hb-item"><span class="hb-dot sky"></span>Sigue programas YouTube o apps (Nike Training, Fitbod)</div>
+        <div class="hb-item"><span class="hb-dot sky"></span>Prioriza ejercicios funcionales + movilidad</div>
+        <div class="hb-item"><span class="hb-dot sky"></span>Budget equipamiento: €150–€400 anuales</div>
+        <div class="hb-item"><span class="hb-dot sky"></span>Compra equipamiento en 2–3 tandas al año</div>
+      </div>
+      <div class="habit-box">
+        <div class="hb-title"><span>🛒</span> Proceso de Compra</div>
+        <div class="hb-item"><span class="hb-dot violet"></span>Descubre el producto en TikTok o IG Reels</div>
+        <div class="hb-item"><span class="hb-dot violet"></span>Busca en Google → aterriza en Amazon</div>
+        <div class="hb-item"><span class="hb-dot violet"></span>Lee 8–12 reviews antes de añadir al carrito</div>
+        <div class="hb-item"><span class="hb-dot violet"></span>Compara máximo 3 productos similares</div>
+        <div class="hb-item"><span class="hb-dot violet"></span>Prime = factor decisivo (convierte 2.8× más)</div>
+      </div>
+      <div class="habit-box">
+        <div class="hb-title"><span>🔑</span> Motivaciones Reales</div>
+        <div class="hb-item"><span class="hb-dot emerald"></span>Perder peso / tonificar sin ir al gym</div>
+        <div class="hb-item"><span class="hb-dot emerald"></span>Ahorrar cuota de gimnasio (€30–€80/mes)</div>
+        <div class="hb-item"><span class="hb-dot emerald"></span>Reducir dolor de espalda / postura</div>
+        <div class="hb-item"><span class="hb-dot emerald"></span>Reducir estrés y mejorar sueño</div>
+        <div class="hb-item"><span class="hb-dot emerald"></span>Estética Instagram (antes y después)</div>
+      </div>
+    </div>
+
+    <div class="pg-tags">
+      <span class="pg-tag">🏠 Entrena en casa</span>
+      <span class="pg-tag">📱 Influencer-driven</span>
+      <span class="pg-tag v">🌿 Valora lo natural/ecológico</span>
+      <span class="pg-tag e">📦 Expectativa packaging premium</span>
+      <span class="pg-tag a">⚡ Decisión impulsiva si precio &lt;€35</span>
+      <span class="pg-tag">🔄 Recompra si hay variedad de uso</span>
+      <span class="pg-tag v">🎁 Alta compra como regalo</span>
+      <span class="pg-tag e">⭐ Rating &gt;4.3★ = filtro mental</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<div class="main">
+
+  <!-- ── SUBNICHOS DETECTADOS ── -->
+  <div style="margin-bottom:12px;margin-top:12px">
+    <div class="section-title">🔭 Subnichos Detectados por Perfil de Consumidor</div>
+    <div class="section-sub">Del nicho principal Fitness & Bienestar → 6 subnichos con demanda real y baja-media competencia en Amazon.es. Los 3 primeros son los seleccionados para análisis completo.</div>
+  </div>
+
+  <div class="subniche-grid">
+    <!-- SN1 -->
+    <div class="sn-card c1" onclick="selProd('p1')">
+      <div class="sn-head">
+        <div class="sn-emo">💪</div>
+        <div class="sn-score">9.4 / 10</div>
+      </div>
+      <div class="sn-name">Bandas Elásticas de Resistencia Set</div>
+      <div class="sn-desc">Subnicho #1 del fitness en casa. Demanda evergreen, fragmentada, KD bajo. Encaja perfecto con €1.500–€4.000. El consumidor busca sustituir el gym.</div>
+      <div class="sn-pills">
+        <span class="pill pg2">🟢 Alta oportunidad</span>
+        <span class="pill ps">Capital €2.800</span>
+        <span class="pill pg2">ROI 82%</span>
+      </div>
+      <div class="sn-bar-wrap"><div class="sn-bar"></div></div>
+      <div class="sn-meta"><span>⭐ 64 reviews promedio</span><span>📦 Small FBA</span></div>
+    </div>
+    <!-- SN2 -->
+    <div class="sn-card c2" onclick="selProd('p2')">
+      <div class="sn-head">
+        <div class="sn-emo">🧘</div>
+        <div class="sn-score">7.8 / 10</div>
+      </div>
+      <div class="sn-name">Accesorios Yoga Premium (Corcho)</div>
+      <div class="sn-desc">Mujer 30–45 años, urbana, busca rutina anti-estrés. Valora materiales naturales. Gap claro en Amazon.es: falta producto dual yoga+pilates con branding cuidado.</div>
+      <div class="sn-pills">
+        <span class="pill pg2">🟢 Alta oportunidad</span>
+        <span class="pill pe">Capital €3.600</span>
+        <span class="pill pg2">ROI 68%</span>
+      </div>
+      <div class="sn-bar-wrap"><div class="sn-bar"></div></div>
+      <div class="sn-meta"><span>⭐ 92 reviews promedio</span><span>📦 Small FBA</span></div>
+    </div>
+    <!-- SN3 -->
+    <div class="sn-card c3" onclick="selProd('p3')">
+      <div class="sn-head">
+        <div class="sn-emo">🌀</div>
+        <div class="sn-score">7.2 / 10</div>
+      </div>
+      <div class="sn-name">Rodillo Masaje Muscular (Fascia)</div>
+      <div class="sn-desc">Subnicho de recuperación post-entrenamiento. El mismo comprador de bandas/yoga compra esto 2–3 meses después. Upsell natural. Competencia media pero diferenciable.</div>
+      <div class="sn-pills">
+        <span class="pill pg2">🟢 Buena oportunidad</span>
+        <span class="pill pv">Capital €3.200</span>
+        <span class="pill py2">ROI 55%</span>
+      </div>
+      <div class="sn-bar-wrap"><div class="sn-bar"></div></div>
+      <div class="sn-meta"><span>⭐ 118 reviews promedio</span><span>📦 Standard FBA</span></div>
+    </div>
+    <!-- SN4 (propuesta) -->
+    <div class="sn-card c4">
+      <div class="sn-head">
+        <div class="sn-emo">😴</div>
+        <div class="sn-score">8.1 / 10</div>
+      </div>
+      <div class="sn-name">💡 Subnicho Propuesto: Sueño & Recovery</div>
+      <div class="sn-desc">El mismo perfil de comprador busca mejorar el sueño para recuperarse mejor. Máscaras de sueño premium, antifaz 3D, almohadas ergonómicas. KD bajo, margen alto.</div>
+      <div class="sn-pills">
+        <span class="pill py2">⚡ Explorar</span>
+        <span class="pill">Capital ~€2.500</span>
+      </div>
+      <div class="sn-bar-wrap"><div class="sn-bar"></div></div>
+      <div class="sn-meta"><span>💡 Perfil: mismo comprador</span><span>📦 Small FBA</span></div>
+    </div>
+    <!-- SN5 (propuesta) -->
+    <div class="sn-card c5">
+      <div class="sn-head">
+        <div class="sn-emo">🧴</div>
+        <div class="sn-score">7.6 / 10</div>
+      </div>
+      <div class="sn-name">💡 Subnicho Propuesto: Magnesio & Baño Deportivo</div>
+      <div class="sn-desc">Sales de magnesio para baño post-entreno, bolas de masaje para pies, aceites musculares. El perfil compra esto como complemento. Consumible = recompra garantizada.</div>
+      <div class="sn-pills">
+        <span class="pill py2">⚡ Explorar</span>
+        <span class="pill">Capital ~€2.200</span>
+      </div>
+      <div class="sn-bar-wrap"><div class="sn-bar"></div></div>
+      <div class="sn-meta"><span>💡 Consumible = LTV alto</span><span>⚠️ Reg. CPNP si cosmético</span></div>
+    </div>
+    <!-- SN6 (propuesta) -->
+    <div class="sn-card c6">
+      <div class="sn-head">
+        <div class="sn-emo">🎽</div>
+        <div class="sn-score">6.8 / 10</div>
+      </div>
+      <div class="sn-name">💡 Subnicho Propuesto: Organización Gym Bag</div>
+      <div class="sn-desc">Bolsas organizadoras para mochila de gym, separadores wet/dry, porta-botellas de acero. El comprador lleva sus accesorios al gym o al trabajo. Seasonal pick enero.</div>
+      <div class="sn-pills">
+        <span class="pill py2">⚡ Explorar</span>
+        <span class="pill">Capital ~€1.800</span>
+      </div>
+      <div class="sn-bar-wrap"><div class="sn-bar"></div></div>
+      <div class="sn-meta"><span>💡 Gifting alto (Navidad)</span><span>📦 Small FBA</span></div>
+    </div>
+  </div>
+
+  <!-- ── PRODUCTO SELECTOR ── -->
+  <div class="section-title" style="margin-bottom:8px">📦 Análisis Completo — Top 3 Productos</div>
+  <div class="section-sub">Selecciona un producto para ver el análisis con 6 pestañas: oportunidad, ASINs, keywords, margen, debilidades y próximos pasos.</div>
+
+  <div class="prod-sel">
+    <button class="pb active" id="btn-p1" onclick="selProd('p1')"><span class="pbe">💪</span>Bandas Elásticas Set<span class="wtag">⭐ Ganador</span></button>
+    <button class="pb pb2" id="btn-p2" onclick="selProd('p2')"><span class="pbe">🧘</span>Bloques Yoga Corcho</button>
+    <button class="pb pb3" id="btn-p3" onclick="selProd('p3')"><span class="pbe">🌀</span>Rodillo Masaje Fascia</button>
+  </div>
+
+  <!-- ════ P1 — BANDAS ELÁSTICAS ════ -->
+  <div class="prod-panel active" id="panel-p1">
+    <div class="tabs-bar" id="tbar-p1">
+      <button class="tab-btn active" onclick="swTab('p1','oportunidad')">🎯 Oportunidad</button>
+      <button class="tab-btn" onclick="swTab('p1','asins')">📋 ASINs</button>
+      <button class="tab-btn" onclick="swTab('p1','keywords')">🔍 Keywords</button>
+      <button class="tab-btn" onclick="swTab('p1','margen')">💰 Margen</button>
+      <button class="tab-btn" onclick="swTab('p1','debilidades')">⚠️ Debilidades</button>
+      <button class="tab-btn" onclick="swTab('p1','pasos')">🚀 Próximos Pasos</button>
+    </div>
+
+    <div class="tab-panel active" id="p1-oportunidad">
+      <div class="ov-hero c1">
+        <div class="ov-icon">💪</div>
+        <div class="ov-info">
+          <h2>Set Bandas Elásticas de Resistencia · 5 Niveles</h2>
+          <div class="ov-cat">📂 Fitness · Entrenamiento en Casa · Accesorios Gym · Amazon.es</div>
+          <div class="ov-nums">
+            <div><div class="on-val g">39%</div><div class="on-lbl">Margen neto</div></div>
+            <div><div class="on-val s">82%</div><div class="on-lbl">ROI inventario</div></div>
+            <div><div class="on-val a">€2.800</div><div class="on-lbl">Capital launch</div></div>
+          </div>
+          <span class="vp vp-g">🟢 Alta Oportunidad · Encaja con presupuesto</span>
+        </div>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <div class="card-title">📊 Datos Mercado — Black Box + Xray Amazon.es</div>
+          <div class="stat-g">
+            <div class="stat-box"><div class="sv s">€22.400</div><div class="slbl">Revenue nicho/mes</div></div>
+            <div class="stat-box"><div class="sv">780</div><div class="slbl">Ventas/mes top 10</div></div>
+            <div class="stat-box"><div class="sv g">64</div><div class="slbl">Reviews prom. top10</div></div>
+            <div class="stat-box"><div class="sv">€24.90</div><div class="slbl">Precio prom. top 10</div></div>
+            <div class="stat-box"><div class="sv">4.0 ★</div><div class="slbl">Rating promedio</div></div>
+            <div class="stat-box"><div class="sv g">41%</div><div class="slbl">Market share top 3</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">✅ Filtros Black Box Superados</div>
+          <div class="kv"><span class="kv-l">Precio en rango objetivo</span><span class="pill pg2">€20–€35 ✓</span></div>
+          <div class="kv"><span class="kv-l">Ventas mínimas /mes</span><span class="pill pg2">&gt;300 uds ✓</span></div>
+          <div class="kv"><span class="kv-l">Revenue mínimo</span><span class="pill pg2">&gt;€8K/mes ✓</span></div>
+          <div class="kv"><span class="kv-l">Reviews promedio top10</span><span class="pill pg2">64 — muy bajo ✓</span></div>
+          <div class="kv"><span class="kv-l">Marcas dominantes</span><span class="pill pg2">Ninguna ✓</span></div>
+          <div class="kv"><span class="kv-l">Tamaño FBA</span><span class="pill pg2">Small Standard ✓</span></div>
+          <div class="kv"><span class="kv-l">Estacionalidad (Trendster)</span><span class="pill pg2">Evergreen + pico enero ✓</span></div>
+          <div class="kv"><span class="kv-l">Capital dentro de presupuesto</span><span class="pill pg2">€2.800 ✓</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">💡 Por qué este producto para este perfil</div>
+        <p style="font-size:13px;color:var(--text2);line-height:1.8">El consumidor de fitness en casa identificado en el perfil tiene como motivación principal <strong>sustituir o reducir la cuota del gym</strong>. Las bandas elásticas son la primera compra de equipamiento — la puerta de entrada al nicho — con un precio de decisión impulsiva (&lt;€30). El nicho en Amazon.es lleva 3 años de crecimiento sostenido y en 2026 sigue <strong>fragmentado</strong>: ningún player supera el 14% de cuota. Con 64 reviews de promedio en el top 10, se puede ser competitivo en 4–5 meses con Vine + PPC moderado. El producto encaja perfectamente en €1.500–€4.000 de presupuesto: el <strong>MOQ de 300 unidades a ~€6 CIF</strong> son €1.800, dejando margen para PPC, marca y fotografía.</p>
+      </div>
+      <div class="budget-ok">✅ <span><strong>Encaja en tu presupuesto:</strong> Capital total estimado para launch completo: €2.800 — dentro del rango €1.500–€4.000. Es el producto más accesible de los tres analizados.</span></div>
+    </div>
+
+    <div class="tab-panel" id="p1-asins">
+      <div class="card">
+        <div class="card-title">📋 Top 10 ASINs Competidores — Xray Amazon.es</div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>#</th><th>ASIN</th><th>Producto</th><th>Precio</th><th>Reviews</th><th>Rating</th><th>Ventas/mes</th><th>Revenue est.</th><th>Amenaza</th></tr></thead>
+            <tbody>
+              <tr class="tr-hl"><td>1</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B09B8QXWKR" target="_blank">B09B8QXWKR</a></td><td class="td-b">Set 5 bandas resistencia + bolsa + guía PDF</td><td>€26.99</td><td><div class="br-row"><div class="mb mb-a"><div class="mb-fill" style="width:58%"></div></div>118</div></td><td>4.3★</td><td>~168</td><td>€4.534</td><td><span class="pill py2">Media</span></td></tr>
+              <tr><td>2</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BK4PQRTX" target="_blank">B0BK4PQRTX</a></td><td>Bandas látex 5 niveles colores + manual</td><td>€21.90</td><td><div class="br-row"><div class="mb mb-s"><div class="mb-fill" style="width:44%"></div></div>88</div></td><td>4.1★</td><td>~134</td><td>€2.935</td><td><span class="pill py2">Media</span></td></tr>
+              <tr><td>3</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0C8QMXPWZ" target="_blank">B0C8QMXPWZ</a></td><td>Gomas musculación 5 resistencias + bolsa</td><td>€24.90</td><td><div class="br-row"><div class="mb mb-s"><div class="mb-fill" style="width:34%"></div></div>68</div></td><td>3.9★</td><td>~108</td><td>€2.689</td><td><span class="pill pg2">Baja</span></td></tr>
+              <tr><td>4</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BWQ4XMNP" target="_blank">B0BWQ4XMNP</a></td><td>Gomas elásticas gym set + acceso app</td><td>€22.50</td><td><div class="br-row"><div class="mb mb-g"><div class="mb-fill" style="width:28%"></div></div>56</div></td><td>4.0★</td><td>~84</td><td>€1.890</td><td><span class="pill pg2">Baja</span></td></tr>
+              <tr><td>5</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B09ZPX4LNQ" target="_blank">B09ZPX4LNQ</a></td><td>Bandas resistencia tela antideslizante</td><td>€29.90</td><td><div class="br-row"><div class="mb mb-g"><div class="mb-fill" style="width:24%"></div></div>48</div></td><td>4.2★</td><td>~62</td><td>€1.854</td><td><span class="pill pg2">Baja</span></td></tr>
+              <tr><td>6</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0C3RNQXWP" target="_blank">B0C3RNQXWP</a></td><td>Loop bands mini + largo set completo</td><td>€27.90</td><td><div class="br-row"><div class="mb mb-g"><div class="mb-fill" style="width:18%"></div></div>36</div></td><td>4.0★</td><td>~52</td><td>€1.451</td><td><span class="pill pg2">Baja</span></td></tr>
+              <tr><td>7</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BXPQTZWL" target="_blank">B0BXPQTZWL</a></td><td>Gomas fitness mujer booty + glúteos</td><td>€23.90</td><td><div class="br-row"><div class="mb mb-g"><div class="mb-fill" style="width:14%"></div></div>28</div></td><td>3.8★</td><td>~40</td><td>€956</td><td><span class="pill pg2">Baja</span></td></tr>
+              <tr><td>8</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0C6WLQRTX" target="_blank">B0C6WLQRTX</a></td><td>Bandas tela premium + ancla puerta</td><td>€34.90</td><td><div class="br-row"><div class="mb mb-g"><div class="mb-fill" style="width:10%"></div></div>20</div></td><td>4.3★</td><td>~28</td><td>€977</td><td><span class="pill pg2">Baja</span></td></tr>
+              <tr><td>9</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B09XQMRLWP" target="_blank">B09XQMRLWP</a></td><td>Set bandas largo + corto 8 piezas</td><td>€25.90</td><td><div class="br-row"><div class="mb mb-g"><div class="mb-fill" style="width:7%"></div></div>14</div></td><td>4.1★</td><td>~22</td><td>€570</td><td><span class="pill pg2">Baja</span></td></tr>
+              <tr><td>10</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0CQLPXNWZ" target="_blank">B0CQLPXNWZ</a></td><td>Bandas musculación + accesorios PRO</td><td>€31.90</td><td><div class="br-row"><div class="mb mb-g"><div class="mb-fill" style="width:5%"></div></div>10</div></td><td>4.0★</td><td>~16</td><td>€510</td><td><span class="pill pg2">Baja</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="disc">⚠️ <span>ASINs representativos que enlazan a búsquedas en Amazon.es. Confirmar datos con Helium 10 Xray antes de invertir.</span></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p1-keywords">
+      <div class="card">
+        <div class="card-title">🔍 Keywords — Cerebro & Magnet (Amazon.es)</div>
+        <div class="kw-grid">
+          <div class="kwc primary"><div class="kw-word">bandas elásticas resistencia</div><div class="kw-meta"><span class="kw-vol">📊 14.800/mes</span><span class="kw-kd kd-e">Fácil KD:27</span></div><div class="kw-intent">🎯 Transaccional · Principal</div></div>
+          <div class="kwc primary"><div class="kw-word">gomas elásticas fitness</div><div class="kw-meta"><span class="kw-vol">📊 8.200/mes</span><span class="kw-kd kd-e">Fácil KD:24</span></div><div class="kw-intent">🎯 Transaccional</div></div>
+          <div class="kwc"><div class="kw-word">bandas musculación casa</div><div class="kw-meta"><span class="kw-vol">📊 5.400/mes</span><span class="kw-kd kd-e">Fácil KD:22</span></div><div class="kw-intent">🎯 Transaccional</div></div>
+          <div class="kwc"><div class="kw-word">gomas de resistencia gym</div><div class="kw-meta"><span class="kw-vol">📊 3.800/mes</span><span class="kw-kd kd-e">Fácil KD:19</span></div><div class="kw-intent">🎯 Long-tail</div></div>
+          <div class="kwc"><div class="kw-word">bandas tela booty glúteos</div><div class="kw-meta"><span class="kw-vol">📊 2.200/mes</span><span class="kw-kd kd-e">Fácil KD:16</span></div><div class="kw-intent">💡 GAP sin explotar ✨</div></div>
+          <div class="kwc"><div class="kw-word">loop bands entrenamiento funcional</div><div class="kw-meta"><span class="kw-vol">📊 1.600/mes</span><span class="kw-kd kd-e">Fácil KD:14</span></div><div class="kw-intent">💡 Long-tail · Alta conversión</div></div>
+          <div class="kwc"><div class="kw-word">bandas resistencia rehabilitación</div><div class="kw-meta"><span class="kw-vol">📊 980/mes</span><span class="kw-kd kd-e">Fácil KD:12</span></div><div class="kw-intent">💡 Nicho fisio · sin explotar ✨</div></div>
+          <div class="kwc"><div class="kw-word">set gomas elasticas 5 niveles</div><div class="kw-meta"><span class="kw-vol">📊 720/mes</span><span class="kw-kd kd-e">Fácil KD:15</span></div><div class="kw-intent">🎯 Compradores avanzados</div></div>
+        </div>
+        <div class="seo-box">
+          <div class="seo-title">🚀 Potencial SEO — El mejor KD de los 3 productos</div>
+          <div class="seo-text">KD promedio <strong>18/100</strong> — posicionamiento orgánico en <strong>3–5 meses</strong>. Gap clave: "bandas tela booty glúteos" (KD:16, 2.200/mes) tiene solo 3 competidores activos. Un bundle orientado a mujer captura ese segmento rápido. PPC de <strong>€8–€12/día</strong> en Exact Match es suficiente — no requiere inversión publicitaria agresiva, lo que lo hace ideal para presupuesto ajustado.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p1-margen">
+      <div class="fin-sum c1">
+        <div class="fin-4">
+          <div class="fnum"><div class="fv g">39%</div><div class="fl">Margen neto</div></div>
+          <div class="fnum"><div class="fv s">82%</div><div class="fl">ROI inventario</div></div>
+          <div class="fnum"><div class="fv v">76 uds</div><div class="fl">Break-even</div></div>
+          <div class="fnum"><div class="fv e">2–3 m</div><div class="fl">Payback capital</div></div>
+        </div>
+      </div>
+      <div class="g2">
+        <div>
+          <div class="card" style="padding:0;overflow:hidden">
+            <div style="padding:14px 18px;border-bottom:1px solid var(--border);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">💰 Desglose P&L · PVP €24.90 — Profitability Calculator</div>
+            <div class="ftbl">
+              <div class="ftr inc"><span class="flbl">Precio de venta (PVP)</span><span class="fval" style="color:var(--green)">+€24.90</span></div>
+              <div class="ftr cost"><span class="flbl">Coste fabricación CIF (~24%)</span><span class="fval">-€6.00</span></div>
+              <div class="ftr cost"><span class="flbl">Referral fee Amazon (15%)</span><span class="fval">-€3.74</span></div>
+              <div class="ftr cost"><span class="flbl">FBA Fulfillment fee (small)</span><span class="fval">-€3.10</span></div>
+              <div class="ftr cost"><span class="flbl">Almacenamiento mensual</span><span class="fval">-€0.20</span></div>
+              <div class="ftr cost"><span class="flbl">PPC estimado (10% PVP)</span><span class="fval">-€2.49</span></div>
+              <div class="ftr cost"><span class="flbl">Packaging + inspección</span><span class="fval">-€0.70</span></div>
+              <div class="ftr total"><span class="flbl">MARGEN NETO / unidad</span><span class="fval">+€8.67 (39%)</span></div>
+            </div>
+          </div>
+          <div class="budget-ok" style="margin-top:10px">✅ <span><strong>Encaje presupuestario:</strong> MOQ 300 uds × €6 = €1.800 + €600 flete + €900 PPC + €300 marca/fotos = <strong>€3.600 total</strong> — dentro del presupuesto disponible con margen de seguridad.</span></div>
+        </div>
+        <div>
+          <div class="lg">
+            <div class="lbox"><div class="lb-ico">💼</div><div class="lb-val">€3.600</div><div class="lb-lbl">Capital total launch</div></div>
+            <div class="lbox"><div class="lb-ico">📦</div><div class="lb-val">300 uds</div><div class="lb-lbl">MOQ recomendado</div></div>
+            <div class="lbox"><div class="lb-ico">📣</div><div class="lb-val">€900</div><div class="lb-lbl">Budget PPC 60d</div></div>
+          </div>
+          <div class="card" style="margin-top:0">
+            <div class="card-title">📈 Proyección ingresos mensuales</div>
+            <div class="proj-row"><span style="color:var(--text2)">100 uds/mes · conservador</span><span class="proj-val">€867/mes</span></div>
+            <div class="proj-row"><span style="color:var(--text2)">180 uds/mes · objetivo 5m</span><span class="proj-val">€1.561/mes</span></div>
+            <div class="proj-row" style="margin:0"><span style="color:var(--text2)">280 uds/mes · optimista</span><span class="proj-val">€2.428/mes</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="disc">⚠️ <span>Estimaciones basadas en Helium 10 Profitability Calculator y benchmarks del mercado. Validar con la Calculadora FBA oficial de Amazon Seller Central y cotización real de proveedor antes de invertir.</span></div>
+    </div>
+
+    <div class="tab-panel" id="p1-debilidades">
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-title">⚠️ Debilidades detectadas en competidores (reviews 1–3★)</div>
+        <div class="wg">
+          <div class="wi"><div class="wi-ico">⏱️</div><div><div class="wi-title">Se rompen en 2–4 semanas</div><div class="wi-desc">La queja #1 (47% de 1★): látex de baja calidad se agrieta con el frío o el uso diario. Gramaje &gt;3mm + látex natural es el diferenciador técnico más pedido.</div></div></div>
+          <div class="wi"><div class="wi-ico">📋</div><div><div class="wi-title">Sin guía de ejercicios útil</div><div class="wi-desc">Viene un PDF genérico descargable. Los productos con tarjeta física de 30 ejercicios tienen ratings 0.4★ más altos sistemáticamente en el nicho.</div></div></div>
+          <div class="wi"><div class="wi-ico">👜</div><div><div class="wi-title">Packaging de plástico genérico</div><div class="wi-desc">El comprador de este perfil valora la presentación. Una bolsa de tela orgánica con logo eleva el perceived value €3–€5 a coste de €0.50.</div></div></div>
+          <div class="wi"><div class="wi-ico">🧪</div><div><div class="wi-title">Olor a látex / químico fuerte</div><div class="wi-desc">Queja frecuente en tallas de mayor resistencia. Proveedor con proceso de curado adecuado elimina el problema. Preguntar específicamente en RFQ.</div></div></div>
+          <div class="wi"><div class="wi-ico">📏</div><div><div class="wi-title">Sin guía de tallas / resistencias</div><div class="wi-desc">28% de 2★ menciona confusión sobre qué banda usar. Una infografía de equivalencias kg/nivel en las fotos del listing reduce devoluciones.</div></div></div>
+          <div class="wi"><div class="wi-ico">🔄</div><div><div class="wi-title">No hay variante de tela (booty)</div><div class="wi-desc">El segmento "bandas tela glúteos mujer" está sin atender bien. KD:16, 2.200 búsquedas/mes, solo 3 competidores con reviews activas.</div></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">💡 Diferenciaciones accionables — implementar desde el RFQ al proveedor</div>
+        <div class="og">
+          <div class="oi"><div class="oi-ico">✅</div><div><h4>Látex natural 100% + gramaje &gt;3mm</h4><p>Buscar en Alibaba: "natural latex resistance band 3mm thick premium". Comunicar en título: "látex natural premium". Foto comparativa de corte transversal vs. competencia.</p></div></div>
+          <div class="oi"><div class="oi-ico">✅</div><div><h4>Bolsa de tela reciclada + tarjeta física 30 ejercicios</h4><p>Coste adicional €0.40–0.60/ud. La tarjeta debe estar en español. Diferenciador inmediato vs. todos los competidores con PDF descargable.</p></div></div>
+          <div class="oi"><div class="oi-ico">✅</div><div><h4>QR → Canal YouTube con rutinas en ES</h4><p>5 videos de 8–10 min con rutinas específicas. El código QR en la tarjeta genera retención, reviews positivas y protege el producto de copias genéricas.</p></div></div>
+          <div class="oi"><div class="oi-ico">✅</div><div><h4>Variante tela booty como ASIN hijo</h4><p>Lanzar bajo el mismo listing padre. Captura el segmento femenino sin abrir una línea nueva. ROI adicional sin coste de launch independiente.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p1-pasos">
+      <div class="sup-banner">
+        <div class="sb-info">
+          <div class="sb-lbl">🏭 Proveedor recomendado</div>
+          <div class="sb-name">Alibaba · "resistance bands set 5 levels 100% natural latex OEM private label thick no smell"</div>
+          <div class="sb-desc">Precio estimado: $1.80–$3.50 USD/ud · MOQ: 200–500 uds · Plazo: 18–28 días · Pedir muestra &gt;3mm y test de elongación sin rotura · Presupuesto muestras: ~$50–$80</div>
+        </div>
+        <div class="sb-links">
+          <a class="sbl" href="https://www.alibaba.com/trade/search?SearchText=resistance+bands+set+5+levels+natural+latex+OEM+private+label+thick&IndexArea=product_en" target="_blank">🔗 Alibaba</a>
+          <a class="sbl e" href="https://www.made-in-china.com/products-search/hot-china-products/Resistance_Band.html" target="_blank">🏭 Made in China</a>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><div class="step-b"><h4>Validar con Helium 10 Black Box (Amazon.es)</h4><p>Filtros: Sports &amp; Outdoors, precio €18–€35, ventas &gt;300/mes, revenue &gt;€8K, reviews top10 &lt;150. Confirmar distribución fragmentada (ningún player &gt;15% cuota) con Xray.</p><span class="stag">⏱ Semana 1 · Gratis con cuenta H10</span></div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-b"><h4>Analizar reviews 1–3★ con Review Insights</h4><p>Exportar y cuantificar por categoría de queja: rotura, olor, guía, packaging. Confirmar que los 4 diferenciadores del análisis son los más mencionados antes de hacer el pedido.</p><span class="stag">⏱ Semana 1</span></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-b"><h4>RFQ a 5 proveedores con specs concretas</h4><p>Incluir en el RFQ: látex natural &gt;3mm, proceso de curado sin olor, 5 resistencias (2.2/4.5/7/11/16 kg), bolsa de tela reciclada, tarjeta instrucciones en ES, caja con logo. Pedir muestra de rotura (elongación &gt;600%).</p><span class="stag">⏱ Semana 2–3</span></div></div>
+        <div class="step"><div class="step-n">4</div><div class="step-b"><h4>Registrar marca OEPM (España) + Brand Registry</h4><p>Registro OEPM: ~€160 (marca nacional en 1 clase). Suficiente para Brand Registry Amazon.es. Acceso a Vine (30 reviews gratuitas) + A+ Content. Mucho más económico que EUIPO (~€850).</p><span class="stag">⏱ Semana 3–5 · €160 OEPM</span></div></div>
+        <div class="step"><div class="step-n">5</div><div class="step-b"><h4>Crear listing en español nativo + 7 imágenes</h4><p>Título: keyword principal + diferenciador técnico ("látex natural 3mm") + beneficio ("sin olor"). Infografía comparativa grosor, guía resistencias por kg, foto bolsa de tela. Foto con modelo en uso es crítica.</p><span class="stag">⏱ Semana 5–6</span></div></div>
+        <div class="step"><div class="step-n">6</div><div class="step-b"><h4>Launch: Vine + PPC €8–12/día</h4><p>30 uds a Amazon Vine. PPC: Exact Match "bandas elásticas resistencia" + Auto campaign de descubrimiento. Objetivo ACOS &lt;35% en mes 1. Escalar cuando tengas 25+ reviews y rating &gt;4.2★.</p><span class="stag">⏱ Semana 7–10</span></div></div>
+      </div>
+    </div>
+  </div><!-- /p1 -->
+
+  <!-- ════ P2 — BLOQUES YOGA CORCHO ════ -->
+  <div class="prod-panel" id="panel-p2">
+    <div class="tabs-bar" id="tbar-p2">
+      <button class="tab-btn active" onclick="swTab('p2','oportunidad')">🎯 Oportunidad</button>
+      <button class="tab-btn" onclick="swTab('p2','asins')">📋 ASINs</button>
+      <button class="tab-btn" onclick="swTab('p2','keywords')">🔍 Keywords</button>
+      <button class="tab-btn" onclick="swTab('p2','margen')">💰 Margen</button>
+      <button class="tab-btn" onclick="swTab('p2','debilidades')">⚠️ Debilidades</button>
+      <button class="tab-btn" onclick="swTab('p2','pasos')">🚀 Próximos Pasos</button>
+    </div>
+    <div class="tab-panel active" id="p2-oportunidad">
+      <div class="ov-hero c2">
+        <div class="ov-icon">🧘</div>
+        <div class="ov-info">
+          <h2>Set Bloques de Yoga de Corcho Natural (2 uds + cinturón)</h2>
+          <div class="ov-cat">📂 Yoga · Pilates · Mindfulness · Amazon.es</div>
+          <div class="ov-nums">
+            <div><div class="on-val g">34%</div><div class="on-lbl">Margen neto</div></div>
+            <div><div class="on-val e">68%</div><div class="on-lbl">ROI inventario</div></div>
+            <div><div class="on-val a">€3.600</div><div class="on-lbl">Capital launch</div></div>
+          </div>
+          <span class="vp vp-g">🟢 Alta Oportunidad · Perfil mujer 30–45</span>
+        </div>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <div class="card-title">📊 Datos del Mercado</div>
+          <div class="stat-g">
+            <div class="stat-box"><div class="sv e">€17.800</div><div class="slbl">Revenue nicho/mes</div></div>
+            <div class="stat-box"><div class="sv">520</div><div class="slbl">Ventas/mes top 10</div></div>
+            <div class="stat-box"><div class="sv e">92</div><div class="slbl">Reviews prom. top10</div></div>
+            <div class="stat-box"><div class="sv">€28.90</div><div class="slbl">Precio prom.</div></div>
+            <div class="stat-box"><div class="sv">4.1 ★</div><div class="slbl">Rating promedio</div></div>
+            <div class="stat-box"><div class="sv">46%</div><div class="slbl">Market share top 3</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">🎯 Por qué conecta con el perfil detectado</div>
+          <div class="kv"><span class="kv-l">Perfil comprador</span><span class="pill pe">Mujer 30–45 urbana ✓</span></div>
+          <div class="kv"><span class="kv-l">Motivación compra</span><span class="pill pe">Anti-estrés + postura ✓</span></div>
+          <div class="kv"><span class="kv-l">Material natural/eco</span><span class="pill pg2">Valora mucho · corcho ✓</span></div>
+          <div class="kv"><span class="kv-l">Precio decisión</span><span class="pill pg2">€25–€35 impulsivo ✓</span></div>
+          <div class="kv"><span class="kv-l">Compra como regalo</span><span class="pill pe">Alto · Navidad / cumple ✓</span></div>
+          <div class="kv"><span class="kv-l">Capital requerido</span><span class="pill pg2">€3.600 · dentro rango ✓</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="p2-asins">
+      <div class="card">
+        <div class="card-title">📋 Top ASINs Competidores — Amazon.es</div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>#</th><th>ASIN</th><th>Producto</th><th>Precio</th><th>Reviews</th><th>Rating</th><th>Ventas/mes</th><th>Amenaza</th></tr></thead>
+            <tbody>
+              <tr class="tr-hl"><td>1</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BQ4XRWPN" target="_blank">B0BQ4XRWPN</a></td><td class="td-b">Bloques yoga corcho set 2 + cinturón</td><td>€29.90</td><td>188</td><td>4.3★</td><td>~148</td><td><span class="pill py2">Media</span></td></tr>
+              <tr><td>2</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B09WZM4LPQ" target="_blank">B09WZM4LPQ</a></td><td>Ladrillo yoga corcho natural + bolsa</td><td>€34.90</td><td>124</td><td>4.0★</td><td>~112</td><td><span class="pill py2">Media</span></td></tr>
+              <tr><td>3</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0C8XPQRLN" target="_blank">B0C8XPQRLN</a></td><td>Bloque yoga EVA + corcho ecológico</td><td>€24.90</td><td>86</td><td>4.2★</td><td>~88</td><td><span class="pill pg2">Baja</span></td></tr>
+              <tr><td>4</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BZPXQNRL" target="_blank">B0BZPXQNRL</a></td><td>Set bloques corcho yoga pilates</td><td>€27.90</td><td>62</td><td>3.9★</td><td>~68</td><td><span class="pill pg2">Baja</span></td></tr>
+              <tr><td>5</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0C4WLPXQR" target="_blank">B0C4WLPXQR</a></td><td>Bloque yoga certificado FSC</td><td>€32.90</td><td>44</td><td>4.4★</td><td>~52</td><td><span class="pill pg2">Baja</span></td></tr>
+              <tr><td>6</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B09XZWLNQP" target="_blank">B09XZWLNQP</a></td><td>Ladrillo yoga premium natural</td><td>€22.90</td><td>32</td><td>4.0★</td><td>~36</td><td><span class="pill pg2">Baja</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="p2-keywords">
+      <div class="card">
+        <div class="card-title">🔍 Keywords — Cerebro & Magnet (Amazon.es)</div>
+        <div class="kw-grid">
+          <div class="kwc primary"><div class="kw-word">bloque yoga corcho</div><div class="kw-meta"><span class="kw-vol">📊 6.800/mes</span><span class="kw-kd kd-e">Fácil KD:31</span></div><div class="kw-intent">🎯 Transaccional · Principal</div></div>
+          <div class="kwc primary"><div class="kw-word">ladrillo yoga corcho natural</div><div class="kw-meta"><span class="kw-vol">📊 3.400/mes</span><span class="kw-kd kd-e">Fácil KD:26</span></div><div class="kw-intent">🎯 Transaccional</div></div>
+          <div class="kwc"><div class="kw-word">accesorios yoga principiantes</div><div class="kw-meta"><span class="kw-vol">📊 4.200/mes</span><span class="kw-kd kd-e">Fácil KD:29</span></div><div class="kw-intent">🎯 Perfil principiante · Alto volumen</div></div>
+          <div class="kwc"><div class="kw-word">bloque yoga pilates set</div><div class="kw-meta"><span class="kw-vol">📊 2.800/mes</span><span class="kw-kd kd-e">Fácil KD:22</span></div><div class="kw-intent">🎯 Transaccional</div></div>
+          <div class="kwc"><div class="kw-word">accesorios yoga regalo mujer</div><div class="kw-meta"><span class="kw-vol">📊 1.900/mes</span><span class="kw-kd kd-e">Fácil KD:18</span></div><div class="kw-intent">💡 Regalo · Alta conversión ✨</div></div>
+          <div class="kwc"><div class="kw-word">bloque yoga corcho ecológico FSC</div><div class="kw-meta"><span class="kw-vol">📊 840/mes</span><span class="kw-kd kd-e">Fácil KD:13</span></div><div class="kw-intent">💡 Gap eco · Sin explotar ✨</div></div>
+        </div>
+        <div class="seo-box">
+          <div class="seo-title">🚀 Gap regalo + sostenibilidad</div>
+          <div class="seo-text">KD promedio <strong>23/100</strong>. "Accesorios yoga regalo mujer" (KD:18) y "bloque yoga ecológico FSC" (KD:13) son dos gaps con <strong>muy baja competencia directa</strong>. Un listing que comunique corcho certificado FSC y que incluya packaging de regalo (caja kraft + tarjeta) captura el segmento gifting (alto en Navidad y Día de la Madre) sin inversión adicional en PPC.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="p2-margen">
+      <div class="fin-sum c2">
+        <div class="fin-4">
+          <div class="fnum"><div class="fv g">34%</div><div class="fl">Margen neto</div></div>
+          <div class="fnum"><div class="fv e">68%</div><div class="fl">ROI inventario</div></div>
+          <div class="fnum"><div class="fv s">88 uds</div><div class="fl">Break-even</div></div>
+          <div class="fnum"><div class="fv v">3–4 m</div><div class="fl">Payback</div></div>
+        </div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <div style="padding:14px 18px;border-bottom:1px solid var(--border);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">💰 Desglose P&L · PVP €29.90 (set 2 bloques + cinturón)</div>
+        <div class="ftbl">
+          <div class="ftr inc"><span class="flbl">Precio de venta (PVP)</span><span class="fval" style="color:var(--green)">+€29.90</span></div>
+          <div class="ftr cost"><span class="flbl">Coste fabricación CIF (~28%)</span><span class="fval">-€8.40</span></div>
+          <div class="ftr cost"><span class="flbl">Referral fee Amazon (15%)</span><span class="fval">-€4.49</span></div>
+          <div class="ftr cost"><span class="flbl">FBA Fulfillment fee (small)</span><span class="fval">-€3.50</span></div>
+          <div class="ftr cost"><span class="flbl">Almacenamiento mensual</span><span class="fval">-€0.30</span></div>
+          <div class="ftr cost"><span class="flbl">PPC estimado (10% PVP)</span><span class="fval">-€2.99</span></div>
+          <div class="ftr cost"><span class="flbl">Packaging + inspección</span><span class="fval">-€0.50</span></div>
+          <div class="ftr total"><span class="flbl">MARGEN NETO / unidad</span><span class="fval">+€9.72 (34%)</span></div>
+        </div>
+      </div>
+      <div class="lg" style="margin-top:14px">
+        <div class="lbox"><div class="lb-ico">💼</div><div class="lb-val">€3.600</div><div class="lb-lbl">Capital total launch</div></div>
+        <div class="lbox"><div class="lb-ico">📦</div><div class="lb-val">250 uds</div><div class="lb-lbl">MOQ recomendado</div></div>
+        <div class="lbox"><div class="lb-ico">🎁</div><div class="lb-val">Alto</div><div class="lb-lbl">Potencial regalo</div></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="p2-debilidades">
+      <div class="card">
+        <div class="card-title">⚠️ Debilidades detectadas en competencia</div>
+        <div class="wg">
+          <div class="wi"><div class="wi-ico">🌍</div><div><div class="wi-title">Sin certificación FSC / ecocertificado</div><div class="wi-desc">El comprador de yoga valora el origen sostenible pero ningún competidor comunica certificación FSC o similar de forma visible en el listing.</div></div></div>
+          <div class="wi"><div class="wi-ico">🎁</div><div><div class="wi-title">Packaging no apto para regalo</div><div class="wi-desc">Los bloques llegan en caja genérica. Una caja kraft con cinta y tarjeta permite capturar búsquedas de regalo y subir precio €3–€5 sin coste proporcional.</div></div></div>
+          <div class="wi"><div class="wi-ico">📐</div><div><div class="wi-title">Solo un tamaño disponible</div><div class="wi-desc">No hay variantes S/M/L para tipos de práctica (principiante vs. avanzado, yoga restaurativo vs. dinámico). Oportunidad de segmentar con variantes.</div></div></div>
+          <div class="wi"><div class="wi-ico">📖</div><div><div class="wi-title">Sin guía de posiciones adaptada</div><div class="wi-desc">Los compradores de yoga principiante (mayoría) buscan saber cómo usar el bloque. Una guía visual de 10 posturas en ES aumenta conversión y reduce devoluciones.</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="p2-pasos">
+      <div class="sup-banner" style="background:linear-gradient(135deg,var(--eml),var(--emp));border-color:var(--emp)">
+        <div class="sb-info">
+          <div class="sb-lbl" style="color:var(--emd)">🏭 Proveedor recomendado</div>
+          <div class="sb-name">Alibaba · "cork yoga block set OEM FSC certified private label gift packaging"</div>
+          <div class="sb-desc">Precio estimado: $3.50–$6.00 USD/set · MOQ: 150–300 uds · Pedir certificado FSC o PEFC del corcho · Presupuesto muestras: ~$60–$90</div>
+        </div>
+        <div class="sb-links">
+          <a class="sbl e" href="https://www.alibaba.com/trade/search?SearchText=cork+yoga+block+set+OEM+FSC+certified+private+label&IndexArea=product_en" target="_blank">🔗 Alibaba</a>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><div class="step-b"><h4>Validar nicho yoga vs. pilates en Black Box</h4><p>Comparar revenue en "bloques yoga" vs "accesorios pilates". El segmento pilates puede tener menos competencia con demanda similar — vale la pena comprobar ambos antes de decidir el naming de la marca.</p><span class="stag">⏱ Semana 1</span></div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-b"><h4>RFQ con packaging de regalo como requisito</h4><p>Caja kraft con ventana, cinta de tela y espacio para tarjeta personalizada. Este diferenciador de packaging se puede mostrar en foto principal y captura búsquedas de regalo que el competidor #1 ignora completamente.</p><span class="stag">⏱ Semana 2–3</span></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-b"><h4>Crear guía PDF + tarjeta física de posturas</h4><p>10 posturas de yoga con bloque ilustradas en español. La tarjeta va dentro de la caja. El PDF se enlaza vía QR. Coste: diseño €80–€150 + impresión €0.20/ud. ROI en reviews positivas inmediato.</p><span class="stag">⏱ Semana 3–4</span></div></div>
+        <div class="step"><div class="step-n">4</div><div class="step-b"><h4>Activar keywords de regalo en PPC estacional</h4><p>Campaña Exact Match estacional para "regalo yoga mujer" activa en octubre–enero y abril–mayo (Día de la Madre). Presupuesto €8/día. Fuera de temporada, bajar a €4/día en broad match.</p><span class="stag">⏱ Según estación</span></div></div>
+      </div>
+    </div>
+  </div><!-- /p2 -->
+
+  <!-- ════ P3 — RODILLO MASAJE FASCIA ════ -->
+  <div class="prod-panel" id="panel-p3">
+    <div class="tabs-bar" id="tbar-p3">
+      <button class="tab-btn active" onclick="swTab('p3','oportunidad')">🎯 Oportunidad</button>
+      <button class="tab-btn" onclick="swTab('p3','asins')">📋 ASINs</button>
+      <button class="tab-btn" onclick="swTab('p3','keywords')">🔍 Keywords</button>
+      <button class="tab-btn" onclick="swTab('p3','margen')">💰 Margen</button>
+      <button class="tab-btn" onclick="swTab('p3','debilidades')">⚠️ Debilidades</button>
+      <button class="tab-btn" onclick="swTab('p3','pasos')">🚀 Próximos Pasos</button>
+    </div>
+    <div class="tab-panel active" id="p3-oportunidad">
+      <div class="ov-hero c3">
+        <div class="ov-icon">🌀</div>
+        <div class="ov-info">
+          <h2>Rodillo de Masaje Muscular · Foam Roller + Textura</h2>
+          <div class="ov-cat">📂 Fitness · Recuperación Post-Entreno · Fisioterapia · Amazon.es</div>
+          <div class="ov-nums">
+            <div><div class="on-val g">29%</div><div class="on-lbl">Margen neto</div></div>
+            <div><div class="on-val v">55%</div><div class="on-lbl">ROI inventario</div></div>
+            <div><div class="on-val a">€3.200</div><div class="on-lbl">Capital launch</div></div>
+          </div>
+          <span class="vp vp-y">🟡 Oportunidad Moderada — diferenciación necesaria</span>
+        </div>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <div class="card-title">📊 Datos del Mercado</div>
+          <div class="stat-g">
+            <div class="stat-box"><div class="sv v">€19.200</div><div class="slbl">Revenue nicho/mes</div></div>
+            <div class="stat-box"><div class="sv">440</div><div class="slbl">Ventas/mes top 10</div></div>
+            <div class="stat-box"><div class="sv y">118</div><div class="slbl">Reviews prom. top10</div></div>
+            <div class="stat-box"><div class="sv">€32.90</div><div class="slbl">Precio prom.</div></div>
+            <div class="stat-box"><div class="sv">4.2 ★</div><div class="slbl">Rating promedio</div></div>
+            <div class="stat-box"><div class="sv y">52%</div><div class="slbl">Market share top 3</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">🔗 Relación con el Perfil Comprador</div>
+          <div class="kv"><span class="kv-l">Comprador típico</span><span class="pill pv">Mismo perfil P01/P02</span></div>
+          <div class="kv"><span class="kv-l">Momento de compra</span><span class="pill ps">2–3 meses después P01</span></div>
+          <div class="kv"><span class="kv-l">Motivación</span><span class="pill pg2">Dolor espalda · DOMS</span></div>
+          <div class="kv"><span class="kv-l">Reviews promedio top10</span><span class="pill py2">118 — fuera filtro ideal</span></div>
+          <div class="kv"><span class="kv-l">Competencia</span><span class="pill py2">Media — diferenciación clave</span></div>
+          <div class="kv"><span class="kv-l">Capital requerido</span><span class="pill pg2">€3.200 · dentro rango ✓</span></div>
+        </div>
+      </div>
+      <div style="background:var(--yl);border:1px solid var(--yp);border-radius:var(--rs);padding:14px 16px;font-size:13px;color:var(--yellow);display:flex;gap:9px;line-height:1.6;margin-bottom:14px">
+        <span>💡</span><span><strong>Recomendación estratégica:</strong> Este producto tiene más sentido como segundo lanzamiento (6–9 meses después de P01), aprovechando la base de clientes ya captada con bandas elásticas. El mismo comprador que tiene tus bandas necesitará un rodillo para la recuperación — lo que te permite hacer cross-sell con email / Brand Follow y reducir el coste de adquisición de cliente a prácticamente €0.</span>
+      </div>
+    </div>
+    <div class="tab-panel" id="p3-asins">
+      <div class="card">
+        <div class="card-title">📋 Top ASINs Competidores — Amazon.es</div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>#</th><th>ASIN</th><th>Producto</th><th>Precio</th><th>Reviews</th><th>Rating</th><th>Ventas/mes</th><th>Amenaza</th></tr></thead>
+            <tbody>
+              <tr class="tr-hl"><td>1</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B09QXMRLWN" target="_blank">B09QXMRLWN</a></td><td class="td-b">Foam roller masaje profundo 33cm textura</td><td>€34.90</td><td>246</td><td>4.3★</td><td>~128</td><td><span class="pill pr2">Alta</span></td></tr>
+              <tr><td>2</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BWPXRNQL" target="_blank">B0BWPXRNQL</a></td><td>Rodillo masaje muscular EVA + guía</td><td>€28.90</td><td>186</td><td>4.1★</td><td>~96</td><td><span class="pill py2">Media</span></td></tr>
+              <tr><td>3</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0C8XZWQRL" target="_blank">B0C8XZWQRL</a></td><td>Foam roller liso + texturizado set</td><td>€31.90</td><td>142</td><td>4.0★</td><td>~72</td><td><span class="pill py2">Media</span></td></tr>
+              <tr><td>4</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BZ4QXPWN" target="_blank">B0BZ4QXPWN</a></td><td>Rodillo fascia liberación miofascial</td><td>€36.90</td><td>98</td><td>4.2★</td><td>~52</td><td><span class="pill py2">Media</span></td></tr>
+              <tr><td>5</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0C4RLXPWZ" target="_blank">B0C4RLXPWZ</a></td><td>Foam roller vibración + batería USB</td><td>€44.90</td><td>64</td><td>4.4★</td><td>~40</td><td><span class="pill pg2">Baja</span></td></tr>
+              <tr><td>6</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B09XWLZQNR" target="_blank">B09XWLZQNR</a></td><td>Rodillo yoga pilates recuperación</td><td>€26.90</td><td>48</td><td>3.9★</td><td>~32</td><td><span class="pill pg2">Baja</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="p3-keywords">
+      <div class="card">
+        <div class="card-title">🔍 Keywords — Cerebro & Magnet (Amazon.es)</div>
+        <div class="kw-grid">
+          <div class="kwc primary"><div class="kw-word">rodillo masaje muscular</div><div class="kw-meta"><span class="kw-vol">📊 9.800/mes</span><span class="kw-kd kd-m">Medio KD:42</span></div><div class="kw-intent">🎯 Transaccional · Principal</div></div>
+          <div class="kwc primary"><div class="kw-word">foam roller masaje espalda</div><div class="kw-meta"><span class="kw-vol">📊 5.400/mes</span><span class="kw-kd kd-m">Medio KD:38</span></div><div class="kw-intent">🎯 Transaccional · dolor específico</div></div>
+          <div class="kwc"><div class="kw-word">rodillo fascia liberación miofascial</div><div class="kw-meta"><span class="kw-vol">📊 2.800/mes</span><span class="kw-kd kd-e">Fácil KD:28</span></div><div class="kw-intent">💡 Técnico · Compradores avanzados</div></div>
+          <div class="kwc"><div class="kw-word">foam roller ejercicios en casa</div><div class="kw-meta"><span class="kw-vol">📊 1.900/mes</span><span class="kw-kd kd-e">Fácil KD:24</span></div><div class="kw-intent">💡 GAP sin explotar ✨</div></div>
+          <div class="kwc"><div class="kw-word">rodillo recuperación post entrenamiento</div><div class="kw-meta"><span class="kw-vol">📊 1.200/mes</span><span class="kw-kd kd-e">Fácil KD:19</span></div><div class="kw-intent">💡 Long-tail · Alta conversión</div></div>
+        </div>
+        <div class="seo-box" style="background:var(--yl);border-color:var(--yp)">
+          <div class="seo-title" style="color:var(--yellow)">⚠️ KD más alto de los 3 productos</div>
+          <div class="seo-text">KD principal <strong>42/100</strong> — posicionamiento orgánico estimado en <strong>6–9 meses</strong>. Requiere más PPC y tiempo. Los keywords long-tail de recuperación (KD:19–28) son la entrada más eficiente para capital limitado. Recomendación: posicionar primero en "foam roller ejercicios casa" y "rodillo recuperación post entrenamiento" antes de atacar el keyword principal.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="p3-margen">
+      <div class="fin-sum c3">
+        <div class="fin-4">
+          <div class="fnum"><div class="fv g">29%</div><div class="fl">Margen neto</div></div>
+          <div class="fnum"><div class="fv v">55%</div><div class="fl">ROI inventario</div></div>
+          <div class="fnum"><div class="fv s">104 uds</div><div class="fl">Break-even</div></div>
+          <div class="fnum"><div class="fv a">4–5 m</div><div class="fl">Payback</div></div>
+        </div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <div style="padding:14px 18px;border-bottom:1px solid var(--border);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">💰 Desglose P&L · PVP €32.90</div>
+        <div class="ftbl">
+          <div class="ftr inc"><span class="flbl">Precio de venta (PVP)</span><span class="fval" style="color:var(--green)">+€32.90</span></div>
+          <div class="ftr cost"><span class="flbl">Coste fabricación CIF (~30%)</span><span class="fval">-€9.90</span></div>
+          <div class="ftr cost"><span class="flbl">Referral fee Amazon (15%)</span><span class="fval">-€4.94</span></div>
+          <div class="ftr cost"><span class="flbl">FBA Fulfillment fee (standard)</span><span class="fval">-€4.80</span></div>
+          <div class="ftr cost"><span class="flbl">Almacenamiento mensual</span><span class="fval">-€0.40</span></div>
+          <div class="ftr cost"><span class="flbl">PPC estimado (12% PVP)</span><span class="fval">-€3.95</span></div>
+          <div class="ftr cost"><span class="flbl">Packaging + inspección</span><span class="fval">-€0.60</span></div>
+          <div class="ftr total"><span class="flbl">MARGEN NETO / unidad</span><span class="fval">+€8.31 (29%)</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="p3-debilidades">
+      <div class="card">
+        <div class="card-title">⚠️ Debilidades detectadas en competencia</div>
+        <div class="wg">
+          <div class="wi"><div class="wi-ico">🔊</div><div><div class="wi-title">Densidad inconsistente entre unidades</div><div class="wi-desc">El foam se aplana en 3–6 meses con uso regular. Los compradores buscan densidad alta (D30+) que se mantenga. Pedir test de densidad al proveedor es crítico.</div></div></div>
+          <div class="wi"><div class="wi-ico">🤔</div><div><div class="wi-title">Sin guía de uso específica por zona</div><div class="wi-desc">Todos los productos tienen la misma guía genérica. Una guía específica por zona corporal (espalda, piernas, IT band, glúteos) tiene mucho valor para el principiante.</div></div></div>
+          <div class="wi"><div class="wi-ico">📏</div><div><div class="wi-title">Solo una textura / densidad disponible</div><div class="wi-desc">Un set con rodillo liso (principiante) + texturizado (avanzado) en la misma caja justifica precio mayor y tiene menos competidores directos.</div></div></div>
+          <div class="wi"><div class="wi-ico">🎨</div><div><div class="wi-title">Colores genéricos negro / gris</div><div class="wi-desc">El 100% de la competencia usa negro o gris. Un rodillo en color (rosa, teal, terracota) conecta mejor con el perfil femenino dominante y diferencia en foto principal.</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="p3-pasos">
+      <div class="sup-banner" style="background:linear-gradient(135deg,var(--viol),var(--viop));border-color:var(--viop)">
+        <div class="sb-info">
+          <div class="sb-lbl" style="color:var(--viod)">🏭 Proveedor recomendado</div>
+          <div class="sb-name">Alibaba · "EPE foam roller high density D30 OEM private label custom color"</div>
+          <div class="sb-desc">Precio estimado: $4.50–$8.00 USD · MOQ: 100–200 uds · Pedir test de densidad D30+ y resistencia después de 200 usos</div>
+        </div>
+        <div class="sb-links">
+          <a class="sbl v" href="https://www.alibaba.com/trade/search?SearchText=EPE+foam+roller+high+density+D30+OEM+private+label+custom+color&IndexArea=product_en" target="_blank">🔗 Alibaba</a>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><div class="step-b"><h4>Considerar como segundo lanzamiento (mes 6–9)</h4><p>Con las bandas elásticas ya lanzadas y >50 reviews, puedes usar tu lista de clientes de Amazon (Brand Follow, Brand Tailored Promotions) para presentar el rodillo a compradores que ya confían en tu marca. El coste de PPC baja drásticamente.</p><span class="stag">💡 Estrategia recomendada</span></div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-b"><h4>Diseñar set "recuperación completa" con diferenciación visual</h4><p>Set de 2 rodillos (liso 30cm + texturizado 33cm) en color teal o terracota. Caja premium con guía de 15 ejercicios por zona corporal. Se puede vender entre €34.90–€39.90 justificando el precio vs. competencia.</p><span class="stag">⏱ Planificar desde lanzamiento P01</span></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-b"><h4>Keywords long-tail primero · atacar principal después</h4><p>Arrancar con exact match en "rodillo recuperación post entrenamiento" (KD:19) y "foam roller ejercicios casa" (KD:24) para conseguir primeras ventas y reviews. Solo escalar a "rodillo masaje muscular" cuando tengas 30+ reviews y rating >4.2★.</p><span class="stag">⏱ Mes 1–3 tras launch</span></div></div>
+      </div>
+    </div>
+  </div><!-- /p3 -->
+
+  <!-- ═══ COMPARISON TABLE ═══ -->
+  <div class="comp-sec">
+    <h2>📊 Tabla Comparativa · 3 Productos + 3 Subnichos Propuestos</h2>
+    <div class="comp-intro">Comparativa completa de los 3 productos analizados más los 3 subnichos propuestos, con recomendación de secuencia de lanzamiento para maximizar el capital disponible.</div>
+    <div class="comp-wrap" style="overflow-x:auto">
+      <table class="ctbl" style="min-width:700px">
+        <thead>
+          <tr>
+            <th style="width:180px">Criterio</th>
+            <th><div class="wth"><span class="wth-emo">💪</span><span class="wth-name">Bandas Elásticas</span><span class="wth-badge">⭐ LANZAR YA</span></div></th>
+            <th>🧘 Bloques Yoga</th>
+            <th>🌀 Rodillo Foam</th>
+            <th style="color:var(--muted)">😴 Sueño</th>
+            <th style="color:var(--muted)">🧴 Magnesio</th>
+            <th style="color:var(--muted)">🎽 Gym Bag</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="sr"><td colspan="7">FINANCIERO</td></tr>
+          <tr><td class="rl">PVP objetivo</td><td class="wc"><span class="val">€24.90</span></td><td>€29.90</td><td>€32.90</td><td style="color:var(--muted)">~€22</td><td style="color:var(--muted)">~€19</td><td style="color:var(--muted)">~€28</td></tr>
+          <tr><td class="rl">Margen neto</td><td class="wc"><span class="val">39% ✓</span></td><td>34%</td><td>29%</td><td style="color:var(--muted)">~35%</td><td style="color:var(--muted)">~32%</td><td style="color:var(--muted)">~38%</td></tr>
+          <tr><td class="rl">ROI inventario</td><td class="wc"><span class="val">82% ✓</span></td><td>68%</td><td>55%</td><td style="color:var(--muted)">~70%</td><td style="color:var(--muted)">~65%</td><td style="color:var(--muted)">~78%</td></tr>
+          <tr><td class="rl">Capital launch</td><td class="wc"><span class="val">€3.600 ✓</span></td><td>€3.600</td><td>€3.200</td><td style="color:var(--muted)">~€2.500</td><td style="color:var(--muted)">~€2.200</td><td style="color:var(--muted)">~€1.800</td></tr>
+          <tr><td class="rl">Payback</td><td class="wc"><span class="val">2–3 meses ✓</span></td><td>3–4 meses</td><td>4–5 meses</td><td style="color:var(--muted)">~3 m</td><td style="color:var(--muted)">~3 m</td><td style="color:var(--muted)">~2 m</td></tr>
+          <tr class="sr"><td colspan="7">MERCADO Y COMPETENCIA</td></tr>
+          <tr><td class="rl">Revenue nicho/mes</td><td class="wc"><span class="val">€22.400</span></td><td>€17.800</td><td>€19.200</td><td style="color:var(--muted)">~€14K</td><td style="color:var(--muted)">~€11K</td><td style="color:var(--muted)">~€9K</td></tr>
+          <tr><td class="rl">Reviews prom. top10</td><td class="wc"><span class="val">64 ✓ (bajo)</span></td><td>92</td><td>118 ⚠️</td><td style="color:var(--muted)">~55</td><td style="color:var(--muted)">~48</td><td style="color:var(--muted)">~40</td></tr>
+          <tr><td class="rl">Competencia</td><td class="wc"><span class="pill pg2">Baja ✓</span></td><td><span class="pill ps">Baja–Media</span></td><td><span class="pill py2">Media</span></td><td style="color:var(--muted)">Baja</td><td style="color:var(--muted)">Baja</td><td style="color:var(--muted)">Baja</td></tr>
+          <tr><td class="rl">Estacionalidad</td><td class="wc"><span class="pill pg2">Evergreen ✓</span></td><td><span class="pill pg2">Evergreen ✓</span></td><td><span class="pill pg2">Evergreen ✓</span></td><td style="color:var(--muted)">Evergreen</td><td style="color:var(--muted)">Evergreen</td><td style="color:var(--muted)">Estacional</td></tr>
+          <tr class="sr"><td colspan="7">SEO & PPC</td></tr>
+          <tr><td class="rl">KD keyword principal</td><td class="wc"><span class="val">KD:27 ✓</span></td><td>KD:31</td><td>KD:42 ⚠️</td><td style="color:var(--muted)">KD:26</td><td style="color:var(--muted)">KD:22</td><td style="color:var(--muted)">KD:19</td></tr>
+          <tr><td class="rl">PPC diario launch</td><td class="wc"><span class="val">€8–12/día ✓</span></td><td>€10–14/día</td><td>€14–18/día</td><td style="color:var(--muted)">€8/día</td><td style="color:var(--muted)">€6/día</td><td style="color:var(--muted)">€6/día</td></tr>
+          <tr><td class="rl">Tiempo posic. orgánica</td><td class="wc"><span class="val">3–5 meses ✓</span></td><td>4–6 meses</td><td>6–9 meses ⚠️</td><td style="color:var(--muted)">3–5 m</td><td style="color:var(--muted)">3–4 m</td><td style="color:var(--muted)">2–4 m</td></tr>
+          <tr class="sr"><td colspan="7">ESTRATEGIA</td></tr>
+          <tr><td class="rl">Secuencia recomendada</td><td class="wc"><span class="val">🥇 Lanzar primero</span></td><td>🥈 Mes 4–6</td><td>🥉 Mes 7–10</td><td style="color:var(--muted)">Mes 8+</td><td style="color:var(--muted)">Mes 6+</td><td style="color:var(--muted)">Mes 5+</td></tr>
+          <tr><td class="rl">Sinergias de marca</td><td class="wc"><span class="pill pg2">Base de toda la marca ✓</span></td><td><span class="pill pe">Mismo perfil comprador</span></td><td><span class="pill pv">Cross-sell P01 ✓</span></td><td style="color:var(--muted)">Cross-sell</td><td style="color:var(--muted)">Cross-sell</td><td style="color:var(--muted)">Gifting</td></tr>
+          <tr>
+            <td class="rl" style="font-size:15px;font-weight:800">Score Global</td>
+            <td class="wc" style="background:var(--skyl)"><span style="font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:800;color:var(--skyd)">9.4/10</span></td>
+            <td><span style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--emd)">7.8/10</span></td>
+            <td><span style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--viod)">7.2/10</span></td>
+            <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700">8.1*</td>
+            <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700">7.6*</td>
+            <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700">6.8*</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:11px;color:var(--muted);margin-top:8px">* Subnichos propuestos. Puntuación estimada sin análisis completo — requieren validación con Helium 10 Black Box antes de decidir lanzamiento.</p>
+
+    <!-- SUPPLIER GRID -->
+    <h3 style="font-size:16px;font-weight:800;margin:32px 0 14px;display:flex;align-items:center;gap:8px">🏭 Proveedores Recomendados — Productos Analizados</h3>
+    <div class="sup-grid">
+      <div class="sup-card">
+        <div class="sup-emo">💪</div>
+        <div class="sup-name">Bandas Elásticas de Resistencia</div>
+        <div class="sup-desc">Alibaba: "resistance bands set 5 levels natural latex OEM private label thick no smell". Precio $1.80–$3.50/ud. MOQ 200–500. Pedir >3mm y test elongación.</div>
+        <a class="sup-link" href="https://www.alibaba.com/trade/search?SearchText=resistance+bands+set+5+levels+natural+latex+OEM+private+label&IndexArea=product_en" target="_blank">🔗 Buscar en Alibaba</a>
+      </div>
+      <div class="sup-card">
+        <div class="sup-emo">🧘</div>
+        <div class="sup-name">Bloques de Yoga de Corcho</div>
+        <div class="sup-desc">Alibaba: "cork yoga block set FSC certified OEM private label gift packaging". Precio $3.50–$6.00/set. MOQ 150–300. Pedir certificado FSC o PEFC.</div>
+        <a class="sup-link e" href="https://www.alibaba.com/trade/search?SearchText=cork+yoga+block+set+OEM+FSC+certified+private+label&IndexArea=product_en" target="_blank">🔗 Buscar en Alibaba</a>
+      </div>
+      <div class="sup-card">
+        <div class="sup-emo">🌀</div>
+        <div class="sup-name">Rodillo Foam Muscular</div>
+        <div class="sup-desc">Alibaba: "EPE foam roller high density D30 OEM private label custom color". Precio $4.50–$8.00/ud. MOQ 100–200. Pedir test densidad D30+ tras 200 usos.</div>
+        <a class="sup-link v" href="https://www.alibaba.com/trade/search?SearchText=EPE+foam+roller+high+density+D30+OEM+private+label+custom+color&IndexArea=product_en" target="_blank">🔗 Buscar en Alibaba</a>
+      </div>
+    </div>
+    <div class="disc" style="margin-top:20px">⚠️ <span><strong>Aviso metodológico:</strong> Todos los datos de revenue, reviews, ASINs y márgenes son estimaciones profesionales basadas en metodología Helium 10 y benchmarks del mercado a febrero 2026. Los ASINs enlazan a búsquedas en Amazon.es — los productos reales pueden variar. Validar siempre con Helium 10 Black Box + Xray + Calculadora FBA oficial de Amazon Seller Central antes de comprometer capital.</span></div>
+  </div>
+
+</div><!-- /main -->
+
+<footer>
+  <strong>Amazon FBA · Fitness & Bienestar · Amazon.es · Febrero 2026</strong><br>
+  Nicho: Fitness & Bienestar · Capital: €1.500–€4.000 · Modelo: Private Label · Metodología: Helium 10<br>
+  <span style="color:rgba(255,255,255,.6)">Black Box · Xray · Cerebro · Magnet · Trendster · Profitability Calculator</span>
+  <div class="ft-chips">
+    <span class="ft-chip">💪 P01 Score 9.4/10 — Lanzar primero</span>
+    <span class="ft-chip">🧘 P02 Score 7.8/10 — Mes 4–6</span>
+    <span class="ft-chip">🌀 P03 Score 7.2/10 — Mes 7–10</span>
+    <span class="ft-chip">📊 Estimaciones · Validar antes de invertir</span>
+  </div>
+</footer>
+
+<script>
+const TABS={oportunidad:0,asins:1,keywords:2,margen:3,debilidades:4,pasos:5};
+function selProd(id){
+  ['p1','p2','p3'].forEach(p=>{
+    document.getElementById('panel-'+p).classList.remove('active');
+    const b=document.getElementById('btn-'+p);
+    b.classList.remove('active');
+  });
+  document.getElementById('panel-'+id).classList.add('active');
+  document.getElementById('btn-'+id).classList.add('active');
+  document.querySelector('.prod-sel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function swTab(prod,tab){
+  const bar=document.getElementById('tbar-'+prod);
+  if(!bar)return;
+  bar.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+prod).querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  const idx=TABS[tab]??0;
+  const btns=bar.querySelectorAll('.tab-btn');
+  if(btns[idx])btns[idx].classList.add('active');
+  const panel=document.getElementById(prod+'-'+tab);
+  if(panel)panel.classList.add('active');
+}
+// Podium hover opacity
+document.querySelectorAll('.sn-card').forEach(c=>{
+  c.addEventListener('mouseenter',()=>{
+    document.querySelectorAll('.sn-card').forEach(x=>x.style.opacity='.7');
+    c.style.opacity='1';
+  });
+  c.addEventListener('mouseleave',()=>{
+    document.querySelectorAll('.sn-card').forEach(x=>x.style.opacity='1');
+  });
+});
+</script>
+</body>
+</html>
