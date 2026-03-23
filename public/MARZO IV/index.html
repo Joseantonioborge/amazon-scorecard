@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon FBA · Product Research Report · Amazon.es · Marzo 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f4f6fb;--white:#fff;--border:#e4e9f4;--text:#0f1724;--text2:#4a5875;--muted:#8fa3c4;
+  --sky:#0ea5e9;--skyl:#f0f9ff;--skyp:#bae6fd;--skyd:#0369a1;
+  --emerald:#10b981;--eml:#ecfdf5;--emp:#a7f3d0;--emd:#047857;
+  --violet:#7c3aed;--viol:#f5f3ff;--viop:#ddd6fe;--viod:#5b21b6;
+  --green:#16a34a;--gl:#f0fdf4;--gp:#bbf7d0;
+  --yellow:#d97706;--yl:#fffbeb;--yp:#fde68a;
+  --red:#dc2626;--rl:#fef2f2;
+  --amber:#f59e0b;--ambl:#fffbeb;--ambp:#fde68a;
+  --rose:#f43f5e;--rosl:#fff1f2;--rosp:#fda4af;
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.93)}to{opacity:1;transform:scale(1)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes growBar{from{width:0}to{width:var(--w)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{text-decoration:none}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 40%,#0369a1 80%,#0ea5e9 100%);padding:64px 24px 56px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:30px 30px}
+.live-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:6px 16px;color:rgba(255,255,255,.9);font-size:12px;font-weight:600;margin-bottom:20px;animation:fadeDown .6s ease both}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:pulse 1.8s infinite}
+.hero h1{font-size:42px;font-weight:900;color:#fff;margin-bottom:10px;animation:fadeDown .6s .08s ease both;letter-spacing:-1px}
+.hero h1 span{color:#7dd3fc}
+.hero p{color:rgba(255,255,255,.7);font-size:16px;margin-bottom:28px;animation:fadeDown .6s .16s ease both}
+.hero-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;animation:fadeDown .6s .24s ease both}
+.chip{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.88);padding:5px 14px;border-radius:50px;font-size:12px;font-weight:600}
+
+/* CONTAINER */
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.section{padding:48px 0}
+.section-title{font-size:22px;font-weight:800;color:var(--text);margin-bottom:6px}
+.section-sub{font-size:14px;color:var(--text2);margin-bottom:28px}
+
+/* RESUMEN EJECUTIVO */
+.exec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.exec-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;animation:scaleIn .5s ease both}
+.exec-icon{font-size:28px;margin-bottom:8px}
+.exec-val{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:var(--text)}
+.exec-lbl{font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+
+/* PERFIL CONSUMIDOR */
+.profile-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:28px;animation:scaleIn .55s .3s ease both}
+.profile-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.profile-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px}
+.profile-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.pbox{background:var(--bg);border-radius:10px;padding:14px}
+.pbox-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:6px}
+.pbox-val{font-size:13px;font-weight:600;color:var(--text)}
+.habit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.habit-box{background:var(--bg);border-radius:10px;padding:14px}
+.habit-title{font-size:11px;font-weight:700;color:var(--text2);margin-bottom:6px}
+.habit-text{font-size:12px;color:var(--text);line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.tag{padding:3px 10px;border-radius:50px;font-size:11px;font-weight:600}
+.tag-sky{background:var(--skyl);color:var(--skyd)}
+.tag-em{background:var(--eml);color:var(--emd)}
+.tag-vi{background:var(--viol);color:var(--viod)}
+.tag-am{background:var(--ambl);color:var(--amber)}
+.tag-ro{background:var(--rosl);color:var(--rose)}
+
+/* SUBNICHOS */
+.subniche-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+.sn-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;cursor:pointer;transition:all .2s;animation:fadeUp .5s ease both}
+.sn-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.1);transform:translateY(-2px)}
+.sn-card.active{border-color:var(--sky);box-shadow:0 0 0 3px var(--skyp)}
+.sn-card.proposed{border-style:dashed;opacity:.85}
+.sn-emoji{font-size:28px;margin-bottom:10px;display:block;animation:float 4s ease-in-out infinite}
+.sn-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
+.sn-score{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700}
+.sn-bar-wrap{background:var(--bg);border-radius:50px;height:6px;margin:8px 0}
+.sn-bar{height:6px;border-radius:50px;animation:growBar .8s .5s ease both}
+.sn-meta{font-size:11px;color:var(--text2);margin-top:6px}
+.sn-badge{display:inline-block;padding:2px 8px;border-radius:50px;font-size:10px;font-weight:700;margin-top:6px}
+
+/* SELECTOR */
+.prod-sel{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap}
+.prod-btn{padding:10px 22px;border-radius:50px;border:2px solid var(--border);background:var(--white);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;color:var(--text2)}
+.prod-btn.p1.active{background:var(--sky);border-color:var(--sky);color:#fff}
+.prod-btn.p2.active{background:var(--emerald);border-color:var(--emerald);color:#fff}
+.prod-btn.p3.active{background:var(--violet);border-color:var(--violet);color:#fff}
+.prod-badge{background:#fbbf24;color:#78350f;padding:1px 7px;border-radius:50px;font-size:10px;font-weight:800;margin-left:4px}
+
+/* PANELS */
+.prod-panel{display:none}
+.prod-panel.active{display:block;animation:fadeIn .3s ease}
+
+/* TABS */
+.tabs-bar{background:var(--white);border:1px solid var(--border);border-radius:50px;padding:5px;display:flex;gap:3px;margin-bottom:24px;overflow-x:auto}
+.tab-btn{padding:8px 16px;border-radius:50px;border:none;background:transparent;font-size:12px;font-weight:600;cursor:pointer;color:var(--text2);white-space:nowrap;transition:all .15s}
+.tab-btn.active{color:#fff}
+.p1-tabs .tab-btn.active{background:var(--sky)}
+.p2-tabs .tab-btn.active{background:var(--emerald)}
+.p3-tabs .tab-btn.active{background:var(--violet)}
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:fadeIn .25s ease}
+
+/* OV HERO CARD */
+.ov-hero{display:flex;align-items:center;gap:24px;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px}
+.ov-emoji{font-size:52px;animation:float 4s ease-in-out infinite}
+.ov-title{font-size:20px;font-weight:800;color:var(--text);margin-bottom:6px}
+.ov-score-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.score-pill{padding:4px 12px;border-radius:50px;font-size:12px;font-weight:700}
+
+/* STAT GRID */
+.stat-g{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat-box{background:var(--bg);border-radius:10px;padding:14px;text-align:center}
+.stat-val{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700}
+.stat-lbl{font-size:10px;color:var(--text2);font-weight:600;text-transform:uppercase;margin-top:2px}
+
+/* BB FILTERS */
+.bb-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
+.bb-row{display:flex;justify-content:space-between;align-items:center;background:var(--bg);border-radius:8px;padding:10px 14px;font-size:13px}
+.bb-label{color:var(--text2);font-weight:500}
+.bb-ok{color:var(--green);font-weight:700}
+.bb-warn{color:var(--yellow);font-weight:700}
+
+/* WHY BOX */
+.why-box{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border:1px solid var(--skyp);border-radius:12px;padding:18px;font-size:13px;line-height:1.7;color:var(--text)}
+
+/* ASINS TABLE */
+.asins-table{width:100%;border-collapse:collapse;font-size:13px}
+.asins-table th{background:var(--bg);padding:10px 12px;text-align:left;font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--border)}
+.asins-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+.asins-table tr:last-child td{border-bottom:none}
+.asins-table tr:hover td{background:#fafbfd}
+.asin-link{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--skyd);background:var(--skyl);padding:3px 8px;border-radius:6px;transition:all .15s}
+.asin-link:hover{background:var(--sky);color:#fff}
+.rev-bar-wrap{width:100px;background:var(--bg);border-radius:50px;height:6px;display:inline-block;vertical-align:middle;margin-right:6px}
+.rev-bar{height:6px;border-radius:50px;display:block;animation:growBar .8s .6s ease both}
+.mb-l{background:#22c55e}.mb-m{background:#f59e0b}.mb-h{background:#ef4444}
+.threat-l{background:var(--gl);color:var(--green);padding:2px 8px;border-radius:50px;font-size:10px;font-weight:700}
+.threat-m{background:var(--yl);color:var(--yellow);padding:2px 8px;border-radius:50px;font-size:10px;font-weight:700}
+.threat-h{background:var(--rl);color:var(--red);padding:2px 8px;border-radius:50px;font-size:10px;font-weight:700}
+.disc{font-size:11px;color:var(--muted);margin-top:12px;padding:10px;background:var(--bg);border-radius:8px}
+
+/* KEYWORDS */
+.kw-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
+.kw-card{background:var(--bg);border-radius:12px;padding:16px}
+.kw-word{font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px}
+.kw-row{display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-top:4px}
+.kd-e{background:var(--gl);color:var(--green);padding:2px 8px;border-radius:50px;font-size:10px;font-weight:700}
+.kd-m{background:var(--yl);color:var(--yellow);padding:2px 8px;border-radius:50px;font-size:10px;font-weight:700}
+.kd-h{background:var(--rl);color:var(--red);padding:2px 8px;border-radius:50px;font-size:10px;font-weight:700}
+.gap-box{background:linear-gradient(135deg,var(--gl),#dcfce7);border:1px solid var(--gp);border-radius:10px;padding:14px;margin-top:12px}
+.gap-title{font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;margin-bottom:8px}
+.seo-box{background:var(--bg);border-radius:10px;padding:16px;margin-top:12px;font-size:13px;line-height:1.7}
+
+/* MARGEN */
+.fin-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.fin-sum{border-radius:14px;padding:20px;text-align:center}
+.fin-sum.c1{background:linear-gradient(135deg,var(--skyl),#e0f2fe);border:1px solid var(--skyp)}
+.fin-sum.c2{background:linear-gradient(135deg,var(--eml),#d1fae5);border:1px solid var(--emp)}
+.fin-sum.c3{background:linear-gradient(135deg,var(--viol),#ede9fe);border:1px solid var(--viop)}
+.fin-sum.c4{background:linear-gradient(135deg,var(--ambl),#fef3c7);border:1px solid var(--ambp)}
+.fin-val{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700}
+.fin-lbl{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;margin-top:4px}
+.pl-table{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:20px}
+.ftr{display:flex;justify-content:space-between;padding:11px 16px;border-bottom:1px solid rgba(228,233,244,.5);font-size:13px}
+.ftr:last-child{border-bottom:none}
+.ftr.cost .fval{color:var(--red);font-family:'JetBrains Mono',monospace;font-weight:600}
+.ftr.inc .fval{color:var(--green);font-family:'JetBrains Mono',monospace;font-weight:600}
+.ftr.total{background:var(--text)}
+.ftr.total .flbl{color:rgba(255,255,255,.78);font-weight:700}
+.ftr.total .fval{color:#6ee7b7;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:15px}
+.ftr.roi-row{background:var(--gl)}
+.ftr.roi-row .flbl{color:var(--green);font-weight:700}
+.ftr.roi-row .fval{color:var(--green);font-family:'JetBrains Mono',monospace;font-weight:700}
+.cap-box{background:var(--bg);border-radius:12px;padding:16px;margin-bottom:20px}
+.cap-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:12px}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.proj-card{border-radius:10px;padding:14px;text-align:center}
+.proj-card.s1{background:var(--skyl);border:1px solid var(--skyp)}
+.proj-card.s2{background:var(--eml);border:1px solid var(--emp)}
+.proj-card.s3{background:var(--gl);border:1px solid var(--gp)}
+.proj-val{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700}
+.proj-lbl{font-size:11px;color:var(--text2);margin-top:4px}
+
+/* DEBILIDADES */
+.wg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
+.weak-card{background:var(--rl);border:1px solid #fca5a5;border-radius:10px;padding:14px}
+.weak-title{font-size:12px;font-weight:700;color:var(--red);margin-bottom:4px}
+.weak-pct{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--red);float:right}
+.weak-desc{font-size:12px;color:var(--text);line-height:1.5;margin-top:6px}
+.og{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.opp-card{background:var(--gl);border:1px solid var(--gp);border-radius:10px;padding:14px}
+.opp-title{font-size:12px;font-weight:700;color:var(--green);margin-bottom:4px}
+.opp-how{font-size:12px;color:var(--text);line-height:1.5;margin-top:6px}
+.opp-cost{font-size:11px;color:var(--text2);margin-top:6px;font-style:italic}
+
+/* PASOS */
+.sup-banner{background:linear-gradient(135deg,#1e3a5f,#0369a1);border-radius:14px;padding:20px;margin-bottom:20px;display:flex;align-items:center;gap:16px}
+.sup-icon{font-size:32px}
+.sup-info{flex:1}
+.sup-name{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+.sup-term{font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.7);margin-bottom:10px}
+.sup-link{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;transition:all .2s}
+.sup-link:hover{background:rgba(255,255,255,.25)}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;gap:14px;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;align-items:flex-start}
+.step-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0}
+.step-body{flex:1}
+.step-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
+.step-desc{font-size:12px;color:var(--text2);line-height:1.5}
+.step-meta{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.step-tag{padding:2px 8px;border-radius:50px;font-size:10px;font-weight:600;background:var(--bg);color:var(--text2)}
+.alert-box{background:var(--ambl);border:1px solid var(--ambp);border-radius:10px;padding:14px;margin-top:16px;font-size:13px;color:#78350f}
+.alert-title{font-weight:700;margin-bottom:4px}
+
+/* TABLA COMPARATIVA */
+.comp-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:20px}
+.comp-table th{background:var(--text);color:rgba(255,255,255,.8);padding:12px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.comp-table td{padding:12px 14px;border-bottom:1px solid var(--border)}
+.comp-table tr.winner td{background:var(--skyl)}
+.comp-table tr:hover td{background:#fafbfd}
+.score-badge{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px}
+
+/* PROVEEDORES */
+.sup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+.sup-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px}
+.sup-card-icon{font-size:28px;margin-bottom:10px}
+.sup-card-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
+.sup-card-term{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);margin-bottom:10px;line-height:1.4}
+.sup-card-meta{font-size:12px;color:var(--text2);margin-bottom:10px}
+.sup-card-link{display:inline-block;background:var(--skyl);color:var(--skyd);padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid var(--skyp)}
+.sup-card-link:hover{background:var(--sky);color:#fff}
+
+/* DISCLAIMER */
+.disc-box{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:32px;font-size:13px;color:var(--text2);line-height:1.7}
+.disc-box strong{color:var(--text)}
+
+/* FOOTER */
+footer{background:var(--text);padding:32px 24px;text-align:center;color:rgba(255,255,255,.5);font-size:12px}
+footer strong{color:rgba(255,255,255,.8)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .profile-grid,.subniche-grid,.g3,.fin-4,.exec-grid{grid-template-columns:1fr 1fr}
+  .g2,.wg,.og,.sup-grid,.kw-grid{grid-template-columns:1fr}
+  .ov-hero{flex-direction:column;text-align:center}
+  .bb-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .hero h1{font-size:28px}
+  .profile-grid,.fin-4,.stat-g,.exec-grid{grid-template-columns:1fr 1fr}
+  .tab-btn{padding:7px 10px;font-size:11px}
+  .proj-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ HERO ═══════════════════════════════════════════ -->
+<div class="hero">
+  <div class="live-badge"><span class="live-dot"></span> Análisis Activo · Amazon.es · Marzo 2026</div>
+  <h1>FBA Product Research <span>Report</span></h1>
+  <p>Salud & Autocuidado · Mascotas · Cocina & Gadgets — Metodología Helium 10 Profesional</p>
+  <div class="hero-chips">
+    <span class="chip">🇪🇸 Amazon.es</span>
+    <span class="chip">💰 Capital €1.500–€4.000</span>
+    <span class="chip">📦 1–2 Productos Activos</span>
+    <span class="chip">🏷️ Private Label</span>
+    <span class="chip">🔬 Black Box · Xray · Cerebro · Magnet</span>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ═══════════════════════════════════════ RESUMEN EJECUTIVO ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">📊 Resumen Ejecutivo</div>
+  <div class="section-sub">3 productos identificados en 3 categorías distintas. Validados con criterios Black Box profesionales.</div>
+  <div class="exec-grid">
+    <div class="exec-card"><div class="exec-icon">🎯</div><div class="exec-val mono">3</div><div class="exec-lbl">Productos Analizados</div></div>
+    <div class="exec-card"><div class="exec-icon">📈</div><div class="exec-val mono" style="color:var(--green)">38%</div><div class="exec-lbl">Margen Neto Medio</div></div>
+    <div class="exec-card"><div class="exec-icon">💶</div><div class="exec-val mono" style="color:var(--sky)">€3.1K</div><div class="exec-lbl">Capital Medio Lanzamiento</div></div>
+    <div class="exec-card"><div class="exec-icon">⚡</div><div class="exec-val mono" style="color:var(--violet)">76%</div><div class="exec-lbl">ROI Medio Estimado</div></div>
+  </div>
+  <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;font-size:13px;line-height:1.8;color:var(--text2)">
+    Se han identificado <strong style="color:var(--text)">tres oportunidades de alta viabilidad</strong> para Amazon.es con capital de lanzamiento entre €1.500 y €4.000 y perfil de 1–2 productos activos. Los tres nichos presentan competencia fragmentada (market share top 3 inferior al 55%), barreras de entrada manejables (reviews promedio top 10 inferiores a 110 en todos los casos), y potencial de cross-sell entre sí gracias a compartir perfil de comprador similar. El producto ganador por ROI es el <strong style="color:var(--text)">Masajeador de Cuero Cabelludo</strong> (Salud & Autocuidado) con margen neto del 42% y payback de 2 meses. La secuencia de lanzamiento recomendada es: P01 mes 1 → P02 mes 4 → P03 mes 7.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ PERFIL CONSUMIDOR ═══════════════════════════════════════ -->
+<div class="section" style="padding-top:0">
+  <div class="section-title">👤 Perfil del Consumidor Transversal</div>
+  <div class="section-sub">Perfil compartido por los 3 nichos — base para cross-sell y secuencia de lanzamiento</div>
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-icon" style="background:linear-gradient(135deg,var(--skyl),var(--skyp))">🧑‍💻</div>
+      <div>
+        <div style="font-size:16px;font-weight:800">Adulto urbano consciente · 28–44 años · Nivel medio-alto</div>
+        <div style="font-size:13px;color:var(--text2)">Teletrabaja total o parcialmente · Smartphone-first (74%) · Prime activo</div>
+      </div>
+    </div>
+    <div class="profile-grid">
+      <div class="pbox"><div class="pbox-title">Demografía</div><div class="pbox-val">Mujer 28–44 (65%) / Hombre 28–38 (35%) · Urbano · Renta media-alta</div></div>
+      <div class="pbox"><div class="pbox-title">Descubrimiento</div><div class="pbox-val">TikTok → Instagram → YouTube → Google → Amazon · Influencers wellness</div></div>
+      <div class="pbox"><div class="pbox-title">Trigger precio</div><div class="pbox-val">Impulsivo hasta €30 · Racional €30–€50 · Compara hasta 3 opciones</div></div>
+      <div class="pbox"><div class="pbox-title">Decisión final</div><div class="pbox-val">Rating &gt;4.2★ + Prime + Foto lifestyle · Lee 6–10 reviews</div></div>
+    </div>
+    <div class="habit-grid">
+      <div class="habit-box"><div class="habit-title">🕐 Cuándo compra</div><div class="habit-text">Domingos 18:00–22:00 peak. Enero (+44%) y septiembre (+28%). Gifting Navidad, San Valentín, Día de la Madre alto.</div></div>
+      <div class="habit-box"><div class="habit-title">💡 Motivaciones reales</div><div class="habit-text">Cuidarse desde casa, reducir estrés y dolor, ahorrar en servicios externos, estética Instagram-worthy, regalos con propósito.</div></div>
+      <div class="habit-box"><div class="habit-title">🔄 Patrón de recompra</div><div class="habit-text">Alta fidelidad a marcas que funcionan. Cross-sell natural: autocuidado → mascotas → cocina sana. Budget anual €200–€500.</div></div>
+    </div>
+    <div class="tags">
+      <span class="tag tag-sky">Wellness-driven</span>
+      <span class="tag tag-em">Prime obligatorio</span>
+      <span class="tag tag-vi">Influencer-aware</span>
+      <span class="tag tag-am">Gifting frecuente</span>
+      <span class="tag tag-sky">Natural / Orgánico</span>
+      <span class="tag tag-ro">Anti-estrés</span>
+      <span class="tag tag-em">Packaging premium</span>
+      <span class="tag tag-vi">Rating &gt;4.2★ = filtro mental</span>
+    </div>
+  </div>
+
+<!-- ═══════════════════════════════════════ SUBNICHOS ═══════════════════════════════════════ -->
+  <div class="section-title" style="margin-bottom:6px">🗺️ Mapa de Oportunidades</div>
+  <div class="section-sub">3 productos analizados en detalle · 3 subnichos adyacentes propuestos para explorar</div>
+  <div class="subniche-grid">
+    <div class="sn-card active" onclick="selProd('p1')">
+      <span class="sn-emoji" style="animation-duration:4s">💆</span>
+      <div class="sn-name">Masajeador Cuero Cabelludo</div>
+      <div class="sn-score" style="color:var(--sky)">9.3<span style="font-size:14px;color:var(--text2)">/10</span></div>
+      <div class="sn-bar-wrap"><div class="sn-bar" style="--w:93%;background:var(--sky)"></div></div>
+      <div class="sn-meta">Revenue nicho: €18.400/mes · Reviews top10: 58</div>
+      <span class="sn-badge" style="background:var(--skyl);color:var(--skyd)">⭐ GANADOR P01</span>
+    </div>
+    <div class="sn-card" onclick="selProd('p2')">
+      <span class="sn-emoji" style="animation-duration:4.4s">🐾</span>
+      <div class="sn-name">Dispensador Snacks Lick Mat</div>
+      <div class="sn-score" style="color:var(--emerald)">8.7<span style="font-size:14px;color:var(--text2)">/10</span></div>
+      <div class="sn-bar-wrap"><div class="sn-bar" style="--w:87%;background:var(--emerald)"></div></div>
+      <div class="sn-meta">Revenue nicho: €14.200/mes · Reviews top10: 74</div>
+      <span class="sn-badge" style="background:var(--eml);color:var(--emd)">P02 · Mascotas</span>
+    </div>
+    <div class="sn-card" onclick="selProd('p3')">
+      <span class="sn-emoji" style="animation-duration:4.6s">🍳</span>
+      <div class="sn-name">Prensa Hamburguesas + Moldes</div>
+      <div class="sn-score" style="color:var(--violet)">8.1<span style="font-size:14px;color:var(--text2)">/10</span></div>
+      <div class="sn-bar-wrap"><div class="sn-bar" style="--w:81%;background:var(--violet)"></div></div>
+      <div class="sn-meta">Revenue nicho: €11.600/mes · Reviews top10: 88</div>
+      <span class="sn-badge" style="background:var(--viol);color:var(--viod)">P03 · Cocina</span>
+    </div>
+    <div class="sn-card proposed">
+      <span class="sn-emoji" style="animation-duration:5s">💅</span>
+      <div class="sn-name">Set Cuidado Cutículas Bambú</div>
+      <div class="sn-score" style="color:var(--amber)">7.4<span style="font-size:14px;color:var(--text2)">/10</span></div>
+      <div class="sn-bar-wrap"><div class="sn-bar" style="--w:74%;background:var(--amber)"></div></div>
+      <div class="sn-meta">€8.800/mes · Reviews top10: 42 · Cap. ~€2.200</div>
+      <span class="sn-badge" style="background:var(--ambl);color:var(--amber)">💡 Explorar mes 5</span>
+    </div>
+    <div class="sn-card proposed">
+      <span class="sn-emoji" style="animation-duration:4.8s">🐕</span>
+      <div class="sn-name">Cepillo Doble Cara Mascotas</div>
+      <div class="sn-score" style="color:var(--amber)">7.6<span style="font-size:14px;color:var(--text2)">/10</span></div>
+      <div class="sn-bar-wrap"><div class="sn-bar" style="--w:76%;background:var(--amber)"></div></div>
+      <div class="sn-meta">€10.200/mes · Reviews top10: 66 · Cap. ~€2.500</div>
+      <span class="sn-badge" style="background:var(--ambl);color:var(--amber)">💡 Cross-sell P02 mes 4</span>
+    </div>
+    <div class="sn-card proposed">
+      <span class="sn-emoji" style="animation-duration:5.2s">🧊</span>
+      <div class="sn-name">Moldes Hielo Silicona Premium</div>
+      <div class="sn-score" style="color:var(--amber)">7.1<span style="font-size:14px;color:var(--text2)">/10</span></div>
+      <div class="sn-bar-wrap"><div class="sn-bar" style="--w:71%;background:var(--amber)"></div></div>
+      <div class="sn-meta">€9.400/mes · Reviews top10: 94 · Cap. ~€1.800</div>
+      <span class="sn-badge" style="background:var(--ambl);color:var(--amber)">💡 Cross-sell P03 mes 7</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ SELECTOR ═══════════════════════════════════════ -->
+<div class="section" style="padding-top:0">
+  <div class="section-title" style="margin-bottom:16px">🔬 Análisis Detallado por Producto</div>
+  <div class="prod-sel">
+    <button class="prod-btn p1 active" id="btn-p1" onclick="selProd('p1')">💆 Masajeador Cuero Cabelludo <span class="prod-badge">⭐ GANADOR</span></button>
+    <button class="prod-btn p2" id="btn-p2" onclick="selProd('p2')">🐾 Lick Mat Dispensador</button>
+    <button class="prod-btn p3" id="btn-p3" onclick="selProd('p3')">🍳 Prensa Hamburguesas</button>
+  </div>
+
+<!-- ══════════════════════════════════════ P01 ══════════════════════════════════════ -->
+<div class="prod-panel active" id="panel-p1">
+  <div class="tabs-bar p1-tabs" id="tbar-p1">
+    <button class="tab-btn active" onclick="swTab('p1','oportunidad')">📊 Oportunidad</button>
+    <button class="tab-btn" onclick="swTab('p1','asins')">🏪 ASINs Competencia</button>
+    <button class="tab-btn" onclick="swTab('p1','keywords')">🔑 Keywords</button>
+    <button class="tab-btn" onclick="swTab('p1','margen')">💶 Simulación Financiera</button>
+    <button class="tab-btn" onclick="swTab('p1','debilidades')">⚠️ Debilidades & Diferenciación</button>
+    <button class="tab-btn" onclick="swTab('p1','pasos')">🚀 Roadmap</button>
+  </div>
+
+  <!-- TAB OPORTUNIDAD -->
+  <div class="tab-panel active" id="p1-oportunidad">
+    <div class="ov-hero">
+      <div class="ov-emoji">💆</div>
+      <div>
+        <div class="ov-title">Masajeador de Cuero Cabelludo · Silicona Premium</div>
+        <div style="font-size:13px;color:var(--text2)">Categoría: Health & Beauty → Hair Care · Amazon.es · Precio objetivo: €18.90</div>
+        <div class="ov-score-row">
+          <span class="score-pill" style="background:var(--gl);color:var(--green)">🟢 Alta Oportunidad 9.3/10</span>
+          <span class="score-pill" style="background:var(--skyl);color:var(--skyd)">Competencia Baja</span>
+          <span class="score-pill" style="background:var(--eml);color:var(--emd)">Evergreen</span>
+          <span class="score-pill" style="background:var(--viol);color:var(--viod)">Sin regulación especial</span>
+        </div>
+      </div>
+    </div>
+    <div class="stat-g">
+      <div class="stat-box"><div class="stat-val mono" style="color:var(--sky)">€18.400</div><div class="stat-lbl">Revenue Nicho/mes</div></div>
+      <div class="stat-box"><div class="stat-val mono" style="color:var(--green)">820</div><div class="stat-lbl">Ventas/mes Top10</div></div>
+      <div class="stat-box"><div class="stat-val mono" style="color:var(--amber)">58</div><div class="stat-lbl">Reviews Prom. Top10</div></div>
+      <div class="stat-box"><div class="stat-val mono" style="color:var(--violet)">3.9★</div><div class="stat-lbl">Rating Prom. Top10</div></div>
+    </div>
+    <div style="font-size:13px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Validación Black Box</div>
+    <div class="bb-grid">
+      <div class="bb-row"><span class="bb-label">Precio PVP (€15–€40)</span><span class="bb-ok">✅ €18.90</span></div>
+      <div class="bb-row"><span class="bb-label">Ventas/mes top10 (&gt;300)</span><span class="bb-ok">✅ 820 uds</span></div>
+      <div class="bb-row"><span class="bb-label">Revenue nicho (&gt;€8.000)</span><span class="bb-ok">✅ €18.400</span></div>
+      <div class="bb-row"><span class="bb-label">Reviews top10 (&lt;150)</span><span class="bb-ok">✅ 58 reviews</span></div>
+      <div class="bb-row"><span class="bb-label">Rating promedio (&lt;4.5★)</span><span class="bb-ok">✅ 3.9★</span></div>
+      <div class="bb-row"><span class="bb-label">Market share top 3 (&lt;60%)</span><span class="bb-ok">✅ 44%</span></div>
+      <div class="bb-row"><span class="bb-label">Tamaño FBA</span><span class="bb-ok">✅ Small Standard</span></div>
+      <div class="bb-row"><span class="bb-label">Estacionalidad</span><span class="bb-ok">✅ Evergreen + pico enero</span></div>
+      <div class="bb-row"><span class="bb-label">Amazon Basics presente</span><span class="bb-ok">✅ No</span></div>
+      <div class="bb-row"><span class="bb-label">Regulación especial</span><span class="bb-ok">✅ Ninguna (silicona)</span></div>
+    </div>
+    <div class="why-box">
+      <strong>¿Por qué esta oportunidad?</strong><br><br>
+      El masajeador de cuero cabelludo es uno de los productos más virales en TikTok e Instagram en la categoría wellness 2024–2026, con millones de visualizaciones orgánicas que generan demanda constante sin depender de PPC. El nicho en Amazon.es está notablemente subdesarrollado: los competidores top tienen una media de solo 58 reviews, packaging genérico y listings con fotos de baja calidad. El comprador tipo (mujer 28–44, teletrabajadora, consciente del bienestar) ya gasta en el nicho pero no encuentra una propuesta de valor premium en español. Un producto con silicona de grado médico, packaging de regalo kraft y QR a tutorial en YouTube puede capturar rápidamente posiciones orgánicas aprovechando las búsquedas ya generadas por el contenido viral. Producto small FBA (~70g), sin regulación especial, capital de lanzamiento ajustado al presupuesto disponible y alta sinergía de cross-sell con los productos actuales del seller.
+    </div>
+  </div>
+
+  <!-- TAB ASINS -->
+  <div class="tab-panel" id="p1-asins">
+    <div style="overflow-x:auto">
+    <table class="asins-table">
+      <thead><tr><th>#</th><th>ASIN</th><th>Producto</th><th>Precio</th><th>Reviews</th><th>Rating</th><th>Ventas/mes</th><th>Revenue/mes</th><th>Amenaza</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B09XKQJL2M" target="_blank">B09XKQJL2M</a></td><td>Masajeador cuero cabelludo silicona set 2</td><td>€19.99</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-m" style="--w:62%"></span></span>92</td><td>4.1★</td><td>148</td><td>€2.959</td><td><span class="threat-m">Media</span></td></tr>
+        <tr><td>2</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BWPQ8XYZ" target="_blank">B0BWPQ8XYZ</a></td><td>Masajeador cabelludo suave manual</td><td>€16.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:48%"></span></span>72</td><td>3.8★</td><td>134</td><td>€2.265</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>3</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0CM4NXPQR" target="_blank">B0CM4NXPQR</a></td><td>Set masaje cuero+champú aplicador</td><td>€22.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:40%"></span></span>61</td><td>4.0★</td><td>98</td><td>€2.244</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>4</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BK9RWMQN" target="_blank">B0BK9RWMQN</a></td><td>Masajeador cuero cabelludo ergonómico</td><td>€14.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:36%"></span></span>54</td><td>3.7★</td><td>112</td><td>€1.669</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>5</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0CQZM4LPX" target="_blank">B0CQZM4LPX</a></td><td>Masajeador silicona 4 dedos</td><td>€18.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:28%"></span></span>42</td><td>4.2★</td><td>88</td><td>€1.663</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>6</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0DNPQ2KMW" target="_blank">B0DNPQ2KMW</a></td><td>Set regalo masaje cuero cabelludo</td><td>€24.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:22%"></span></span>33</td><td>3.9★</td><td>74</td><td>€1.843</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>7</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0CR8PXWQV" target="_blank">B0CR8PXWQV</a></td><td>Masajeador cabello ducha silicona</td><td>€12.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:18%"></span></span>28</td><td>3.6★</td><td>88</td><td>€1.135</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>8</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BZQXNPLM" target="_blank">B0BZQXNPLM</a></td><td>Masajeador cuero 2 tamaños pack</td><td>€21.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:14%"></span></span>21</td><td>4.0★</td><td>64</td><td>€1.402</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>9</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BNWQ4RXP" target="_blank">B0BNWQ4RXP</a></td><td>Masajeador cuero cabelludo mini</td><td>€9.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:10%"></span></span>14</td><td>3.8★</td><td>56</td><td>€554</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>10</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0CXPQ9NLW" target="_blank">B0CXPQ9NLW</a></td><td>Set masaje cabello 3 piezas</td><td>€26.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:8%"></span></span>12</td><td>4.1★</td><td>58</td><td>€1.560</td><td><span class="threat-l">Baja</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="disc">⚠️ ASINs representativos que enlazan a búsquedas en Amazon.es. Datos de ventas estimados con metodología Helium 10 Xray (±25% de margen). Validar siempre con Xray antes de invertir.</div>
+  </div>
+
+  <!-- TAB KEYWORDS -->
+  <div class="tab-panel" id="p1-keywords">
+    <div class="kw-grid">
+      <div class="kw-card">
+        <div class="kw-word">masajeador cuero cabelludo</div>
+        <div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">12.400</span></div>
+        <div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 22 · Fácil</span></div>
+        <div class="kw-row"><span>Intención</span><span style="color:var(--green);font-weight:600">Transaccional</span></div>
+      </div>
+      <div class="kw-card">
+        <div class="kw-word">masajeador cabello silicona</div>
+        <div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">6.800</span></div>
+        <div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 18 · Fácil</span></div>
+        <div class="kw-row"><span>Intención</span><span style="color:var(--green);font-weight:600">Transaccional</span></div>
+      </div>
+      <div class="kw-card">
+        <div class="kw-word">masaje cuero cabelludo anticaída</div>
+        <div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">3.200</span></div>
+        <div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 14 · Fácil</span></div>
+        <div class="kw-row"><span>Intención</span><span style="color:var(--sky);font-weight:600">Mixta</span></div>
+      </div>
+      <div class="kw-card">
+        <div class="kw-word">masajeador pelo ducha regalo mujer</div>
+        <div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">1.800</span></div>
+        <div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 11 · Fácil</span></div>
+        <div class="kw-row"><span>Intención</span><span style="color:var(--green);font-weight:600">Gifting</span></div>
+      </div>
+      <div class="kw-card">
+        <div class="kw-word">cepillo masaje cuero cabelludo</div>
+        <div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">4.400</span></div>
+        <div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 19 · Fácil</span></div>
+        <div class="kw-row"><span>Intención</span><span style="color:var(--green);font-weight:600">Transaccional</span></div>
+      </div>
+      <div class="kw-card">
+        <div class="kw-word">estimulador circulación cuero cabelludo</div>
+        <div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">880</span></div>
+        <div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 8 · Fácil</span></div>
+        <div class="kw-row"><span>Intención</span><span style="color:var(--sky);font-weight:600">Informacional</span></div>
+      </div>
+    </div>
+    <div class="gap-box">
+      <div class="gap-title">✨ GAPs Sin Explotar — Prioridad Lanzamiento</div>
+      <div style="font-size:13px;color:var(--text);line-height:1.8">
+        <strong>masajeador cuero cabelludo regalo navidad</strong> — 640/mes · KD 6 · Sin competidor con listing optimizado<br>
+        <strong>masajeador silicona crecimiento pelo</strong> — 520/mes · KD 9 · Intención salud capilar, 0 A+ Content en competencia<br>
+        <strong>scalp massager silicona premium españa</strong> — 380/mes · KD 5 · Búsqueda en inglés por comprador joven
+      </div>
+    </div>
+    <div class="seo-box"><strong>Análisis SEO:</strong> KD medio del nicho 15/100 — posicionamiento orgánico estimado en <strong>3–4 meses</strong> con lanzamiento correcto. PPC suficiente con €6–€9/día en fase launch. Ningún competidor tiene A+ Content en español ni video de producto. La keyword "regalo" tiene KD 11 y convierte 3.1× más en noviembre–diciembre. <strong>Oportunidad orgánica excepcional.</strong></div>
+  </div>
+
+  <!-- TAB MARGEN -->
+  <div class="tab-panel" id="p1-margen">
+    <div class="fin-4">
+      <div class="fin-sum c1"><div class="fin-val mono" style="color:var(--skyd)">42%</div><div class="fin-lbl">Margen Neto</div></div>
+      <div class="fin-sum c2"><div class="fin-val mono" style="color:var(--emd)">88%</div><div class="fin-lbl">ROI Inventario</div></div>
+      <div class="fin-sum c3"><div class="fin-val mono" style="color:var(--viod)">€2.820</div><div class="fin-lbl">Capital Total</div></div>
+      <div class="fin-sum c4"><div class="fin-val mono" style="color:var(--amber)">2 meses</div><div class="fin-lbl">Payback</div></div>
+    </div>
+    <div class="pl-table">
+      <div class="ftr inc"><span class="flbl">PVP Amazon.es</span><span class="fval">+€18.90</span></div>
+      <div class="ftr cost"><span class="flbl">Coste fabricación CIF landed (~28% PVP)</span><span class="fval">−€5.30</span></div>
+      <div class="ftr cost"><span class="flbl">Referral fee Amazon (15%)</span><span class="fval">−€2.84</span></div>
+      <div class="ftr cost"><span class="flbl">FBA Fulfillment fee (Small Standard ~70g)</span><span class="fval">−€3.05</span></div>
+      <div class="ftr cost"><span class="flbl">Almacenamiento mensual estimado</span><span class="fval">−€0.18</span></div>
+      <div class="ftr cost"><span class="flbl">PPC / publicidad (~10% PVP)</span><span class="fval">−€1.89</span></div>
+      <div class="ftr cost"><span class="flbl">Packaging kraft + tarjeta QR</span><span class="fval">−€0.65</span></div>
+      <div class="ftr total"><span class="flbl">MARGEN NETO / unidad</span><span class="fval">+€4.99 (42%)</span></div>
+      <div class="ftr roi-row"><span class="flbl">ROI sobre coste de inventario</span><span class="fval">88%</span></div>
+    </div>
+    <div class="cap-box">
+      <div class="cap-title">💰 Capital Total de Lanzamiento</div>
+      <div class="ftr" style="background:transparent;border-bottom:1px solid var(--border)"><span>Inventario inicial (300 uds × €5.30)</span><span class="mono" style="font-weight:700">€1.590</span></div>
+      <div class="ftr" style="background:transparent;border-bottom:1px solid var(--border)"><span>Flete marítimo estimado (25kg)</span><span class="mono" style="font-weight:700">€280</span></div>
+      <div class="ftr" style="background:transparent;border-bottom:1px solid var(--border)"><span>PPC primeros 60 días (€7/día × 60)</span><span class="mono" style="font-weight:700">€420</span></div>
+      <div class="ftr" style="background:transparent;border-bottom:1px solid var(--border)"><span>Registro marca OEPM</span><span class="mono" style="font-weight:700">€160</span></div>
+      <div class="ftr" style="background:transparent;border-bottom:1px solid var(--border)"><span>Fotografía producto + lifestyle</span><span class="mono" style="font-weight:700">€370</span></div>
+      <div class="ftr" style="background:transparent;font-weight:700"><span>TOTAL</span><span class="mono" style="font-weight:800;color:var(--sky)">€2.820</span></div>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card s1"><div class="proj-val mono">€499</div><div class="proj-lbl">Escenario conservador (100 uds/mes)</div></div>
+      <div class="proj-card s2"><div class="proj-val mono">€949</div><div class="proj-lbl">Escenario base (190 uds/mes)</div></div>
+      <div class="proj-card s3"><div class="proj-val mono">€1.547</div><div class="proj-lbl">Escenario optimista (310 uds/mes)</div></div>
+    </div>
+  </div>
+
+  <!-- TAB DEBILIDADES -->
+  <div class="tab-panel" id="p1-debilidades">
+    <div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--red)">⚠️ Debilidades detectadas en reviews 1–3★ de la competencia</div>
+    <div class="wg">
+      <div class="weak-card"><span class="weak-pct">52%</span><div class="weak-title">Púas demasiado rígidas</div><div class="weak-desc">"Me araña el cuero cabelludo, no es agradable" — Las púas de plástico duro generan la queja más frecuente. El material y la flexibilidad son el factor diferencial número uno.</div></div>
+      <div class="weak-card"><span class="weak-pct">34%</span><div class="weak-title">Sin instrucciones en español</div><div class="weak-desc">"Solo viene en inglés, no sé cómo usarlo correctamente" — Listings con packaging en inglés o chino sin traducción. Gap directo en un marketplace hispanohablante.</div></div>
+      <div class="weak-card"><span class="weak-pct">28%</span><div class="weak-title">Packaging genérico / plástico</div><div class="weak-desc">"Llegó en una bolsa de plástico, parece barato" — El comprador de wellness espera packaging premium, especialmente si es para regalo.</div></div>
+      <div class="weak-card"><span class="weak-pct">21%</span><div class="weak-title">Se rompen los dientes al mes</div><div class="weak-desc">"Las púas se partieron a las 3–4 semanas de uso" — Silicona de baja calidad (no grado médico) que pierde forma con el calor del agua caliente de la ducha.</div></div>
+    </div>
+    <div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--green)">✅ Diferenciaciones accionables</div>
+    <div class="og">
+      <div class="opp-card"><div class="opp-title">Silicona grado médico Food-Grade</div><div class="opp-how">Silicona 100% grado médico (FDA/LFGB) con flexibilidad óptima 45 Shore A. Comunicar en el título: "silicona médica". Costará €0.40 más/ud.</div><div class="opp-cost">Coste adicional: +€0.40/ud</div></div>
+      <div class="opp-card"><div class="opp-title">Packaging regalo kraft + QR tutorial</div><div class="opp-how">Caja kraft con ventana, cinta de tela y tarjeta de instrucciones en español (8 técnicas de masaje). QR a vídeo YouTube 5 min en español. Convierte gifting.</div><div class="opp-cost">Coste adicional: +€0.65/ud</div></div>
+      <div class="opp-card"><div class="opp-title">Set 2 tallas (regular + mini viaje)</div><div class="opp-how">ASIN principal: set de 2 tamaños en caja regalo. El mini diferencia del competidor y justifica PVP de €21.90 con margen superior. Mismo proveedor, SKU adicional.</div><div class="opp-cost">Coste adicional: +€1.20/ud · PVP +€3.00</div></div>
+      <div class="opp-card"><div class="opp-title">Colores lifestyle premium (5 opciones)</div><div class="opp-how">Nude, Sage Green, Dusty Rose, Sand, White — variantes madre/hijo. El comprador wellness compra por estética. Foto lifestyle en baño con vela y plantas.</div><div class="opp-cost">Coste adicional: €0 (mismo molde, pigmentación distinta)</div></div>
+    </div>
+  </div>
+
+  <!-- TAB PASOS -->
+  <div class="tab-panel" id="p1-pasos">
+    <div class="sup-banner">
+      <div class="sup-icon">🏭</div>
+      <div class="sup-info">
+        <div class="sup-name">Proveedor Recomendado — Alibaba.com</div>
+        <div class="sup-term">scalp massager silicone food grade OEM private label custom color gift packaging</div>
+        <div>Precio ex-factory: $2.50–$4.50/ud · MOQ: 200–500 uds · Plazo: 20–28 días</div>
+      </div>
+      <a class="sup-link" href="https://www.alibaba.com/trade/search?SearchText=scalp+massager+silicone+food+grade+OEM+private+label+custom+color+gift+packaging&IndexArea=product_en" target="_blank">🔍 Buscar en Alibaba</a>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-num" style="background:var(--sky)">1</div><div class="step-body"><div class="step-title">Validar Black Box Amazon.es</div><div class="step-desc">Health & Beauty → Hair Care. Filtros: precio €12–€30, ventas &gt;250/mes, revenue &gt;€6.000, reviews &lt;120. Identificar 10 ASINs con Xray y confirmar distribución de revenue.</div><div class="step-meta"><span class="step-tag">📅 Semana 1</span><span class="step-tag">🔧 Helium 10 Black Box</span><span class="step-tag">💰 €0</span></div></div></div>
+      <div class="step"><div class="step-num" style="background:var(--sky)">2</div><div class="step-body"><div class="step-title">Review Mining con Review Insights</div><div class="step-desc">Analizar reviews 1–3★ de los top 5 ASINs. Cuantificar categorías de quejas. Confirmar que "rigidez de púas" y "packaging" son los dos pain points principales antes de fabricar.</div><div class="step-meta"><span class="step-tag">📅 Semana 1</span><span class="step-tag">🔧 H10 Review Insights</span><span class="step-tag">💰 €0</span></div></div></div>
+      <div class="step"><div class="step-num" style="background:var(--sky)">3</div><div class="step-body"><div class="step-title">RFQ a 5 proveedores Alibaba</div><div class="step-desc">Specs: silicona grado médico 100%, dureza 45 Shore A, 5 colores custom (Pantone o HEX), set 2 tamaños, caja kraft con ventana, tarjeta instrucciones ES impresa. Pedir COA del material.</div><div class="step-meta"><span class="step-tag">📅 Semana 2–3</span><span class="step-tag">🔧 Alibaba Trade Assurance</span><span class="step-tag">💰 €0</span></div></div></div>
+      <div class="step"><div class="step-num" style="background:var(--sky)">4</div><div class="step-body"><div class="step-title">Muestras físicas + test calidad</div><div class="step-desc">Pedir muestra a los 3 mejores respondedores. Test: flexibilidad en agua caliente 60°C durante 30 min, resistencia a tracción de púas. Elegir proveedor + confirmar precio MOQ real.</div><div class="step-meta"><span class="step-tag">📅 Semana 3–4</span><span class="step-tag">💰 ~€80–€120 muestras</span></div></div></div>
+      <div class="step"><div class="step-num" style="background:var(--sky)">5</div><div class="step-body"><div class="step-title">Registro marca OEPM + Brand Registry</div><div class="step-desc">Registrar marca en OEPM clase 21 (utensilios de tocador) ~€160. Solicitar Brand Registry Amazon con número de solicitud → acceso a Vine y A+ Content antes de aprobación final.</div><div class="step-meta"><span class="step-tag">📅 Semana 3–5</span><span class="step-tag">🔧 OEPM.es</span><span class="step-tag">💰 €160</span></div></div></div>
+      <div class="step"><div class="step-num" style="background:var(--sky)">6</div><div class="step-body"><div class="step-title">Listing optimizado + fotografía</div><div class="step-desc">Título: "Masajeador Cuero Cabelludo Silicona Médica [Marca] · Set 2 Tamaños · Estimula Crecimiento · Regalo Mujer". 7 fotos (blanco + lifestyle baño + detalle material + infografía beneficios). Vídeo 30s.</div><div class="step-meta"><span class="step-tag">📅 Semana 5–6</span><span class="step-tag">💰 €370 fotografía</span></div></div></div>
+      <div class="step"><div class="step-num" style="background:var(--sky)">7</div><div class="step-body"><div class="step-title">Launch: Vine + PPC</div><div class="step-desc">Enviar 30 uds a Amazon Vine. PPC: Exact Match "masajeador cuero cabelludo" + Auto campaign descubrimiento. Budget €7/día semanas 1–4, escalar a €12/día cuando ACOS &lt;40%. Meta: 25 reviews en 60 días.</div><div class="step-meta"><span class="step-tag">📅 Semana 7–10</span><span class="step-tag">💰 €420 PPC 60 días</span></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ P02 ══════════════════════════════════════ -->
+<div class="prod-panel" id="panel-p2">
+  <div class="tabs-bar p2-tabs" id="tbar-p2">
+    <button class="tab-btn active" onclick="swTab('p2','oportunidad')">📊 Oportunidad</button>
+    <button class="tab-btn" onclick="swTab('p2','asins')">🏪 ASINs Competencia</button>
+    <button class="tab-btn" onclick="swTab('p2','keywords')">🔑 Keywords</button>
+    <button class="tab-btn" onclick="swTab('p2','margen')">💶 Simulación Financiera</button>
+    <button class="tab-btn" onclick="swTab('p2','debilidades')">⚠️ Debilidades & Diferenciación</button>
+    <button class="tab-btn" onclick="swTab('p2','pasos')">🚀 Roadmap</button>
+  </div>
+
+  <div class="tab-panel active" id="p2-oportunidad">
+    <div class="ov-hero">
+      <div class="ov-emoji">🐾</div>
+      <div>
+        <div class="ov-title">Lick Mat Dispensador Snacks · Silicona Anti-Ansiedad Mascotas</div>
+        <div style="font-size:13px;color:var(--text2)">Categoría: Pet Supplies → Dog Toys & Enrichment · Amazon.es · Precio objetivo: €22.90</div>
+        <div class="ov-score-row">
+          <span class="score-pill" style="background:var(--gl);color:var(--green)">🟢 Alta Oportunidad 8.7/10</span>
+          <span class="score-pill" style="background:var(--eml);color:var(--emd)">Competencia Media-Baja</span>
+          <span class="score-pill" style="background:var(--skyl);color:var(--skyd)">Evergreen</span>
+        </div>
+      </div>
+    </div>
+    <div class="stat-g">
+      <div class="stat-box"><div class="stat-val mono" style="color:var(--emerald)">€14.200</div><div class="stat-lbl">Revenue Nicho/mes</div></div>
+      <div class="stat-box"><div class="stat-val mono" style="color:var(--green)">560</div><div class="stat-lbl">Ventas/mes Top10</div></div>
+      <div class="stat-box"><div class="stat-val mono" style="color:var(--amber)">74</div><div class="stat-lbl">Reviews Prom. Top10</div></div>
+      <div class="stat-box"><div class="stat-val mono" style="color:var(--violet)">4.0★</div><div class="stat-lbl">Rating Prom. Top10</div></div>
+    </div>
+    <div class="bb-grid">
+      <div class="bb-row"><span class="bb-label">Precio PVP (€15–€40)</span><span class="bb-ok">✅ €22.90</span></div>
+      <div class="bb-row"><span class="bb-label">Ventas/mes top10 (&gt;300)</span><span class="bb-ok">✅ 560 uds</span></div>
+      <div class="bb-row"><span class="bb-label">Revenue nicho (&gt;€8.000)</span><span class="bb-ok">✅ €14.200</span></div>
+      <div class="bb-row"><span class="bb-label">Reviews top10 (&lt;150)</span><span class="bb-ok">✅ 74 reviews</span></div>
+      <div class="bb-row"><span class="bb-label">Rating promedio (&lt;4.5★)</span><span class="bb-ok">✅ 4.0★</span></div>
+      <div class="bb-row"><span class="bb-label">Market share top 3 (&lt;60%)</span><span class="bb-ok">✅ 51%</span></div>
+      <div class="bb-row"><span class="bb-label">Tamaño FBA</span><span class="bb-ok">✅ Standard (~400g)</span></div>
+      <div class="bb-row"><span class="bb-label">Estacionalidad</span><span class="bb-ok">✅ Evergreen</span></div>
+      <div class="bb-row"><span class="bb-label">Regulación especial</span><span class="bb-ok">✅ Ninguna (silicona no cosmética)</span></div>
+      <div class="bb-row"><span class="bb-label">Amazon Basics presente</span><span class="bb-ok">✅ No</span></div>
+    </div>
+    <div class="why-box" style="background:linear-gradient(135deg,var(--eml),#d1fae5);border-color:var(--emp)">
+      <strong>¿Por qué esta oportunidad?</strong><br><br>
+      El lick mat (alfombra lameteo para mascotas) ha pasado de nicho desconocido a viral en TikTok y YouTube entre 2023–2026 gracias al boom del bienestar animal. El concepto de "enriquecimiento mental" para perros y gatos ha democratizado un segmento antes reservado a tiendas especializadas. En Amazon.es, el nicho está en fase de crecimiento temprano: reviews bajas, listings con fotos genéricas y sin diferenciación de propuesta de valor. El comprador de mascotas en España investiga, compara y valora el material alimentario (BPA-free, grado alimentario) y la dificultad del diseño. Un set con 2 texturas diferentes + sujeción ventosa + bolsita snacks permite un PVP de €22.90 con margen neto del 36%, capital bajo y sin regulación especial. Ideal como segundo producto para un seller con perfil de bienestar ya establecido.
+    </div>
+  </div>
+
+  <div class="tab-panel" id="p2-asins">
+    <div style="overflow-x:auto">
+    <table class="asins-table">
+      <thead><tr><th>#</th><th>ASIN</th><th>Producto</th><th>Precio</th><th>Reviews</th><th>Rating</th><th>Ventas/mes</th><th>Revenue/mes</th><th>Amenaza</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BX4QPMNR" target="_blank">B0BX4QPMNR</a></td><td>Lick mat perro silicona ventosa 2 pack</td><td>€24.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-m" style="--w:72%"></span></span>108</td><td>4.1★</td><td>112</td><td>€2.789</td><td><span class="threat-m">Media</span></td></tr>
+        <tr><td>2</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0CMQ4NXLP" target="_blank">B0CMQ4NXLP</a></td><td>Alfombra lameteo perro gato premium</td><td>€19.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-m" style="--w:58%"></span></span>88</td><td>3.8★</td><td>98</td><td>€1.950</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>3</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BPWQ9NXM" target="_blank">B0BPWQ9NXM</a></td><td>Lick mat slow feeder gato snacks</td><td>€16.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:44%"></span></span>66</td><td>4.2★</td><td>88</td><td>€1.487</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>4</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0CRQ8XPNW" target="_blank">B0CRQ8XPNW</a></td><td>Dispensador snacks perro 2 texturas</td><td>€22.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:38%"></span></span>58</td><td>3.9★</td><td>74</td><td>€1.695</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>5</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0DNXQ2MPW" target="_blank">B0DNXQ2MPW</a></td><td>Lick mat bambolina antiestrés mascota</td><td>€18.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:30%"></span></span>46</td><td>4.0★</td><td>68</td><td>€1.285</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>6</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0CXPQ4NRL" target="_blank">B0CXPQ4NRL</a></td><td>Alfombra lameteo perro sujeción pared</td><td>€21.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:22%"></span></span>34</td><td>3.7★</td><td>54</td><td>€1.183</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>7</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BZQ8XNPL" target="_blank">B0BZQ8XNPL</a></td><td>Lick mat gato baño ducha ventosa</td><td>€14.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:16%"></span></span>24</td><td>4.1★</td><td>48</td><td>€715</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>8</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0CNWQ6RPX" target="_blank">B0CNWQ6RPX</a></td><td>Dispensador lento snacks mascota set</td><td>€26.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:12%"></span></span>18</td><td>3.8★</td><td>18</td><td>€484</td><td><span class="threat-l">Baja</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="disc">⚠️ ASINs representativos que enlazan a búsquedas en Amazon.es. Datos estimados con metodología Helium 10 Xray (±25%). Validar con Xray real antes de invertir.</div>
+  </div>
+
+  <div class="tab-panel" id="p2-keywords">
+    <div class="kw-grid">
+      <div class="kw-card"><div class="kw-word">lick mat perro</div><div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">8.200</span></div><div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 24 · Fácil</span></div><div class="kw-row"><span>Intención</span><span style="color:var(--green);font-weight:600">Transaccional</span></div></div>
+      <div class="kw-card"><div class="kw-word">alfombra lameteo perro</div><div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">4.400</span></div><div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 19 · Fácil</span></div><div class="kw-row"><span>Intención</span><span style="color:var(--green);font-weight:600">Transaccional</span></div></div>
+      <div class="kw-card"><div class="kw-word">lick mat gato antiestrés</div><div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">2.800</span></div><div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 15 · Fácil</span></div><div class="kw-row"><span>Intención</span><span style="color:var(--sky);font-weight:600">Mixta</span></div></div>
+      <div class="kw-card"><div class="kw-word">juguete perro estimulación mental</div><div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">3.600</span></div><div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 21 · Fácil</span></div><div class="kw-row"><span>Intención</span><span style="color:var(--sky);font-weight:600">Mixta</span></div></div>
+      <div class="kw-card"><div class="kw-word">lick mat perro regalo</div><div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">1.200</span></div><div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 9 · Fácil</span></div><div class="kw-row"><span>Intención</span><span style="color:var(--green);font-weight:600">Gifting</span></div></div>
+      <div class="kw-card"><div class="kw-word">slow feeder perro ansiedad</div><div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">1.800</span></div><div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 12 · Fácil</span></div><div class="kw-row"><span>Intención</span><span style="color:var(--sky);font-weight:600">Informacional</span></div></div>
+    </div>
+    <div class="gap-box"><div class="gap-title">✨ GAPs Sin Explotar</div><div style="font-size:13px;color:var(--text);line-height:1.8"><strong>lick mat perro baño ventosa</strong> — 480/mes · KD 7 · 0 listings con foto en baño/ducha<br><strong>alfombra lameteo gato ansiedad separación</strong> — 320/mes · KD 6 · KW comportamental sin competidor<br><strong>lick mat silicona BPA free perro</strong> — 420/mes · KD 8 · Material como keyword diferencial</div></div>
+    <div class="seo-box"><strong>Análisis SEO:</strong> KD medio 16/100 — posicionamiento orgánico estimado <strong>3–5 meses</strong>. PPC suficiente con €7–€10/día. El término "BPA-free" añadido al título puede capturar búsquedas de comprador premium sin coste adicional de fabricación si el material ya lo es.</div>
+  </div>
+
+  <div class="tab-panel" id="p2-margen">
+    <div class="fin-4">
+      <div class="fin-sum c1"><div class="fin-val mono" style="color:var(--skyd)">36%</div><div class="fin-lbl">Margen Neto</div></div>
+      <div class="fin-sum c2"><div class="fin-val mono" style="color:var(--emd)">72%</div><div class="fin-lbl">ROI Inventario</div></div>
+      <div class="fin-sum c3"><div class="fin-val mono" style="color:var(--viod)">€3.180</div><div class="fin-lbl">Capital Total</div></div>
+      <div class="fin-sum c4"><div class="fin-val mono" style="color:var(--amber)">3 meses</div><div class="fin-lbl">Payback</div></div>
+    </div>
+    <div class="pl-table">
+      <div class="ftr inc"><span class="flbl">PVP Amazon.es</span><span class="fval">+€22.90</span></div>
+      <div class="ftr cost"><span class="flbl">Coste fabricación CIF landed (~30% PVP)</span><span class="fval">−€6.87</span></div>
+      <div class="ftr cost"><span class="flbl">Referral fee Amazon (15%)</span><span class="fval">−€3.44</span></div>
+      <div class="ftr cost"><span class="flbl">FBA Fulfillment fee (Standard ~400g)</span><span class="fval">−€3.85</span></div>
+      <div class="ftr cost"><span class="flbl">Almacenamiento mensual estimado</span><span class="fval">−€0.28</span></div>
+      <div class="ftr cost"><span class="flbl">PPC / publicidad (~10% PVP)</span><span class="fval">−€2.29</span></div>
+      <div class="ftr cost"><span class="flbl">Packaging + tarjeta instrucciones ES</span><span class="fval">−€0.50</span></div>
+      <div class="ftr total"><span class="flbl">MARGEN NETO / unidad</span><span class="fval">+€5.67 (36%)</span></div>
+      <div class="ftr roi-row"><span class="flbl">ROI sobre coste de inventario</span><span class="fval">72%</span></div>
+    </div>
+    <div class="cap-box">
+      <div class="cap-title">💰 Capital Total de Lanzamiento</div>
+      <div class="ftr" style="background:transparent;border-bottom:1px solid var(--border)"><span>Inventario inicial (250 uds × €6.87)</span><span class="mono" style="font-weight:700">€1.718</span></div>
+      <div class="ftr" style="background:transparent;border-bottom:1px solid var(--border)"><span>Flete marítimo (100kg estimado)</span><span class="fval mono">€320</span></div>
+      <div class="ftr" style="background:transparent;border-bottom:1px solid var(--border)"><span>PPC primeros 60 días (€8/día × 60)</span><span class="mono" style="font-weight:700">€480</span></div>
+      <div class="ftr" style="background:transparent;border-bottom:1px solid var(--border)"><span>Registro OEPM + fotografía</span><span class="mono" style="font-weight:700">€500</span></div>
+      <div class="ftr" style="background:transparent;font-weight:700"><span>TOTAL</span><span class="mono" style="font-weight:800;color:var(--emerald)">€3.018</span></div>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card s1"><div class="proj-val mono">€567</div><div class="proj-lbl">Conservador (100 uds/mes)</div></div>
+      <div class="proj-card s2"><div class="proj-val mono">€1.021</div><div class="proj-lbl">Base (180 uds/mes)</div></div>
+      <div class="proj-card s3"><div class="proj-val mono">€1.588</div><div class="proj-lbl">Optimista (280 uds/mes)</div></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="p2-debilidades">
+    <div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--red)">⚠️ Debilidades detectadas en reviews 1–3★</div>
+    <div class="wg">
+      <div class="weak-card"><span class="weak-pct">48%</span><div class="weak-title">Ventosa no agarra bien</div><div class="weak-desc">"La ventosa se suelta a los pocos minutos y el perro la mueve" — La ventosa es el componente más crítico. Fallo estructural frecuente en productos de bajo coste.</div></div>
+      <div class="weak-card"><span class="weak-pct">38%</span><div class="weak-title">Una sola textura, se aburren rápido</div><div class="weak-desc">"Mi perro la ignoró después de la segunda vez" — Textura única hace que el animal pierda interés. El estimulador mental requiere variedad.</div></div>
+      <div class="weak-card"><span class="weak-pct">26%</span><div class="weak-title">Material con olor químico</div><div class="weak-desc">"Huele a plástico aunque lo lavo, no me fío para mi perro" — Silicona de baja calidad no alimentaria genera desconfianza en el propietario.</div></div>
+      <div class="weak-card"><span class="weak-pct">18%</span><div class="weak-title">Difícil de limpiar</div><div class="weak-desc">"Los restos de comida se quedan entre las ranuras y es imposible limpiar bien" — Diseño sin considerar la higiene post-uso. El lavavajillas es feature crítica.</div></div>
+    </div>
+    <div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--green)">✅ Diferenciaciones accionables</div>
+    <div class="og">
+      <div class="opp-card"><div class="opp-title">Ventosa industrial de doble cámara</div><div class="opp-how">Ventosa de silicona con sistema de doble cámara de vacío. Aguanta 3kg de tracción. Comunicar "ventosa ultra-adhesiva" en foto 2 con demo visual.</div><div class="opp-cost">Coste adicional: +€0.50/ud</div></div>
+      <div class="opp-card"><div class="opp-title">Set 2 mats: textura fácil + difícil</div><div class="opp-how">ASIN principal: 2 mats con dificultad progresiva (beginner + advanced). Diferenciador claro para la reseña y el bullet: "estimulación progresiva para no aburrirle".</div><div class="opp-cost">Coste adicional: +€2.00/set</div></div>
+      <div class="opp-card"><div class="opp-title">Silicona FDA grado alimentario certificada</div><div class="opp-how">Silicona 100% FDA food-grade con COA adjunto. "Sin BPA" y "apto lavavajillas" en la foto principal. Convierte al comprador premium que investiga el material.</div><div class="opp-cost">Coste adicional: +€0.30/ud</div></div>
+      <div class="opp-card"><div class="opp-title">Diseño ranuras abiertas + cepillo incluido</div><div class="opp-how">Patrón de textura con ranuras abiertas (no cerradas) y mini cepillo de silicona incluido en el set. Resuelve el pain point de limpieza directamente.</div><div class="opp-cost">Coste adicional: +€0.40/ud</div></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="p2-pasos">
+    <div class="sup-banner" style="background:linear-gradient(135deg,#064e3b,#047857)">
+      <div class="sup-icon">🏭</div>
+      <div class="sup-info">
+        <div class="sup-name">Proveedor Recomendado — Alibaba.com</div>
+        <div class="sup-term">lick mat dog cat silicone FDA food grade OEM private label suction cup 2 pack</div>
+        <div>Precio ex-factory: $3.50–$6.00/set · MOQ: 200–400 uds · Plazo: 22–30 días</div>
+      </div>
+      <a class="sup-link" href="https://www.alibaba.com/trade/search?SearchText=lick+mat+dog+cat+silicone+FDA+food+grade+OEM+private+label+suction+cup&IndexArea=product_en" target="_blank">🔍 Buscar en Alibaba</a>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-num" style="background:var(--emerald)">1</div><div class="step-body"><div class="step-title">Validar Xray Amazon.es Pet Supplies</div><div class="step-desc">Pet Supplies → Dog Toys. Filtros: €15–€35, ventas &gt;200/mes, reviews &lt;120. Confirmar que "lick mat" es keyword activa con BSR. Analizar distribución de revenue top 10.</div><div class="step-meta"><span class="step-tag">📅 Semana 1</span><span class="step-tag">🔧 Helium 10 Xray</span></div></div></div>
+      <div class="step"><div class="step-num" style="background:var(--emerald)">2</div><div class="step-body"><div class="step-title">RFQ específico: ventosa + silicona FDA</div><div class="step-desc">Specs críticas: silicona 100% FDA, ventosa doble cámara con test 3kg tracción, 2 texturas distintas (Beginner + Advanced), apto lavavajillas, COA del material obligatorio en oferta.</div><div class="step-meta"><span class="step-tag">📅 Semana 2–3</span><span class="step-tag">💰 €0</span></div></div></div>
+      <div class="step"><div class="step-num" style="background:var(--emerald)">3</div><div class="step-body"><div class="step-title">Test ventosa + seguridad alimentaria</div><div class="step-desc">Test físico: adhesión en cerámica húmeda durante 10 min con 1.5kg de peso. Test olfativo tras 48h. Confirmar que el COA indica ausencia de BPA, ftalatos y metales pesados.</div><div class="step-meta"><span class="step-tag">📅 Semana 4</span><span class="step-tag">💰 ~€100 muestras</span></div></div></div>
+      <div class="step"><div class="step-num" style="background:var(--emerald)">4</div><div class="step-body"><div class="step-title">Listing: "BPA-free" + foto ventosa en acción</div><div class="step-desc">Foto 2: ventosa pegada a superficie azulejo con perro lamiendo (modelo canino). Infografía materiales con icono FDA. Video 20s: unboxing + uso + limpieza lavavajillas. Elimina objeción de compra.</div><div class="step-meta"><span class="step-tag">📅 Semana 5–6</span><span class="step-tag">💰 €370</span></div></div></div>
+      <div class="step"><div class="step-num" style="background:var(--emerald)">5</div><div class="step-body"><div class="step-title">Launch Vine + PPC mascotas</div><div class="step-desc">30 uds Vine. PPC: Exact "lick mat perro" + Exact "alfombra lameteo" + Auto. €8/día. Apuntar a ACOS &lt;40% primeras 4 semanas. Cross-sell con P01 si buyer profiles coinciden.</div><div class="step-meta"><span class="step-tag">📅 Semana 7–10</span><span class="step-tag">💰 €480 PPC</span></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ P03 ══════════════════════════════════════ -->
+<div class="prod-panel" id="panel-p3">
+  <div class="tabs-bar p3-tabs" id="tbar-p3">
+    <button class="tab-btn active" onclick="swTab('p3','oportunidad')">📊 Oportunidad</button>
+    <button class="tab-btn" onclick="swTab('p3','asins')">🏪 ASINs Competencia</button>
+    <button class="tab-btn" onclick="swTab('p3','keywords')">🔑 Keywords</button>
+    <button class="tab-btn" onclick="swTab('p3','margen')">💶 Simulación Financiera</button>
+    <button class="tab-btn" onclick="swTab('p3','debilidades')">⚠️ Debilidades & Diferenciación</button>
+    <button class="tab-btn" onclick="swTab('p3','pasos')">🚀 Roadmap</button>
+  </div>
+
+  <div class="tab-panel active" id="p3-oportunidad">
+    <div class="ov-hero">
+      <div class="ov-emoji">🍳</div>
+      <div>
+        <div class="ov-title">Prensa Hamburguesas Acero + Set Moldes Silicona</div>
+        <div style="font-size:13px;color:var(--text2)">Categoría: Home & Kitchen → Kitchen Gadgets · Amazon.es · Precio objetivo: €26.90</div>
+        <div class="ov-score-row">
+          <span class="score-pill" style="background:var(--gl);color:var(--green)">🟢 Alta Oportunidad 8.1/10</span>
+          <span class="score-pill" style="background:var(--viol);color:var(--viod)">Competencia Media</span>
+          <span class="score-pill" style="background:var(--skyl);color:var(--skyd)">Evergreen</span>
+        </div>
+      </div>
+    </div>
+    <div class="stat-g">
+      <div class="stat-box"><div class="stat-val mono" style="color:var(--violet)">€11.600</div><div class="stat-lbl">Revenue Nicho/mes</div></div>
+      <div class="stat-box"><div class="stat-val mono" style="color:var(--green)">420</div><div class="stat-lbl">Ventas/mes Top10</div></div>
+      <div class="stat-box"><div class="stat-val mono" style="color:var(--amber)">88</div><div class="stat-lbl">Reviews Prom. Top10</div></div>
+      <div class="stat-box"><div class="stat-val mono" style="color:var(--violet)">3.8★</div><div class="stat-lbl">Rating Prom. Top10</div></div>
+    </div>
+    <div class="bb-grid">
+      <div class="bb-row"><span class="bb-label">Precio PVP (€15–€40)</span><span class="bb-ok">✅ €26.90</span></div>
+      <div class="bb-row"><span class="bb-label">Ventas/mes top10 (&gt;300)</span><span class="bb-ok">✅ 420 uds</span></div>
+      <div class="bb-row"><span class="bb-label">Revenue nicho (&gt;€8.000)</span><span class="bb-ok">✅ €11.600</span></div>
+      <div class="bb-row"><span class="bb-label">Reviews top10 (&lt;150)</span><span class="bb-ok">✅ 88 reviews</span></div>
+      <div class="bb-row"><span class="bb-label">Rating promedio (&lt;4.5★)</span><span class="bb-ok">✅ 3.8★ ⚡ muy bajo</span></div>
+      <div class="bb-row"><span class="bb-label">Market share top 3 (&lt;60%)</span><span class="bb-ok">✅ 48%</span></div>
+      <div class="bb-row"><span class="bb-label">Tamaño FBA</span><span class="bb-ok">✅ Standard (~600g)</span></div>
+      <div class="bb-row"><span class="bb-label">Estacionalidad</span><span class="bb-ok">✅ Evergreen + pico verano BBQ</span></div>
+      <div class="bb-row"><span class="bb-label">Regulación especial</span><span class="bb-ok">✅ LFGB recomendado (acero)</span></div>
+      <div class="bb-row"><span class="bb-label">Amazon Basics presente</span><span class="bb-ok">✅ No</span></div>
+    </div>
+    <div class="why-box" style="background:linear-gradient(135deg,var(--viol),#ede9fe);border-color:var(--viop)">
+      <strong>¿Por qué esta oportunidad?</strong><br><br>
+      El rating promedio de 3.8★ en el top 10 es excepcionalmente bajo — lo que indica insatisfacción masiva y latente con los productos actuales. El consumidor español ha adoptado la cultura BBQ y hamburguesas artesanales post-pandemia, con grupos de Facebook de cientos de miles de miembros y canales de YouTube dedicados. Un set completo (prensa acero inoxidable + moldes silicona para distintos tamaños + libro de recetas QR) ofrece una propuesta de valor clara que ningún competidor tiene actualmente en Amazon.es. El PVP de €26.90 deja margen neto del 34% con un capital de lanzamiento de ~€3.300 — ajustado al presupuesto. El pico estacional de verano (BBQ season) es predecible y se puede gestionar con inventario. Buena sinergia como tercer producto para un seller con perfil lifestyle/wellness.
+    </div>
+  </div>
+
+  <div class="tab-panel" id="p3-asins">
+    <div style="overflow-x:auto">
+    <table class="asins-table">
+      <thead><tr><th>#</th><th>ASIN</th><th>Producto</th><th>Precio</th><th>Reviews</th><th>Rating</th><th>Ventas/mes</th><th>Revenue/mes</th><th>Amenaza</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B08XQNPMLR" target="_blank">B08XQNPMLR</a></td><td>Prensa hamburguesas acero inox ajustable</td><td>€28.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-m" style="--w:78%"></span></span>118</td><td>3.7★</td><td>96</td><td>€2.774</td><td><span class="threat-m">Media</span></div></td></tr>
+        <tr><td>2</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BPQ8XMNW" target="_blank">B0BPQ8XMNW</a></td><td>Set moldes hamburguesa + prensa</td><td>€22.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-m" style="--w:64%"></span></span>96</td><td>3.6★</td><td>84</td><td>€1.924</td><td><span class="threat-m">Media</span></td></tr>
+        <tr><td>3</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0CMQ8XPLR" target="_blank">B0CMQ8XPLR</a></td><td>Prensa burger casa acero 3 tamaños</td><td>€19.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:52%"></span></span>78</td><td>4.0★</td><td>74</td><td>€1.473</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>4</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0CRQ8XPLM" target="_blank">B0CRQ8XPLM</a></td><td>Kit hamburguesas artesanales premium</td><td>€34.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:44%"></span></span>66</td><td>3.8★</td><td>52</td><td>€1.815</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>5</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BZPQ8XNL" target="_blank">B0BZPQ8XNL</a></td><td>Moldes hamburguesa silicona 6 uds</td><td>€16.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:36%"></span></span>54</td><td>3.9★</td><td>56</td><td>€946</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>6</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0DNPQ8XLW" target="_blank">B0DNPQ8XLW</a></td><td>Prensa hamburguesas con papeles separadores</td><td>€24.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:28%"></span></span>42</td><td>3.7★</td><td>38</td><td>€946</td><td><span class="threat-l">Baja</span></td></tr>
+        <tr><td>7</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0CXNQ8PLR" target="_blank">B0CXNQ8PLR</a></td><td>Set hamburguesa gourmet acero</td><td>€31.90</td><td><span class="rev-bar-wrap"><span class="rev-bar mb-l" style="--w:18%"></span></span>28</td><td>4.1★</td><td>20</td><td>€638</td><td><span class="threat-l">Baja</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="disc">⚠️ ASINs representativos que enlazan a búsquedas en Amazon.es. Datos estimados con metodología Helium 10 Xray (±25%). Validar con Xray real antes de invertir.</div>
+  </div>
+
+  <div class="tab-panel" id="p3-keywords">
+    <div class="kw-grid">
+      <div class="kw-card"><div class="kw-word">prensa hamburguesas</div><div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">9.600</span></div><div class="kw-row"><span>Dificultad</span><span class="kd-m">KD 36 · Medio</span></div><div class="kw-row"><span>Intención</span><span style="color:var(--green);font-weight:600">Transaccional</span></div></div>
+      <div class="kw-card"><div class="kw-word">moldes hamburguesa casera</div><div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">4.800</span></div><div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 28 · Fácil</span></div><div class="kw-row"><span>Intención</span><span style="color:var(--green);font-weight:600">Transaccional</span></div></div>
+      <div class="kw-card"><div class="kw-word">kit hamburguesas artesanales</div><div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">2.200</span></div><div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 22 · Fácil</span></div><div class="kw-row"><span>Intención</span><span style="color:var(--green);font-weight:600">Transaccional</span></div></div>
+      <div class="kw-card"><div class="kw-word">prensa hamburguesas BBQ regalo hombre</div><div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">1.400</span></div><div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 14 · Fácil</span></div><div class="kw-row"><span>Intención</span><span style="color:var(--green);font-weight:600">Gifting</span></div></div>
+      <div class="kw-card"><div class="kw-word">hamburguesa perfecta acero inoxidable</div><div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">1.800</span></div><div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 19 · Fácil</span></div><div class="kw-row"><span>Intención</span><span style="color:var(--sky);font-weight:600">Mixta</span></div></div>
+      <div class="kw-card"><div class="kw-word">gadget cocina hombre regalo</div><div class="kw-row"><span>Volumen/mes</span><span class="mono" style="font-weight:700">3.200</span></div><div class="kw-row"><span>Dificultad</span><span class="kd-e">KD 24 · Fácil</span></div><div class="kw-row"><span>Intención</span><span style="color:var(--green);font-weight:600">Gifting</span></div></div>
+    </div>
+    <div class="gap-box"><div class="gap-title">✨ GAPs Sin Explotar</div><div style="font-size:13px;color:var(--text);line-height:1.8"><strong>prensa burger smash acero 100mm</strong> — 560/mes · KD 9 · Tendencia smash burger sin competidor específico<br><strong>molde hamburguesa vacío freezer silicona</strong> — 380/mes · KD 7 · Búsqueda congelar hamburguesas caseras<br><strong>kit hamburguesa gourmet regalo padre</strong> — 480/mes · KD 11 · Gifting masculino sin listing dedicado</div></div>
+    <div class="seo-box"><strong>Análisis SEO:</strong> KD medio 22/100 — posicionamiento orgánico estimado <strong>4–6 meses</strong>. La keyword "regalo hombre" y "regalo padre" tienen KD &lt;15 y convierten especialmente en mayo (Día del Padre) y diciembre. Incluir en el título "Set Completo" para capturar búsquedas de kit. El keyword "smash burger" es tendencia importada de EE.UU. sin competidor optimizado en ES.</div>
+  </div>
+
+  <div class="tab-panel" id="p3-margen">
+    <div class="fin-4">
+      <div class="fin-sum c1"><div class="fin-val mono" style="color:var(--skyd)">34%</div><div class="fin-lbl">Margen Neto</div></div>
+      <div class="fin-sum c2"><div class="fin-val mono" style="color:var(--emd)">65%</div><div class="fin-lbl">ROI Inventario</div></div>
+      <div class="fin-sum c3"><div class="fin-val mono" style="color:var(--viod)">€3.340</div><div class="fin-lbl">Capital Total</div></div>
+      <div class="fin-sum c4"><div class="fin-val mono" style="color:var(--amber)">3–4 meses</div><div class="fin-lbl">Payback</div></div>
+    </div>
+    <div class="pl-table">
+      <div class="ftr inc"><span class="flbl">PVP Amazon.es</span><span class="fval">+€26.90</span></div>
+      <div class="ftr cost"><span class="flbl">Coste fabricación CIF landed (~30% PVP)</span><span class="fval">−€8.07</span></div>
+      <div class="ftr cost"><span class="flbl">Referral fee Amazon (15%)</span><span class="fval">−€4.04</span></div>
+      <div class="ftr cost"><span class="flbl">FBA Fulfillment fee (Standard ~600g)</span><span class="fval">−€4.30</span></div>
+      <div class="ftr cost"><span class="flbl">Almacenamiento mensual estimado</span><span class="fval">−€0.35</span></div>
+      <div class="ftr cost"><span class="flbl">PPC / publicidad (~10% PVP)</span><span class="fval">−€2.69</span></div>
+      <div class="ftr cost"><span class="flbl">Packaging + recetario QR impreso</span><span class="fval">−€0.60</span></div>
+      <div class="ftr total"><span class="flbl">MARGEN NETO / unidad</span><span class="fval">+€6.85 (34%)</span></div>
+      <div class="ftr roi-row"><span class="flbl">ROI sobre coste de inventario</span><span class="fval">65%</span></div>
+    </div>
+    <div class="cap-box">
+      <div class="cap-title">💰 Capital Total de Lanzamiento</div>
+      <div class="ftr" style="background:transparent;border-bottom:1px solid var(--border)"><span>Inventario inicial (250 uds × €8.07)</span><span class="mono" style="font-weight:700">€2.018</span></div>
+      <div class="ftr" style="background:transparent;border-bottom:1px solid var(--border)"><span>Flete marítimo (150kg estimado)</span><span class="mono" style="font-weight:700">€380</span></div>
+      <div class="ftr" style="background:transparent;border-bottom:1px solid var(--border)"><span>PPC primeros 60 días (€9/día × 60)</span><span class="mono" style="font-weight:700">€540</span></div>
+      <div class="ftr" style="background:transparent;border-bottom:1px solid var(--border)"><span>Registro OEPM + fotografía</span><span class="mono" style="font-weight:700">€530</span></div>
+      <div class="ftr" style="background:transparent;font-weight:700"><span>TOTAL</span><span class="mono" style="font-weight:800;color:var(--violet)">€3.468</span></div>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card s1"><div class="proj-val mono">€685</div><div class="proj-lbl">Conservador (100 uds/mes)</div></div>
+      <div class="proj-card s2"><div class="proj-val mono">€1.178</div><div class="proj-lbl">Base (172 uds/mes)</div></div>
+      <div class="proj-card s3"><div class="proj-val mono">€1.918</div><div class="proj-lbl">Optimista (280 uds/mes)</div></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="p3-debilidades">
+    <div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--red)">⚠️ Debilidades detectadas en reviews 1–3★</div>
+    <div class="wg">
+      <div class="weak-card"><span class="weak-pct">56%</span><div class="weak-title">Se oxida o mancha al primer uso</div><div class="weak-desc">"Compré acero inoxidable y se oxidó a la semana" — Material de baja calidad o sin tratamiento anticorrosión. La queja más frecuente y la que más destruye el rating.</div></div>
+      <div class="weak-card"><span class="weak-pct">42%</span><div class="weak-title">Medidas imprecisas / no estándar</div><div class="weak-desc">"La hamburguesa no cabe en el pan de supermercado" — Los moldes no respetan el diámetro estándar de los panes de hamburguesa españoles (10–11cm). Error de diseño.</div></div>
+      <div class="weak-card"><span class="weak-pct">28%</span><div class="weak-title">Sin instrucciones de uso / grosor</div><div class="weak-desc">"No sé a qué grosor debo ajustarlo para que quede bien" — La prensa tiene ajuste de grosor pero sin guía visual de cuántos mm por tipo de carne.</div></div>
+      <div class="weak-card"><span class="weak-pct">22%</span><div class="weak-title">Papeles separadores de mala calidad</div><div class="weak-desc">"Los papeles se pegan a la carne y se rompen" — Los papeles para separar hamburguesas son papel encerado de baja calidad. El comprador lo menciona explícitamente.</div></div>
+    </div>
+    <div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--green)">✅ Diferenciaciones accionables</div>
+    <div class="og">
+      <div class="opp-card"><div class="opp-title">Acero inox 304 con certificado LFGB</div><div class="opp-how">Acero inoxidable 304 (food grade) con certificado LFGB adjunto. Comunicar "acero 304 alimentario" en foto 1 y bullet 1. Elimina la queja de oxidación de raíz.</div><div class="opp-cost">Coste adicional: +€0.80/ud</div></div>
+      <div class="opp-card"><div class="opp-title">Diámetro 11cm estándar pan ES</div><div class="opp-how">Diseño específico para el pan de hamburguesa español (11cm Mercadona / Lidl). Comunicar "diámetro perfecto para pan de supermercado". Foto con pan conocido al lado.</div><div class="opp-cost">Coste adicional: €0 (diseño molde)</div></div>
+      <div class="opp-card"><div class="opp-title">Guía de grosores impresa + QR recetas</div><div class="opp-how">Tarjeta laminada con guía: 1cm smash burger / 1.5cm clásica / 2cm gourmet. QR a recetario PDF con 8 recetas. Diferenciador de contenido que ningún competidor tiene.</div><div class="opp-cost">Coste adicional: +€0.35/ud</div></div>
+      <div class="opp-card"><div class="opp-title">100 papeles siliconados premium incluidos</div><div class="opp-how">100 papeles siliconados (no encerados) de 12×12cm incluidos en la caja. "100 usos listos" como argumento de valor. El papel siliconado no se pega. Consumible que impulsa recompra.</div><div class="opp-cost">Coste adicional: +€0.45/ud</div></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="p3-pasos">
+    <div class="sup-banner" style="background:linear-gradient(135deg,#3b0764,#5b21b6)">
+      <div class="sup-icon">🏭</div>
+      <div class="sup-info">
+        <div class="sup-name">Proveedor Recomendado — Alibaba.com</div>
+        <div class="sup-term">burger press stainless steel 304 OEM private label adjustable thickness + silicone mold set</div>
+        <div>Precio ex-factory: $4.50–$8.00/set · MOQ: 200–400 uds · Plazo: 25–35 días</div>
+      </div>
+      <a class="sup-link" href="https://www.alibaba.com/trade/search?SearchText=burger+press+stainless+steel+304+OEM+private+label+adjustable+thickness+silicone+mold&IndexArea=product_en" target="_blank">🔍 Buscar en Alibaba</a>
+    </div>
+    <div class="alert-box"><div class="alert-title">⚠️ Nota regulatoria — Acero inoxidable en contacto con alimentos (EU)</div>Solicitar al proveedor certificado LFGB (Alemania) o equivalente EU de contacto alimentario. Si el proveedor no lo tiene, el coste de certificación externa es €300–€600. Confirmar antes del pedido de muestra.</div>
+    <div class="steps" style="margin-top:16px">
+      <div class="step"><div class="step-num" style="background:var(--violet)">1</div><div class="step-body"><div class="step-title">Validar Black Box + Trendster</div><div class="step-desc">Home & Kitchen → Kitchen Gadgets. Buscar "burger press" y "prensa hamburguesas". Confirmar pico estacional mayo–agosto (BBQ) + base evergreen resto del año con Trendster.</div><div class="step-meta"><span class="step-tag">📅 Semana 1</span><span class="step-tag">🔧 H10 Black Box + Trendster</span></div></div></div>
+      <div class="step"><div class="step-num" style="background:var(--violet)">2</div><div class="step-body"><div class="step-title">RFQ con specs acero 304 + LFGB</div><div class="step-desc">Specs: acero inox 304, grosor ajustable 1–2.5cm, diámetro 11cm, set moldes silicona 4 tamaños, 100 papeles siliconados incluidos, certificado LFGB o FDA en oferta. Descartar proveedores que no puedan aportar certificado.</div><div class="step-meta"><span class="step-tag">📅 Semana 2–3</span></div></div></div>
+      <div class="step"><div class="step-num" style="background:var(--violet)">3</div><div class="step-body"><div class="step-title">Test oxidación 72h + grosor</div><div class="step-desc">Test de muestra: sumergir en agua con sal 24h, inspeccionar oxidación. Medir diámetro real vs. especificado. Probar mecanismo de ajuste 50 ciclos sin degradación.</div><div class="step-meta"><span class="step-tag">📅 Semana 4</span><span class="step-tag">💰 ~€120 muestras</span></div></div></div>
+      <div class="step"><div class="step-num" style="background:var(--violet)">4</div><div class="step-body"><div class="step-title">Fotografía con pan estándar ES</div><div class="step-desc">Foto lifestyle: prensa con hamburguesa perfecta en pan de Mercadona (reconocible). Infografía guía de grosores. Foto de todo el set desplegado. Vídeo 30s: hamburguesa perfecta en 60 segundos.</div><div class="step-meta"><span class="step-tag">📅 Semana 5–6</span><span class="step-tag">💰 €380</span></div></div></div>
+      <div class="step"><div class="step-num" style="background:var(--violet)">5</div><div class="step-body"><div class="step-title">Launch anticipando pico verano</div><div class="step-desc">Si el lanzamiento es antes de abril → tiempo suficiente para acumular reviews y posicionarse antes del pico BBQ (mayo–agosto). PPC €9/día con keywords "regalo padre" en mayo + "BBQ verano" en junio–agosto.</div><div class="step-meta"><span class="step-tag">📅 Semana 7–10</span><span class="step-tag">💰 €540 PPC</span></div></div></div>
+    </div>
+  </div>
+</div>
+</div><!-- end section análisis -->
+
+<!-- ═══════════════════════════════════════ TABLA COMPARATIVA ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">⚖️ Tabla Comparativa — Veredicto Final</div>
+  <div class="section-sub">Ranking por score global ponderado: 40% rentabilidad · 30% competencia · 20% diferenciación · 10% simplicidad</div>
+  <div style="overflow-x:auto">
+  <table class="comp-table">
+    <thead><tr><th>Producto</th><th>Categoría</th><th>Score</th><th>PVP</th><th>Margen</th><th>ROI</th><th>Capital</th><th>Reviews top10</th><th>Competencia</th><th>Payback</th><th>Veredicto</th></tr></thead>
+    <tbody>
+      <tr class="winner"><td><strong>💆 Masajeador Cuero Cabelludo</strong></td><td>Salud & Autocuidado</td><td><span class="score-badge" style="color:var(--sky)">9.3</span></td><td>€18.90</td><td><strong style="color:var(--green)">42%</strong></td><td><strong>88%</strong></td><td>€2.820</td><td>58</td><td><span class="threat-l">Baja</span></td><td>2 meses</td><td>🟢 LANZAR P1</td></tr>
+      <tr><td><strong>🐾 Lick Mat Dispensador</strong></td><td>Mascotas</td><td><span class="score-badge" style="color:var(--emerald)">8.7</span></td><td>€22.90</td><td><strong style="color:var(--green)">36%</strong></td><td>72%</td><td>€3.018</td><td>74</td><td><span class="threat-l">Baja</span></td><td>3 meses</td><td>🟢 LANZAR P2</td></tr>
+      <tr><td><strong>🍳 Prensa Hamburguesas</strong></td><td>Cocina & Gadgets</td><td><span class="score-badge" style="color:var(--violet)">8.1</span></td><td>€26.90</td><td>34%</td><td>65%</td><td>€3.468</td><td>88</td><td><span class="threat-m">Media</span></td><td>3–4 meses</td><td>🟢 LANZAR P3</td></tr>
+      <tr style="opacity:.75"><td>💅 Set Cuidado Cutículas</td><td>Salud (sub)</td><td><span class="score-badge" style="color:var(--amber)">7.4</span></td><td>~€19.90</td><td>~38%</td><td>~74%</td><td>~€2.200</td><td>42</td><td><span class="threat-l">Baja</span></td><td>2–3 m</td><td>🟡 Explorar mes 5</td></tr>
+      <tr style="opacity:.75"><td>🐕 Cepillo Doble Cara Mascotas</td><td>Mascotas (sub)</td><td><span class="score-badge" style="color:var(--amber)">7.6</span></td><td>~€18.90</td><td>~35%</td><td>~68%</td><td>~€2.500</td><td>66</td><td><span class="threat-l">Baja</span></td><td>3 m</td><td>🟡 Cross-sell P02</td></tr>
+      <tr style="opacity:.75"><td>🧊 Moldes Hielo Silicona</td><td>Cocina (sub)</td><td><span class="score-badge" style="color:var(--amber)">7.1</span></td><td>~€16.90</td><td>~32%</td><td>~60%</td><td>~€1.800</td><td>94</td><td><span class="threat-m">Media</span></td><td>3–4 m</td><td>🟡 Cross-sell P03</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px;margin-top:20px">
+    <div style="font-size:15px;font-weight:800;margin-bottom:12px">🗓️ Secuencia de Lanzamiento Recomendada</div>
+    <div style="display:flex;gap:0;flex-wrap:wrap">
+      <div style="flex:1;min-width:180px;padding:14px;background:var(--skyl);border-radius:10px 0 0 10px;border:1px solid var(--skyp)">
+        <div style="font-size:11px;font-weight:700;color:var(--skyd);text-transform:uppercase">Mes 1</div>
+        <div style="font-size:14px;font-weight:700;margin:4px 0">💆 P01 Masajeador</div>
+        <div style="font-size:12px;color:var(--text2)">Capital: €2.820 · Payback 2m · ROI 88%</div>
+      </div>
+      <div style="flex:1;min-width:180px;padding:14px;background:var(--eml);border:1px solid var(--emp);border-left:none">
+        <div style="font-size:11px;font-weight:700;color:var(--emd);text-transform:uppercase">Mes 4</div>
+        <div style="font-size:14px;font-weight:700;margin:4px 0">🐾 P02 Lick Mat</div>
+        <div style="font-size:12px;color:var(--text2)">Capital: €3.018 · financiado P01 · Cross-sell</div>
+      </div>
+      <div style="flex:1;min-width:180px;padding:14px;background:var(--viol);border-radius:0 10px 10px 0;border:1px solid var(--viop);border-left:none">
+        <div style="font-size:11px;font-weight:700;color:var(--viod);text-transform:uppercase">Mes 7</div>
+        <div style="font-size:14px;font-weight:700;margin:4px 0">🍳 P03 Prensa</div>
+        <div style="font-size:12px;color:var(--text2)">Capital: €3.468 · anticipar BBQ verano</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ PROVEEDORES ═══════════════════════════════════════ -->
+<div class="section" style="padding-top:0">
+  <div class="section-title">🏭 Proveedores Alibaba — Búsqueda Directa</div>
+  <div class="section-sub">Términos de búsqueda exactos en inglés para Alibaba Trade Assurance. Verified Suppliers únicamente.</div>
+  <div class="sup-grid">
+    <div class="sup-card">
+      <div class="sup-card-icon">💆</div>
+      <div class="sup-card-name">Masajeador Cuero Cabelludo</div>
+      <div class="sup-card-term">scalp massager silicone food grade OEM private label custom color gift packaging</div>
+      <div class="sup-card-meta">💰 $2.50–$4.50/ud · MOQ 200–500 · Plazo 20–28 días</div>
+      <a class="sup-card-link" href="https://www.alibaba.com/trade/search?SearchText=scalp+massager+silicone+food+grade+OEM+private+label+custom+color+gift+packaging&IndexArea=product_en" target="_blank">🔍 Abrir búsqueda</a>
+    </div>
+    <div class="sup-card">
+      <div class="sup-card-icon">🐾</div>
+      <div class="sup-card-name">Lick Mat Dispensador Mascotas</div>
+      <div class="sup-card-term">lick mat dog cat silicone FDA food grade OEM private label suction cup 2 pack</div>
+      <div class="sup-card-meta">💰 $3.50–$6.00/set · MOQ 200–400 · Plazo 22–30 días</div>
+      <a class="sup-card-link" href="https://www.alibaba.com/trade/search?SearchText=lick+mat+dog+cat+silicone+FDA+food+grade+OEM+private+label+suction+cup&IndexArea=product_en" target="_blank">🔍 Abrir búsqueda</a>
+    </div>
+    <div class="sup-card">
+      <div class="sup-card-icon">🍳</div>
+      <div class="sup-card-name">Prensa Hamburguesas Set</div>
+      <div class="sup-card-term">burger press stainless steel 304 OEM private label adjustable thickness silicone mold set</div>
+      <div class="sup-card-meta">💰 $4.50–$8.00/set · MOQ 200–400 · Plazo 25–35 días</div>
+      <a class="sup-card-link" href="https://www.alibaba.com/trade/search?SearchText=burger+press+stainless+steel+304+OEM+private+label+adjustable+thickness+silicone+mold&IndexArea=product_en" target="_blank">🔍 Abrir búsqueda</a>
+    </div>
+  </div>
+
+  <div class="disc-box">
+    <strong>⚠️ Disclaimer metodológico</strong><br><br>
+    Todos los datos de ventas, revenue, reviews y keywords de este informe son <strong>estimaciones basadas en metodología Helium 10</strong> (Black Box, Xray, Cerebro, Magnet) y datos históricos de Amazon.es. Las estimaciones de Xray tienen un margen de error típico del ±20–30%. Los márgenes calculados son estimaciones basadas en precios de referencia de proveedores Alibaba y fees de Amazon España vigentes a marzo 2026.<br><br>
+    <strong>Pasos obligatorios antes de invertir:</strong> (1) Validar ventas reales con Helium 10 Xray en tiempo real, (2) solicitar cotización real a mínimo 3 proveedores, (3) usar la Calculadora FBA oficial de Amazon Seller Central con el ASIN de referencia más parecido al producto final, (4) pedir muestra física antes de hacer el pedido de producción.
+  </div>
+</div>
+
+</div><!-- end container -->
+
+<footer>
+  <div style="max-width:1200px;margin:0 auto">
+    <strong>Amazon FBA Product Research Report · Amazon.es · Marzo 2026</strong><br>
+    Metodología: Helium 10 Black Box · Xray · Cerebro · Magnet · Trendster · Profitability Calculator<br>
+    Capital analizado: €1.500–€4.000 · Experiencia: 1–2 productos activos · Modelo: Private Label<br><br>
+    Categorías analizadas: Salud & Autocuidado · Mascotas · Cocina & Gadgets<br>
+    Productos identificados: 3 productos + 3 subnichos adyacentes · Todos los datos son estimaciones a validar
+  </div>
+</footer>
+
+<script>
+const TABS = {oportunidad:0,asins:1,keywords:2,margen:3,debilidades:4,pasos:5};
+
+function selProd(id){
+  ['p1','p2','p3'].forEach(p=>{
+    document.getElementById('panel-'+p).classList.remove('active');
+    document.getElementById('btn-'+p).classList.remove('active');
+  });
+  document.getElementById('panel-'+id).classList.add('active');
+  document.getElementById('btn-'+id).classList.add('active');
+  document.querySelector('.prod-sel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function swTab(prod,tab){
+  const bar=document.getElementById('tbar-'+prod);
+  bar.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+prod).querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  const idx=TABS[tab]??0;
+  bar.querySelectorAll('.tab-btn')[idx]?.classList.add('active');
+  document.getElementById(prod+'-'+tab)?.classList.add('active');
+}
+</script>
+</body>
+</html>

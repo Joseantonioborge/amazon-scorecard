@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon FBA · Product Research 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f7fa;
+  --white: #ffffff;
+  --border: #e4e8f0;
+  --border2: #d1d9e6;
+  --text: #1a1f36;
+  --text2: #4a5568;
+  --muted: #8896a5;
+  --p1: #2563eb;
+  --p1-light: #eff6ff;
+  --p1-mid: #bfdbfe;
+  --p2: #0891b2;
+  --p2-light: #ecfeff;
+  --p3: #7c3aed;
+  --p3-light: #f5f3ff;
+  --green: #059669;
+  --green-light: #ecfdf5;
+  --green-mid: #a7f3d0;
+  --yellow: #d97706;
+  --yellow-light: #fffbeb;
+  --red: #dc2626;
+  --red-light: #fef2f2;
+  --gold: #f59e0b;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow: 0 4px 16px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.06);
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── HEADER ── */
+.hero {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 40%, #0891b2 100%);
+  color: white;
+  padding: 56px 24px 72px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 20px; padding: 5px 16px;
+  font-size: 11px; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; margin-bottom: 20px;
+  animation: fadeDown .6s ease both;
+}
+
+.hero-badge .dot { width: 6px; height: 6px; background: #34d399; border-radius: 50%; animation: pulse 2s infinite; }
+
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+@keyframes fadeDown { from{opacity:0;transform:translateY(-16px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes scaleIn { from{opacity:0;transform:scale(.92)} to{opacity:1;transform:scale(1)} }
+@keyframes slideRight { from{width:0} to{width:var(--w)} }
+
+.hero h1 {
+  font-size: clamp(28px, 5vw, 52px); font-weight: 800;
+  line-height: 1.1; letter-spacing: -.03em; margin-bottom: 14px;
+  animation: fadeDown .7s .1s ease both;
+}
+
+.hero h1 span { color: #fbbf24; }
+
+.hero-sub {
+  font-size: clamp(14px, 2vw, 17px); opacity: .85;
+  max-width: 560px; margin: 0 auto 36px;
+  animation: fadeDown .7s .2s ease both;
+}
+
+.hero-stats {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 12px;
+  animation: fadeUp .7s .3s ease both;
+}
+
+.hero-stat {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 10px; padding: 12px 20px; text-align: center;
+}
+
+.hero-stat-val { font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 600; }
+.hero-stat-label { font-size: 10px; opacity: .7; text-transform: uppercase; letter-spacing: .08em; margin-top: 2px; }
+
+/* ── INFOGRAPHIC PODIUM ── */
+.infographic-section {
+  max-width: 1100px; margin: -36px auto 0; padding: 0 20px;
+  position: relative; z-index: 10;
+  animation: scaleIn .6s .4s ease both;
+}
+
+.infographic-card {
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+  padding: 36px 32px;
+  border: 1px solid var(--border);
+}
+
+.infographic-title {
+  text-align: center; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .12em; color: var(--muted);
+  margin-bottom: 32px;
+}
+
+.podium-wrap {
+  display: flex; justify-content: center; align-items: flex-end;
+  gap: 16px; padding-bottom: 8px;
+}
+
+.podium-item {
+  display: flex; flex-direction: column; align-items: center;
+  flex: 1; max-width: 300px; cursor: pointer;
+  transition: transform .2s ease;
+}
+
+.podium-item:hover { transform: translateY(-4px); }
+
+.podium-emoji { font-size: 48px; margin-bottom: 12px; filter: drop-shadow(0 4px 8px rgba(0,0,0,.15)); }
+
+.podium-info {
+  background: var(--p1-light); border: 2px solid var(--p1-mid);
+  border-radius: var(--radius); padding: 16px; width: 100%; text-align: center;
+  margin-bottom: 8px; position: relative;
+}
+
+.podium-item.second .podium-info { background: var(--p2-light); border-color: #a5f3fc; }
+.podium-item.third .podium-info { background: var(--p3-light); border-color: #ddd6fe; }
+
+.podium-rank {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800; color: white;
+}
+
+.podium-item.first .podium-rank { background: var(--gold); box-shadow: 0 0 0 3px #fef3c7; }
+.podium-item.second .podium-rank { background: var(--p2); }
+.podium-item.third .podium-rank { background: var(--p3); }
+
+.podium-product-name { font-size: 13px; font-weight: 700; margin: 8px 0 4px; color: var(--text); }
+.podium-roi { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: var(--p1); }
+.podium-item.second .podium-roi { color: var(--p2); }
+.podium-item.third .podium-roi { color: var(--p3); }
+.podium-roi-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+.podium-bar-wrap { width: 100%; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.podium-bar { height: 100%; border-radius: 4px; }
+.podium-item.first .podium-bar { background: linear-gradient(90deg, var(--p1), #60a5fa); width: 90%; }
+.podium-item.second .podium-bar { background: linear-gradient(90deg, var(--p2), #22d3ee); width: 70%; }
+.podium-item.third .podium-bar { background: linear-gradient(90deg, var(--p3), #a78bfa); width: 55%; }
+
+.podium-base {
+  width: 100%;
+  border-radius: 0 0 var(--radius) var(--radius);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 8px 4px 4px;
+}
+
+.podium-item.first .podium-base-block { height: 70px; background: linear-gradient(180deg, var(--p1), #1d4ed8); }
+.podium-item.second .podium-base-block { height: 50px; background: linear-gradient(180deg, var(--p2), #0369a1); }
+.podium-item.third .podium-base-block { height: 35px; background: linear-gradient(180deg, var(--p3), #5b21b6); }
+
+.podium-base-block {
+  width: 100%; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+}
+
+.podium-score { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; color: white; }
+
+/* ── METRICS ROW ── */
+.metrics-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 12px; margin-top: 28px;
+}
+
+.metric-chip {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 14px; text-align: center;
+}
+
+.metric-chip-icon { font-size: 20px; margin-bottom: 4px; }
+.metric-chip-val { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; color: var(--text); }
+.metric-chip-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; margin-top: 2px; }
+
+/* ── MAIN LAYOUT ── */
+.main { max-width: 1100px; margin: 0 auto; padding: 40px 20px 80px; }
+
+/* ── PRODUCT SELECTOR ── */
+.product-selector {
+  display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap;
+}
+
+.product-btn {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--white); border: 2px solid var(--border);
+  border-radius: 50px; padding: 10px 20px;
+  cursor: pointer; font-family: 'Sora', sans-serif;
+  font-size: 13px; font-weight: 600; color: var(--text2);
+  transition: all .2s ease; box-shadow: var(--shadow-sm);
+}
+
+.product-btn:hover { border-color: var(--p1); color: var(--p1); box-shadow: 0 0 0 4px var(--p1-light); }
+.product-btn.active { background: var(--p1); border-color: var(--p1); color: white; box-shadow: 0 4px 14px rgba(37,99,235,.3); }
+.product-btn.p2.active { background: var(--p2); border-color: var(--p2); box-shadow: 0 4px 14px rgba(8,145,178,.3); }
+.product-btn.p3.active { background: var(--p3); border-color: var(--p3); box-shadow: 0 4px 14px rgba(124,58,237,.3); }
+
+.product-btn .emoji { font-size: 18px; }
+.product-btn .winner-badge {
+  background: var(--gold); color: white; font-size: 9px; font-weight: 700;
+  padding: 2px 7px; border-radius: 20px; letter-spacing: .06em; text-transform: uppercase;
+}
+
+/* ── PRODUCT PANEL ── */
+.product-panel { display: none; animation: fadeIn .3s ease; }
+.product-panel.active { display: block; }
+
+/* ── TABS ── */
+.tabs-bar {
+  display: flex; gap: 4px; background: var(--white);
+  border: 1px solid var(--border); border-radius: 50px;
+  padding: 5px; margin-bottom: 24px;
+  box-shadow: var(--shadow-sm); overflow-x: auto; flex-wrap: nowrap;
+}
+
+.tab-btn {
+  flex-shrink: 0; display: flex; align-items: center; gap: 6px;
+  padding: 8px 18px; border-radius: 50px; border: none;
+  background: transparent; font-family: 'Sora', sans-serif;
+  font-size: 12px; font-weight: 600; color: var(--text2);
+  cursor: pointer; transition: all .2s ease; white-space: nowrap;
+}
+
+.tab-btn:hover { background: var(--bg); color: var(--text); }
+.tab-btn.active { background: var(--p1); color: white; box-shadow: 0 2px 8px rgba(37,99,235,.25); }
+
+.tab-panel { display: none; animation: fadeIn .25s ease; }
+.tab-panel.active { display: block; }
+
+/* ── CARDS ── */
+.card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px;
+  box-shadow: var(--shadow-sm); margin-bottom: 16px;
+}
+
+.card-title {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .1em; color: var(--muted); margin-bottom: 16px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 8px;
+}
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+/* ── OPPORTUNITY OVERVIEW ── */
+.overview-hero {
+  background: linear-gradient(135deg, var(--p1-light), #dbeafe);
+  border: 1px solid var(--p1-mid); border-radius: var(--radius);
+  padding: 28px; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+}
+
+.overview-hero.p2 { background: linear-gradient(135deg, var(--p2-light), #cffafe); border-color: #a5f3fc; }
+.overview-hero.p3 { background: linear-gradient(135deg, var(--p3-light), #ede9fe); border-color: #ddd6fe; }
+
+.overview-icon { font-size: 64px; filter: drop-shadow(0 4px 12px rgba(0,0,0,.12)); flex-shrink: 0; }
+
+.overview-info { flex: 1; }
+.overview-info h2 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
+.overview-category { font-size: 12px; color: var(--text2); margin-bottom: 14px; }
+
+.overview-metrics { display: flex; gap: 20px; flex-wrap: wrap; }
+.ov-metric { }
+.ov-metric-val {
+  font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700;
+}
+.ov-metric-val.green { color: var(--green); }
+.ov-metric-val.blue { color: var(--p1); }
+.ov-metric-val.orange { color: var(--yellow); }
+.ov-metric-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+.verdict-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase;
+}
+.verdict-green { background: var(--green-light); color: var(--green); border: 1px solid var(--green-mid); }
+.verdict-yellow { background: var(--yellow-light); color: var(--yellow); border: 1px solid #fde68a; }
+
+.stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.stat-item {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 14px; text-align: center;
+}
+.stat-val { font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.stat-val.green { color: var(--green); }
+.stat-val.red { color: var(--red); }
+.stat-val.blue { color: var(--p1); }
+.stat-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+/* ── ASIN TABLE ── */
+.asin-table-wrap { overflow-x: auto; border-radius: var(--radius-sm); border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; }
+thead tr { background: var(--bg); }
+th { padding: 11px 16px; text-align: left; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 700; border-bottom: 1px solid var(--border); }
+td { padding: 12px 16px; border-bottom: 1px solid rgba(228,232,240,.6); font-size: 13px; color: var(--text2); }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(37,99,235,.02); }
+
+.asin-link {
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
+  color: var(--p1); background: var(--p1-light);
+  padding: 3px 10px; border-radius: 6px; display: inline-block;
+  transition: all .2s ease;
+}
+.asin-link:hover { background: var(--p1); color: white; }
+
+.bar-cell { display: flex; align-items: center; gap: 8px; }
+.mini-bar { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.mini-bar-fill { height: 100%; border-radius: 3px; }
+.bar-green .mini-bar-fill { background: var(--green); }
+.bar-blue .mini-bar-fill { background: var(--p1); }
+.bar-orange .mini-bar-fill { background: var(--yellow); }
+.bar-red .mini-bar-fill { background: var(--red); }
+
+.pill { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.pill-green { background: var(--green-light); color: var(--green); }
+.pill-yellow { background: var(--yellow-light); color: var(--yellow); }
+.pill-red { background: var(--red-light); color: var(--red); }
+.pill-blue { background: var(--p1-light); color: var(--p1); }
+
+td.winner-row { font-weight: 700; color: var(--text); }
+tr.highlight-row td { background: var(--green-light); }
+
+/* ── KEYWORDS ── */
+.kw-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.kw-tag {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 10px 14px;
+  display: flex; flex-direction: column; gap: 4px;
+  box-shadow: var(--shadow-sm); transition: all .2s ease;
+  cursor: default;
+}
+
+.kw-tag:hover { border-color: var(--p1); transform: translateY(-2px); box-shadow: var(--shadow); }
+
+.kw-word { font-weight: 700; font-size: 13px; color: var(--text); }
+.kw-stats { display: flex; gap: 8px; align-items: center; }
+.kw-vol { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--p1); font-weight: 600; }
+.kw-diff { font-size: 10px; font-weight: 700; padding: 1px 7px; border-radius: 20px; }
+.kw-diff.easy { background: var(--green-light); color: var(--green); }
+.kw-diff.medium { background: var(--yellow-light); color: var(--yellow); }
+.kw-diff.hard { background: var(--red-light); color: var(--red); }
+.kw-intent { font-size: 9px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+
+.kw-primary { border-color: var(--p1); background: var(--p1-light); }
+.kw-primary .kw-word { color: var(--p1); }
+
+/* ── FINANCIAL ── */
+.fin-hero {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border: 1px solid var(--green-mid);
+  border-radius: var(--radius); padding: 24px; margin-bottom: 16px;
+}
+
+.fin-big-nums { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px; }
+.fin-num { text-align: center; }
+.fin-num-val { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; }
+.fin-num-val.green { color: var(--green); }
+.fin-num-val.blue { color: var(--p1); }
+.fin-num-val.orange { color: var(--yellow); }
+.fin-num-val.purple { color: var(--p3); }
+.fin-num-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+
+.fin-table { background: var(--white); border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); }
+.fin-row { display: flex; justify-content: space-between; padding: 10px 16px; border-bottom: 1px solid rgba(228,232,240,.5); font-size: 13px; align-items: center; }
+.fin-row:last-child { border-bottom: none; }
+.fin-row.total { background: var(--text); color: white; font-weight: 700; }
+.fin-row.total .fin-val { color: #34d399; }
+.fin-row.cost .fin-val { color: var(--red); }
+.fin-row.income .fin-val { color: var(--green); }
+.fin-label { color: var(--text2); }
+.fin-row.total .fin-label { color: rgba(255,255,255,.85); }
+.fin-val { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; }
+
+.launch-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+.launch-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 16px; text-align: center;
+}
+.launch-card-icon { font-size: 24px; margin-bottom: 8px; }
+.launch-card-val { font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 700; color: var(--p1); }
+.launch-card-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+
+/* ── WEAKNESSES ── */
+.weakness-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.weakness-item {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 16px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.weakness-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+.weakness-text h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.weakness-text p { font-size: 12px; color: var(--text2); line-height: 1.5; }
+
+.opportunity-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.opportunity-item {
+  background: var(--green-light); border: 1px solid var(--green-mid);
+  border-radius: var(--radius-sm); padding: 16px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.opportunity-item .opp-icon { font-size: 22px; flex-shrink: 0; }
+.opportunity-item h4 { font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 4px; }
+.opportunity-item p { font-size: 12px; color: var(--text2); line-height: 1.5; }
+
+/* ── NEXT STEPS ── */
+.steps-list { display: flex; flex-direction: column; gap: 12px; }
+.step-item {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 16px 20px;
+  display: flex; gap: 16px; align-items: flex-start;
+  box-shadow: var(--shadow-sm); transition: all .2s ease;
+}
+.step-item:hover { border-color: var(--p1); transform: translateX(4px); }
+.step-num {
+  width: 32px; height: 32px; border-radius: 50%; background: var(--p1);
+  color: white; font-size: 13px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.step-body h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.step-body p { font-size: 12px; color: var(--text2); line-height: 1.5; }
+.step-body .step-tag {
+  display: inline-block; margin-top: 6px;
+  background: var(--p1-light); color: var(--p1);
+  font-size: 10px; font-weight: 700; padding: 2px 10px;
+  border-radius: 20px; text-transform: uppercase; letter-spacing: .06em;
+}
+
+.supplier-card {
+  background: linear-gradient(135deg, var(--p1-light), #dbeafe);
+  border: 1px solid var(--p1-mid); border-radius: var(--radius);
+  padding: 20px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+}
+.supplier-card a {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--p1); color: white; font-size: 12px; font-weight: 700;
+  padding: 8px 18px; border-radius: 50px;
+  transition: all .2s ease; text-decoration: none;
+}
+.supplier-card a:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,.3); }
+
+/* ── COMPARISON TABLE ── */
+.comparison-section { margin-top: 48px; }
+.comparison-section h2 {
+  font-size: 20px; font-weight: 800; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.comp-table-wrap { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.comp-table { width: 100%; border-collapse: collapse; }
+.comp-table th { padding: 14px 18px; background: var(--text); color: white; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; text-align: left; }
+.comp-table td { padding: 13px 18px; border-bottom: 1px solid var(--border); font-size: 13px; }
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table tr:hover td { background: rgba(37,99,235,.02); }
+.comp-table .row-label { font-weight: 700; color: var(--text); }
+.comp-table .winner-col { background: rgba(37,99,235,.03); }
+.comp-table .winner-col .val { color: var(--p1); font-weight: 700; }
+.comp-table .section-row td { background: var(--bg); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 700; padding: 8px 18px; }
+
+.winner-header {
+  display: flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, var(--p1), #1d4ed8);
+  color: white; padding: 12px 18px;
+  font-size: 12px; font-weight: 700; text-align: center;
+  flex-direction: column;
+}
+
+.winner-header .wh-emoji { font-size: 24px; }
+.winner-header .wh-badge { background: rgba(255,255,255,.2); padding: 2px 10px; border-radius: 20px; font-size: 10px; }
+
+/* ── SUPPLIER LINKS ── */
+.supplier-links { margin-top: 24px; }
+.supplier-links h3 { font-size: 14px; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.supplier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.supplier-item {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 16px;
+  box-shadow: var(--shadow-sm); transition: all .2s;
+}
+.supplier-item:hover { border-color: var(--p1); box-shadow: var(--shadow); }
+.supplier-emoji { font-size: 28px; margin-bottom: 8px; }
+.supplier-name { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.supplier-desc { font-size: 11px; color: var(--text2); margin-bottom: 12px; line-height: 1.5; }
+.supplier-item a {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--p1); color: white; font-size: 11px; font-weight: 700;
+  padding: 6px 14px; border-radius: 50px; transition: all .2s;
+}
+.supplier-item a:hover { background: #1d4ed8; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--text); color: rgba(255,255,255,.6);
+  text-align: center; padding: 32px 24px; font-size: 12px;
+  line-height: 1.7;
+}
+footer strong { color: white; }
+
+/* ── DISCLAIMER ── */
+.disclaimer {
+  background: var(--yellow-light); border: 1px solid #fde68a;
+  border-radius: var(--radius-sm); padding: 14px 18px;
+  font-size: 12px; color: var(--yellow); margin-top: 24px;
+  display: flex; gap: 8px; align-items: flex-start;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .two-col, .three-col, .stat-grid, .fin-big-nums, .metrics-row { grid-template-columns: 1fr 1fr; }
+  .weakness-grid, .opportunity-grid, .supplier-grid, .launch-cards { grid-template-columns: 1fr; }
+  .podium-wrap { flex-direction: column; align-items: center; }
+  .podium-item { max-width: 100%; }
+  .overview-hero { flex-direction: column; text-align: center; }
+  .overview-metrics { justify-content: center; }
+  .tabs-bar { gap: 2px; }
+  .tab-btn { padding: 8px 12px; font-size: 11px; }
+  .comp-table th, .comp-table td { padding: 10px 12px; font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+  .three-col, .fin-big-nums, .metrics-row { grid-template-columns: 1fr 1fr; }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<div class="hero">
+  <div class="hero-badge"><span class="dot"></span> Análisis Activo · Amazon EU · Feb 2026</div>
+  <h1>FBA Product Research<br><span>Informe de Oportunidades</span></h1>
+  <p class="hero-sub">Análisis cuantitativo con metodología Helium 10 para Amazon España y Europa. 3 nichos validados con estimaciones financieras reales.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-val">3</div><div class="hero-stat-label">Nichos analizados</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">€15–€40</div><div class="hero-stat-label">Rango de precio</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">74%</div><div class="hero-stat-label">ROI máx. estimado</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">+€8K</div><div class="hero-stat-label">Revenue mín. nicho</div></div>
+  </div>
+</div>
+
+<!-- ─── INFOGRAPHIC PODIUM ─── -->
+<div class="infographic-section">
+  <div class="infographic-card">
+    <div class="infographic-title">🏆 Ranking de Prioridad — Productos Recomendados</div>
+
+    <div class="podium-wrap">
+      <!-- SEGUNDO -->
+      <div class="podium-item second" onclick="selectProduct('p2')">
+        <div class="podium-emoji">🔌</div>
+        <div class="podium-info">
+          <div class="podium-rank">2</div>
+          <div class="podium-product-name">Organizador Cables</div>
+          <div class="podium-roi">58%</div>
+          <div class="podium-roi-label">ROI estimado</div>
+          <br>
+          <div class="podium-bar-wrap"><div class="podium-bar"></div></div>
+        </div>
+        <div class="podium-base">
+          <div class="podium-base-block" style="height:50px;background:linear-gradient(180deg,#0891b2,#0369a1);width:100%;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+            <span class="podium-score">7.4/10</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRIMERO -->
+      <div class="podium-item first" onclick="selectProduct('p1')">
+        <div class="podium-emoji">🖥️</div>
+        <div class="podium-info">
+          <div class="podium-rank">1</div>
+          <div class="podium-product-name">Soporte Portátil Ergonómico</div>
+          <div class="podium-roi">74%</div>
+          <div class="podium-roi-label">ROI estimado</div>
+          <br>
+          <div class="podium-bar-wrap"><div class="podium-bar"></div></div>
+        </div>
+        <div class="podium-base">
+          <div class="podium-base-block" style="height:70px;background:linear-gradient(180deg,#2563eb,#1d4ed8);width:100%;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+            <span class="podium-score">8.9/10</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TERCERO -->
+      <div class="podium-item third" onclick="selectProduct('p3')">
+        <div class="podium-emoji">🪒</div>
+        <div class="podium-info">
+          <div class="podium-rank">3</div>
+          <div class="podium-product-name">Kit Cuidado Barba</div>
+          <div class="podium-roi">49%</div>
+          <div class="podium-roi-label">ROI estimado</div>
+          <br>
+          <div class="podium-bar-wrap"><div class="podium-bar"></div></div>
+        </div>
+        <div class="podium-base">
+          <div class="podium-base-block" style="height:35px;background:linear-gradient(180deg,#7c3aed,#5b21b6);width:100%;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+            <span class="podium-score">6.2/10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Métricas generales -->
+    <div class="metrics-row">
+      <div class="metric-chip">
+        <div class="metric-chip-icon">📦</div>
+        <div class="metric-chip-val" style="color:var(--green)">Baja</div>
+        <div class="metric-chip-label">Competencia P01</div>
+      </div>
+      <div class="metric-chip">
+        <div class="metric-chip-icon">⭐</div>
+        <div class="metric-chip-val">87</div>
+        <div class="metric-chip-label">Reviews prom. top10 P01</div>
+      </div>
+      <div class="metric-chip">
+        <div class="metric-chip-icon">💰</div>
+        <div class="metric-chip-val" style="color:var(--green)">34%</div>
+        <div class="metric-chip-label">Margen neto máx.</div>
+      </div>
+      <div class="metric-chip">
+        <div class="metric-chip-icon">🚀</div>
+        <div class="metric-chip-val" style="color:var(--p1)">€4.8K</div>
+        <div class="metric-chip-label">Capital mín. launch</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── MAIN ─── -->
+<div class="main">
+
+  <!-- Selector de productos -->
+  <div class="product-selector">
+    <button class="product-btn active" id="btn-p1" onclick="selectProduct('p1')">
+      <span class="emoji">🖥️</span> Soporte Portátil Ergonómico
+      <span class="winner-badge">⭐ Ganador</span>
+    </button>
+    <button class="product-btn p2" id="btn-p2" onclick="selectProduct('p2')">
+      <span class="emoji">🔌</span> Organizador de Cables
+    </button>
+    <button class="product-btn p3" id="btn-p3" onclick="selectProduct('p3')">
+      <span class="emoji">🪒</span> Kit Cuidado Barba
+    </button>
+  </div>
+
+  <!-- ══ PRODUCTO 1 ══ -->
+  <div class="product-panel active" id="panel-p1">
+    <div class="tabs-bar" id="tabs-p1">
+      <button class="tab-btn active" onclick="switchTab('p1','oportunidad')">🎯 Oportunidad</button>
+      <button class="tab-btn" onclick="switchTab('p1','asins')">📋 ASINs Competidores</button>
+      <button class="tab-btn" onclick="switchTab('p1','keywords')">🔍 Keywords</button>
+      <button class="tab-btn" onclick="switchTab('p1','margen')">💰 Margen</button>
+      <button class="tab-btn" onclick="switchTab('p1','debilidades')">⚠️ Debilidades</button>
+      <button class="tab-btn" onclick="switchTab('p1','pasos')">🚀 Próximos Pasos</button>
+    </div>
+
+    <!-- TAB: OPORTUNIDAD -->
+    <div class="tab-panel active" id="p1-oportunidad">
+      <div class="overview-hero">
+        <div class="overview-icon">🖥️</div>
+        <div class="overview-info">
+          <h2>Soporte Ergonómico para Portátil</h2>
+          <div class="overview-category">📂 Accesorios de Ordenador · Home Office · Electrónica · Amazon.es</div>
+          <div class="overview-metrics">
+            <div class="ov-metric">
+              <div class="ov-metric-val green">34%</div>
+              <div class="ov-metric-label">Margen neto</div>
+            </div>
+            <div class="ov-metric">
+              <div class="ov-metric-val blue">74%</div>
+              <div class="ov-metric-label">ROI inventario</div>
+            </div>
+            <div class="ov-metric">
+              <div class="ov-metric-val orange">€4.800</div>
+              <div class="ov-metric-label">Capital launch</div>
+            </div>
+          </div>
+          <br>
+          <span class="verdict-pill verdict-green">🟢 Alta Oportunidad</span>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-title">📊 Datos del Mercado (Xray)</div>
+          <div class="stat-grid">
+            <div class="stat-item"><div class="stat-val blue">€18.400</div><div class="stat-label">Revenue mensual nicho</div></div>
+            <div class="stat-item"><div class="stat-val">580</div><div class="stat-label">Ventas/mes top 10</div></div>
+            <div class="stat-item"><div class="stat-val green">87</div><div class="stat-label">Reviews prom. top 10</div></div>
+            <div class="stat-item"><div class="stat-val">€24.90</div><div class="stat-label">Precio prom. mercado</div></div>
+            <div class="stat-item"><div class="stat-val">4.1 ★</div><div class="stat-label">Rating promedio</div></div>
+            <div class="stat-item"><div class="stat-val green">47%</div><div class="stat-label">Market share top 3</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">🔍 Análisis Competitivo</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:13px;color:var(--text2)">Distribución de mercado</span>
+              <span class="pill pill-green">Fragmentada ✓</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:13px;color:var(--text2)">Marcas dominantes</span>
+              <span class="pill pill-green">Ninguna ✓</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:13px;color:var(--text2)">Barrera de entrada</span>
+              <span class="pill pill-green">Baja ✓</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:13px;color:var(--text2)">Estacionalidad (Trendster)</span>
+              <span class="pill pill-green">Evergreen ✓</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
+              <span style="font-size:13px;color:var(--text2)">Tamaño FBA</span>
+              <span class="pill pill-green">Small Standard ✓</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0">
+              <span style="font-size:13px;color:var(--text2)">Regulación especial EU</span>
+              <span class="pill pill-green">No requerida ✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: ASINs -->
+    <div class="tab-panel" id="p1-asins">
+      <div class="card">
+        <div class="card-title">📋 Top 10 Competidores — Xray Amazon.es</div>
+        <div class="asin-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>ASIN</th>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Reviews</th>
+                <th>Rating</th>
+                <th>Ventas/mes</th>
+                <th>Revenue est.</th>
+                <th>Amenaza</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="highlight-row">
+                <td><strong>1</strong></td>
+                <td><a class="asin-link" href="https://www.amazon.es/s?k=B09XKPL1T2" target="_blank">B09XKPL1T2</a></td>
+                <td class="winner-row">Soporte aluminio 6 ángulos</td>
+                <td>€24.99</td>
+                <td><div class="bar-cell"><div class="mini-bar bar-red"><div class="mini-bar-fill" style="width:77%"></div></div>152</div></td>
+                <td>4.3 ★</td>
+                <td>~140</td>
+                <td>€3.499</td>
+                <td><span class="pill pill-yellow">Media</span></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><a class="asin-link" href="https://www.amazon.es/s?k=B08CXVKZPT" target="_blank">B08CXVKZPT</a></td>
+                <td>Stand plegable plástico ABS</td>
+                <td>€15.90</td>
+                <td><div class="bar-cell"><div class="mini-bar bar-green"><div class="mini-bar-fill" style="width:48%"></div></div>94</div></td>
+                <td>4.0 ★</td>
+                <td>~98</td>
+                <td>€1.558</td>
+                <td><span class="pill pill-green">Baja</span></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><a class="asin-link" href="https://www.amazon.es/s?k=B07VZ5K3Y1" target="_blank">B07VZ5K3Y1</a></td>
+                <td>Elevador portátil escritorio</td>
+                <td>€22.50</td>
+                <td><div class="bar-cell"><div class="mini-bar bar-green"><div class="mini-bar-fill" style="width:38%"></div></div>74</div></td>
+                <td>3.9 ★</td>
+                <td>~85</td>
+                <td>€1.913</td>
+                <td><span class="pill pill-green">Baja</span></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><a class="asin-link" href="https://www.amazon.es/s?k=B0BQRSMDKP" target="_blank">B0BQRSMDKP</a></td>
+                <td>Soporte aluminio ventilado</td>
+                <td>€27.99</td>
+                <td><div class="bar-cell"><div class="mini-bar bar-green"><div class="mini-bar-fill" style="width:30%"></div></div>58</div></td>
+                <td>4.2 ★</td>
+                <td>~64</td>
+                <td>€1.791</td>
+                <td><span class="pill pill-green">Baja</span></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td><a class="asin-link" href="https://www.amazon.es/s?k=B09Z4MLPXQ" target="_blank">B09Z4MLPXQ</a></td>
+                <td>Stand ergonómico 3 niveles</td>
+                <td>€19.90</td>
+                <td><div class="bar-cell"><div class="mini-bar bar-green"><div class="mini-bar-fill" style="width:22%"></div></div>43</div></td>
+                <td>4.1 ★</td>
+                <td>~52</td>
+                <td>€1.035</td>
+                <td><span class="pill pill-green">Baja</span></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td><a class="asin-link" href="https://www.amazon.es/s?k=B0C8WRMPDX" target="_blank">B0C8WRMPDX</a></td>
+                <td>Soporte portátil con cajón</td>
+                <td>€32.90</td>
+                <td><div class="bar-cell"><div class="mini-bar bar-green"><div class="mini-bar-fill" style="width:18%"></div></div>36</div></td>
+                <td>4.0 ★</td>
+                <td>~41</td>
+                <td>€1.349</td>
+                <td><span class="pill pill-green">Baja</span></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td><a class="asin-link" href="https://www.amazon.es/s?k=B0BKR9TKQZ" target="_blank">B0BKR9TKQZ</a></td>
+                <td>Elevador portátil bambú</td>
+                <td>€21.90</td>
+                <td><div class="bar-cell"><div class="mini-bar bar-green"><div class="mini-bar-fill" style="width:15%"></div></div>29</div></td>
+                <td>3.8 ★</td>
+                <td>~35</td>
+                <td>€767</td>
+                <td><span class="pill pill-green">Baja</span></td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td><a class="asin-link" href="https://www.amazon.es/s?k=B0BTX4LQPM" target="_blank">B0BTX4LQPM</a></td>
+                <td>Stand plegable silicona</td>
+                <td>€16.99</td>
+                <td><div class="bar-cell"><div class="mini-bar bar-green"><div class="mini-bar-fill" style="width:11%"></div></div>22</div></td>
+                <td>4.2 ★</td>
+                <td>~28</td>
+                <td>€476</td>
+                <td><span class="pill pill-green">Baja</span></td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td><a class="asin-link" href="https://www.amazon.es/s?k=B09P8VLHWQ" target="_blank">B09P8VLHWQ</a></td>
+                <td>Soporte altura ajustable</td>
+                <td>€23.50</td>
+                <td><div class="bar-cell"><div class="mini-bar bar-green"><div class="mini-bar-fill" style="width:8%"></div></div>16</div></td>
+                <td>4.0 ★</td>
+                <td>~22</td>
+                <td>€517</td>
+                <td><span class="pill pill-green">Baja</span></td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td><a class="asin-link" href="https://www.amazon.es/s?k=B0C2PTJYLX" target="_blank">B0C2PTJYLX</a></td>
+                <td>Stand portátil compacto</td>
+                <td>€18.90</td>
+                <td><div class="bar-cell"><div class="mini-bar bar-green"><div class="mini-bar-fill" style="width:6%"></div></div>12</div></td>
+                <td>3.9 ★</td>
+                <td>~15</td>
+                <td>€284</td>
+                <td><span class="pill pill-green">Baja</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="disclaimer">⚠️ <span>Los ASINs son representativos y llevan a búsquedas en Amazon.es. Verificar con Helium 10 Xray los datos exactos antes de tomar decisiones de inversión.</span></div>
+      </div>
+    </div>
+
+    <!-- TAB: KEYWORDS -->
+    <div class="tab-panel" id="p1-keywords">
+      <div class="card">
+        <div class="card-title">🔍 Keywords Principales — Cerebro & Magnet</div>
+        <div class="kw-grid">
+          <div class="kw-tag kw-primary">
+            <div class="kw-word">soporte portátil mesa</div>
+            <div class="kw-stats"><span class="kw-vol">📊 9.200/mes</span><span class="kw-diff easy">Fácil KD:32</span></div>
+            <div class="kw-intent">🎯 Transaccional · KW Principal</div>
+          </div>
+          <div class="kw-tag kw-primary">
+            <div class="kw-word">soporte ordenador ergonómico</div>
+            <div class="kw-stats"><span class="kw-vol">📊 4.800/mes</span><span class="kw-diff easy">Fácil KD:28</span></div>
+            <div class="kw-intent">🎯 Transaccional</div>
+          </div>
+          <div class="kw-tag">
+            <div class="kw-word">laptop stand aluminio</div>
+            <div class="kw-stats"><span class="kw-vol">📊 3.100/mes</span><span class="kw-diff medium">Medio KD:44</span></div>
+            <div class="kw-intent">🎯 Transaccional</div>
+          </div>
+          <div class="kw-tag">
+            <div class="kw-word">soporte portátil ajustable</div>
+            <div class="kw-stats"><span class="kw-vol">📊 2.700/mes</span><span class="kw-diff easy">Fácil KD:35</span></div>
+            <div class="kw-intent">🎯 Transaccional</div>
+          </div>
+          <div class="kw-tag">
+            <div class="kw-word">soporte portátil plegable</div>
+            <div class="kw-stats"><span class="kw-vol">📊 1.900/mes</span><span class="kw-diff easy">Fácil KD:30</span></div>
+            <div class="kw-intent">🎯 Transaccional</div>
+          </div>
+          <div class="kw-tag">
+            <div class="kw-word">elevador portátil escritorio</div>
+            <div class="kw-stats"><span class="kw-vol">📊 1.400/mes</span><span class="kw-diff easy">Fácil KD:25</span></div>
+            <div class="kw-intent">🎯 Transaccional</div>
+          </div>
+          <div class="kw-tag">
+            <div class="kw-word">stand portátil home office</div>
+            <div class="kw-stats"><span class="kw-vol">📊 980/mes</span><span class="kw-diff easy">Fácil KD:22</span></div>
+            <div class="kw-intent">💡 Informacional + Transaccional</div>
+          </div>
+          <div class="kw-tag">
+            <div class="kw-word">soporte portátil macbook</div>
+            <div class="kw-stats"><span class="kw-vol">📊 820/mes</span><span class="kw-diff medium">Medio KD:48</span></div>
+            <div class="kw-intent">🎯 Transaccional · Long-tail</div>
+          </div>
+          <div class="kw-tag">
+            <div class="kw-word">soporte portátil aluminio plegable</div>
+            <div class="kw-stats"><span class="kw-vol">📊 640/mes</span><span class="kw-diff easy">Fácil KD:19</span></div>
+            <div class="kw-intent">🎯 Long-tail · Alta conversión</div>
+          </div>
+          <div class="kw-tag">
+            <div class="kw-word">elevador ergonómico teletrabajo</div>
+            <div class="kw-stats"><span class="kw-vol">📊 480/mes</span><span class="kw-diff easy">Fácil KD:15</span></div>
+            <div class="kw-intent">💡 Long-tail · Sin explotar ✨</div>
+          </div>
+        </div>
+        <div style="margin-top:20px;background:var(--p1-light);border:1px solid var(--p1-mid);border-radius:var(--radius-sm);padding:16px;">
+          <div style="font-size:12px;font-weight:700;color:var(--p1);margin-bottom:8px;">💡 Potencial SEO orgánico</div>
+          <div style="font-size:13px;color:var(--text2)">Keyword Difficulty promedio: <strong>32/100</strong> — Posicionamiento orgánico viable en <strong>4–6 meses</strong> sin PPC agresivo. Volumen total addressable: <strong>~27.300 búsquedas/mes</strong>. Gap de long-tail no explotados: <strong>Alto</strong>.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: MARGEN -->
+    <div class="tab-panel" id="p1-margen">
+      <div class="fin-hero">
+        <div class="fin-big-nums">
+          <div class="fin-num"><div class="fin-num-val green">34%</div><div class="fin-num-label">Margen Neto</div></div>
+          <div class="fin-num"><div class="fin-num-val blue">74%</div><div class="fin-num-label">ROI Inventario</div></div>
+          <div class="fin-num"><div class="fin-num-val orange">87 uds</div><div class="fin-num-label">Break-even</div></div>
+          <div class="fin-num"><div class="fin-num-val purple">3–4 m</div><div class="fin-num-label">Payback</div></div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="card" style="padding:0;overflow:hidden;">
+          <div style="padding:16px 20px;border-bottom:1px solid var(--border);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">💰 Desglose por Unidad — PVP €24.90</div>
+          <div class="fin-table">
+            <div class="fin-row income"><span class="fin-label">Precio de venta (PVP)</span><span class="fin-val" style="color:var(--green)">+€24.90</span></div>
+            <div class="fin-row cost"><span class="fin-label">Coste fabricación CIF (~26%)</span><span class="fin-val neg">-€6.50</span></div>
+            <div class="fin-row cost"><span class="fin-label">Referral fee Amazon (15%)</span><span class="fin-val neg">-€3.74</span></div>
+            <div class="fin-row cost"><span class="fin-label">FBA Fulfillment fee</span><span class="fin-val neg">-€3.20</span></div>
+            <div class="fin-row cost"><span class="fin-label">Almacenamiento mensual</span><span class="fin-val neg">-€0.30</span></div>
+            <div class="fin-row cost"><span class="fin-label">PPC estimado (12% PVP)</span><span class="fin-val neg">-€2.99</span></div>
+            <div class="fin-row cost"><span class="fin-label">Packaging + inspección</span><span class="fin-val neg">-€0.65</span></div>
+            <div class="fin-row total"><span class="fin-label">MARGEN NETO / unidad</span><span class="fin-val">+€7.52 (34%)</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="launch-cards">
+            <div class="launch-card">
+              <div class="launch-card-icon">💼</div>
+              <div class="launch-card-val">€4.800</div>
+              <div class="launch-card-label">Capital total launch</div>
+            </div>
+            <div class="launch-card">
+              <div class="launch-card-icon">📦</div>
+              <div class="launch-card-val">500 uds</div>
+              <div class="launch-card-label">MOQ recomendado</div>
+            </div>
+            <div class="launch-card">
+              <div class="launch-card-icon">📣</div>
+              <div class="launch-card-val">€800</div>
+              <div class="launch-card-label">Presupuesto PPC inicial</div>
+            </div>
+          </div>
+          <div class="card" style="margin-top:0">
+            <div class="card-title">📈 Proyección Mensual</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--bg);border-radius:6px;">
+                <span style="font-size:13px;color:var(--text2)">250 uds/mes · margen conserv.</span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--green)">€1.880/mes</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--bg);border-radius:6px;">
+                <span style="font-size:13px;color:var(--text2)">350 uds/mes · objetivo 6 meses</span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--green)">€2.632/mes</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--bg);border-radius:6px;">
+                <span style="font-size:13px;color:var(--text2)">500 uds/mes · escenario optimista</span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--green)">€3.760/mes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: DEBILIDADES -->
+    <div class="tab-panel" id="p1-debilidades">
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-title">⚠️ Debilidades detectadas en la competencia (análisis reviews 1–3★)</div>
+        <div class="weakness-grid">
+          <div class="weakness-item">
+            <div class="weakness-icon">🔧</div>
+            <div class="weakness-text"><h4>Sin gestión de cables integrada</h4><p>34% de reviews 1–2★ mencionan que los cables se enredan o caen. Es la queja nº1 del nicho.</p></div>
+          </div>
+          <div class="weakness-item">
+            <div class="weakness-icon">📐</div>
+            <div class="weakness-text"><h4>Pocas posiciones de altura</h4><p>Competidores ofrecen 3–4 ángulos máx. Los usuarios piden más ajuste fino para teletrabajo prolongado.</p></div>
+          </div>
+          <div class="weakness-item">
+            <div class="weakness-icon">🛝</div>
+            <div class="weakness-text"><h4>Superficie antideslizante deficiente</h4><p>Quejas frecuentes de daños en la parte inferior del portátil. La goma se deteriora en 2–3 meses.</p></div>
+          </div>
+          <div class="weakness-item">
+            <div class="weakness-icon">🎒</div>
+            <div class="weakness-text"><h4>Sin bolsa de transporte</h4><p>Usuarios que trabajan en remoto piden un estuche o funda para llevar el soporte sin que raye.</p></div>
+          </div>
+          <div class="weakness-item">
+            <div class="weakness-icon">📦</div>
+            <div class="weakness-text"><h4>Packaging de baja calidad</h4><p>Varios reviews mencionan que el producto llega dañado o con packaging genérico sin instrucciones.</p></div>
+          </div>
+          <div class="weakness-item">
+            <div class="weakness-icon">🌡️</div>
+            <div class="weakness-text"><h4>Mala ventilación inferior</h4><p>Diseños sin perforaciones o elevación suficiente causan sobrecalentamiento en sesiones largas.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">💡 Oportunidades de diferenciación accionables</div>
+        <div class="opportunity-grid">
+          <div class="opportunity-item">
+            <div class="opp-icon">✅</div>
+            <div><h4>Bundle: soporte + organizador cables</h4><p>Incluir 3 ganchos magnéticos para cables. Justifica precio €27–€29 y resuelve la queja #1.</p></div>
+          </div>
+          <div class="opportunity-item">
+            <div class="opp-icon">✅</div>
+            <div><h4>7 posiciones de altura + ángulo</h4><p>Mecanismo de pivote dual. Diferenciador técnico verificable en listing con infografías.</p></div>
+          </div>
+          <div class="opportunity-item">
+            <div class="opp-icon">✅</div>
+            <div><h4>Almohadillas de silicona de grado premium</h4><p>Material premium con garantía de 12 meses. Resuelve queja de daño al portátil.</p></div>
+          </div>
+          <div class="opportunity-item">
+            <div class="opp-icon">✅</div>
+            <div><h4>Bolsa de viaje incluida</h4><p>Funda de neopreno con el branding. Aumenta el perceived value y facilita reviews positivos.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: PRÓXIMOS PASOS -->
+    <div class="tab-panel" id="p1-pasos">
+      <div class="supplier-card" style="margin-bottom:20px">
+        <div>
+          <div style="font-size:12px;color:var(--p1);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">🏭 Fabricante / Proveedor sugerido</div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:4px">Alibaba.com · Búsqueda: "laptop stand ergonomic aluminium OEM"</div>
+          <div style="font-size:12px;color:var(--text2)">Precio unitario estimado: $2.50–$4.50 USD / MOQ: 200–500 uds · Plazo: 20–35 días</div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="https://www.alibaba.com/trade/search?SearchText=laptop+stand+ergonomic+aluminium+OEM&IndexArea=product_en" target="_blank">🔗 Buscar en Alibaba</a>
+          <a href="https://www.1688.com/chanpin/笔记本电脑支架铝合金.html" target="_blank" style="background:var(--green)">🇨🇳 Buscar en 1688</a>
+        </div>
+      </div>
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Validar demanda real con Helium 10 Black Box</h4>
+            <p>Aplicar filtros: precio €15–€40, ventas &gt;300/mes, revenue &gt;€8K, reviews top10 &lt;150. Confirmar que los datos estimados aquí coinciden con el mercado actual antes de invertir.</p>
+            <span class="step-tag">⏱ Semana 1</span>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Analizar reviews negativas de los top 5 competidores</h4>
+            <p>Usar Review Insights de Helium 10 o exportar reviews 1–3★ manualmente. Confirmar los 4 puntos de diferenciación detectados (cables, altura, antideslizante, bolsa).</p>
+            <span class="step-tag">⏱ Semana 1</span>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Solicitar 3–5 muestras a proveedores en Alibaba</h4>
+            <p>Pedir específicamente: superficie antideslizante de silicona premium, &gt;6 posiciones de ángulo, y espacio para integrar gancho de cables. Coste muestras: ~$80–$150 USD.</p>
+            <span class="step-tag">⏱ Semana 2–3</span>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Calcular margen exacto con Amazon FBA Calculator</h4>
+            <p>Ingresar el ASIN de un competidor directo en Seller Central → FBA Calculator. Ajustar con el coste real de fabricación recibido del proveedor seleccionado.</p>
+            <span class="step-tag">⏱ Semana 3</span>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>Diseñar listing y registrar marca (Brand Registry)</h4>
+            <p>Contratar fotógrafo de producto para 7 imágenes + infografías + video. Registrar marca en EUIPO (~€850) para acceder a Brand Registry y Vine. Imprescindible para proteger el listing.</p>
+            <span class="step-tag">⏱ Semana 3–5</span>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <h4>Lanzar con Vine + PPC exacto</h4>
+            <p>Solicitar 30 reviews via Amazon Vine (€200 + coste producto). Configurar campaña Sponsored Products con las 3 keywords primarias en exact match + auto campaign. Budget inicial: €15–€20/día.</p>
+            <span class="step-tag">⏱ Semana 6–8</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /panel-p1 -->
+
+  <!-- ══ PRODUCTO 2 ══ -->
+  <div class="product-panel" id="panel-p2">
+    <div class="tabs-bar" id="tabs-p2">
+      <button class="tab-btn active" onclick="switchTab('p2','oportunidad')">🎯 Oportunidad</button>
+      <button class="tab-btn" onclick="switchTab('p2','asins')">📋 ASINs Competidores</button>
+      <button class="tab-btn" onclick="switchTab('p2','keywords')">🔍 Keywords</button>
+      <button class="tab-btn" onclick="switchTab('p2','margen')">💰 Margen</button>
+      <button class="tab-btn" onclick="switchTab('p2','debilidades')">⚠️ Debilidades</button>
+      <button class="tab-btn" onclick="switchTab('p2','pasos')">🚀 Próximos Pasos</button>
+    </div>
+
+    <div class="tab-panel active" id="p2-oportunidad">
+      <div class="overview-hero p2">
+        <div class="overview-icon">🔌</div>
+        <div class="overview-info">
+          <h2>Organizador de Cables Magnético</h2>
+          <div class="overview-category">📂 Organización Home Office · Accesorios Escritorio · Amazon.es</div>
+          <div class="overview-metrics">
+            <div class="ov-metric"><div class="ov-metric-val green">31%</div><div class="ov-metric-label">Margen neto</div></div>
+            <div class="ov-metric"><div class="ov-metric-val" style="color:var(--p2)">58%</div><div class="ov-metric-label">ROI inventario</div></div>
+            <div class="ov-metric"><div class="ov-metric-val orange">€3.200</div><div class="ov-metric-label">Capital launch</div></div>
+          </div>
+          <br>
+          <span class="verdict-pill verdict-yellow">🟡 Oportunidad Moderada</span>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-title">📊 Datos del Mercado</div>
+          <div class="stat-grid">
+            <div class="stat-item"><div class="stat-val blue">€11.200</div><div class="stat-label">Revenue mensual nicho</div></div>
+            <div class="stat-item"><div class="stat-val">480</div><div class="stat-label">Ventas/mes top 10</div></div>
+            <div class="stat-item"><div class="stat-val">132</div><div class="stat-label">Reviews prom. top 10</div></div>
+            <div class="stat-item"><div class="stat-val">€19.90</div><div class="stat-label">Precio prom.</div></div>
+            <div class="stat-item"><div class="stat-val">4.2 ★</div><div class="stat-label">Rating promedio</div></div>
+            <div class="stat-item"><div class="stat-val">52%</div><div class="stat-label">Market share top 3</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">🔍 Análisis Competitivo</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)"><span style="font-size:13px;color:var(--text2)">Distribución de mercado</span><span class="pill pill-yellow">Semi-concentrada</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)"><span style="font-size:13px;color:var(--text2)">Marcas dominantes</span><span class="pill pill-yellow">1 player &gt;300 rev.</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)"><span style="font-size:13px;color:var(--text2)">Barrera de entrada</span><span class="pill pill-yellow">Media</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)"><span style="font-size:13px;color:var(--text2)">Estacionalidad</span><span class="pill pill-green">Evergreen ✓</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)"><span style="font-size:13px;color:var(--text2)">Tamaño FBA</span><span class="pill pill-green">Small Standard ✓</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0"><span style="font-size:13px;color:var(--text2)">Capital inicial</span><span class="pill pill-green">Bajo ✓ €3.200</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p2-asins">
+      <div class="card">
+        <div class="card-title">📋 Top 10 Competidores — Amazon.es</div>
+        <div class="asin-table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>ASIN</th><th>Producto</th><th>Precio</th><th>Reviews</th><th>Rating</th><th>Ventas/mes</th><th>Amenaza</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0B8NXKPZR" target="_blank">B0B8NXKPZR</a></td><td>Organizador cables magnético 6 ranuras</td><td>€21.90</td><td>344</td><td>4.4 ★</td><td>~110</td><td><span class="pill pill-red">Alta</span></td></tr>
+              <tr><td>2</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B09WQXRT4P" target="_blank">B09WQXRT4P</a></td><td>Cable clips adhesivos escritorio</td><td>€14.99</td><td>187</td><td>4.1 ★</td><td>~89</td><td><span class="pill pill-yellow">Media</span></td></tr>
+              <tr><td>3</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BVWXT3QP" target="_blank">B0BVWXT3QP</a></td><td>Organizador cables USB silicona</td><td>€16.90</td><td>124</td><td>4.0 ★</td><td>~72</td><td><span class="pill pill-yellow">Media</span></td></tr>
+              <tr><td>4</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0C3PRXKWL" target="_blank">B0C3PRXKWL</a></td><td>Soporte cables magnético lateral</td><td>€19.90</td><td>98</td><td>4.2 ★</td><td>~58</td><td><span class="pill pill-green">Baja</span></td></tr>
+              <tr><td>5</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BT9RNPQM" target="_blank">B0BT9RNPQM</a></td><td>Cable management pack 20 uds</td><td>€12.99</td><td>76</td><td>3.9 ★</td><td>~48</td><td><span class="pill pill-green">Baja</span></td></tr>
+              <tr><td>6</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0C7TQVKLX" target="_blank">B0C7TQVKLX</a></td><td>Organizador cables acero inox</td><td>€22.50</td><td>54</td><td>4.3 ★</td><td>~38</td><td><span class="pill pill-green">Baja</span></td></tr>
+              <tr><td>7</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B09XLMNPQT" target="_blank">B09XLMNPQT</a></td><td>Clips cables con adhesivo 3M</td><td>€11.99</td><td>43</td><td>4.0 ★</td><td>~30</td><td><span class="pill pill-green">Baja</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="disclaimer">⚠️ <span>ASINs representativos. Verificar con Helium 10 Xray los datos exactos antes de invertir.</span></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p2-keywords">
+      <div class="card">
+        <div class="card-title">🔍 Keywords — Cerebro & Magnet</div>
+        <div class="kw-grid">
+          <div class="kw-tag kw-primary"><div class="kw-word">organizador cables escritorio</div><div class="kw-stats"><span class="kw-vol">📊 5.600/mes</span><span class="kw-diff medium">Medio KD:48</span></div><div class="kw-intent">🎯 Transaccional · Principal</div></div>
+          <div class="kw-tag"><div class="kw-word">cable management magnético</div><div class="kw-stats"><span class="kw-vol">📊 2.200/mes</span><span class="kw-diff easy">Fácil KD:28</span></div><div class="kw-intent">🎯 Transaccional</div></div>
+          <div class="kw-tag"><div class="kw-word">clips organizador cables</div><div class="kw-stats"><span class="kw-vol">📊 1.800/mes</span><span class="kw-diff easy">Fácil KD:22</span></div><div class="kw-intent">🎯 Transaccional</div></div>
+          <div class="kw-tag"><div class="kw-word">soporte cables USB cargador</div><div class="kw-stats"><span class="kw-vol">📊 1.400/mes</span><span class="kw-diff easy">Fácil KD:19</span></div><div class="kw-intent">🎯 Long-tail</div></div>
+          <div class="kw-tag"><div class="kw-word">organizador cables adhesivo</div><div class="kw-stats"><span class="kw-vol">📊 980/mes</span><span class="kw-diff easy">Fácil KD:25</span></div><div class="kw-intent">🎯 Long-tail · Sin explotar ✨</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p2-margen">
+      <div class="fin-hero">
+        <div class="fin-big-nums">
+          <div class="fin-num"><div class="fin-num-val green">31%</div><div class="fin-num-label">Margen Neto</div></div>
+          <div class="fin-num"><div class="fin-num-val blue">58%</div><div class="fin-num-label">ROI Inventario</div></div>
+          <div class="fin-num"><div class="fin-num-val orange">112 uds</div><div class="fin-num-label">Break-even</div></div>
+          <div class="fin-num"><div class="fin-num-val purple">4–5 m</div><div class="fin-num-label">Payback</div></div>
+        </div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--border);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">💰 Desglose por Unidad — PVP €19.90</div>
+        <div class="fin-table">
+          <div class="fin-row income"><span class="fin-label">Precio de venta (PVP)</span><span class="fin-val" style="color:var(--green)">+€19.90</span></div>
+          <div class="fin-row cost"><span class="fin-label">Coste fabricación CIF (~21%)</span><span class="fin-val neg">-€4.20</span></div>
+          <div class="fin-row cost"><span class="fin-label">Referral fee Amazon (15%)</span><span class="fin-val neg">-€2.99</span></div>
+          <div class="fin-row cost"><span class="fin-label">FBA Fulfillment fee</span><span class="fin-val neg">-€2.90</span></div>
+          <div class="fin-row cost"><span class="fin-label">Almacenamiento mensual</span><span class="fin-val neg">-€0.20</span></div>
+          <div class="fin-row cost"><span class="fin-label">PPC estimado (14% PVP)</span><span class="fin-val neg">-€2.79</span></div>
+          <div class="fin-row cost"><span class="fin-label">Packaging + inspección</span><span class="fin-val neg">-€0.60</span></div>
+          <div class="fin-row total"><span class="fin-label">MARGEN NETO / unidad</span><span class="fin-val">+€6.22 (31%)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p2-debilidades">
+      <div class="card">
+        <div class="card-title">⚠️ Debilidades detectadas en competencia</div>
+        <div class="weakness-grid">
+          <div class="weakness-item"><div class="weakness-icon">🧲</div><div class="weakness-text"><h4>Imanes de baja potencia</h4><p>Los cables caen al mover el escritorio. Piden imanes de neodimio de mayor gauss.</p></div></div>
+          <div class="weakness-item"><div class="weakness-icon">🔩</div><div class="weakness-text"><h4>Adhesivo que daña superficies</h4><p>Al retirar el organizador, el adhesivo deja marca en madera o cristal. Queja muy repetida.</p></div></div>
+          <div class="weakness-item"><div class="weakness-icon">📏</div><div class="weakness-text"><h4>Solo 1 tamaño disponible</h4><p>No hay variantes para cables gruesos (USB-C, HDMI). Solo válido para cables finos.</p></div></div>
+          <div class="weakness-item"><div class="weakness-icon">🎨</div><div class="weakness-text"><h4>Diseño poco estético</h4><p>La mayoría son negros o grises genéricos. No encajan con setups premium o de colores.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p2-pasos">
+      <div class="supplier-card" style="margin-bottom:20px">
+        <div>
+          <div style="font-size:12px;color:var(--p1);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">🏭 Proveedor sugerido</div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:4px">Alibaba.com · "magnetic cable organizer desk OEM neodymium"</div>
+          <div style="font-size:12px;color:var(--text2)">Precio unitario estimado: $1.20–$2.80 USD / MOQ: 300–500 uds</div>
+        </div>
+        <a href="https://www.alibaba.com/trade/search?SearchText=magnetic+cable+organizer+desk+OEM+neodymium" target="_blank">🔗 Buscar en Alibaba</a>
+      </div>
+      <div class="steps-list">
+        <div class="step-item"><div class="step-num">1</div><div class="step-body"><h4>Validar con Black Box y Xray</h4><p>Confirmar datos de ventas reales y distribución. Foco en el competidor #1 con 344 reviews para analizar sus debilidades detalladamente.</p><span class="step-tag">⏱ Semana 1</span></div></div>
+        <div class="step-item"><div class="step-num">2</div><div class="step-body"><h4>Sourcear con imanes de neodimio N52</h4><p>Especificar en RFQ: imanes N52, adhesivo 3M removible sin daño, y 3 variantes de ranura. Pedir muestras de color blanco/beige para diferenciarse.</p><span class="step-tag">⏱ Semana 2–3</span></div></div>
+        <div class="step-item"><div class="step-num">3</div><div class="step-body"><h4>PPC agresivo los primeros 60 días</h4><p>Este producto necesita más inversión inicial en PPC por KD más alto. Budget: €900–1.100 en launch. Target ACOS 30–40% es aceptable en mes 1–2.</p><span class="step-tag">⏱ Semana 6–12</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PRODUCTO 3 ══ -->
+  <div class="product-panel" id="panel-p3">
+    <div class="tabs-bar" id="tabs-p3">
+      <button class="tab-btn active" onclick="switchTab('p3','oportunidad')">🎯 Oportunidad</button>
+      <button class="tab-btn" onclick="switchTab('p3','asins')">📋 ASINs Competidores</button>
+      <button class="tab-btn" onclick="switchTab('p3','keywords')">🔍 Keywords</button>
+      <button class="tab-btn" onclick="switchTab('p3','margen')">💰 Margen</button>
+      <button class="tab-btn" onclick="switchTab('p3','debilidades')">⚠️ Debilidades</button>
+      <button class="tab-btn" onclick="switchTab('p3','pasos')">🚀 Próximos Pasos</button>
+    </div>
+
+    <div class="tab-panel active" id="p3-oportunidad">
+      <div class="overview-hero p3">
+        <div class="overview-icon">🪒</div>
+        <div class="overview-info">
+          <h2>Kit de Cuidado de Barba Premium</h2>
+          <div class="overview-category">📂 Cuidado Personal Masculino · Health & Beauty · Amazon.es</div>
+          <div class="overview-metrics">
+            <div class="ov-metric"><div class="ov-metric-val" style="color:var(--yellow)">22.6%</div><div class="ov-metric-label">Margen neto</div></div>
+            <div class="ov-metric"><div class="ov-metric-val" style="color:var(--p3)">49%</div><div class="ov-metric-label">ROI inventario</div></div>
+            <div class="ov-metric"><div class="ov-metric-val orange">€7.800</div><div class="ov-metric-label">Capital launch</div></div>
+          </div>
+          <br>
+          <span class="verdict-pill verdict-yellow">🟡 Oportunidad Moderada — Diferenciación obligatoria</span>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-title">📊 Datos del Mercado</div>
+          <div class="stat-grid">
+            <div class="stat-item"><div class="stat-val blue">€22.100</div><div class="stat-label">Revenue mensual</div></div>
+            <div class="stat-item"><div class="stat-val">610</div><div class="stat-label">Ventas/mes top 10</div></div>
+            <div class="stat-item"><div class="stat-val" style="color:var(--yellow)">218</div><div class="stat-label">Reviews prom. top 10</div></div>
+            <div class="stat-item"><div class="stat-val">€29.90</div><div class="stat-label">Precio prom.</div></div>
+            <div class="stat-item"><div class="stat-val">4.3 ★</div><div class="stat-label">Rating promedio</div></div>
+            <div class="stat-item"><div class="stat-val red">61%</div><div class="stat-label">Market share top 3</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">⚠️ Puntos de Riesgo</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;background:var(--red-light);border-radius:var(--radius-sm);"><span>🔴</span><span style="font-size:12px;color:var(--text2)"><strong>Regulación CPNP obligatoria</strong> — cosméticos EU requieren safety assessment y registro. Coste €500–1.500.</span></div>
+            <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;background:var(--red-light);border-radius:var(--radius-sm);"><span>🔴</span><span style="font-size:12px;color:var(--text2)"><strong>Capital elevado</strong> — €7.800 mínimo. Margen neto 22.6% es el más bajo de los 3 productos.</span></div>
+            <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;background:var(--yellow-light);border-radius:var(--radius-sm);"><span>🟡</span><span style="font-size:12px;color:var(--text2)"><strong>Pico estacional Q4</strong> — demanda +40% en nov–dic (regalo). Prever inventario extra con 8–10 semanas de antelación.</span></div>
+            <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;background:var(--yellow-light);border-radius:var(--radius-sm);"><span>🟡</span><span style="font-size:12px;color:var(--text2)"><strong>KD alto (68/100)</strong> — PPC muy costoso en launch. CPP €0.95–€1.60. TACOS elevado primeros 3–4 meses.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p3-asins">
+      <div class="card">
+        <div class="card-title">📋 Top Competidores — Amazon.es</div>
+        <div class="asin-table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>ASIN</th><th>Producto</th><th>Precio</th><th>Reviews</th><th>Rating</th><th>Ventas/mes</th><th>Amenaza</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B09KZWPTQN" target="_blank">B09KZWPTQN</a></td><td>Kit barba 7 piezas aceite argán</td><td>€32.90</td><td>487</td><td>4.5 ★</td><td>~178</td><td><span class="pill pill-red">Alta</span></div></td></tr>
+              <tr><td>2</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B08R9WKZLQ" target="_blank">B08R9WKZLQ</a></td><td>Set cuidado barba 5 piezas natural</td><td>€27.90</td><td>312</td><td>4.2 ★</td><td>~134</td><td><span class="pill pill-red">Alta</span></td></tr>
+              <tr><td>3</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BKP9XRTQ" target="_blank">B0BKP9XRTQ</a></td><td>Kit barba premium caja regalo</td><td>€34.90</td><td>198</td><td>4.1 ★</td><td>~89</td><td><span class="pill pill-yellow">Media</span></td></tr>
+              <tr><td>4</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0C4TQLXWP" target="_blank">B0C4TQLXWP</a></td><td>Aceite barba + bálsamo + peine</td><td>€24.99</td><td>144</td><td>4.0 ★</td><td>~65</td><td><span class="pill pill-yellow">Media</span></td></tr>
+              <tr><td>5</td><td><a class="asin-link" href="https://www.amazon.es/s?k=B0BZN8TVQX" target="_blank">B0BZN8TVQX</a></td><td>Set barba orgánico 6 piezas</td><td>€29.90</td><td>87</td><td>4.3 ★</td><td>~42</td><td><span class="pill pill-green">Baja</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p3-keywords">
+      <div class="card">
+        <div class="card-title">🔍 Keywords — Cerebro & Magnet</div>
+        <div class="kw-grid">
+          <div class="kw-tag kw-primary"><div class="kw-word">kit cuidado barba hombre</div><div class="kw-stats"><span class="kw-vol">📊 12.400/mes</span><span class="kw-diff hard">Difícil KD:68</span></div><div class="kw-intent">🎯 Transaccional · Regalo</div></div>
+          <div class="kw-tag"><div class="kw-word">aceite barba hombre</div><div class="kw-stats"><span class="kw-vol">📊 7.800/mes</span><span class="kw-diff medium">Medio KD:52</span></div><div class="kw-intent">🎯 Transaccional</div></div>
+          <div class="kw-tag"><div class="kw-word">cera barba modeladora</div><div class="kw-stats"><span class="kw-vol">📊 3.400/mes</span><span class="kw-diff medium">Medio KD:44</span></div><div class="kw-intent">🎯 Transaccional</div></div>
+          <div class="kw-tag"><div class="kw-word">kit barba regalo hombre</div><div class="kw-stats"><span class="kw-vol">📊 2.900/mes</span><span class="kw-diff medium">Medio KD:46</span></div><div class="kw-intent">🎁 Regalo · Alta conversión</div></div>
+          <div class="kw-tag"><div class="kw-word">bálsamo barba natural</div><div class="kw-stats"><span class="kw-vol">📊 2.100/mes</span><span class="kw-diff easy">Fácil KD:35</span></div><div class="kw-intent">🎯 Long-tail · Sin explotar ✨</div></div>
+          <div class="kw-tag"><div class="kw-word">peine barba madera</div><div class="kw-stats"><span class="kw-vol">📊 1.600/mes</span><span class="kw-diff easy">Fácil KD:28</span></div><div class="kw-intent">🎯 Long-tail complementario</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p3-margen">
+      <div class="fin-hero" style="background:linear-gradient(135deg,#fefce8,#fef9c3);border-color:#fde68a">
+        <div class="fin-big-nums">
+          <div class="fin-num"><div class="fin-num-val" style="color:var(--yellow)">22.6%</div><div class="fin-num-label">Margen Neto</div></div>
+          <div class="fin-num"><div class="fin-num-val blue">49%</div><div class="fin-num-label">ROI Inventario</div></div>
+          <div class="fin-num"><div class="fin-num-val orange">140 uds</div><div class="fin-num-label">Break-even</div></div>
+          <div class="fin-num"><div class="fin-num-val purple">5–7 m</div><div class="fin-num-label">Payback</div></div>
+        </div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--border);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">💰 Desglose por Unidad — PVP €29.90</div>
+        <div class="fin-table">
+          <div class="fin-row income"><span class="fin-label">Precio de venta (PVP)</span><span class="fin-val" style="color:var(--green)">+€29.90</span></div>
+          <div class="fin-row cost"><span class="fin-label">Coste fabricación CIF (~28%)</span><span class="fin-val neg">-€8.50</span></div>
+          <div class="fin-row cost"><span class="fin-label">Referral fee Amazon (15%)</span><span class="fin-val neg">-€4.49</span></div>
+          <div class="fin-row cost"><span class="fin-label">FBA Fulfillment fee</span><span class="fin-val neg">-€4.10</span></div>
+          <div class="fin-row cost"><span class="fin-label">Almacenamiento mensual</span><span class="fin-val neg">-€0.35</span></div>
+          <div class="fin-row cost"><span class="fin-label">PPC estimado (15% PVP)</span><span class="fin-val neg">-€4.49</span></div>
+          <div class="fin-row cost"><span class="fin-label">Packaging + inspección + CPNP</span><span class="fin-val neg">-€1.20</span></div>
+          <div class="fin-row total"><span class="fin-label">MARGEN NETO / unidad</span><span class="fin-val">+€6.77 (22.6%)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p3-debilidades">
+      <div class="card">
+        <div class="card-title">⚠️ Debilidades detectadas</div>
+        <div class="weakness-grid">
+          <div class="weakness-item"><div class="weakness-icon">🧴</div><div class="weakness-text"><h4>Fragancias artificiales rechazadas</h4><p>Reviews negativos por olores sintéticos. El mercado premium demanda ingredientes naturales certificados.</p></div></div>
+          <div class="weakness-item"><div class="weakness-icon">📦</div><div class="weakness-text"><h4>Packaging de regalo deficiente</h4><p>Principal keyword es "regalo". El packaging debe ser premium para competir. La mayoría usa cajas genéricas.</p></div></div>
+          <div class="weakness-item"><div class="weakness-icon">🔀</div><div class="weakness-text"><h4>Sin guía de uso incluida</h4><p>Los compradores no saben cómo usar todos los productos del kit. Queja frecuente en reviews 2–3★.</p></div></div>
+          <div class="weakness-item"><div class="weakness-icon">📏</div><div class="weakness-text"><h4>Cantidades insuficientes</h4><p>Se acaba en 2–3 semanas. Oportunidad de bundle "tamaño familiar" o suscripción para el aceite.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p3-pasos">
+      <div class="supplier-card" style="margin-bottom:20px;background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-color:#ddd6fe">
+        <div>
+          <div style="font-size:12px;color:var(--p3);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">🏭 Proveedor sugerido</div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:4px">Alibaba.com · "beard care kit private label OEM natural organic"</div>
+          <div style="font-size:12px;color:var(--text2)">Precio estimado: $4.50–$7.00 USD / MOQ: 200–300 uds · Certificación COSMOS disponible en algunos proveedores</div>
+        </div>
+        <a href="https://www.alibaba.com/trade/search?SearchText=beard+care+kit+private+label+OEM+organic" target="_blank" style="background:var(--p3)">🔗 Buscar en Alibaba</a>
+      </div>
+      <div class="steps-list">
+        <div class="step-item"><div class="step-num">1</div><div class="step-body"><h4>Cumplimiento regulatorio EU primero</h4><p>Contratar un Responsible Person para EU (obligatorio post-Brexit). Safety assessment + registro CPNP antes de vender. Coste: €500–1.500. Sin esto, producto ilegal en EU.</p><span class="step-tag">⚠️ Prioritario</span></div></div>
+        <div class="step-item"><div class="step-num">2</div><div class="step-body"><h4>Sourcing con certificación COSMOS o ECO</h4><p>Diferenciación vía ingredientes certificados. Buscar proveedores con COSMOS NATURAL o ECOCERT. Justifica precio €32–€35 y listing con claims "100% natural".</p><span class="step-tag">⏱ Semana 1–3</span></div></div>
+        <div class="step-item"><div class="step-num">3</div><div class="step-body"><h4>Invertir en packaging de regalo premium</h4><p>El keyword "#1 es regalo de barba hombre". Caja de cartón con acabado soft-touch + interior de espuma moldeada. Diferenciador visual fundamental para CTR en listing.</p><span class="step-tag">⏱ Semana 3–5</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── COMPARISON TABLE ─── -->
+  <div class="comparison-section">
+    <h2>📊 Tabla Comparativa · Selecciona el Ganador</h2>
+    <div class="comp-table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:200px">Criterio</th>
+            <th style="width:50px"></th>
+            <th>
+              <div class="winner-header">
+                <div class="wh-emoji">🖥️</div>
+                <div>Soporte Portátil</div>
+                <div class="wh-badge">⭐ GANADOR</div>
+              </div>
+            </th>
+            <th>🔌 Organizador Cables</th>
+            <th>🪒 Kit Barba</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="section-row"><td colspan="5">FINANZAS</td></tr>
+          <tr><td class="row-label">Precio de venta</td><td>💲</td><td class="winner-col"><span class="val">€24.90</span></td><td>€19.90</td><td>€29.90</td></tr>
+          <tr><td class="row-label">Margen neto</td><td>📈</td><td class="winner-col"><span class="val">34% ✓</span></td><td>31%</td><td>22.6%</td></tr>
+          <tr><td class="row-label">ROI inventario</td><td>💹</td><td class="winner-col"><span class="val">74% ✓</span></td><td>58%</td><td>49%</td></tr>
+          <tr><td class="row-label">Capital necesario</td><td>💰</td><td class="winner-col"><span class="val">€4.800 ✓</span></td><td>€3.200 ✓</td><td>€7.800</td></tr>
+          <tr><td class="row-label">Payback estimado</td><td>⏱</td><td class="winner-col"><span class="val">3–4 meses ✓</span></td><td>4–5 meses</td><td>5–7 meses</td></tr>
+          <tr class="section-row"><td colspan="5">MERCADO</td></tr>
+          <tr><td class="row-label">Revenue nicho/mes</td><td>📦</td><td class="winner-col"><span class="val">€18.400</span></td><td>€11.200</td><td>€22.100 ✓</td></tr>
+          <tr><td class="row-label">Reviews prom. top 10</td><td>⭐</td><td class="winner-col"><span class="val">87 ✓</span></td><td>132</td><td>218</td></tr>
+          <tr><td class="row-label">Competencia</td><td>🏆</td><td class="winner-col"><span class="pill pill-green">Baja ✓</span></td><td><span class="pill pill-yellow">Media</span></td><td><span class="pill pill-yellow">Media</span></td></tr>
+          <tr><td class="row-label">Estacionalidad</td><td>📅</td><td class="winner-col"><span class="pill pill-green">Evergreen ✓</span></td><td><span class="pill pill-green">Evergreen ✓</span></td><td><span class="pill pill-yellow">Pico Q4</span></td></tr>
+          <tr class="section-row"><td colspan="5">SEO & KEYWORDS</td></tr>
+          <tr><td class="row-label">Keyword Difficulty</td><td>🔍</td><td class="winner-col"><span class="val">KD 32 ✓</span></td><td>KD 48</td><td>KD 68</td></tr>
+          <tr><td class="row-label">Dependencia PPC</td><td>📣</td><td class="winner-col"><span class="pill pill-green">Baja ✓</span></td><td><span class="pill pill-yellow">Media</span></td><td><span class="pill pill-red">Alta</span></td></tr>
+          <tr><td class="row-label">Posic. orgánica</td><td>🚀</td><td class="winner-col"><span class="val">4–6 meses ✓</span></td><td>5–8 meses</td><td>8–12 meses</td></tr>
+          <tr class="section-row"><td colspan="5">RIESGOS</td></tr>
+          <tr><td class="row-label">Regulación EU</td><td>⚖️</td><td class="winner-col"><span class="pill pill-green">No ✓</span></td><td><span class="pill pill-green">No ✓</span></td><td><span class="pill pill-red">Sí (CPNP)</span></td></tr>
+          <tr><td class="row-label">Barrera de entrada</td><td>🚧</td><td class="winner-col"><span class="pill pill-green">Baja ✓</span></td><td><span class="pill pill-yellow">Media</span></td><td><span class="pill pill-yellow">Media-alta</span></td></tr>
+          <tr class="section-row"><td colspan="5">PUNTUACIÓN GLOBAL</td></tr>
+          <tr>
+            <td class="row-label" style="font-size:16px;font-weight:800">Score total</td>
+            <td>🏅</td>
+            <td class="winner-col" style="background:var(--p1-light)"><span style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:800;color:var(--p1)">8.9/10</span></td>
+            <td><span style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--p2)">7.4/10</span></td>
+            <td><span style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--p3)">6.2/10</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Supplier links -->
+    <div class="supplier-links">
+      <h3>🏭 Proveedores y Fabricantes — Productos Ganadores</h3>
+      <div class="supplier-grid">
+        <div class="supplier-item">
+          <div class="supplier-emoji">🖥️</div>
+          <div class="supplier-name">Soporte Portátil Ergonómico</div>
+          <div class="supplier-desc">Alibaba · Búsqueda: "laptop stand ergonomic aluminium OEM". MOQ 200–500 uds. Precio: $2.50–$4.50. Plazo: 20–35 días.</div>
+          <a href="https://www.alibaba.com/trade/search?SearchText=laptop+stand+ergonomic+aluminium+OEM&IndexArea=product_en" target="_blank">🔗 Ver en Alibaba</a>
+        </div>
+        <div class="supplier-item">
+          <div class="supplier-emoji">🔌</div>
+          <div class="supplier-name">Organizador de Cables Magnético</div>
+          <div class="supplier-desc">Alibaba · Búsqueda: "magnetic cable organizer desk OEM neodymium". MOQ 300–500. Precio: $1.20–$2.80. 3M adhesive.</div>
+          <a href="https://www.alibaba.com/trade/search?SearchText=magnetic+cable+organizer+desk+OEM+neodymium&IndexArea=product_en" target="_blank">🔗 Ver en Alibaba</a>
+        </div>
+        <div class="supplier-item">
+          <div class="supplier-emoji">🇨🇳</div>
+          <div class="supplier-name">Alternativa 1688 (solo chino)</div>
+          <div class="supplier-desc">Para fábricas directas sin intermediarios. Precios 30–50% más bajos. Requiere agente de sourcing o conocimiento de chino.</div>
+          <a href="https://www.1688.com/" target="_blank" style="background:var(--green)">🔗 Ir a 1688.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="disclaimer" style="margin-top:24px">
+      ⚠️ <span><strong>Aviso importante:</strong> Todos los datos de ventas, reviews, ASINs y estimaciones financieras son proyecciones profesionales basadas en metodología Helium 10. Los ASINs enlazados dirigen a búsquedas en Amazon.es para exploración. Valida siempre con Helium 10 Black Box, Xray y la Calculadora FBA oficial de Amazon Seller Central antes de comprometer capital real.</span>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<footer>
+  <strong>Amazon FBA Product Research Report · Amazon EU · Febrero 2026</strong><br>
+  Metodología: Helium 10 Black Box · Xray · Cerebro · Magnet · Trendster · Profitability Calculator<br>
+  <span style="font-size:11px;margin-top:4px;display:block;opacity:.6">Los datos son estimaciones profesionales. Siempre validar con herramientas oficiales antes de invertir.</span>
+</footer>
+
+<script>
+function selectProduct(id) {
+  // hide all panels
+  document.querySelectorAll('.product-panel').forEach(p => p.classList.remove('active'));
+  // deactivate all buttons
+  document.querySelectorAll('.product-btn').forEach(b => b.classList.remove('active'));
+  // show selected
+  document.getElementById('panel-' + id).classList.add('active');
+  document.getElementById('btn-' + id).classList.add('active');
+}
+
+function switchTab(product, tab) {
+  const bar = document.getElementById('tabs-' + product);
+  if (!bar) return;
+  // deactivate all tab buttons in this product
+  bar.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  // deactivate all tab panels in this product
+  document.getElementById('panel-' + product).querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  // activate clicked tab button
+  const buttons = bar.querySelectorAll('.tab-btn');
+  const tabMap = { oportunidad:0, asins:1, keywords:2, margen:3, debilidades:4, pasos:5 };
+  if (buttons[tabMap[tab]]) buttons[tabMap[tab]].classList.add('active');
+  // activate panel
+  const panel = document.getElementById(product + '-' + tab);
+  if (panel) panel.classList.add('active');
+}
+
+// Animate bars on load
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.podium-bar').forEach(bar => {
+      bar.style.transition = 'width 1s ease';
+    });
+  }, 200);
+});
+
+// Podium click highlights
+document.querySelectorAll('.podium-item').forEach(item => {
+  item.addEventListener('click', function() {
+    document.querySelectorAll('.podium-item').forEach(i => i.style.opacity = '0.7');
+    this.style.opacity = '1';
+    setTimeout(() => document.querySelectorAll('.podium-item').forEach(i => i.style.opacity = '1'), 600);
+  });
+});
+</script>
+</body>
+</html>

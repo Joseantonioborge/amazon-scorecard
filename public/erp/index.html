@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon FBA ERP</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --surface2: #1c1c1c;
+  --surface3: #242424;
+  --border: #2a2a2a;
+  --border2: #333333;
+  --text: #f0f0f0;
+  --text2: #999999;
+  --text3: #666666;
+  --orange: #FF9900;
+  --orange-dim: rgba(255,153,0,0.15);
+  --orange-dark: #cc7a00;
+  --green: #00c853;
+  --green-dim: rgba(0,200,83,0.12);
+  --red: #f44336;
+  --red-dim: rgba(244,67,54,0.12);
+  --yellow: #ffb300;
+  --yellow-dim: rgba(255,179,0,0.12);
+  --blue: #2979ff;
+  --blue-dim: rgba(41,121,255,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
+
+/* ── SCROLLBAR ─────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+/* ── AUTH VIEWS ────────────────────────────── */
+.auth-screen {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh; padding: 20px;
+  background: radial-gradient(ellipse at 20% 50%, rgba(255,153,0,0.06) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(255,153,0,0.04) 0%, transparent 50%);
+}
+.auth-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; padding: 48px; width: 100%; max-width: 440px;
+  box-shadow: var(--shadow);
+}
+.auth-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+.auth-logo-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: var(--orange); display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 800; color: #000;
+}
+.auth-logo h1 { font-size: 22px; font-weight: 700; }
+.auth-logo p { font-size: 12px; color: var(--text2); margin-top: 1px; }
+.auth-subtitle { font-size: 13px; color: var(--text2); margin-bottom: 28px; line-height: 1.6; }
+
+/* ── FORMS ─────────────────────────────────── */
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--text2); margin-bottom: 6px; letter-spacing: 0.5px; text-transform: uppercase; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: 11px 14px; background: var(--surface2);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text); font-size: 14px; font-family: inherit;
+  transition: border-color .2s;
+  outline: none;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--orange); }
+.form-group textarea { resize: vertical; min-height: 80px; }
+.form-group select { appearance: none; cursor: pointer; }
+
+/* ── BUTTONS ────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 10px 20px; border-radius: var(--radius-sm);
+  font-size: 14px; font-weight: 600; cursor: pointer; border: none;
+  transition: all .2s; font-family: inherit; white-space: nowrap;
+}
+.btn-primary { background: var(--orange); color: #000; }
+.btn-primary:hover { background: #ffaa00; transform: translateY(-1px); }
+.btn-secondary { background: var(--surface3); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { border-color: var(--border2); background: var(--surface2); }
+.btn-danger { background: var(--red-dim); color: var(--red); border: 1px solid rgba(244,67,54,0.3); }
+.btn-danger:hover { background: rgba(244,67,54,0.2); }
+.btn-success { background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,200,83,0.3); }
+.btn-full { width: 100%; padding: 13px; font-size: 15px; }
+.btn-sm { padding: 6px 12px; font-size: 12px; }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; }
+
+/* ── APP LAYOUT ─────────────────────────────── */
+#app { display: flex; height: 100vh; overflow: hidden; }
+
+/* ── SIDEBAR ────────────────────────────────── */
+.sidebar {
+  width: 240px; min-width: 240px; background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+}
+.sidebar-header {
+  padding: 20px 16px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.sidebar-logo {
+  width: 36px; height: 36px; border-radius: 9px;
+  background: var(--orange); display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 15px; color: #000; flex-shrink: 0;
+}
+.sidebar-title { font-size: 15px; font-weight: 700; }
+.sidebar-subtitle { font-size: 11px; color: var(--text2); }
+
+.sidebar-nav { flex: 1; padding: 8px; }
+.nav-section-label {
+  font-size: 10px; font-weight: 700; color: var(--text3);
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 12px 10px 6px;
+}
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 10px; border-radius: var(--radius-sm);
+  cursor: pointer; color: var(--text2); font-size: 13px; font-weight: 500;
+  transition: all .15s; margin-bottom: 1px;
+}
+.nav-item:hover { background: var(--surface2); color: var(--text); }
+.nav-item.active { background: var(--orange-dim); color: var(--orange); }
+.nav-icon { font-size: 16px; width: 20px; text-align: center; }
+
+.sidebar-user {
+  padding: 12px 16px; border-top: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.user-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--orange-dim); border: 1px solid var(--orange);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: var(--orange); flex-shrink: 0;
+}
+.user-info { flex: 1; min-width: 0; }
+.user-name { font-size: 13px; font-weight: 600; truncate; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.user-role { font-size: 11px; color: var(--text2); }
+
+/* ── MAIN CONTENT ───────────────────────────── */
+.main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.topbar {
+  padding: 14px 24px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--surface); min-height: 58px;
+}
+.topbar-title { font-size: 18px; font-weight: 700; }
+.topbar-actions { display: flex; gap: 8px; align-items: center; }
+
+.page-content { flex: 1; overflow-y: auto; padding: 24px; }
+
+/* ── CARDS ──────────────────────────────────── */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px;
+}
+.card-title { font-size: 13px; font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+
+/* ── STATS GRID ─────────────────────────────── */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.stat-label { font-size: 12px; color: var(--text2); font-weight: 500; margin-bottom: 8px; }
+.stat-value { font-size: 28px; font-weight: 800; line-height: 1; }
+.stat-sub { font-size: 12px; color: var(--text2); margin-top: 4px; }
+.stat-orange .stat-value { color: var(--orange); }
+.stat-green .stat-value { color: var(--green); }
+.stat-blue .stat-value { color: var(--blue); }
+
+/* ── TABLE ──────────────────────────────────── */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead th {
+  padding: 10px 14px; text-align: left;
+  font-size: 11px; font-weight: 700; color: var(--text3);
+  letter-spacing: 0.5px; text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+tbody tr { border-bottom: 1px solid var(--border); transition: background .1s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--surface2); }
+tbody td { padding: 12px 14px; }
+
+/* ── BADGE ──────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 9px; border-radius: 100px;
+  font-size: 11px; font-weight: 600;
+}
+.badge-orange { background: var(--orange-dim); color: var(--orange); }
+.badge-green  { background: var(--green-dim); color: var(--green); }
+.badge-red    { background: var(--red-dim); color: var(--red); }
+.badge-blue   { background: var(--blue-dim); color: var(--blue); }
+.badge-gray   { background: var(--surface3); color: var(--text2); }
+.badge-yellow { background: var(--yellow-dim); color: var(--yellow); }
+
+/* ── PHASE TRACKER ──────────────────────────── */
+.phase-stepper {
+  display: flex; align-items: center; gap: 0;
+  overflow-x: auto; padding-bottom: 4px; margin-bottom: 24px;
+}
+.phase-step {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 6px; min-width: 88px; cursor: pointer;
+  padding: 0 4px;
+}
+.phase-dot {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; border: 2px solid var(--border);
+  background: var(--surface2); color: var(--text2); position: relative; z-index: 1;
+  transition: all .2s;
+}
+.phase-step.completed .phase-dot { background: var(--green); border-color: var(--green); color: #000; }
+.phase-step.active .phase-dot    { background: var(--orange); border-color: var(--orange); color: #000; }
+.phase-step.blocked .phase-dot   { background: var(--red-dim); border-color: var(--red); color: var(--red); }
+.phase-label { font-size: 11px; font-weight: 500; color: var(--text2); text-align: center; white-space: nowrap; }
+.phase-step.active .phase-label  { color: var(--orange); font-weight: 600; }
+.phase-step.completed .phase-label { color: var(--green); }
+.phase-connector { flex: 1; height: 2px; background: var(--border); min-width: 12px; }
+.phase-connector.done { background: var(--green); }
+
+/* ── CHECKLIST ──────────────────────────────── */
+.checklist { display: flex; flex-direction: column; gap: 6px; }
+.check-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: var(--radius-sm);
+  background: var(--surface2); border: 1px solid var(--border);
+  cursor: pointer; transition: all .15s;
+}
+.check-item:hover { border-color: var(--border2); }
+.check-item.done { background: var(--green-dim); border-color: rgba(0,200,83,0.2); }
+.check-box {
+  width: 20px; height: 20px; border-radius: 6px; flex-shrink: 0;
+  border: 2px solid var(--border2); display: flex; align-items: center; justify-content: center;
+  font-size: 12px; transition: all .15s;
+}
+.check-item.done .check-box { background: var(--green); border-color: var(--green); color: #000; }
+.check-text { font-size: 13px; flex: 1; }
+.check-item.done .check-text { color: var(--text2); text-decoration: line-through; }
+
+/* ── PROGRESS BAR ───────────────────────────── */
+.progress-bar { height: 6px; background: var(--surface3); border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 3px; background: var(--orange); transition: width .4s ease; }
+.progress-fill.green { background: var(--green); }
+
+/* ── MODAL ──────────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000; padding: 20px; backdrop-filter: blur(4px);
+}
+.modal {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px; width: 100%; max-width: 480px;
+  box-shadow: var(--shadow); max-height: 90vh; overflow-y: auto;
+}
+.modal h3 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+.modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 24px; }
+
+/* ── TOAST ──────────────────────────────────── */
+#toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; gap: 8px; }
+.toast {
+  padding: 12px 18px; border-radius: 10px; font-size: 13px; font-weight: 500;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4); display: flex; align-items: center; gap: 8px;
+  animation: slideIn .25s ease;
+}
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+.toast-success { background: #1a3a1a; border: 1px solid rgba(0,200,83,0.3); color: var(--green); }
+.toast-error   { background: #3a1a1a; border: 1px solid rgba(244,67,54,0.3); color: var(--red); }
+.toast-info    { background: var(--surface2); border: 1px solid var(--border); color: var(--text); }
+
+/* ── GRID HELPERS ───────────────────────────── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.flex-row { display: flex; align-items: center; gap: 12px; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.gap-8 { gap: 8px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.text-sm { font-size: 12px; }
+.text-muted { color: var(--text2); }
+.divider { height: 1px; background: var(--border); margin: 20px 0; }
+
+/* ── PRODUCT CARD ───────────────────────────── */
+.product-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px; cursor: pointer;
+  transition: all .2s;
+}
+.product-card:hover { border-color: var(--orange); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+.product-name { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.product-meta { font-size: 12px; color: var(--text2); }
+
+/* ── PHASE PANEL ────────────────────────────── */
+.phase-panel { display: none; }
+.phase-panel.active { display: block; }
+.phase-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.phase-title { font-size: 16px; font-weight: 700; }
+.phase-status-select { padding: 6px 10px; border-radius: var(--radius-sm); background: var(--surface2); border: 1px solid var(--border); color: var(--text); font-size: 12px; cursor: pointer; outline: none; }
+
+/* ── REPORTS ────────────────────────────────── */
+.rec-item {
+  display: flex; gap: 12px; padding: 14px;
+  border-radius: var(--radius-sm); margin-bottom: 10px;
+}
+.rec-success { background: var(--green-dim); border: 1px solid rgba(0,200,83,0.2); }
+.rec-warning { background: var(--yellow-dim); border: 1px solid rgba(255,179,0,0.2); }
+.rec-error   { background: var(--red-dim);    border: 1px solid rgba(244,67,54,0.2); }
+.rec-info    { background: var(--blue-dim);   border: 1px solid rgba(41,121,255,0.2); }
+.rec-icon { font-size: 20px; }
+.rec-content h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.rec-content p { font-size: 12px; color: var(--text2); line-height: 1.5; }
+
+/* ── BACK LINK ──────────────────────────────── */
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text2); font-size: 13px; cursor: pointer; margin-bottom: 16px; }
+.back-link:hover { color: var(--text); }
+
+/* ── REPORT PRINT ───────────────────────────── */
+@media print {
+  .sidebar, .topbar, .btn, .nav-item, #toast-container { display: none !important; }
+  .page-content { padding: 0; }
+  .main-content { overflow: visible; }
+}
+
+/* ── RESPONSIVE ─────────────────────────────── */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .phase-stepper { flex-wrap: nowrap; }
+}
+
+/* ── COST SUMMARY BAR ───────────────────────── */
+.cost-bar-wrap { margin-bottom: 20px; }
+.cost-bar-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; }
+.cost-bar-label .name { color: var(--text2); }
+.cost-bar-label .amount { font-weight: 600; }
+
+/* ── EMPTY STATE ────────────────────────────── */
+.empty-state { text-align: center; padding: 60px 20px; color: var(--text2); }
+.empty-icon { font-size: 48px; margin-bottom: 16px; }
+.empty-title { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.empty-desc { font-size: 14px; margin-bottom: 24px; }
+
+/* ── LOADING ────────────────────────────────── */
+.spinner { width: 20px; height: 20px; border: 2px solid var(--border); border-top-color: var(--orange); border-radius: 50%; animation: spin .6s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-overlay { display: flex; align-items: center; justify-content: center; padding: 60px; }
+</style>
+</head>
+<body>
+
+<!-- ── LOGIN ──────────────────────────────────────────────────── -->
+<div id="view-login" class="auth-screen">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div class="auth-logo-icon">A</div>
+      <div>
+        <h1>Amazon FBA ERP</h1>
+        <p>Sistema de gestión de lanzamientos</p>
+      </div>
+    </div>
+    <p class="auth-subtitle">Inicia sesión con tus credenciales asignadas por el administrador.</p>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="login-email" placeholder="tu@email.com" autocomplete="email">
+    </div>
+    <div class="form-group">
+      <label>Contraseña</label>
+      <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button class="btn btn-primary btn-full" onclick="doLogin()">Entrar</button>
+    <p class="text-sm text-muted" style="text-align:center; margin-top:16px">
+      ¿Primera vez? Contacta con el administrador.
+    </p>
+  </div>
+</div>
+
+<!-- ── SETUP (primer uso) ──────────────────────────────────────── -->
+<div id="view-setup" class="auth-screen" style="display:none">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div class="auth-logo-icon">A</div>
+      <div>
+        <h1>Configuración inicial</h1>
+        <p>Crea la cuenta administrador</p>
+      </div>
+    </div>
+    <p class="auth-subtitle">No hay usuarios configurados. Crea el primer administrador del sistema.</p>
+    <div class="form-group">
+      <label>Nombre completo</label>
+      <input type="text" id="setup-name" placeholder="Tu nombre">
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="setup-email" placeholder="admin@empresa.com">
+    </div>
+    <div class="form-group">
+      <label>Contraseña</label>
+      <input type="password" id="setup-password" placeholder="Mínimo 8 caracteres">
+    </div>
+    <button class="btn btn-primary btn-full" onclick="doSetup()">Crear administrador</button>
+  </div>
+</div>
+
+<!-- ── APP ────────────────────────────────────────────────────── -->
+<div id="app" style="display:none">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">A</div>
+      <div>
+        <div class="sidebar-title">FBA ERP</div>
+        <div class="sidebar-subtitle">Amazon FBA Manager</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <div class="nav-item active" onclick="navigate('dashboard')" id="nav-dashboard">
+        <span class="nav-icon">📊</span> Dashboard
+      </div>
+      <div class="nav-item" onclick="navigate('products')" id="nav-products">
+        <span class="nav-icon">📦</span> Productos
+      </div>
+      <div class="nav-item" onclick="navigate('costs')" id="nav-costs">
+        <span class="nav-icon">💶</span> Costes
+      </div>
+      <div class="nav-item" onclick="navigate('reports')" id="nav-reports">
+        <span class="nav-icon">📈</span> Informes
+      </div>
+      <div class="nav-section-label">Sistema</div>
+      <div class="nav-item admin-only" onclick="navigate('admin')" id="nav-admin">
+        <span class="nav-icon">👥</span> Usuarios
+      </div>
+      <div class="nav-item" onclick="navigate('research')">
+        <span class="nav-icon">🔬</span> Estudios FBA
+      </div>
+    </nav>
+
+    <div class="sidebar-user">
+      <div class="user-avatar" id="user-avatar">–</div>
+      <div class="user-info">
+        <div class="user-name" id="user-name-display">–</div>
+        <div class="user-role" id="user-role-display">–</div>
+      </div>
+      <button class="btn btn-sm btn-secondary" onclick="doLogout()" title="Cerrar sesión" style="padding:5px 8px;">⇠</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main-content">
+    <div class="topbar">
+      <div class="topbar-title" id="page-title">Dashboard</div>
+      <div class="topbar-actions" id="topbar-actions"></div>
+    </div>
+    <div class="page-content" id="page-content">
+      <!-- content injected here -->
+    </div>
+  </div>
+</div>
+
+<!-- ── MODALS ──────────────────────────────────────────────────── -->
+<div id="modal-overlay" class="modal-overlay" style="display:none" onclick="closeModal(event)">
+  <div class="modal" id="modal-box"><!-- content --></div>
+</div>
+
+<!-- ── TOAST ───────────────────────────────────────────────────── -->
+<div id="toast-container"></div>
+
+<script>
+/* ════════════════════════════════════════════════
+   CONFIG
+════════════════════════════════════════════════ */
+const API = ''; // URL base de la API — vacío = misma origin (Vercel)
+let TOKEN = localStorage.getItem('fba_token') || '';
+let CURRENT_USER = null;
+let CURRENT_VIEW = '';
+let CURRENT_PRODUCT_ID = null;
+let CURRENT_PHASE = 'investigacion';
+
+const PHASES = ['investigacion','validacion','sourcing','logistica','listing','lanzamiento','analisis'];
+const PHASE_LABELS = {
+  investigacion: 'Investigación', validacion: 'Validación', sourcing: 'Sourcing',
+  logistica: 'Logística', listing: 'Listing', lanzamiento: 'Lanzamiento', analisis: 'Análisis'
+};
+const STATUS_LABELS = {
+  pipeline: 'Pipeline', active: 'Activo', paused: 'Pausado',
+  launched: 'Lanzado', discontinued: 'Descontinuado'
+};
+const PHASE_STATUS = {
+  pending: 'Pendiente', in_progress: 'En curso', completed: 'Completada', blocked: 'Bloqueada'
+};
+
+/* ════════════════════════════════════════════════
+   UTILS
+════════════════════════════════════════════════ */
+function toast(msg, type='info') {
+  const t = document.getElementById('toast-container');
+  const d = document.createElement('div');
+  d.className = `toast toast-${type}`;
+  d.innerHTML = (type==='success'?'✓ ':type==='error'?'✕ ':'') + msg;
+  t.appendChild(d);
+  setTimeout(() => d.remove(), 3500);
+}
+
+function fmt(n) { return new Intl.NumberFormat('es-ES', {minimumFractionDigits:2,maximumFractionDigits:2}).format(n||0); }
+function fmtDate(d) { return d ? new Date(d).toLocaleDateString('es-ES') : '–'; }
+
+function showModal(html) {
+  document.getElementById('modal-box').innerHTML = html;
+  document.getElementById('modal-overlay').style.display = 'flex';
+}
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('modal-overlay'))
+    document.getElementById('modal-overlay').style.display = 'none';
+}
+function hideModal() { document.getElementById('modal-overlay').style.display = 'none'; }
+
+function statusBadge(status) {
+  const map = {
+    pipeline:'badge-yellow', active:'badge-blue', paused:'badge-gray',
+    launched:'badge-green', discontinued:'badge-gray'
+  };
+  return `<span class="badge ${map[status]||'badge-gray'}">${STATUS_LABELS[status]||status}</span>`;
+}
+function phaseStatusBadge(status) {
+  const map = { pending:'badge-gray', in_progress:'badge-orange', completed:'badge-green', blocked:'badge-red' };
+  return `<span class="badge ${map[status]||'badge-gray'}">${PHASE_STATUS[status]||status}</span>`;
+}
+
+/* ════════════════════════════════════════════════
+   API CALLS
+════════════════════════════════════════════════ */
+async function api(path, method='GET', body=null) {
+  const opts = {
+    method,
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${TOKEN}` }
+  };
+  if (body) opts.body = JSON.stringify(body);
+  const res = await fetch(API + path, opts);
+  if (res.status === 401) { logout(); return null; }
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Error desconocido');
+  return data;
+}
+
+/* ════════════════════════════════════════════════
+   AUTH
+════════════════════════════════════════════════ */
+async function checkAuth() {
+  // Check if needs setup
+  try {
+    const setup = await fetch(API + '/api/auth?action=needs_setup');
+    const sd = await setup.json();
+    if (sd.needs_setup) {
+      document.getElementById('view-login').style.display = 'none';
+      document.getElementById('view-setup').style.display = 'flex';
+      return;
+    }
+  } catch(e) {}
+
+  if (!TOKEN) {
+    showLogin();
+    return;
+  }
+  try {
+    const r = await fetch(API + '/api/auth?action=me', {
+      headers: { Authorization: `Bearer ${TOKEN}` }
+    });
+    if (!r.ok) { showLogin(); return; }
+    CURRENT_USER = await r.json();
+    showApp();
+  } catch(e) { showLogin(); }
+}
+
+function showLogin() {
+  document.getElementById('view-login').style.display = 'flex';
+  document.getElementById('view-setup').style.display = 'none';
+  document.getElementById('app').style.display = 'none';
+}
+
+function showApp() {
+  document.getElementById('view-login').style.display = 'none';
+  document.getElementById('view-setup').style.display = 'none';
+  document.getElementById('app').style.display = 'flex';
+
+  // Update user info
+  const initials = CURRENT_USER.name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+  document.getElementById('user-avatar').textContent = initials;
+  document.getElementById('user-name-display').textContent = CURRENT_USER.name;
+  document.getElementById('user-role-display').textContent = CURRENT_USER.role === 'admin' ? 'Administrador' : CURRENT_USER.phase_access?.map(p=>PHASE_LABELS[p]).join(', ') || 'Usuario';
+
+  // Show/hide admin nav
+  document.querySelectorAll('.admin-only').forEach(el => {
+    el.style.display = CURRENT_USER.role === 'admin' ? 'flex' : 'none';
+  });
+
+  navigate('dashboard');
+}
+
+async function doLogin() {
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+  if (!email || !password) { toast('Completa todos los campos', 'error'); return; }
+  try {
+    const data = await api('/api/auth?action=login', 'POST', { email, password });
+    if (!data) return;
+    TOKEN = data.token;
+    CURRENT_USER = data.user;
+    localStorage.setItem('fba_token', TOKEN);
+    showApp();
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+async function doSetup() {
+  const name = document.getElementById('setup-name').value.trim();
+  const email = document.getElementById('setup-email').value.trim();
+  const password = document.getElementById('setup-password').value;
+  if (!name || !email || !password) { toast('Completa todos los campos', 'error'); return; }
+  try {
+    const data = await api('/api/auth?action=setup', 'POST', { name, email, password });
+    if (!data) return;
+    TOKEN = data.token;
+    CURRENT_USER = data.user;
+    localStorage.setItem('fba_token', TOKEN);
+    showApp();
+    toast('¡Administrador creado!', 'success');
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+async function doLogout() {
+  await api('/api/auth?action=logout', 'POST');
+  TOKEN = '';
+  CURRENT_USER = null;
+  localStorage.removeItem('fba_token');
+  showLogin();
+}
+function logout() {
+  TOKEN = '';
+  CURRENT_USER = null;
+  localStorage.removeItem('fba_token');
+  showLogin();
+}
+
+/* ════════════════════════════════════════════════
+   NAVIGATION
+════════════════════════════════════════════════ */
+function navigate(view, productId=null, phase=null) {
+  CURRENT_VIEW = view;
+  if (productId) CURRENT_PRODUCT_ID = productId;
+  if (phase) CURRENT_PHASE = phase;
+
+  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+  const navEl = document.getElementById('nav-' + view);
+  if (navEl) navEl.classList.add('active');
+
+  const titles = {
+    dashboard: 'Dashboard', products: 'Productos', costs: 'Costes',
+    reports: 'Informes', admin: 'Gestión de Usuarios', 'product-detail': 'Detalle de Producto',
+    research: 'Estudios FBA'
+  };
+  document.getElementById('page-title').textContent = titles[view] || view;
+  document.getElementById('topbar-actions').innerHTML = '';
+
+  const content = document.getElementById('page-content');
+  content.innerHTML = '<div class="loading-overlay"><div class="spinner"></div></div>';
+
+  const renderFn = { dashboard: renderDashboard, products: renderProducts,
+    'product-detail': renderProductDetail, costs: renderCosts,
+    reports: renderReports, admin: renderAdmin, research: renderResearch };
+  if (renderFn[view]) renderFn[view]();
+}
+
+/* ════════════════════════════════════════════════
+   DASHBOARD
+════════════════════════════════════════════════ */
+async function renderDashboard() {
+  try {
+    const [products, report] = await Promise.all([
+      api('/api/products'),
+      api('/api/reports?type=global')
+    ]);
+
+    const pipelineCount = products.filter(p => p.status==='pipeline').length;
+    const activeCount   = products.filter(p => p.status==='active').length;
+    const launchedCount = products.filter(p => p.status==='launched').length;
+    const totalInvested = report?.total_invested || 0;
+
+    let rows = '';
+    (report?.summary || []).slice(0,5).forEach(item => {
+      const p = item.product;
+      rows += `<tr onclick="navigate('product-detail', '${p._id}')" style="cursor:pointer">
+        <td><span style="font-weight:600">${p.name}</span></td>
+        <td>${statusBadge(p.status)}</td>
+        <td>${phaseStatusBadge('in_progress')} <span class="text-muted">${PHASE_LABELS[p.current_phase]||p.current_phase}</span></td>
+        <td style="font-weight:600">${fmt(item.total_cost)} €</td>
+        <td>
+          <div class="progress-bar" style="width:80px">
+            <div class="progress-fill" style="width:${item.progress||0}%"></div>
+          </div>
+        </td>
+      </tr>`;
+    });
+
+    document.getElementById('page-content').innerHTML = `
+      <div class="stats-grid">
+        <div class="stat-card stat-orange">
+          <div class="stat-label">Productos en Pipeline</div>
+          <div class="stat-value">${pipelineCount}</div>
+          <div class="stat-sub">En investigación/validación</div>
+        </div>
+        <div class="stat-card stat-blue">
+          <div class="stat-label">Productos Activos</div>
+          <div class="stat-value">${activeCount}</div>
+          <div class="stat-sub">En proceso de lanzamiento</div>
+        </div>
+        <div class="stat-card stat-green">
+          <div class="stat-label">Productos Lanzados</div>
+          <div class="stat-value">${launchedCount}</div>
+          <div class="stat-sub">Live en Amazon</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Inversión Total</div>
+          <div class="stat-value" style="font-size:22px">${fmt(totalInvested)} €</div>
+          <div class="stat-sub">En todos los productos</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="flex-between mb-16">
+          <span class="card-title">Últimos productos</span>
+          <button class="btn btn-sm btn-secondary" onclick="navigate('products')">Ver todos →</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr>
+              <th>Producto</th><th>Estado</th><th>Fase actual</th><th>Inversión</th><th>Progreso</th>
+            </tr></thead>
+            <tbody>${rows || '<tr><td colspan="5" style="text-align:center;padding:30px;color:var(--text2)">Sin productos todavía</td></tr>'}</tbody>
+          </table>
+        </div>
+      </div>`;
+
+    if (CURRENT_USER?.role === 'admin') {
+      document.getElementById('topbar-actions').innerHTML =
+        `<button class="btn btn-primary btn-sm" onclick="showAddProductModal()">+ Nuevo producto</button>`;
+    }
+  } catch(e) {
+    document.getElementById('page-content').innerHTML = `<div class="empty-state"><div class="empty-icon">⚠️</div><div class="empty-title">Error al cargar</div><p>${e.message}</p></div>`;
+  }
+}
+
+/* ════════════════════════════════════════════════
+   PRODUCTS
+════════════════════════════════════════════════ */
+async function renderProducts() {
+  if (CURRENT_USER?.role === 'admin') {
+    document.getElementById('topbar-actions').innerHTML =
+      `<button class="btn btn-primary btn-sm" onclick="showAddProductModal()">+ Nuevo producto</button>`;
+  }
+  try {
+    const products = await api('/api/products');
+    if (!products?.length) {
+      document.getElementById('page-content').innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">📦</div>
+          <div class="empty-title">Sin productos</div>
+          <div class="empty-desc">Crea tu primer producto para comenzar el seguimiento.</div>
+          ${CURRENT_USER?.role==='admin'?`<button class="btn btn-primary" onclick="showAddProductModal()">+ Crear producto</button>`:''}
+        </div>`;
+      return;
+    }
+
+    let cards = '';
+    products.forEach(p => {
+      cards += `
+        <div class="product-card" onclick="navigate('product-detail','${p._id}')">
+          <div class="flex-between mb-16">
+            ${statusBadge(p.status)}
+            <span class="text-sm text-muted">${fmtDate(p.created_at)}</span>
+          </div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-meta" style="margin-bottom:12px">${p.category||'Sin categoría'} ${p.asin?'· ASIN: '+p.asin:''}</div>
+          <div class="flex-between">
+            <div>
+              <span class="text-sm text-muted">Fase: </span>
+              <span class="text-sm" style="font-weight:600">${PHASE_LABELS[p.current_phase]||p.current_phase}</span>
+            </div>
+            <div>
+              <span class="text-sm text-muted">Objetivo: </span>
+              <span class="text-sm" style="font-weight:600">${fmt(p.target_price)} € / ${p.target_margin}% margen</span>
+            </div>
+          </div>
+        </div>`;
+    });
+
+    document.getElementById('page-content').innerHTML =
+      `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">${cards}</div>`;
+  } catch(e) {
+    document.getElementById('page-content').innerHTML = `<p style="color:var(--red)">${e.message}</p>`;
+  }
+}
+
+/* ════════════════════════════════════════════════
+   PRODUCT DETAIL
+════════════════════════════════════════════════ */
+async function renderProductDetail() {
+  try {
+    const [product, phases, costs] = await Promise.all([
+      api('/api/products').then(list => list?.find(p => p._id === CURRENT_PRODUCT_ID)),
+      api(`/api/phases?product_id=${CURRENT_PRODUCT_ID}`),
+      api(`/api/costs?product_id=${CURRENT_PRODUCT_ID}`)
+    ]);
+
+    if (!product) { navigate('products'); return; }
+
+    // Topbar actions
+    document.getElementById('topbar-actions').innerHTML = `
+      <button class="btn btn-sm btn-secondary" onclick="navigate('reports', '${product._id}')">📈 Informe</button>
+      <button class="btn btn-sm btn-secondary" onclick="showAddCostModal('${product._id}', '${product.current_phase}')">+ Coste</button>
+      ${CURRENT_USER?.role==='admin'?`<button class="btn btn-sm btn-danger" onclick="deleteProduct('${product._id}')">🗑</button>`:''}
+    `;
+    document.getElementById('page-title').textContent = product.name;
+
+    // Build stepper
+    let stepperHtml = '';
+    PHASES.forEach((ph, idx) => {
+      const phData = phases?.find(p => p.phase === ph);
+      const status = phData?.status || 'pending';
+      let cls = 'phase-step';
+      if (status === 'completed') cls += ' completed';
+      else if (status === 'in_progress' || ph === product.current_phase) cls += ' active';
+      else if (status === 'blocked') cls += ' blocked';
+      const icon = status==='completed'?'✓':status==='blocked'?'!':idx+1;
+      if (idx > 0) {
+        const prevDone = phases?.find(p=>p.phase===PHASES[idx-1])?.status === 'completed';
+        stepperHtml += `<div class="phase-connector ${prevDone?'done':''}"></div>`;
+      }
+      stepperHtml += `<div class="${cls}" onclick="selectPhase('${ph}')">
+        <div class="phase-dot">${icon}</div>
+        <div class="phase-label">${PHASE_LABELS[ph]}</div>
+      </div>`;
+    });
+
+    // Build phase panels
+    let panelsHtml = '';
+    PHASES.forEach(ph => {
+      const phData = phases?.find(p => p.phase === ph);
+      const totalItems = phData?.checklist?.length || 0;
+      const doneItems  = phData?.checklist?.filter(i=>i.completed).length || 0;
+      const pct = totalItems > 0 ? Math.round(doneItems/totalItems*100) : 0;
+
+      let checklistHtml = (phData?.checklist||[]).map((item, idx) => `
+        <div class="check-item ${item.completed?'done':''}" onclick="toggleCheck('${CURRENT_PRODUCT_ID}','${ph}',${idx})">
+          <div class="check-box">${item.completed?'✓':''}</div>
+          <div class="check-text">${item.item}</div>
+        </div>`).join('');
+
+      // Phase costs
+      const phaseCosts = (costs||[]).filter(c=>c.phase===ph);
+      const phaseCostTotal = phaseCosts.reduce((s,c)=>s+c.amount,0);
+
+      let costsHtml = phaseCosts.map(c => `
+        <tr>
+          <td>${fmtDate(c.date)}</td>
+          <td>${c.category}</td>
+          <td>${c.description||'–'}</td>
+          <td style="font-weight:600;text-align:right">${fmt(c.amount)} ${c.currency}</td>
+          <td><button class="btn btn-sm btn-danger" onclick="deleteCost('${c._id}')">×</button></td>
+        </tr>`).join('');
+
+      const canAccess = CURRENT_USER?.role==='admin' || CURRENT_USER?.phase_access?.includes(ph);
+
+      panelsHtml += `
+        <div class="phase-panel ${ph===CURRENT_PHASE?'active':''}" id="panel-${ph}">
+          <div class="phase-header">
+            <div>
+              <div class="phase-title">${PHASE_LABELS[ph]}</div>
+              <div class="text-sm text-muted" style="margin-top:4px">
+                ${phData?.responsible_email ? '👤 '+phData.responsible_email : 'Sin responsable asignado'}
+              </div>
+            </div>
+            <div class="flex-row">
+              ${phaseStatusBadge(phData?.status||'pending')}
+              ${canAccess ? `<select class="phase-status-select" onchange="updatePhaseStatus('${CURRENT_PRODUCT_ID}','${ph}',this.value)">
+                ${['pending','in_progress','completed','blocked'].map(s=>`<option value="${s}" ${phData?.status===s?'selected':''}>${PHASE_STATUS[s]}</option>`).join('')}
+              </select>` : ''}
+            </div>
+          </div>
+
+          <div class="grid-2 mb-24">
+            <div>
+              <div class="text-sm text-muted mb-8">Progreso del checklist</div>
+              <div class="flex-between mb-8">
+                <span class="text-sm">${doneItems} / ${totalItems} completados</span>
+                <span class="text-sm" style="font-weight:700;color:var(--orange)">${pct}%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill ${pct===100?'green':''}" style="width:${pct}%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="text-sm text-muted mb-8">Coste total esta fase</div>
+              <div style="font-size:24px;font-weight:800;color:var(--orange)">${fmt(phaseCostTotal)} €</div>
+              ${canAccess ? `<button class="btn btn-sm btn-secondary" style="margin-top:8px" onclick="showAddCostModal('${CURRENT_PRODUCT_ID}','${ph}')">+ Registrar coste</button>` : ''}
+            </div>
+          </div>
+
+          ${canAccess ? `
+          <div class="mb-24">
+            <div class="card-title">Checklist de la fase</div>
+            <div class="checklist">${checklistHtml}</div>
+          </div>
+
+          <div class="mb-24">
+            <div class="flex-between mb-16">
+              <span class="card-title">Notas de la fase</span>
+            </div>
+            <textarea id="notes-${ph}" style="width:100%;padding:12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:inherit;font-size:13px;min-height:80px;resize:vertical;outline:none"
+              placeholder="Añade notas, observaciones o incidencias...">${phData?.notes||''}</textarea>
+            <button class="btn btn-sm btn-secondary" style="margin-top:8px" onclick="saveNotes('${CURRENT_PRODUCT_ID}','${ph}')">Guardar notas</button>
+          </div>
+
+          ${phaseCosts.length > 0 ? `
+          <div>
+            <div class="card-title">Costes registrados</div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Fecha</th><th>Categoría</th><th>Descripción</th><th style="text-align:right">Importe</th><th></th></tr></thead>
+                <tbody>${costsHtml}</tbody>
+              </table>
+            </div>
+          </div>` : ''}
+          ` : `<div class="empty-state" style="padding:30px"><div class="empty-icon">🔒</div><p class="text-muted">No tienes acceso a editar esta fase.</p></div>`}
+        </div>`;
+    });
+
+    document.getElementById('page-content').innerHTML = `
+      <span class="back-link" onclick="navigate('products')">← Volver a productos</span>
+
+      <div class="card mb-24">
+        <div class="grid-2">
+          <div>
+            <div class="text-sm text-muted">Estado del producto</div>
+            <div class="flex-row" style="margin-top:6px">${statusBadge(product.status)}
+              ${CURRENT_USER?.role==='admin'?`<select onchange="updateProductStatus('${product._id}',this.value)" style="padding:4px 8px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:12px;cursor:pointer;outline:none">
+                ${Object.entries(STATUS_LABELS).map(([k,v])=>`<option value="${k}" ${product.status===k?'selected':''}>${v}</option>`).join('')}
+              </select>`:''}
+            </div>
+          </div>
+          <div>
+            <div class="text-sm text-muted">Precio objetivo / Margen</div>
+            <div style="font-size:18px;font-weight:700;margin-top:4px">${fmt(product.target_price)} € / ${product.target_margin}%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-24">
+        <div class="card-title">Progreso de fases</div>
+        <div class="phase-stepper">${stepperHtml}</div>
+      </div>
+
+      <div class="card">${panelsHtml}</div>`;
+
+  } catch(e) {
+    document.getElementById('page-content').innerHTML = `<p style="color:var(--red)">Error: ${e.message}</p>`;
+  }
+}
+
+function selectPhase(ph) {
+  CURRENT_PHASE = ph;
+  document.querySelectorAll('.phase-panel').forEach(el => el.classList.remove('active'));
+  const el = document.getElementById('panel-' + ph);
+  if (el) el.classList.add('active');
+}
+
+async function toggleCheck(productId, phase, idx) {
+  if (CURRENT_USER?.role !== 'admin' && !CURRENT_USER?.phase_access?.includes(phase)) return;
+  try {
+    const phases = await api(`/api/phases?product_id=${productId}`);
+    const phData = phases?.find(p => p.phase === phase);
+    if (!phData) return;
+    phData.checklist[idx].completed = !phData.checklist[idx].completed;
+    await api(`/api/phases?product_id=${productId}&phase=${phase}`, 'PUT', { checklist: phData.checklist });
+    renderProductDetail();
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+async function updatePhaseStatus(productId, phase, status) {
+  try {
+    await api(`/api/phases?product_id=${productId}&phase=${phase}`, 'PUT', { status });
+    toast('Estado de fase actualizado', 'success');
+    renderProductDetail();
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+async function saveNotes(productId, phase) {
+  const notes = document.getElementById(`notes-${phase}`)?.value || '';
+  try {
+    await api(`/api/phases?product_id=${productId}&phase=${phase}`, 'PUT', { notes });
+    toast('Notas guardadas', 'success');
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+async function updateProductStatus(productId, status) {
+  try {
+    await api(`/api/products?id=${productId}`, 'PUT', { status });
+    toast('Estado actualizado', 'success');
+    renderProductDetail();
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+async function deleteProduct(productId) {
+  if (!confirm('¿Eliminar este producto y todos sus datos? Esta acción es irreversible.')) return;
+  try {
+    await api(`/api/products?id=${productId}`, 'DELETE');
+    toast('Producto eliminado', 'success');
+    navigate('products');
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+/* ════════════════════════════════════════════════
+   ADD PRODUCT MODAL
+════════════════════════════════════════════════ */
+function showAddProductModal() {
+  showModal(`
+    <h3>Nuevo producto</h3>
+    <div class="form-group"><label>Nombre del producto *</label>
+      <input type="text" id="np-name" placeholder="Ej: Botella de agua acero inoxidable"></div>
+    <div class="grid-2">
+      <div class="form-group"><label>Categoría</label>
+        <input type="text" id="np-category" placeholder="Ej: Sports & Outdoors"></div>
+      <div class="form-group"><label>Precio objetivo (€)</label>
+        <input type="number" id="np-price" placeholder="29.99" step="0.01"></div>
+    </div>
+    <div class="form-group"><label>Margen objetivo (%)</label>
+      <input type="number" id="np-margin" placeholder="30" value="30"></div>
+    <div class="form-group"><label>Notas iniciales</label>
+      <textarea id="np-notes" placeholder="Observaciones del producto..."></textarea></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="hideModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="createProduct()">Crear producto</button>
+    </div>`);
+}
+
+async function createProduct() {
+  const name   = document.getElementById('np-name')?.value.trim();
+  if (!name) { toast('El nombre es obligatorio', 'error'); return; }
+  try {
+    await api('/api/products', 'POST', {
+      name,
+      category:      document.getElementById('np-category')?.value,
+      target_price:  document.getElementById('np-price')?.value,
+      target_margin: document.getElementById('np-margin')?.value,
+      notes:         document.getElementById('np-notes')?.value
+    });
+    hideModal();
+    toast('Producto creado', 'success');
+    navigate('products');
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+/* ════════════════════════════════════════════════
+   COSTS
+════════════════════════════════════════════════ */
+async function renderCosts() {
+  document.getElementById('topbar-actions').innerHTML =
+    `<button class="btn btn-primary btn-sm" onclick="showAddCostModal()">+ Registrar coste</button>`;
+  try {
+    const [costs, products] = await Promise.all([
+      api('/api/costs'),
+      api('/api/products')
+    ]);
+
+    const productMap = {};
+    (products||[]).forEach(p => productMap[p._id] = p.name);
+
+    let totalEUR = costs?.filter(c=>c.currency==='EUR').reduce((s,c)=>s+c.amount,0) || 0;
+    let totalUSD = costs?.filter(c=>c.currency==='USD').reduce((s,c)=>s+c.amount,0) || 0;
+
+    // By phase summary
+    const byPhase = {};
+    PHASES.forEach(ph => byPhase[ph] = 0);
+    costs?.forEach(c => { if (byPhase[c.phase]!==undefined) byPhase[c.phase] += c.amount; });
+    const maxPhase = Math.max(...Object.values(byPhase), 1);
+
+    let phaseBarHtml = PHASES.map(ph => {
+      const pct = Math.round((byPhase[ph]/maxPhase)*100);
+      return `<div class="cost-bar-wrap">
+        <div class="cost-bar-label">
+          <span class="name">${PHASE_LABELS[ph]}</span>
+          <span class="amount">${fmt(byPhase[ph])} €</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+      </div>`;
+    }).join('');
+
+    let rows = '';
+    (costs||[]).forEach(c => {
+      rows += `<tr>
+        <td>${fmtDate(c.date)}</td>
+        <td><span style="font-weight:600">${productMap[c.product_id]||'–'}</span></td>
+        <td><span class="badge badge-gray">${PHASE_LABELS[c.phase]||c.phase}</span></td>
+        <td>${c.category}</td>
+        <td>${c.description||'–'}</td>
+        <td style="font-weight:700;text-align:right">${fmt(c.amount)} ${c.currency}</td>
+        <td><button class="btn btn-sm btn-danger" onclick="deleteCost('${c._id}')">×</button></td>
+      </tr>`;
+    });
+
+    document.getElementById('page-content').innerHTML = `
+      <div class="grid-2 mb-24">
+        <div class="card">
+          <div class="stat-label">Total invertido (EUR)</div>
+          <div class="stat-value stat-orange" style="font-size:26px;color:var(--orange)">${fmt(totalEUR)} €</div>
+        </div>
+        <div class="card">
+          <div class="stat-label">Total invertido (USD)</div>
+          <div class="stat-value" style="font-size:26px;color:var(--blue)">${fmt(totalUSD)} $</div>
+        </div>
+      </div>
+
+      <div class="grid-2 mb-24">
+        <div class="card">
+          <div class="card-title">Inversión por fase</div>
+          ${phaseBarHtml}
+        </div>
+        <div class="card">
+          <div class="card-title">Últimos registros</div>
+          <div class="table-wrap" style="max-height:300px;overflow-y:auto">
+            <table>
+              <thead><tr><th>Fecha</th><th>Producto</th><th>Fase</th><th>Categoría</th><th>Descripción</th><th style="text-align:right">Importe</th><th></th></tr></thead>
+              <tbody>${rows||'<tr><td colspan="7" style="text-align:center;padding:20px;color:var(--text2)">Sin costes registrados</td></tr>'}</tbody>
+            </table>
+          </div>
+        </div>
+      </div>`;
+  } catch(e) {
+    document.getElementById('page-content').innerHTML = `<p style="color:var(--red)">${e.message}</p>`;
+  }
+}
+
+async function showAddCostModal(productId='', phase='') {
+  const products = await api('/api/products');
+  const categories = await api('/api/costs?categories=1');
+
+  let productOptions = (products||[]).map(p =>
+    `<option value="${p._id}" ${p._id===productId?'selected':''}>${p.name}</option>`).join('');
+
+  const phaseOptions = (CURRENT_USER?.role==='admin' ? PHASES : (CURRENT_USER?.phase_access||PHASES))
+    .map(ph => `<option value="${ph}" ${ph===phase?'selected':''}>${PHASE_LABELS[ph]}</option>`).join('');
+
+  const catOptions = phase && categories[phase]
+    ? categories[phase].map(c=>`<option>${c}</option>`).join('')
+    : Object.values(categories).flat().filter((v,i,a)=>a.indexOf(v)===i).map(c=>`<option>${c}</option>`).join('');
+
+  showModal(`
+    <h3>Registrar coste</h3>
+    <div class="form-group"><label>Producto *</label>
+      <select id="cost-product" onchange="updateCostCategories()">${productOptions}</select></div>
+    <div class="grid-2">
+      <div class="form-group"><label>Fase *</label>
+        <select id="cost-phase" onchange="updateCostCategories()">${phaseOptions}</select></div>
+      <div class="form-group"><label>Categoría</label>
+        <select id="cost-cat">${catOptions}</select></div>
+    </div>
+    <div class="grid-2">
+      <div class="form-group"><label>Importe *</label>
+        <input type="number" id="cost-amount" placeholder="0.00" step="0.01"></div>
+      <div class="form-group"><label>Moneda</label>
+        <select id="cost-currency"><option>EUR</option><option>USD</option><option>CNY</option></select></div>
+    </div>
+    <div class="form-group"><label>Descripción</label>
+      <input type="text" id="cost-desc" placeholder="Detalle del gasto"></div>
+    <div class="form-group"><label>Fecha</label>
+      <input type="date" id="cost-date" value="${new Date().toISOString().split('T')[0]}"></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="hideModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveCost()">Registrar</button>
+    </div>`);
+
+  window._costCategories = categories;
+}
+
+async function updateCostCategories() {
+  const phase = document.getElementById('cost-phase')?.value;
+  const cats = window._costCategories?.[phase] || ['Otros'];
+  const sel = document.getElementById('cost-cat');
+  if (sel) sel.innerHTML = cats.map(c=>`<option>${c}</option>`).join('');
+}
+
+async function saveCost() {
+  const product_id = document.getElementById('cost-product')?.value;
+  const phase      = document.getElementById('cost-phase')?.value;
+  const amount     = document.getElementById('cost-amount')?.value;
+  if (!product_id || !phase || !amount) { toast('Completa los campos obligatorios', 'error'); return; }
+  try {
+    await api('/api/costs', 'POST', {
+      product_id, phase,
+      category:    document.getElementById('cost-cat')?.value,
+      amount:      parseFloat(amount),
+      currency:    document.getElementById('cost-currency')?.value,
+      description: document.getElementById('cost-desc')?.value,
+      date:        document.getElementById('cost-date')?.value
+    });
+    hideModal();
+    toast('Coste registrado', 'success');
+    if (CURRENT_VIEW === 'costs') renderCosts();
+    else if (CURRENT_VIEW === 'product-detail') renderProductDetail();
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+async function deleteCost(id) {
+  if (!confirm('¿Eliminar este coste?')) return;
+  try {
+    await api(`/api/costs?id=${id}`, 'DELETE');
+    toast('Coste eliminado', 'success');
+    if (CURRENT_VIEW === 'costs') renderCosts();
+    else renderProductDetail();
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+/* ════════════════════════════════════════════════
+   REPORTS
+════════════════════════════════════════════════ */
+async function renderReports() {
+  document.getElementById('topbar-actions').innerHTML =
+    `<button class="btn btn-secondary btn-sm" onclick="printReport()">🖨 Imprimir / PDF</button>`;
+
+  try {
+    const products = await api('/api/products');
+    let productId = CURRENT_PRODUCT_ID || (products?.[0]?._id);
+
+    if (!productId) {
+      document.getElementById('page-content').innerHTML = `<div class="empty-state"><div class="empty-icon">📈</div><div class="empty-title">Sin datos</div><p>Crea al menos un producto para generar informes.</p></div>`;
+      return;
+    }
+
+    let productSelector = products.map(p =>
+      `<option value="${p._id}" ${p._id===productId?'selected':''}>${p.name}</option>`).join('');
+
+    document.getElementById('page-content').innerHTML = `
+      <div class="flex-row mb-24">
+        <span class="text-muted text-sm">Producto:</span>
+        <select style="padding:8px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;cursor:pointer;outline:none"
+          onchange="CURRENT_PRODUCT_ID=this.value;renderReports()">${productSelector}</select>
+      </div>
+      <div id="report-content"><div class="loading-overlay"><div class="spinner"></div></div></div>`;
+
+    const report = await api(`/api/reports?product_id=${productId}`);
+    if (!report) return;
+
+    const f = report.financials;
+
+    // Phase bars
+    let phaseBars = PHASES.map(ph => {
+      const cost = report.costs_by_phase[ph] || 0;
+      const pct  = report.phase_completion[ph] || 0;
+      return `
+        <div style="margin-bottom:16px">
+          <div class="flex-between mb-8">
+            <span style="font-weight:600;font-size:13px">${PHASE_LABELS[ph]}</span>
+            <span class="text-sm text-muted">${fmt(cost)} € · ${pct}% completado</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill ${pct===100?'green':''}" style="width:${pct}%"></div>
+          </div>
+        </div>`;
+    }).join('');
+
+    // Recommendations
+    let recHtml = (report.recommendations||[]).map(r =>
+      `<div class="rec-item rec-${r.type}">
+        <div class="rec-icon">${r.icon}</div>
+        <div class="rec-content"><h4>${r.title}</h4><p>${r.message}</p></div>
+      </div>`).join('');
+
+    // Cost table
+    let costRows = (report.costs||[]).map(c =>
+      `<tr><td>${fmtDate(c.date)}</td><td>${PHASE_LABELS[c.phase]}</td><td>${c.category}</td><td>${c.description||'–'}</td><td style="text-align:right;font-weight:600">${fmt(c.amount)} ${c.currency}</td></tr>`).join('');
+
+    document.getElementById('report-content').innerHTML = `
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-bottom:24px">
+        <div class="stat-card"><div class="stat-label">PVP objetivo</div><div class="stat-value" style="font-size:22px">${fmt(f.pvp)} €</div></div>
+        <div class="stat-card stat-orange"><div class="stat-label">Margen estimado</div><div class="stat-value">${fmt(f.margin_pct)}%</div></div>
+        <div class="stat-card stat-green"><div class="stat-label">Beneficio mensual</div><div class="stat-value" style="font-size:20px">${fmt(f.monthly_profit)} €</div></div>
+        <div class="stat-card"><div class="stat-label">Inversión total</div><div class="stat-value" style="font-size:20px">${fmt(f.total_invested)} €</div></div>
+        <div class="stat-card"><div class="stat-label">Break-even (uds)</div><div class="stat-value" style="font-size:22px">${f.break_even_units||'–'}</div></div>
+      </div>
+
+      <div class="grid-2 mb-24">
+        <div class="card">
+          <div class="card-title">Desglose de margen unitario</div>
+          ${[
+            ['PVP de venta', fmt(f.pvp)+' €', 'var(--green)'],
+            ['COGS estimado (40%)', '-'+fmt(f.cogs_estimated)+' €', 'var(--red)'],
+            ['Fees Amazon (~15%)', '-'+fmt(f.amazon_fees)+' €', 'var(--red)'],
+            ['FBA Fulfillment (~10%)', '-'+fmt(f.fba_fees)+' €', 'var(--red)'],
+            ['Margen neto/unidad', fmt(f.unit_margin)+' €', 'var(--orange)'],
+          ].map(([l,v,c]) => `<div class="flex-between" style="padding:10px 0;border-bottom:1px solid var(--border)">
+            <span class="text-sm">${l}</span><span style="font-weight:700;color:${c}">${v}</span>
+          </div>`).join('')}
+        </div>
+        <div class="card">
+          <div class="card-title">Progreso por fase</div>
+          ${phaseBars}
+        </div>
+      </div>
+
+      <div class="card mb-24">
+        <div class="card-title">Recomendaciones y alertas</div>
+        ${recHtml}
+      </div>
+
+      <div class="card">
+        <div class="card-title">Detalle de costes registrados</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Fecha</th><th>Fase</th><th>Categoría</th><th>Descripción</th><th style="text-align:right">Importe</th></tr></thead>
+            <tbody>${costRows||'<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text2)">Sin costes registrados</td></tr>'}</tbody>
+            <tfoot><tr style="border-top:2px solid var(--border)">
+              <td colspan="4" style="font-weight:700;padding:12px 14px">Total</td>
+              <td style="font-weight:800;text-align:right;padding:12px 14px;color:var(--orange)">${fmt(f.total_invested)} €</td>
+            </tr></tfoot>
+          </table>
+        </div>
+      </div>`;
+  } catch(e) {
+    document.getElementById('page-content').innerHTML = `<p style="color:var(--red)">${e.message}</p>`;
+  }
+}
+
+function printReport() { window.print(); }
+
+/* ════════════════════════════════════════════════
+   ADMIN — USERS
+════════════════════════════════════════════════ */
+async function renderAdmin() {
+  if (CURRENT_USER?.role !== 'admin') {
+    document.getElementById('page-content').innerHTML = `<div class="empty-state"><div class="empty-icon">🔒</div><div class="empty-title">Acceso restringido</div></div>`;
+    return;
+  }
+  document.getElementById('topbar-actions').innerHTML =
+    `<button class="btn btn-primary btn-sm" onclick="showAddUserModal()">+ Nuevo usuario</button>`;
+  try {
+    const users = await api('/api/users');
+
+    let rows = (users||[]).map(u => `
+      <tr>
+        <td><span style="font-weight:600">${u.name}</span></td>
+        <td>${u.email}</td>
+        <td>${u.role==='admin'?'<span class="badge badge-orange">Admin</span>':'<span class="badge badge-blue">Usuario</span>'}</td>
+        <td><span class="text-sm text-muted">${u.role==='admin'?'Todas las fases':(u.phase_access||[]).map(p=>PHASE_LABELS[p]).join(', ')||'–'}</span></td>
+        <td>${u.active?'<span class="badge badge-green">Activo</span>':'<span class="badge badge-red">Inactivo</span>'}</td>
+        <td>${fmtDate(u.last_login)}</td>
+        <td>
+          <div class="flex-row gap-8">
+            <button class="btn btn-sm btn-secondary" onclick="showEditUserModal(${JSON.stringify(u).replace(/"/g,'&quot;')})">✏️</button>
+            ${u._id !== CURRENT_USER?.id ? `<button class="btn btn-sm btn-danger" onclick="deleteUser('${u._id}')">×</button>` : ''}
+          </div>
+        </td>
+      </tr>`).join('');
+
+    document.getElementById('page-content').innerHTML = `
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Nombre</th><th>Email</th><th>Rol</th><th>Acceso a fases</th><th>Estado</th><th>Último acceso</th><th>Acciones</th></tr></thead>
+            <tbody>${rows||'<tr><td colspan="7" style="text-align:center;padding:30px;color:var(--text2)">Sin usuarios</td></tr>'}</tbody>
+          </table>
+        </div>
+      </div>`;
+  } catch(e) {
+    document.getElementById('page-content').innerHTML = `<p style="color:var(--red)">${e.message}</p>`;
+  }
+}
+
+function phaseCheckboxes(selected=[]) {
+  return PHASES.map(ph => `
+    <label style="display:flex;align-items:center;gap:8px;padding:6px;cursor:pointer;font-size:13px">
+      <input type="checkbox" name="phase_access" value="${ph}" ${selected.includes(ph)?'checked':''}>
+      ${PHASE_LABELS[ph]}
+    </label>`).join('');
+}
+
+function showAddUserModal() {
+  showModal(`
+    <h3>Nuevo usuario</h3>
+    <div class="form-group"><label>Nombre *</label><input type="text" id="nu-name"></div>
+    <div class="form-group"><label>Email *</label><input type="email" id="nu-email"></div>
+    <div class="form-group"><label>Contraseña *</label><input type="password" id="nu-pass"></div>
+    <div class="form-group"><label>Rol</label>
+      <select id="nu-role" onchange="togglePhaseAccess()">
+        <option value="user">Usuario</option><option value="admin">Administrador</option>
+      </select>
+    </div>
+    <div id="phase-access-wrap" class="form-group">
+      <label>Acceso a fases</label>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px">
+        ${phaseCheckboxes([])}
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="hideModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="createUser()">Crear usuario</button>
+    </div>`);
+}
+
+function showEditUserModal(userStr) {
+  const u = typeof userStr === 'string' ? JSON.parse(userStr) : userStr;
+  showModal(`
+    <h3>Editar: ${u.name}</h3>
+    <input type="hidden" id="eu-id" value="${u._id}">
+    <div class="form-group"><label>Nombre</label><input type="text" id="eu-name" value="${u.name}"></div>
+    <div class="form-group"><label>Email</label><input type="email" id="eu-email" value="${u.email}"></div>
+    <div class="form-group"><label>Nueva contraseña (dejar vacío para no cambiar)</label><input type="password" id="eu-pass"></div>
+    <div class="form-group"><label>Rol</label>
+      <select id="eu-role" onchange="togglePhaseAccessEdit()">
+        <option value="user" ${u.role==='user'?'selected':''}>Usuario</option>
+        <option value="admin" ${u.role==='admin'?'selected':''}>Administrador</option>
+      </select>
+    </div>
+    <div id="phase-access-wrap-edit" class="form-group" ${u.role==='admin'?'style="display:none"':''}>
+      <label>Acceso a fases</label>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px">
+        ${phaseCheckboxes(u.phase_access||[])}
+      </div>
+    </div>
+    <div class="form-group">
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+        <input type="checkbox" id="eu-active" ${u.active?'checked':''}> Usuario activo
+      </label>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="hideModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="updateUser()">Guardar cambios</button>
+    </div>`);
+}
+
+function togglePhaseAccess() {
+  const role = document.getElementById('nu-role')?.value;
+  const wrap = document.getElementById('phase-access-wrap');
+  if (wrap) wrap.style.display = role === 'admin' ? 'none' : 'block';
+}
+function togglePhaseAccessEdit() {
+  const role = document.getElementById('eu-role')?.value;
+  const wrap = document.getElementById('phase-access-wrap-edit');
+  if (wrap) wrap.style.display = role === 'admin' ? 'none' : 'block';
+}
+
+async function createUser() {
+  const name = document.getElementById('nu-name')?.value.trim();
+  const email = document.getElementById('nu-email')?.value.trim();
+  const password = document.getElementById('nu-pass')?.value;
+  const role = document.getElementById('nu-role')?.value;
+  const phase_access = [...document.querySelectorAll('input[name="phase_access"]:checked')].map(el=>el.value);
+  if (!name||!email||!password) { toast('Nombre, email y contraseña son obligatorios', 'error'); return; }
+  try {
+    await api('/api/users', 'POST', { name, email, password, role, phase_access });
+    hideModal();
+    toast('Usuario creado', 'success');
+    renderAdmin();
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+async function updateUser() {
+  const id = document.getElementById('eu-id')?.value;
+  const name = document.getElementById('eu-name')?.value.trim();
+  const email = document.getElementById('eu-email')?.value.trim();
+  const password = document.getElementById('eu-pass')?.value;
+  const role = document.getElementById('eu-role')?.value;
+  const phase_access = [...document.querySelectorAll('input[name="phase_access"]:checked')].map(el=>el.value);
+  const active = document.getElementById('eu-active')?.checked;
+  try {
+    const body = { name, email, role, phase_access, active };
+    if (password) body.password = password;
+    await api(`/api/users?id=${id}`, 'PUT', body);
+    hideModal();
+    toast('Usuario actualizado', 'success');
+    renderAdmin();
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+async function deleteUser(id) {
+  if (!confirm('¿Eliminar este usuario? Esta acción es irreversible.')) return;
+  try {
+    await api(`/api/users?id=${id}`, 'DELETE');
+    toast('Usuario eliminado', 'success');
+    renderAdmin();
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+/* ════════════════════════════════════════════════
+   RESEARCH (link to existing studies)
+════════════════════════════════════════════════ */
+function renderResearch() {
+  document.getElementById('page-content').innerHTML = `
+    <div class="card">
+      <div class="card-title">Estudios de Helium10</div>
+      <p class="text-muted text-sm" style="margin-bottom:20px">Accede a los estudios de investigación de productos realizados con Helium10.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px">
+        ${['FEBRERO','MARZO','MARZO II','MARZO III','MARZO IV'].map(m => `
+          <a href="../${m}/index.html" style="display:flex;align-items:center;justify-content:center;padding:24px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);font-weight:700;font-size:14px;color:var(--text);text-decoration:none;transition:all .2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+            ${m}
+          </a>`).join('')}
+      </div>
+    </div>`;
+}
+
+/* ════════════════════════════════════════════════
+   KEYBOARD SHORTCUTS
+════════════════════════════════════════════════ */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') hideModal();
+});
+
+/* ════════════════════════════════════════════════
+   INIT
+════════════════════════════════════════════════ */
+checkAuth();
+</script>
+</body>
+</html>
