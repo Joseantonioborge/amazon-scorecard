@@ -2,6 +2,9 @@
   "name": "amazon-fba-erp",
   "version": "1.0.0",
   "description": "ERP para Amazon FBA — gestión completa del proceso de lanzamiento de producto",
+  "scripts": {
+    "build": "echo 'Static site — no build step needed'"
+  },
   "dependencies": {
     "mongodb": "^6.3.0"
   }
