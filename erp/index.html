@@ -986,7 +986,7 @@ function selectPhase(ph) {
 }
 
 async function toggleCheck(productId, phase, idx) {
-  if (!CURRENT_USER?.role==='admin' && !CURRENT_USER?.phase_access?.includes(phase)) return;
+  if (CURRENT_USER?.role !== 'admin' && !CURRENT_USER?.phase_access?.includes(phase)) return;
   try {
     const phases = await api(`/api/phases?product_id=${productId}`);
     const phData = phases?.find(p => p.phase === phase);
