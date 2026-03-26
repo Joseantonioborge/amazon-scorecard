@@ -917,6 +917,16 @@ async function renderProductDetail() {
             </div>
           </div>
 
+          ${phData?.doc_url ? `
+          <div class="mb-24" style="padding:14px 16px;background:var(--green-dim);border:1px solid rgba(0,200,83,0.25);border-radius:var(--radius-sm);display:flex;align-items:center;gap:12px">
+            <span style="font-size:20px">📎</span>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Documento de resultados</div>
+              <div style="font-size:12px;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${phData.doc_url}</div>
+            </div>
+            <a href="${phData.doc_url}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-success" style="text-decoration:none;flex-shrink:0">Abrir →</a>
+          </div>` : ''}
+
           ${canAccess ? `
           <div class="mb-24">
             <div class="card-title">Checklist de la fase</div>
@@ -930,6 +940,18 @@ async function renderProductDetail() {
             <textarea id="notes-${ph}" style="width:100%;padding:12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:inherit;font-size:13px;min-height:80px;resize:vertical;outline:none"
               placeholder="Añade notas, observaciones o incidencias...">${phData?.notes||''}</textarea>
             <button class="btn btn-sm btn-secondary" style="margin-top:8px" onclick="saveNotes('${CURRENT_PRODUCT_ID}','${ph}')">Guardar notas</button>
+          </div>
+
+          <div class="mb-24">
+            <div class="card-title">Documento de resultados de fase</div>
+            <div style="display:flex;gap:8px;align-items:stretch">
+              <input type="url" id="docurl-${ph}" value="${phData?.doc_url||''}"
+                placeholder="https://docs.google.com/... o enlace a Excel / PDF"
+                style="flex:1;padding:10px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:inherit;font-size:13px;outline:none;transition:border-color .2s"
+                onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
+              <button class="btn btn-sm btn-primary" onclick="saveDocUrl('${CURRENT_PRODUCT_ID}','${ph}')">Guardar</button>
+            </div>
+            <div class="text-sm text-muted" style="margin-top:6px">Enlace al documento con los resultados del checklist — visible para todos los implicados en el producto.</div>
           </div>
 
           ${phaseCosts.length > 0 ? `
@@ -1010,6 +1032,15 @@ async function saveNotes(productId, phase) {
   try {
     await api(`/api/phases?product_id=${productId}&phase=${phase}`, 'PUT', { notes });
     toast('Notas guardadas', 'success');
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+async function saveDocUrl(productId, phase) {
+  const doc_url = document.getElementById(`docurl-${phase}`)?.value?.trim() || '';
+  try {
+    await api(`/api/phases?product_id=${productId}&phase=${phase}`, 'PUT', { doc_url });
+    toast('Documento guardado', 'success');
+    renderProductDetail();
   } catch(e) { toast(e.message, 'error'); }
 }
 
