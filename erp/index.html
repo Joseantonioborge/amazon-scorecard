@@ -355,6 +355,46 @@ tbody td { padding: 12px 14px; }
 .spinner { width: 20px; height: 20px; border: 2px solid var(--border); border-top-color: var(--orange); border-radius: 50%; animation: spin .6s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .loading-overlay { display: flex; align-items: center; justify-content: center; padding: 60px; }
+
+/* ── PHASE PANEL ENHANCED ───────────────────── */
+.phase-panel.active { display: block; animation: fadePhase .22s ease; }
+@keyframes fadePhase { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+.phase-panel-border { border-left: 3px solid var(--border2); padding-left: 20px; margin-top: 4px; }
+.phase-panel-border.s-completed  { border-left-color: var(--green); }
+.phase-panel-border.s-in_progress { border-left-color: var(--orange); }
+.phase-panel-border.s-blocked    { border-left-color: var(--red); }
+.phase-panel-border.s-pending    { border-left-color: var(--border2); }
+
+.phase-stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 24px; }
+.phase-stat-box { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; display: flex; flex-direction: column; }
+.phase-stat-box-label { font-size: 10px; color: var(--text2); font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+.phase-stat-box-value { font-size: 26px; font-weight: 800; line-height: 1.1; }
+.phase-stat-box-sub { font-size: 11px; color: var(--text2); margin-top: 6px; }
+
+/* ── COST CARDS ─────────────────────────────── */
+.cost-card-list { display: flex; flex-direction: column; gap: 8px; }
+.cost-card-item { display: flex; align-items: center; gap: 14px; padding: 12px 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); border-left: 3px solid var(--orange); transition: border-color .15s; }
+.cost-card-item:hover { border-color: var(--border2); }
+.cost-card-body { flex: 1; min-width: 0; }
+.cost-card-cat-row { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
+.cost-card-desc { font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cost-card-right { text-align: right; flex-shrink: 0; }
+.cost-card-amount { font-size: 15px; font-weight: 800; color: var(--orange); }
+.cost-card-currency { font-size: 11px; color: var(--text2); }
+.cost-total-row { display: flex; justify-content: flex-end; padding: 10px 0 0; border-top: 1px solid var(--border); margin-top: 4px; }
+.cost-total-label { font-size: 12px; color: var(--text2); margin-right: 12px; }
+.cost-total-value { font-size: 15px; font-weight: 800; color: var(--orange); }
+
+/* ── PHASE SUMMARY CARD ─────────────────────── */
+.product-summary-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+.product-summary-cell { padding: 4px 0; }
+.product-summary-cell + .product-summary-cell { border-left: 1px solid var(--border); padding-left: 20px; margin-left: 20px; }
+@media (max-width: 768px) {
+  .product-summary-grid { grid-template-columns: 1fr 1fr; }
+  .product-summary-cell + .product-summary-cell { border-left: none; padding-left: 0; margin-left: 0; }
+  .phase-stats-row { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -815,6 +855,15 @@ async function renderProducts() {
 /* ════════════════════════════════════════════════
    PRODUCT DETAIL
 ════════════════════════════════════════════════ */
+const COST_CAT_COLORS = {
+  'Muestras':'var(--blue)','Envío':'var(--yellow)','FBA':'var(--orange)',
+  'Marketing':'#a855f7','Fotografía':'var(--blue)','Inventario':'var(--green)',
+  'Legal':'var(--text2)','Software':'#06b6d4','Otros':'var(--border2)'
+};
+function costCatColor(cat) {
+  return COST_CAT_COLORS[cat] || 'var(--orange)';
+}
+
 async function renderProductDetail() {
   try {
     const [product, phases, costs] = await Promise.all([
@@ -825,24 +874,45 @@ async function renderProductDetail() {
 
     if (!product) { navigate('products'); return; }
 
-    // Topbar actions
+    // ── Pre-compute per-phase stats ──────────────────────────────
+    const totalCostAll = costs?.reduce((s,c) => s+c.amount, 0) || 0;
+    const completedCount = phases?.filter(p => p.status==='completed').length || 0;
+
+    const phMap = {};
+    PHASES.forEach(ph => {
+      const phData = phases?.find(p => p.phase === ph);
+      const items = phData?.checklist || [];
+      const done  = items.filter(i => i.completed).length;
+      const phaseCosts = (costs||[]).filter(c => c.phase === ph);
+      phMap[ph] = {
+        phData,
+        totalItems: items.length,
+        doneItems: done,
+        pct: items.length > 0 ? Math.round(done/items.length*100) : 0,
+        phaseCosts,
+        phaseCostTotal: phaseCosts.reduce((s,c) => s+c.amount, 0)
+      };
+    });
+
+    // ── Topbar ───────────────────────────────────────────────────
     document.getElementById('topbar-actions').innerHTML = `
-      <button class="btn btn-sm btn-secondary" onclick="navigate('reports', '${product._id}')">📈 Informe</button>
-      <button class="btn btn-sm btn-secondary" onclick="showAddCostModal('${product._id}', '${product.current_phase}')">+ Coste</button>
+      <button class="btn btn-sm btn-secondary" onclick="navigate('reports','${product._id}')">📈 Informe</button>
+      <button class="btn btn-sm btn-secondary" onclick="showAddCostModal('${product._id}','${product.current_phase}')">+ Coste</button>
       ${CURRENT_USER?.role==='admin'?`<button class="btn btn-sm btn-danger" onclick="deleteProduct('${product._id}')">🗑</button>`:''}
     `;
     document.getElementById('page-title').textContent = product.name;
 
-    // Build stepper
+    // ── Stepper ──────────────────────────────────────────────────
     let stepperHtml = '';
     PHASES.forEach((ph, idx) => {
-      const phData = phases?.find(p => p.phase === ph);
+      const { phData, pct } = phMap[ph];
       const status = phData?.status || 'pending';
       let cls = 'phase-step';
       if (status === 'completed') cls += ' completed';
       else if (status === 'in_progress' || ph === product.current_phase) cls += ' active';
       else if (status === 'blocked') cls += ' blocked';
       const icon = status==='completed'?'✓':status==='blocked'?'!':idx+1;
+      const pctColor = status==='completed'?'var(--green)':status==='in_progress'?'var(--orange)':'var(--text3)';
       if (idx > 0) {
         const prevDone = phases?.find(p=>p.phase===PHASES[idx-1])?.status === 'completed';
         stepperHtml += `<div class="phase-connector ${prevDone?'done':''}"></div>`;
@@ -850,140 +920,170 @@ async function renderProductDetail() {
       stepperHtml += `<div class="${cls}" onclick="selectPhase('${ph}')">
         <div class="phase-dot">${icon}</div>
         <div class="phase-label">${PHASE_LABELS[ph]}</div>
+        <div style="font-size:10px;font-weight:700;color:${pctColor};margin-top:-2px">${pct > 0 || status==='completed' ? pct+'%' : ''}</div>
       </div>`;
     });
 
-    // Build phase panels
+    // ── Phase panels ─────────────────────────────────────────────
     let panelsHtml = '';
     PHASES.forEach(ph => {
-      const phData = phases?.find(p => p.phase === ph);
-      const totalItems = phData?.checklist?.length || 0;
-      const doneItems  = phData?.checklist?.filter(i=>i.completed).length || 0;
-      const pct = totalItems > 0 ? Math.round(doneItems/totalItems*100) : 0;
+      const { phData, totalItems, doneItems, pct, phaseCosts, phaseCostTotal } = phMap[ph];
+      const canAccess = CURRENT_USER?.role==='admin' || CURRENT_USER?.phase_access?.includes(ph);
+      const phStatus = phData?.status || 'pending';
 
-      let checklistHtml = (phData?.checklist||[]).map((item, idx) => `
+      // Checklist HTML
+      const checklistHtml = (phData?.checklist||[]).map((item, idx) => `
         <div class="check-item ${item.completed?'done':''}" onclick="toggleCheck('${CURRENT_PRODUCT_ID}','${ph}',${idx})">
           <div class="check-box">${item.completed?'✓':''}</div>
           <div class="check-text">${item.item}</div>
         </div>`).join('');
 
-      // Phase costs
-      const phaseCosts = (costs||[]).filter(c=>c.phase===ph);
-      const phaseCostTotal = phaseCosts.reduce((s,c)=>s+c.amount,0);
+      // Cost cards HTML
+      const costsCardsHtml = phaseCosts.map(c => `
+        <div class="cost-card-item" style="border-left-color:${costCatColor(c.category)}">
+          <div class="cost-card-body">
+            <div class="cost-card-cat-row">
+              <span class="badge badge-gray" style="font-size:10px;border-left:2px solid ${costCatColor(c.category)}">${c.category}</span>
+              <span style="font-size:11px;color:var(--text2)">${fmtDate(c.date)}</span>
+            </div>
+            <div class="cost-card-desc">${c.description||c.category}</div>
+          </div>
+          <div class="cost-card-right">
+            <div class="cost-card-amount">${fmt(c.amount)}</div>
+            <div class="cost-card-currency">${c.currency}</div>
+            ${canAccess ? `<button class="btn btn-sm btn-danger" style="margin-top:6px;padding:3px 8px" onclick="deleteCost('${c._id}')">×</button>` : ''}
+          </div>
+        </div>`).join('');
 
-      let costsHtml = phaseCosts.map(c => `
-        <tr>
-          <td>${fmtDate(c.date)}</td>
-          <td>${c.category}</td>
-          <td>${c.description||'–'}</td>
-          <td style="font-weight:600;text-align:right">${fmt(c.amount)} ${c.currency}</td>
-          <td><button class="btn btn-sm btn-danger" onclick="deleteCost('${c._id}')">×</button></td>
-        </tr>`).join('');
-
-      const canAccess = CURRENT_USER?.role==='admin' || CURRENT_USER?.phase_access?.includes(ph);
+      // Category breakdown bar
+      const catTotals = {};
+      phaseCosts.forEach(c => { catTotals[c.category] = (catTotals[c.category]||0) + c.amount; });
+      const catBarHtml = phaseCostTotal > 0 ? Object.entries(catTotals).map(([cat, amt]) => {
+        const w = Math.round(amt/phaseCostTotal*100);
+        return `<div title="${cat}: ${fmt(amt)} €" style="flex:${w};background:${costCatColor(cat)};height:6px;border-radius:3px;min-width:4px"></div>`;
+      }).join('') : '';
 
       panelsHtml += `
         <div class="phase-panel ${ph===CURRENT_PHASE?'active':''}" id="panel-${ph}">
-          <div class="phase-header">
-            <div>
-              <div class="phase-title">${PHASE_LABELS[ph]}</div>
-              <div class="text-sm text-muted" style="margin-top:4px">
-                ${phData?.responsible_email ? '👤 '+phData.responsible_email : 'Sin responsable asignado'}
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="font-size:20px;font-weight:800">${PHASE_LABELS[ph]}</div>
+              ${phData?.responsible_email ? `<span class="text-sm text-muted">· 👤 ${phData.responsible_email}</span>` : ''}
+            </div>
+          </div>
+
+          <div class="phase-panel-border s-${phStatus}">
+
+            <!-- ── 3-column stats ── -->
+            <div class="phase-stats-row">
+              <div class="phase-stat-box">
+                <div class="phase-stat-box-label">Checklist</div>
+                <div class="phase-stat-box-value" style="color:${pct===100?'var(--green)':'var(--orange)'}">${pct}%</div>
+                <div class="progress-bar" style="height:4px;margin-top:10px">
+                  <div class="progress-fill ${pct===100?'green':''}" style="width:${pct}%"></div>
+                </div>
+                <div class="phase-stat-box-sub">${doneItems} de ${totalItems} tareas</div>
+              </div>
+              <div class="phase-stat-box">
+                <div class="phase-stat-box-label">Inversión en fase</div>
+                <div class="phase-stat-box-value" style="color:var(--orange)">${fmt(phaseCostTotal)} €</div>
+                ${catBarHtml ? `<div style="display:flex;gap:3px;margin-top:10px">${catBarHtml}</div>` : ''}
+                <div class="phase-stat-box-sub">${phaseCosts.length} registro${phaseCosts.length!==1?'s':''}</div>
+                ${canAccess ? `<button class="btn btn-sm btn-secondary" style="margin-top:10px" onclick="showAddCostModal('${CURRENT_PRODUCT_ID}','${ph}')">+ Registrar coste</button>` : ''}
+              </div>
+              <div class="phase-stat-box">
+                <div class="phase-stat-box-label">Estado</div>
+                <div style="margin-bottom:10px">${phaseStatusBadge(phStatus)}</div>
+                ${canAccess ? `<select class="phase-status-select" style="width:100%" onchange="updatePhaseStatus('${CURRENT_PRODUCT_ID}','${ph}',this.value)">
+                  ${['pending','in_progress','completed','blocked'].map(s=>`<option value="${s}" ${phStatus===s?'selected':''}>${PHASE_STATUS[s]}</option>`).join('')}
+                </select>` : ''}
+                ${phData?.completed_at ? `<div class="phase-stat-box-sub" style="margin-top:8px">✓ ${fmtDate(phData.completed_at)}</div>` : ''}
               </div>
             </div>
-            <div class="flex-row">
-              ${phaseStatusBadge(phData?.status||'pending')}
-              ${canAccess ? `<select class="phase-status-select" onchange="updatePhaseStatus('${CURRENT_PRODUCT_ID}','${ph}',this.value)">
-                ${['pending','in_progress','completed','blocked'].map(s=>`<option value="${s}" ${phData?.status===s?'selected':''}>${PHASE_STATUS[s]}</option>`).join('')}
-              </select>` : ''}
-            </div>
-          </div>
 
-          <div class="grid-2 mb-24">
-            <div>
-              <div class="text-sm text-muted mb-8">Progreso del checklist</div>
-              <div class="flex-between mb-8">
-                <span class="text-sm">${doneItems} / ${totalItems} completados</span>
-                <span class="text-sm" style="font-weight:700;color:var(--orange)">${pct}%</span>
+            <!-- ── Documento de resultados banner ── -->
+            ${phData?.doc_url ? `
+            <div class="mb-24" style="padding:13px 16px;background:var(--green-dim);border:1px solid rgba(0,200,83,0.25);border-radius:var(--radius-sm);display:flex;align-items:center;gap:12px">
+              <span style="font-size:18px">📎</span>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:10px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:2px">Documento de resultados</div>
+                <div style="font-size:12px;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${phData.doc_url}</div>
               </div>
-              <div class="progress-bar">
-                <div class="progress-fill ${pct===100?'green':''}" style="width:${pct}%"></div>
+              <a href="${phData.doc_url}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-success" style="text-decoration:none;flex-shrink:0">Abrir →</a>
+            </div>` : ''}
+
+            ${canAccess ? `
+            <!-- ── Checklist ── -->
+            <div class="mb-24">
+              <div class="card-title">Checklist de la fase</div>
+              <div class="checklist">${checklistHtml || '<p class="text-sm text-muted" style="padding:12px 0">No hay items en el checklist.</p>'}</div>
+            </div>
+
+            <!-- ── Costes registrados ── -->
+            ${phaseCosts.length > 0 ? `
+            <div class="mb-24">
+              <div class="flex-between mb-12">
+                <span class="card-title">Costes registrados</span>
               </div>
-            </div>
-            <div>
-              <div class="text-sm text-muted mb-8">Coste total esta fase</div>
-              <div style="font-size:24px;font-weight:800;color:var(--orange)">${fmt(phaseCostTotal)} €</div>
-              ${canAccess ? `<button class="btn btn-sm btn-secondary" style="margin-top:8px" onclick="showAddCostModal('${CURRENT_PRODUCT_ID}','${ph}')">+ Registrar coste</button>` : ''}
-            </div>
-          </div>
+              <div class="cost-card-list">${costsCardsHtml}</div>
+              <div class="cost-total-row">
+                <span class="cost-total-label">Total fase</span>
+                <span class="cost-total-value">${fmt(phaseCostTotal)} €</span>
+              </div>
+            </div>` : ''}
 
-          ${phData?.doc_url ? `
-          <div class="mb-24" style="padding:14px 16px;background:var(--green-dim);border:1px solid rgba(0,200,83,0.25);border-radius:var(--radius-sm);display:flex;align-items:center;gap:12px">
-            <span style="font-size:20px">📎</span>
-            <div style="flex:1;min-width:0">
-              <div style="font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Documento de resultados</div>
-              <div style="font-size:12px;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${phData.doc_url}</div>
+            <!-- ── Notas ── -->
+            <div class="mb-24">
+              <div class="card-title">Notas de la fase</div>
+              <textarea id="notes-${ph}" style="width:100%;padding:12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:inherit;font-size:13px;min-height:80px;resize:vertical;outline:none;transition:border-color .2s"
+                onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"
+                placeholder="Añade notas, observaciones o incidencias...">${phData?.notes||''}</textarea>
+              <button class="btn btn-sm btn-secondary" style="margin-top:8px" onclick="saveNotes('${CURRENT_PRODUCT_ID}','${ph}')">Guardar notas</button>
             </div>
-            <a href="${phData.doc_url}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-success" style="text-decoration:none;flex-shrink:0">Abrir →</a>
-          </div>` : ''}
 
-          ${canAccess ? `
-          <div class="mb-24">
-            <div class="card-title">Checklist de la fase</div>
-            <div class="checklist">${checklistHtml}</div>
-          </div>
-
-          <div class="mb-24">
-            <div class="flex-between mb-16">
-              <span class="card-title">Notas de la fase</span>
+            <!-- ── Documento ── -->
+            <div class="mb-24">
+              <div class="card-title">Documento de resultados de fase</div>
+              <div style="display:flex;gap:8px;align-items:stretch">
+                <input type="url" id="docurl-${ph}" value="${phData?.doc_url||''}"
+                  placeholder="https://docs.google.com/... o enlace a Excel / PDF"
+                  style="flex:1;padding:10px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:inherit;font-size:13px;outline:none;transition:border-color .2s"
+                  onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
+                <button class="btn btn-sm btn-primary" onclick="saveDocUrl('${CURRENT_PRODUCT_ID}','${ph}')">Guardar</button>
+              </div>
+              <div class="text-sm text-muted" style="margin-top:6px">Visible para todos los implicados en el producto.</div>
             </div>
-            <textarea id="notes-${ph}" style="width:100%;padding:12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:inherit;font-size:13px;min-height:80px;resize:vertical;outline:none"
-              placeholder="Añade notas, observaciones o incidencias...">${phData?.notes||''}</textarea>
-            <button class="btn btn-sm btn-secondary" style="margin-top:8px" onclick="saveNotes('${CURRENT_PRODUCT_ID}','${ph}')">Guardar notas</button>
-          </div>
+            ` : `<div class="empty-state" style="padding:30px"><div class="empty-icon">🔒</div><p class="text-muted">No tienes acceso a editar esta fase.</p></div>`}
 
-          <div class="mb-24">
-            <div class="card-title">Documento de resultados de fase</div>
-            <div style="display:flex;gap:8px;align-items:stretch">
-              <input type="url" id="docurl-${ph}" value="${phData?.doc_url||''}"
-                placeholder="https://docs.google.com/... o enlace a Excel / PDF"
-                style="flex:1;padding:10px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:inherit;font-size:13px;outline:none;transition:border-color .2s"
-                onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
-              <button class="btn btn-sm btn-primary" onclick="saveDocUrl('${CURRENT_PRODUCT_ID}','${ph}')">Guardar</button>
-            </div>
-            <div class="text-sm text-muted" style="margin-top:6px">Enlace al documento con los resultados del checklist — visible para todos los implicados en el producto.</div>
-          </div>
-
-          ${phaseCosts.length > 0 ? `
-          <div>
-            <div class="card-title">Costes registrados</div>
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>Fecha</th><th>Categoría</th><th>Descripción</th><th style="text-align:right">Importe</th><th></th></tr></thead>
-                <tbody>${costsHtml}</tbody>
-              </table>
-            </div>
-          </div>` : ''}
-          ` : `<div class="empty-state" style="padding:30px"><div class="empty-icon">🔒</div><p class="text-muted">No tienes acceso a editar esta fase.</p></div>`}
+          </div><!-- /phase-panel-border -->
         </div>`;
     });
 
+    // ── Main layout ──────────────────────────────────────────────
     document.getElementById('page-content').innerHTML = `
       <span class="back-link" onclick="navigate('products')">← Volver a productos</span>
 
       <div class="card mb-24">
-        <div class="grid-2">
-          <div>
-            <div class="text-sm text-muted">Estado del producto</div>
-            <div class="flex-row" style="margin-top:6px">${statusBadge(product.status)}
+        <div class="product-summary-grid">
+          <div class="product-summary-cell">
+            <div class="text-sm text-muted" style="margin-bottom:6px">Estado</div>
+            <div class="flex-row" style="flex-wrap:wrap;gap:8px">${statusBadge(product.status)}
               ${CURRENT_USER?.role==='admin'?`<select onchange="updateProductStatus('${product._id}',this.value)" style="padding:4px 8px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:12px;cursor:pointer;outline:none">
                 ${Object.entries(STATUS_LABELS).map(([k,v])=>`<option value="${k}" ${product.status===k?'selected':''}>${v}</option>`).join('')}
               </select>`:''}
             </div>
           </div>
-          <div>
-            <div class="text-sm text-muted">Precio objetivo / Margen</div>
-            <div style="font-size:18px;font-weight:700;margin-top:4px">${fmt(product.target_price)} € / ${product.target_margin}%</div>
+          <div class="product-summary-cell">
+            <div class="text-sm text-muted" style="margin-bottom:6px">Precio / Margen objetivo</div>
+            <div style="font-size:20px;font-weight:800">${fmt(product.target_price)} € <span style="color:var(--text2);font-size:14px;font-weight:500">/ ${product.target_margin}% margen</span></div>
+          </div>
+          <div class="product-summary-cell">
+            <div class="text-sm text-muted" style="margin-bottom:6px">Inversión total</div>
+            <div style="font-size:24px;font-weight:800;color:var(--orange)">${fmt(totalCostAll)} €</div>
+          </div>
+          <div class="product-summary-cell">
+            <div class="text-sm text-muted" style="margin-bottom:6px">Fases completadas</div>
+            <div style="font-size:24px;font-weight:800">${completedCount}<span style="font-size:14px;font-weight:500;color:var(--text2)"> / 7</span></div>
           </div>
         </div>
       </div>
