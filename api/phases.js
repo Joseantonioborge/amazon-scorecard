@@ -41,7 +41,7 @@ module.exports = async function handler(req, res) {
       if (!isAdmin && !currentUser.phase_access.includes(phase))
         return res.status(403).json({ error: 'Sin acceso a esta fase' });
 
-      const { status, responsible_email, notes, checklist, doc_url } = req.body || {};
+      const { status, responsible_email, notes, checklist, doc_url, doc_urls } = req.body || {};
       const update = { updated_at: new Date() };
 
       if (status) {
@@ -74,7 +74,8 @@ module.exports = async function handler(req, res) {
       if (responsible_email !== undefined) update.responsible_email = responsible_email;
       if (notes !== undefined)             update.notes = notes;
       if (checklist)                       update.checklist = checklist;
-      if (doc_url !== undefined)           update.doc_url = doc_url;
+      if (doc_url !== undefined)            update.doc_url = doc_url;
+      if (doc_urls !== undefined)           update.doc_urls = doc_urls;
 
       await db.collection('phases').updateOne(
         { product_id: new ObjectId(product_id), phase },
